@@ -2,12 +2,12 @@
 
 # -- Project information
 
-project = 'Lumache'
-copyright = '2021, Graziella'
-author = 'Graziella'
+project = 'MVAPICH'
+copyright = '2024, NOWLAB'
+author = 'NOWLAB'
 
-release = '0.1'
-version = '0.1.0'
+release = '2.3'
+version = '2.3.7'
 
 # -- General configuration
 
