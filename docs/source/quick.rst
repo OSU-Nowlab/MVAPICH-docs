@@ -179,7 +179,7 @@ program which uses mpi.
 
 .Sample MPI code [mpihello.c]
 
-.. code:: c
+.. code:: cpp
 
     #include <mpi.h>
     #include <stdio.h>
