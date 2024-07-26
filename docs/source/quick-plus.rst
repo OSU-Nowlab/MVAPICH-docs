@@ -142,87 +142,83 @@ program which uses mpi.
 
 **options**
 
-::
-
-    **bold** test
-
 **-hostfile**
 
-specify the location of the hostfile
+    specify the location of the hostfile
 
-**Hostfile Format** The mpiexec hostfile format allows for users to
-specify hostnames, one per line.
+    **Hostfile Format** The mpiexec hostfile format allows for users to
+    specify hostnames, one per line.
 
-The following demonstrates the distribution of MPI ranks when using
-different hostfiles:
+    The following demonstrates the distribution of MPI ranks when using
+    different hostfiles:
 
-Examples:
+    Examples:
 
-::
+    ::
+    
+        hosts1
+            node1
+            node2
+        hosts2
+            node1
+            node1
+            node2
+            node2
 
-    hosts1
-        node1
-        node2
-    hosts2
-        node1
-        node1
-        node2
-        node2
+    **Output of mpihello with different hostfiles**
 
-Output of mpihello with different hostfiles
-
-::
-
-    $ mpiexec -f hosts1 -n 4 ./mpihello
-    rank 0 on node1 says hello!
-    rank 1 on node2 says hello!
-    rank 2 on node1 says hello!
-    rank 3 on node2 says hello!
-
-    $ mpiexec -f hosts2 -n 4 ./mpihello
-    rank 0 on node1 says hello!
-    rank 1 on node1 says hello!
-    rank 2 on node2 says hello!
-    rank 3 on node2 says hello!
+    ::
+    
+        $ mpiexec -f hosts1 -n 4 ./mpihello
+        rank 0 on node1 says hello!
+        rank 1 on node2 says hello!
+        rank 2 on node1 says hello!
+        rank 3 on node2 says hello!
+    
+        $ mpiexec -f hosts2 -n 4 ./mpihello
+        rank 0 on node1 says hello!
+        rank 1 on node1 says hello!
+        rank 2 on node2 says hello!
+        rank 3 on node2 says hello!
 
 **-n**
 
-Number of mpi processes to launch.
+    Number of mpi processes to launch.
 
 **-ppn**
 
-Number of mpi processes to launch per node.
+    Number of mpi processes to launch per node.
 
-[IMPORTANT]
-
-
-------------
-
-The -ppn option will create a block of N processes on each node in the
-hostfile. This is analogous to using the ‘:#‘ syntax in the
-hostfile. Using both of these capabilities to create a block ordering
-will be multiplicitive. Ie: setting node1:2 in the hostfile and -ppn 2
-on the command line will result in 4 processes being allocated to
-node1.
-
-If you are using the SLURM resource manager, ommitting a hostfile will
-result in mpiexec using the SLURM\ :sub:`JOB`\ \ :sub:`HOSTLIST`\ environment variable to
-determine the hosts. It will distribute processes accross all active
-nodes in the job according the value set by -ppn.
+    **[IMPORTANT]**
+    
+    
+    ------------
+    
+    The -ppn option will create a block of N processes on each node in the
+    hostfile. This is analogous to using the ‘:#‘ syntax in the
+    hostfile. Using both of these capabilities to create a block ordering
+    will be multiplicitive. Ie: setting node1:2 in the hostfile and -ppn 2
+    on the command line will result in 4 processes being allocated to
+    node1.
+    
+    If you are using the SLURM resource manager, ommitting a hostfile will
+    result in mpiexec using the SLURM_JOB_HOSTLIST environment variable to
+    determine the hosts. It will distribute processes accross all active
+    nodes in the job according the value set by -ppn.
 
 
 **env variables**
 
-Environment variables are specified using the ‘NAME=VALUE’ syntax
-using either the ‘-genv‘ or ‘-genvlist‘ flag. These are used to export
-MPICH\ :sub:`CVAR`\ values to control underlying MPICH functionality as well as
-MVP\_ CVARS to control MVAPICH specific functionality.
-
-Pass an environment variable named FOO with the value BAR
-
-.. code:: sh
-
-    $ mpiexec -f hosts -np 2 -genv FOO=BAR ./mpihello
+    Environment variables are specified using the ‘NAME=VALUE’ syntax
+    using either the ‘-genv‘ or ‘-genvlist‘ flag. These are used to export
+    MPICH_CVAR values to control underlying MPICH functionality as well as
+    MVP_CVARS to control MVAPICH specific functionality.
+    
+    Pass an environment variable named FOO with the value BAR
+    
+    .. code:: sh
+    
+        $ mpiexec -f hosts -np 2 -genv FOO=BAR ./mpihello
 
 
 4 More Information
