@@ -13,9 +13,6 @@ version = '3.0.x'
 
 extensions = [
     'sphinx.ext.duration',
-    'sphinx.ext.doctest',
-    'sphinx.ext.autodoc',
-    'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
 ]
 
