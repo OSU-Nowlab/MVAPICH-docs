@@ -190,8 +190,8 @@ program which uses mpi.
     Number of mpi processes to launch per node.
 
     **[IMPORTANT]**
-    
-    
+
+
     ------------
     
     The -ppn option will create a block of N processes on each node in the
