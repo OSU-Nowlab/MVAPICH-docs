@@ -1,4 +1,0 @@
-[project]
-name = "MVAPICH"
-authors = [{name = "NOWLAB", email = "mvapich@lists.osu.edu"}]
-dynamic = ["version", "description"]

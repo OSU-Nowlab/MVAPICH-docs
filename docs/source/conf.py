@@ -6,8 +6,8 @@ project = 'MVAPICH'
 copyright = '2024, NOWLAB'
 author = 'NOWLAB'
 
-release = '2.3'
-version = '2.3.7'
+release = '3.0'
+version = '3.0.x'
 
 # -- General configuration
 
