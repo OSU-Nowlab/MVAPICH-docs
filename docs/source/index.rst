@@ -11,7 +11,7 @@ the Cray Slingshot 11, Cornelis OPX, and Intel PSM3 interconnects
 through the OFI libfabric library, and for the UCX communication
 library.
 
-Check out the :doc:`quick`.
+Check out the :doc:`quick-plus`.
 
 .. note::
 
@@ -22,7 +22,7 @@ Contents
 
 .. toctree::
 
-   quick
+   quick-plus
 
 
 
