@@ -22,7 +22,7 @@ Contents
 
 .. toctree::
 
-   quick
+   quick-plus
 
 
 

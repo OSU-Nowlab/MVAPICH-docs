@@ -1,5 +1,5 @@
 =============================
-MVAPICH 3.0 Quick Start Guide
+MVAPICH 4.0 Quick Start Guide
 =============================
 
     :Author: MVAPICH Team
@@ -13,19 +13,20 @@ MVAPICH 3.0 Quick Start Guide
 ----------
 
 This Quick Start contains the necessary information for MVAPICH users
-to download, install, and use MVAPICH 3.0. Please refer to our
-`User Guide <http://mvapich.cse.ohio-state.edu/support/>`_ for the comprehensive list of all features and instructions
-about how to use them.
+to download, install, and use MVAPICH-Plus 4.0.
 
 MVAPICH (pronounced as “em-vah-pich”) is an open-source MPI software
 to exploit the novel features and mechanisms of high-performance
 networking technologies (InfiniBand, iWARP, RDMA over Converged
 Enhanced Ethernet (RoCE v1 and v2), Slingshot 10, and Rockport
 Networks) and deliver best performance and scalability to MPI
-applications. This Release Candidate of MVAPICH 3.0 adds support for
+applications. This Release Candidate of MVAPICH 4.0 adds support for
 the Cray Slingshot 11, Cornelis OPX, and Intel PSM3 interconnects
 through the OFI libfabric library, and for the UCX communication
 library.
+
+MVAPICH-Plus provides a GPU aware MPI implementation and additional
+enhancements that are still under active research.
 
 Please note that as this is a pre-release, performance may not be
 optimal. For best performance on Mellanox InfiniBand, RoCE, iWARP,
@@ -43,19 +44,19 @@ our `website <http://mvapich.cse.ohio-state.edu/>`_.
 2 Build MVAPICH from Source
 ---------------------------
 
-The MVAPICH 3.0 source code package includes MPICH 3.4.3. All the required files are present in a single tarball.
+The MVAPICH 4.0 source code package includes the latest MPICH code. All the required files are present in a single tarball.
 
 2.1 Download & Unpack
 ~~~~~~~~~~~~~~~~~~~~~
 
 Download the most recent distribution tarball from
-`http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-3.0.tar.gz <http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-3.0.tar.gz>`_
+`http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-4.0.tar.gz <http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-4.0.tar.gz>`_
 
 .. code:: sh
 
-    $ wget http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-3.0.tar.gz
-    $ gzip -dc mvapich2-3.0.tar.gz | tar -x
-    $ cd mvapich2-3.0
+    $ wget http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-4.0.tar.gz
+    $ gzip -dc mvapich2-4.0.tar.gz | tar -x
+    $ cd mvapich2-4.0
 
 2.2 Configure
 ~~~~~~~~~~~~~
