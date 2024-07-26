@@ -192,15 +192,15 @@ program which uses mpi.
     **[IMPORTANT]**
 
 
-    ------------
-    
+------------
+
     The -ppn option will create a block of N processes on each node in the
     hostfile. This is analogous to using the ‘:#‘ syntax in the
     hostfile. Using both of these capabilities to create a block ordering
     will be multiplicitive. Ie: setting node1:2 in the hostfile and -ppn 2
     on the command line will result in 4 processes being allocated to
     node1.
-    
+
     If you are using the SLURM resource manager, ommitting a hostfile will
     result in mpiexec using the SLURM_JOB_HOSTLIST environment variable to
     determine the hosts. It will distribute processes accross all active
@@ -213,9 +213,9 @@ program which uses mpi.
     using either the ‘-genv‘ or ‘-genvlist‘ flag. These are used to export
     MPICH_CVAR values to control underlying MPICH functionality as well as
     MVP_CVARS to control MVAPICH specific functionality.
-    
+
     Pass an environment variable named FOO with the value BAR
-    
+
     .. code:: sh
     
         $ mpiexec -f hosts -np 2 -genv FOO=BAR ./mpihello
