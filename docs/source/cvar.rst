@@ -5,9 +5,6 @@ MVAPICH Environment Variables
     :Author: MVAPICH Team
     :Date: 2024/07/26
 
-.. contents::
-
-
 
 CVAR Environment Variables
 --------------------------
