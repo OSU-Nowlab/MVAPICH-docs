@@ -4,21 +4,20 @@ MVAPICH2 2.3.7 User Guide
 
     :Author: MVAPICH Team
 
-    :Organization: Network-Based Computing Laboratory
-                   Department of Computer Science and Engineering
+    :Organization: | Network-Based Computing Laboratory
+                   | Department of Computer Science and Engineering
 
     :Address: The Ohio State University
 
     :Contact: http://mvapich.cse.ohio-state.edu
 
-    :Copyright: Copyright (c) 2001-2022
-                Network-Based Computing Laboratory,
-                headed by Dr. D. K. Panda.
-                All rights reserved.
-
+    :Copyright: | Copyright (c) 2001-2022
+                | Network-Based Computing Laboratory,
+                | headed by Dr. D. K. Panda.
+                | All rights reserved.
     :Date: Last revised: July 30th, 2024
 
-           
+
 .. contents::
 
 
