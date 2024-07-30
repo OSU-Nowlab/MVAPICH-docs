@@ -5,7 +5,7 @@ MVAPICH2 2.3.7 User Guide
     :Author: MVAPICH Team
 
     :Organization: | Network-Based Computing Laboratory
-                   | Department of Computer Science and Engineering
+                   Department of Computer Science and Engineering
     :Address: The Ohio State University
 
     :Contact: http://mvapich.cse.ohio-state.edu
