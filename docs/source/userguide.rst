@@ -4,7 +4,8 @@ MVAPICH2 2.3.7 User Guide
 
     :Author: MVAPICH Team
 
-    :Organization: | Network-Based Computing Laboratory
+    :Organization: Network-Based Computing Laboratory
+                   :raw-html:`<br />`
                    Department of Computer Science and Engineering
     :Address: The Ohio State University
 
