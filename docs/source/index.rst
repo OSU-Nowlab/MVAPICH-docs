@@ -26,3 +26,4 @@ Contents
 
    cvar
 
+   userguide
