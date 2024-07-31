@@ -6,6 +6,7 @@ MVAPICH2 2.3.7 User Guide
 
     :Organization: | Network-Based Computing Laboratory
                    | Department of Computer Science and Engineering
+
     :Address: The Ohio State University
 
     :Contact: http://mvapich.cse.ohio-state.edu
@@ -117,6 +118,7 @@ available as a single integrated package (with MPICH \mpichversion).  The
 current release supports ten different underlying transport interfaces, as shown
 in Figure `fig:modules`_.
 
+.. _fig:modules:
 .. figure:: ./_static/mv2-interfaces.png
     :alt: fig:modules
     :align: center
@@ -1103,7 +1105,6 @@ The MVAPICH2 2.3.7 package and the project also includes the following provision
 6.9 Running Collectives with Hardware based Multicast support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _subsec:coll-mcast:
 
 6.10 Running MPI\_Gather collective with intra-node Zero-Copy  designs (using LiMIC2)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1692,7 +1693,6 @@ The MVAPICH2 2.3.7 package and the project also includes the following provision
 11.34 MV2\_NUM\_PORTS
 ~~~~~~~~~~~~~~~~~~~~~
 
-.. _def:num-ports:
 
 11.35 MV2\_DEFAULT\_PORT
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2138,7 +2138,6 @@ The MVAPICH2 2.3.7 package and the project also includes the following provision
 11.126 MV2\_CUDA\_IPC
 ~~~~~~~~~~~~~~~~~~~~~
 
-.. _def:cuda-ipc:
 
 11.127 MV2\_CUDA\_SMP\_IPC
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2233,7 +2232,6 @@ The MVAPICH2 2.3.7 package and the project also includes the following provision
 12.10 MV2\_NUM\_RDMA\_BUFFER
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _def:mv2_num_sa_query_retries:
 
 12.11 MV2\_NUM\_SA\_QUERY\_RETRIES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2350,8 +2348,6 @@ The MVAPICH2 2.3.7 package and the project also includes the following provision
 
 13.9 MPIEXEC\_TIMEOUT
 ~~~~~~~~~~~~~~~~~~~~~
-
-.. _def:mpiexec-timeout:
 
 13.10 MV2\_DEBUG\_FORK\_VERBOSE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
