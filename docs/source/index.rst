@@ -26,3 +26,5 @@ Contents
 
    cvar
 
+   hydra
+
