@@ -1,5 +1,5 @@
 =======================================
-MVAPICH-Plus GPU Compression User Guide
+MVAPICH-Plus GPU Compression Guide
 =======================================
 
     :Author: MVAPICH Team
