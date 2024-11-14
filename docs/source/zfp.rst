@@ -123,7 +123,7 @@ higher consumption).
 
     export MPIR_CVAR_ENABLE_COMPRESSION=1
     export MPIR_CVAR_COMPRESSION_ALGORITHM=zfp
-    export MPIR_CVAR_ALLTOALL_INTRA_ALGORITHM=osu_gpu_compression
+    export MPIR_CVAR_ALLGATHER_INTRA_ALGORITHM=osu_gpu_compression
 
 4.2.4 Reduce-scatter Ring Compression
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
