@@ -88,6 +88,8 @@ Values:
 4.2.1 Point-to-Point Compression
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+*Note: Point-to-point compression is only supported on NVIDIA CUDA GPUs.*
+
 .. code:: sh
 
     export MPIR_CVAR_ENABLE_COMPRESSION=1
