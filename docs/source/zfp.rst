@@ -53,8 +53,6 @@ specific variables.
 4.1 Compression
 ~~~~~~~~~~~~~~~
 
-*Note: Point-to-point compression is only supported on NVIDIA CUDA GPUs.*
-
 4.1.1 ZFP compression rate
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -89,6 +87,8 @@ Values:
 
 4.2.1 Point-to-Point Compression
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+*Note: Point-to-point compression is only supported on NVIDIA CUDA GPUs.*
 
 .. code:: sh
 
