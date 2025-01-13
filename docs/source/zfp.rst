@@ -143,7 +143,7 @@ higher consumption).
 
     export MPIR_CVAR_ENABLE_COMPRESSION=1
     export MPIR_CVAR_COMPRESSION_ALGORITHM=zfp
-    export MPIR_CVAR_ALLREDUCE_INTRA_ALGORITHM=osu_ring_compression
+    export MPIR_CVAR_ALLREDUCE_INTRA_ALGORITHM=osu_rsa_ring_compression
 
 4.2.6 Allreduce Recursive Doubling Compression
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
