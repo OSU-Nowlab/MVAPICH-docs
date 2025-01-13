@@ -7,7 +7,7 @@ copyright = '2024, NOWLAB'
 author = 'NOWLAB'
 
 release = '4.0'
-version = '4.0a'
+version = '4.0'
 
 # -- General configuration
 
