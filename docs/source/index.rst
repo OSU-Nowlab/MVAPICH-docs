@@ -13,9 +13,6 @@ library.
 
 Check out the :doc:`quick-plus`.
 
-.. note::
-
-   This project is under active development.
 
 Contents
 --------
