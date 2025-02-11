@@ -7,7 +7,7 @@ MVAPICH-Plus Frontier UMS
 
 
 Using MVAPICH-Plus Frontier UMS
---------------------------
+--------------------------------
 
 The UMS on Frontier allows for users to load a module created by the MVAPICH-Plus team that sets env varibles for MVAPICH-Plus Functionality and Performance Tuning.  Users can use this module my running the command bellow:
 
