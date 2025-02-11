@@ -27,5 +27,5 @@ Contents
 
    zfp
 
-   umx
+   ums
 
