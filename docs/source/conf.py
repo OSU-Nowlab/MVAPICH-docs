@@ -3,7 +3,7 @@
 # -- Project information
 
 project = 'MVAPICH'
-copyright = '2024, NOWLAB'
+copyright = '2025, NOWLAB'
 author = 'NOWLAB'
 
 release = '4.0'
