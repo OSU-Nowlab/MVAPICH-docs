@@ -23,6 +23,8 @@ Contents
 
    cvar
 
+   launchers
+
    hydra
 
    zfp
