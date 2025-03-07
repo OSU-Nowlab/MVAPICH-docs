@@ -2,7 +2,7 @@
 
 # -- Project information
 
-project = 'MVAPICH'
+project = 'MVAPICH Plus'
 copyright = '2025, NOWLAB'
 author = 'NOWLAB'
 
