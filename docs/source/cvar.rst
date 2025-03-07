@@ -1,5 +1,5 @@
 ===================================
-MVAPICH Plus Environment Variables
+MVAPICH-Plus Environment Variables
 ===================================
 
     :Author: MVAPICH Team
