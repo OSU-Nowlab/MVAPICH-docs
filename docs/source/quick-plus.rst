@@ -62,6 +62,7 @@ Common configure parameters:
 2.2 Installing MVAPICH using Spack
 ---------------------------------------
 MVAPICH can be installed using Spack and the mvapich package.
+
 .. code:: sh
 
         $ spack install mvapich <spec>
