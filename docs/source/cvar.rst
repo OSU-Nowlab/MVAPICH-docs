@@ -15,27 +15,6 @@ to potential values. For example, setting the barrier intra-node algorithm:
 .. code:: sh
 
     MVP_BARRIER_INTRA_ALGORITHM="osu_pairwise"
-Copyright (C) by Argonne National Laboratory
-
-    See COPYRIGHT in top-level directory
-
-
-
-Automatically generated
-
-  by:   ./maint/extractcvars
-
-  at:   Fri Mar  7 20:02:24 2025 UTC
-
-DO NOT EDIT!!!
-
-
-
-This file lists the various environment variables available to change the
-
-behavior of the MPICH library.  These are intended to be used by advanced
-
-users.
 
 ---------------------------------------------------------------------------
 
