@@ -3,7 +3,7 @@ MVAPICH 4.0 Quick Start Guide
 =============================
 
     :Author: MVAPICH Team
-    :Date: 2024/07/26
+    :Date: 2025/03/07
 
 .. contents::
 
@@ -48,6 +48,15 @@ MVAPICH from the release tarball you can issue the following commands:
         $ ./configure --prefix=/path/to/install/mvapich
         $ make            # make -j<num threads> for parallel build
         $ make install
+
+Common configure parameters:
+
+.. code:: sh
+        
+        $ ./configure --prefix=/path/to/install/mvapich --with-device=ch4:ucx #For Infiniband and RoCE systems
+        $ ./configure --prefix=/path/to/install/mvapich --with-device=ch4:ofi #For Slingshot11 and PSM/OPX systems
+        $ ./configure --prefix=/path/to/install/mvapich --with-pm=slurm --with-pmi=pmi1 #To use Slurms srun launcher
+        $ ./configure --prefix=/path/to/install/mvapich --with-pm=slurm --with-pmi=cray #To use Slurms srun launcher on a Cray system
 
 
 2.2 Installing MVAPICH using Spack
