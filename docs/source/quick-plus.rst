@@ -26,7 +26,7 @@ through the OFI libfabric library, and for the UCX communication
 library.
 
 MVAPICH-Plus provides a GPU aware MPI implementation and additional 
-enhancements that are still under active research.
+enhancements to increase performance.
 
 This software is developed in the `Network-Based Computing Laboratory (NBCL) <http://nowlab.cse.ohio-state.edu/>`_,
 headed by `Prof. Dhabaleswar K. (DK) Panda <http://www.cse.ohio-state.edu/~panda>`_ since 2001.
