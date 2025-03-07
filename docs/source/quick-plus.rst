@@ -20,18 +20,13 @@ to exploit the novel features and mechanisms of high-performance
 networking technologies (InfiniBand, iWARP, RDMA over Converged
 Enhanced Ethernet (RoCE v1 and v2), Slingshot 10, and Rockport
 Networks) and deliver best performance and scalability to MPI
-applications. This Release Candidate of MVAPICH 4.0 adds support for
+applications. MVAPICH 4.0 has support for
 the Cray Slingshot 11, Cornelis OPX, and Intel PSM3 interconnects
 through the OFI libfabric library, and for the UCX communication
 library.
 
 MVAPICH-Plus provides a GPU aware MPI implementation and additional 
 enhancements that are still under active research.
-
-Please note that as this is a pre-release, performance may not be
-optimal. For best performance on Mellanox InfiniBand, RoCE, iWARP,
-Slingshot 10 or lower, Rockport Networks, and Intel TrueScale or
-Omni-Path adapters with PSM2, please use MVAPICH 2.3.7.
 
 This software is developed in the `Network-Based Computing Laboratory (NBCL) <http://nowlab.cse.ohio-state.edu/>`_,
 headed by `Prof. Dhabaleswar K. (DK) Panda <http://www.cse.ohio-state.edu/~panda>`_ since 2001.
