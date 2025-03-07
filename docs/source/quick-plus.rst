@@ -1,5 +1,5 @@
 =============================
-MVAPICH 4.0 Quick Start Guide
+MVAPICH-Plus 4.0 Quick Start Guide
 =============================
 
     :Author: MVAPICH Team
