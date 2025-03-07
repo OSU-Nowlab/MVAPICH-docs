@@ -20,18 +20,10 @@ to exploit the novel features and mechanisms of high-performance
 networking technologies (InfiniBand, iWARP, RDMA over Converged
 Enhanced Ethernet (RoCE v1 and v2), Slingshot 10, and Rockport
 Networks) and deliver best performance and scalability to MPI
-applications. This Release Candidate of MVAPICH 4.0 adds support for
+applications. MVAPICH 4.0 has support for
 the Cray Slingshot 11, Cornelis OPX, and Intel PSM3 interconnects
 through the OFI libfabric library, and for the UCX communication
 library.
-
-MVAPICH-Plus provides a GPU aware MPI implementation and additional 
-enhancements that are still under active research.
-
-Please note that as this is a pre-release, performance may not be
-optimal. For best performance on Mellanox InfiniBand, RoCE, iWARP,
-Slingshot 10 or lower, Rockport Networks, and Intel TrueScale or
-Omni-Path adapters with PSM2, please use MVAPICH 2.3.7.
 
 This software is developed in the `Network-Based Computing Laboratory (NBCL) <http://nowlab.cse.ohio-state.edu/>`_,
 headed by `Prof. Dhabaleswar K. (DK) Panda <http://www.cse.ohio-state.edu/~panda>`_ since 2001.
@@ -41,49 +33,29 @@ performance numbers on a wide range of platforms and interconnects, a
 set of OSU benchmarks and related publications can be obtained from
 our `website <http://mvapich.cse.ohio-state.edu/>`_.
 
-2 Install MVAPICH-Plus from RPM
+2 Build MVAPICH from Source
 -------------------------------
+The MVAPICH Tarball contains the source code ready to be configured and built.
 
-The MVAPICH-Plus RPM contains the pre-built binaries for an MVAPICH-Plus installation. Select an RPM
-that matches your system specifications. If a matching RPM is not avaiable on our website, please use
-the provided form to request a custom RPM.
-
-2.1 Download & Install with RPM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Download the appropriate MVAPICH-Plus RPM from the website:
-`https://mvapich.cse.ohio-state.edu/downloads/ <https://mvapich.cse.ohio-state.edu/downloads/>`_
+2.1 Download & Install with Tarball
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This package uses the basic GNU build system. To install a default build of
+MVAPICH from the release tarball you can issue the following commands:
 
 .. code:: sh
 
-	$ wget http://mvapich.cse.ohio-state.edu/download/mvapich/plus/4.0/<mvp-plus-rpm-name>.rpm
-	$ rpm -Uvh --nodeps <mvp-gdr-rpm-name>.rpm 
+	$ wget https://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich-4.0.tar.gz
+        $ ./configure --prefix=/path/to/install/mvapich
+        $ make            # make -j<num threads> for parallel build
+        $ make install
 
-The RPMs contained in our libraries are relocatable and can be installed using a
-prefix other than the default of ./opt/mvapich/ used by the
-library in the previous example.
 
-To install the library on a custom path:
-
-.. code:: sh
-
-	$ rpm --prefix /custom/install/prefix -Uvh --nodeps <mvp-plus-rpm-name>.rpm 
-
-If you do not have root permission you can use rpm2cpio to extract the library.
-
-.. code:: sh
-
-	$ rpm2cpio <mvp-plus-rpm-name>.rpm | cpio -id 
-
-When using the rpm2cpio method, you will need to update the MPI compiler
-scripts, such as mpicc, in order to point to the correct path of where you
-place the library.
-
-2.2 Installing MVAPICH-Plus using Spack
+2.2 Installing MVAPICH using Spack
 ---------------------------------------
-MVAPICH-Plus can be installed using Spack without building
-it from source. See the Spack userguide for details:
-https://mvapich.cse.ohio-state.edu/userguide/userguide_spack/
+MVAPICH can be installed using Spack and the mvapich package.
+.. code:: sh
+        $ spack install mvapich <spec>
+
 
 
 3 Run MPI Program
