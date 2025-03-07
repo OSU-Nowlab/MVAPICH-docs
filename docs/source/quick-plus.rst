@@ -13,7 +13,7 @@ MVAPICH 4.0 Quick Start Guide
 ----------
 
 This Quick Start contains the necessary information for MVAPICH users
-to download, install, and use MVAPICH-Plus 4.0.
+to download, build, install, and use MVAPICH 4.0.
 
 MVAPICH (pronounced as “em-vah-pich”) is an open-source MPI software
 to exploit the novel features and mechanisms of high-performance
