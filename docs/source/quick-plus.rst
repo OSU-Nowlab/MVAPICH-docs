@@ -1,6 +1,6 @@
-=============================
+===================================
 MVAPICH-Plus 4.0 Quick Start Guide
-=============================
+===================================
 
     :Author: MVAPICH Team
     :Date: 2024/07/26
@@ -10,7 +10,7 @@ MVAPICH-Plus 4.0 Quick Start Guide
 
 
 1 Overview
-----------
+-------------
 
 This Quick Start contains the necessary information for MVAPICH users
 to download, install, and use MVAPICH-Plus 4.0.
@@ -37,14 +37,14 @@ set of OSU benchmarks and related publications can be obtained from
 our `website <http://mvapich.cse.ohio-state.edu/>`_.
 
 2 Install MVAPICH-Plus from RPM
--------------------------------
+----------------------------------
 
 The MVAPICH-Plus RPM contains the pre-built binaries for an MVAPICH-Plus installation. Select an RPM
 that matches your system specifications. If a matching RPM is not avaiable on our website, please use
 the provided form to request a custom RPM.
 
 2.1 Download & Install with RPM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Download the appropriate MVAPICH-Plus RPM from the website:
 `https://mvapich.cse.ohio-state.edu/downloads/ <https://mvapich.cse.ohio-state.edu/downloads/>`_
