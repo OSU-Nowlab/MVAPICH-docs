@@ -17,7 +17,10 @@ to potential values. For example, setting the barrier intra-node algorithm:
     MVP_BARRIER_INTRA_ALGORITHM="osu_pairwise"
 
 
+
+
 MPIR\_CVAR\_BARRIER\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BARRIER\_INTRA\_ALGORITHM
@@ -30,6 +33,8 @@ MPIR\_CVAR\_BARRIER\_INTRA\_ALGORITHM
   - auto - Internal algorithm selection (can be overridden with
 
   - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
+
+  - dynamic - Internal algorithm selection using dynamic tuning
 
   - nb  -     - Force nonblocking algorithm
 
@@ -46,6 +51,7 @@ MPIR\_CVAR\_BARRIER\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_BARRIER\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BARRIER\_INTER\_ALGORITHM
@@ -68,6 +74,7 @@ MPIR\_CVAR\_BARRIER\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_BARRIER\_DISSEM\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BARRIER\_DISSEM\_KVAL
@@ -82,6 +89,7 @@ MPIR\_CVAR\_BARRIER\_DISSEM\_KVAL
 
 
 MPIR\_CVAR\_BARRIER\_RECEXCH\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BARRIER\_RECEXCH\_KVAL
@@ -98,6 +106,7 @@ MPIR\_CVAR\_BARRIER\_RECEXCH\_KVAL
 
 
 MPIR\_CVAR\_BARRIER\_RECEXCH\_SINGLE\_PHASE\_RECV
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BARRIER\_RECEXCH\_SINGLE\_PHASE\_RECV
@@ -116,6 +125,7 @@ MPIR\_CVAR\_BARRIER\_RECEXCH\_SINGLE\_PHASE\_RECV
 
 
 MPIR\_CVAR\_IBARRIER\_RECEXCH\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IBARRIER\_RECEXCH\_KVAL
@@ -130,6 +140,7 @@ MPIR\_CVAR\_IBARRIER\_RECEXCH\_KVAL
 
 
 MPIR\_CVAR\_IBARRIER\_DISSEM\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IBARRIER\_DISSEM\_KVAL
@@ -144,6 +155,7 @@ MPIR\_CVAR\_IBARRIER\_DISSEM\_KVAL
 
 
 MPIR\_CVAR\_IBARRIER\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IBARRIER\_INTRA\_ALGORITHM
@@ -176,6 +188,7 @@ MPIR\_CVAR\_IBARRIER\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_IBARRIER\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IBARRIER\_INTER\_ALGORITHM
@@ -200,6 +213,7 @@ MPIR\_CVAR\_IBARRIER\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_BCAST\_MIN\_PROCS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_MIN\_PROCS
@@ -240,6 +254,7 @@ MPIR\_CVAR\_BCAST\_MIN\_PROCS
 
 
 MPIR\_CVAR\_BCAST\_SHORT\_MSG\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_SHORT\_MSG\_SIZE
@@ -280,6 +295,7 @@ MPIR\_CVAR\_BCAST\_SHORT\_MSG\_SIZE
 
 
 MPIR\_CVAR\_BCAST\_LONG\_MSG\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_LONG\_MSG\_SIZE
@@ -320,6 +336,7 @@ MPIR\_CVAR\_BCAST\_LONG\_MSG\_SIZE
 
 
 MPIR\_CVAR\_MAX\_SMP\_BCAST\_MSG\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_MAX\_SMP\_BCAST\_MSG\_SIZE
@@ -338,6 +355,7 @@ MPIR\_CVAR\_MAX\_SMP\_BCAST\_MSG\_SIZE
 
 
 MPIR\_CVAR\_BCAST\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_INTRA\_ALGORITHM
@@ -350,6 +368,8 @@ MPIR\_CVAR\_BCAST\_INTRA\_ALGORITHM
   - auto - Internal algorithm selection (can be overridden with
 
   - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
+
+  - dynamic - Internal algorithm selection using dynamic tuning
 
   - binomial  -   -   -   - - Force Binomial Tree
 
@@ -385,11 +405,12 @@ MPIR\_CVAR\_BCAST\_INTRA\_ALGORITHM
 
   - algorithm
 
-- **Default:** MPIR\_CVAR\_BCAST\_INTRA\_ALGORITHM\_auto
+- **Default:** MPIR\_CVAR\_BCAST\_INTRA\_ALGORITHM\_dynamic
 
 
 
 MPIR\_CVAR\_BCAST\_TREE\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_TREE\_KVAL
@@ -404,6 +425,7 @@ MPIR\_CVAR\_BCAST\_TREE\_KVAL
 
 
 MPIR\_CVAR\_BCAST\_TREE\_TYPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_TREE\_TYPE
@@ -426,6 +448,7 @@ MPIR\_CVAR\_BCAST\_TREE\_TYPE
 
 
 MPIR\_CVAR\_BCAST\_TOPO\_REORDER\_ENABLE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_TOPO\_REORDER\_ENABLE
@@ -442,6 +465,7 @@ MPIR\_CVAR\_BCAST\_TOPO\_REORDER\_ENABLE
 
 
 MPIR\_CVAR\_BCAST\_TOPO\_OVERHEAD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_TOPO\_OVERHEAD
@@ -456,6 +480,7 @@ MPIR\_CVAR\_BCAST\_TOPO\_OVERHEAD
 
 
 MPIR\_CVAR\_BCAST\_TOPO\_DIFF\_GROUPS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_TOPO\_DIFF\_GROUPS
@@ -470,6 +495,7 @@ MPIR\_CVAR\_BCAST\_TOPO\_DIFF\_GROUPS
 
 
 MPIR\_CVAR\_BCAST\_TOPO\_DIFF\_SWITCHES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_TOPO\_DIFF\_SWITCHES
@@ -486,6 +512,7 @@ MPIR\_CVAR\_BCAST\_TOPO\_DIFF\_SWITCHES
 
 
 MPIR\_CVAR\_BCAST\_TOPO\_SAME\_SWITCHES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_TOPO\_SAME\_SWITCHES
@@ -500,6 +527,7 @@ MPIR\_CVAR\_BCAST\_TOPO\_SAME\_SWITCHES
 
 
 MPIR\_CVAR\_BCAST\_IS\_NON\_BLOCKING
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_IS\_NON\_BLOCKING
@@ -514,6 +542,7 @@ MPIR\_CVAR\_BCAST\_IS\_NON\_BLOCKING
 
 
 MPIR\_CVAR\_BCAST\_TREE\_PIPELINE\_CHUNK\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_TREE\_PIPELINE\_CHUNK\_SIZE
@@ -528,6 +557,7 @@ MPIR\_CVAR\_BCAST\_TREE\_PIPELINE\_CHUNK\_SIZE
 
 
 MPIR\_CVAR\_BCAST\_RECV\_PRE\_POST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_RECV\_PRE\_POST
@@ -542,6 +572,7 @@ MPIR\_CVAR\_BCAST\_RECV\_PRE\_POST
 
 
 MPIR\_CVAR\_BCAST\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_INTER\_ALGORITHM
@@ -564,6 +595,7 @@ MPIR\_CVAR\_BCAST\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_IBCAST\_TREE\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IBCAST\_TREE\_KVAL
@@ -578,6 +610,7 @@ MPIR\_CVAR\_IBCAST\_TREE\_KVAL
 
 
 MPIR\_CVAR\_IBCAST\_TREE\_TYPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IBCAST\_TREE\_TYPE
@@ -594,6 +627,7 @@ MPIR\_CVAR\_IBCAST\_TREE\_TYPE
 
 
 MPIR\_CVAR\_IBCAST\_TREE\_PIPELINE\_CHUNK\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IBCAST\_TREE\_PIPELINE\_CHUNK\_SIZE
@@ -610,6 +644,7 @@ MPIR\_CVAR\_IBCAST\_TREE\_PIPELINE\_CHUNK\_SIZE
 
 
 MPIR\_CVAR\_IBCAST\_RING\_CHUNK\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IBCAST\_RING\_CHUNK\_SIZE
@@ -628,6 +663,7 @@ MPIR\_CVAR\_IBCAST\_RING\_CHUNK\_SIZE
 
 
 MPIR\_CVAR\_IBCAST\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IBCAST\_INTRA\_ALGORITHM
@@ -680,6 +716,7 @@ MPIR\_CVAR\_IBCAST\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_IBCAST\_SCATTERV\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IBCAST\_SCATTERV\_KVAL
@@ -696,6 +733,7 @@ MPIR\_CVAR\_IBCAST\_SCATTERV\_KVAL
 
 
 MPIR\_CVAR\_IBCAST\_ALLGATHERV\_RECEXCH\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IBCAST\_ALLGATHERV\_RECEXCH\_KVAL
@@ -712,6 +750,7 @@ MPIR\_CVAR\_IBCAST\_ALLGATHERV\_RECEXCH\_KVAL
 
 
 MPIR\_CVAR\_IBCAST\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IBCAST\_INTER\_ALGORITHM
@@ -736,6 +775,7 @@ MPIR\_CVAR\_IBCAST\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_GATHER\_INTER\_SHORT\_MSG\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_GATHER\_INTER\_SHORT\_MSG\_SIZE
@@ -754,6 +794,7 @@ MPIR\_CVAR\_GATHER\_INTER\_SHORT\_MSG\_SIZE
 
 
 MPIR\_CVAR\_GATHER\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_GATHER\_INTRA\_ALGORITHM
@@ -767,6 +808,8 @@ MPIR\_CVAR\_GATHER\_INTRA\_ALGORITHM
 
   - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
 
+  - dynamic - Internal algorithm selection using dynamic tuning
+
   - binomial - Force binomial algorithm
 
   - nb       - Force nonblocking algorithm
@@ -775,11 +818,12 @@ MPIR\_CVAR\_GATHER\_INTRA\_ALGORITHM
 
   - osu\_direct\_block - Force OSU direct block algorithm
 
-- **Default:** MPIR\_CVAR\_GATHER\_INTRA\_ALGORITHM\_auto
+- **Default:** MPIR\_CVAR\_GATHER\_INTRA\_ALGORITHM\_dynamic
 
 
 
 MPIR\_CVAR\_GATHER\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_GATHER\_INTER\_ALGORITHM
@@ -804,6 +848,7 @@ MPIR\_CVAR\_GATHER\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_IGATHER\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IGATHER\_INTRA\_ALGORITHM
@@ -830,6 +875,7 @@ MPIR\_CVAR\_IGATHER\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_IGATHER\_TREE\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IGATHER\_TREE\_KVAL
@@ -844,6 +890,7 @@ MPIR\_CVAR\_IGATHER\_TREE\_KVAL
 
 
 MPIR\_CVAR\_IGATHER\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IGATHER\_INTER\_ALGORITHM
@@ -870,6 +917,7 @@ MPIR\_CVAR\_IGATHER\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_GATHERV\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_GATHERV\_INTRA\_ALGORITHM
@@ -883,6 +931,8 @@ MPIR\_CVAR\_GATHERV\_INTRA\_ALGORITHM
 
   - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
 
+  - dynamic - Internal algorithm selection using dynamic tuning
+
   - linear - Force linear algorithm
 
   - nb     - Force nonblocking algorithm
@@ -892,6 +942,7 @@ MPIR\_CVAR\_GATHERV\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_GATHERV\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_GATHERV\_INTER\_ALGORITHM
@@ -914,6 +965,7 @@ MPIR\_CVAR\_GATHERV\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_IGATHERV\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IGATHERV\_INTRA\_ALGORITHM
@@ -940,6 +992,7 @@ MPIR\_CVAR\_IGATHERV\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_IGATHERV\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IGATHERV\_INTER\_ALGORITHM
@@ -966,6 +1019,7 @@ MPIR\_CVAR\_IGATHERV\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_SCATTER\_INTER\_SHORT\_MSG\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_SCATTER\_INTER\_SHORT\_MSG\_SIZE
@@ -982,6 +1036,7 @@ MPIR\_CVAR\_SCATTER\_INTER\_SHORT\_MSG\_SIZE
 
 
 MPIR\_CVAR\_SCATTER\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_SCATTER\_INTRA\_ALGORITHM
@@ -995,17 +1050,20 @@ MPIR\_CVAR\_SCATTER\_INTRA\_ALGORITHM
 
   - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
 
+  - dynamic - Internal algorithm selection using dynamic tuning
+
   - binomial - Force binomial algorithm
 
   - nb       - Force nonblocking algorithm
 
   - osu\_direct - Force OSU direct alogirthm
 
-- **Default:** MPIR\_CVAR\_SCATTER\_INTRA\_ALGORITHM\_auto
+- **Default:** MPIR\_CVAR\_SCATTER\_INTRA\_ALGORITHM\_dynamic
 
 
 
 MPIR\_CVAR\_SCATTER\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_SCATTER\_INTER\_ALGORITHM
@@ -1032,6 +1090,7 @@ MPIR\_CVAR\_SCATTER\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_ISCATTER\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ISCATTER\_INTRA\_ALGORITHM
@@ -1058,6 +1117,7 @@ MPIR\_CVAR\_ISCATTER\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_ISCATTER\_TREE\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ISCATTER\_TREE\_KVAL
@@ -1072,6 +1132,7 @@ MPIR\_CVAR\_ISCATTER\_TREE\_KVAL
 
 
 MPIR\_CVAR\_ISCATTER\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ISCATTER\_INTER\_ALGORITHM
@@ -1100,6 +1161,7 @@ MPIR\_CVAR\_ISCATTER\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_SCATTERV\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_SCATTERV\_INTRA\_ALGORITHM
@@ -1113,6 +1175,8 @@ MPIR\_CVAR\_SCATTERV\_INTRA\_ALGORITHM
 
   - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
 
+  - dynamic - Internal algorithm selection using dynamic tuning
+
   - linear - Force linear algorithm
 
   - nb     - Force nonblocking algorithm
@@ -1122,6 +1186,7 @@ MPIR\_CVAR\_SCATTERV\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_SCATTERV\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_SCATTERV\_INTER\_ALGORITHM
@@ -1144,6 +1209,7 @@ MPIR\_CVAR\_SCATTERV\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_ISCATTERV\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ISCATTERV\_INTRA\_ALGORITHM
@@ -1170,6 +1236,7 @@ MPIR\_CVAR\_ISCATTERV\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_ISCATTERV\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ISCATTERV\_INTER\_ALGORITHM
@@ -1196,6 +1263,7 @@ MPIR\_CVAR\_ISCATTERV\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_ALLGATHER\_SHORT\_MSG\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLGATHER\_SHORT\_MSG\_SIZE
@@ -1214,6 +1282,7 @@ MPIR\_CVAR\_ALLGATHER\_SHORT\_MSG\_SIZE
 
 
 MPIR\_CVAR\_ALLGATHER\_LONG\_MSG\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLGATHER\_LONG\_MSG\_SIZE
@@ -1232,6 +1301,7 @@ MPIR\_CVAR\_ALLGATHER\_LONG\_MSG\_SIZE
 
 
 MPIR\_CVAR\_ALLGATHER\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLGATHER\_INTRA\_ALGORITHM
@@ -1244,6 +1314,8 @@ MPIR\_CVAR\_ALLGATHER\_INTRA\_ALGORITHM
   - auto - Internal algorithm selection (can be overridden with
 
   - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
+
+  - dynamic - Internal algorithm selection using dynamic tuning
 
   - brucks  -       - Force brucks algorithm
 
@@ -1263,15 +1335,18 @@ MPIR\_CVAR\_ALLGATHER\_INTRA\_ALGORITHM
 
   - osu\_direct\_spread   - Force MVAPICH direct spread algorithm
 
+  - osu\_direct\_throttling - Force MVAPICH direct throttling algorithm
+
   - osu\_gather\_bcast    - Force MVAPICH gather-bcast algorithm
 
   - osu\_gpu\_compression - Force MVAPICH gpu compression algorithm
 
-- **Default:** MPIR\_CVAR\_ALLGATHER\_INTRA\_ALGORITHM\_auto
+- **Default:** MPIR\_CVAR\_ALLGATHER\_INTRA\_ALGORITHM\_dynamic
 
 
 
 MPIR\_CVAR\_ALLGATHER\_BRUCKS\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLGATHER\_BRUCKS\_KVAL
@@ -1288,6 +1363,7 @@ MPIR\_CVAR\_ALLGATHER\_BRUCKS\_KVAL
 
 
 MPIR\_CVAR\_ALLGATHER\_RECEXCH\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLGATHER\_RECEXCH\_KVAL
@@ -1302,6 +1378,7 @@ MPIR\_CVAR\_ALLGATHER\_RECEXCH\_KVAL
 
 
 MPIR\_CVAR\_ALLGATHER\_RECEXCH\_SINGLE\_PHASE\_RECV
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLGATHER\_RECEXCH\_SINGLE\_PHASE\_RECV
@@ -1320,6 +1397,7 @@ MPIR\_CVAR\_ALLGATHER\_RECEXCH\_SINGLE\_PHASE\_RECV
 
 
 MPIR\_CVAR\_ALLGATHER\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLGATHER\_INTER\_ALGORITHM
@@ -1344,6 +1422,7 @@ MPIR\_CVAR\_ALLGATHER\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_IALLGATHER\_RECEXCH\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLGATHER\_RECEXCH\_KVAL
@@ -1358,6 +1437,7 @@ MPIR\_CVAR\_IALLGATHER\_RECEXCH\_KVAL
 
 
 MPIR\_CVAR\_IALLGATHER\_BRUCKS\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLGATHER\_BRUCKS\_KVAL
@@ -1372,6 +1452,7 @@ MPIR\_CVAR\_IALLGATHER\_BRUCKS\_KVAL
 
 
 MPIR\_CVAR\_IALLGATHER\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLGATHER\_INTRA\_ALGORITHM
@@ -1412,6 +1493,7 @@ MPIR\_CVAR\_IALLGATHER\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_IALLGATHER\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLGATHER\_INTER\_ALGORITHM
@@ -1438,6 +1520,7 @@ MPIR\_CVAR\_IALLGATHER\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_ALLGATHERV\_PIPELINE\_MSG\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLGATHERV\_PIPELINE\_MSG\_SIZE
@@ -1456,6 +1539,7 @@ MPIR\_CVAR\_ALLGATHERV\_PIPELINE\_MSG\_SIZE
 
 
 MPIR\_CVAR\_ALLGATHERV\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLGATHERV\_INTRA\_ALGORITHM
@@ -1469,6 +1553,8 @@ MPIR\_CVAR\_ALLGATHERV\_INTRA\_ALGORITHM
 
   - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
 
+  - dynamic - Internal algorithm selection using dynamic tuning
+
   - brucks  -      - Force brucks algorithm
 
   - nb  -   -  - Force nonblocking algorithm
@@ -1477,11 +1563,14 @@ MPIR\_CVAR\_ALLGATHERV\_INTRA\_ALGORITHM
 
   - ring  -        - Force ring algorithm
 
+  - osu\_direct\_throttling - Force MVAPICH direct throttling algorithm
+
 - **Default:** MPIR\_CVAR\_ALLGATHERV\_INTRA\_ALGORITHM\_auto
 
 
 
 MPIR\_CVAR\_ALLGATHERV\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLGATHERV\_INTER\_ALGORITHM
@@ -1506,6 +1595,7 @@ MPIR\_CVAR\_ALLGATHERV\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_IALLGATHERV\_RECEXCH\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLGATHERV\_RECEXCH\_KVAL
@@ -1520,6 +1610,7 @@ MPIR\_CVAR\_IALLGATHERV\_RECEXCH\_KVAL
 
 
 MPIR\_CVAR\_IALLGATHERV\_BRUCKS\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLGATHERV\_BRUCKS\_KVAL
@@ -1534,6 +1625,7 @@ MPIR\_CVAR\_IALLGATHERV\_BRUCKS\_KVAL
 
 
 MPIR\_CVAR\_IALLGATHERV\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLGATHERV\_INTRA\_ALGORITHM
@@ -1576,6 +1668,7 @@ MPIR\_CVAR\_IALLGATHERV\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_IALLGATHERV\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLGATHERV\_INTER\_ALGORITHM
@@ -1602,6 +1695,7 @@ MPIR\_CVAR\_IALLGATHERV\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_ALLTOALL\_SHORT\_MSG\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLTOALL\_SHORT\_MSG\_SIZE
@@ -1620,6 +1714,7 @@ MPIR\_CVAR\_ALLTOALL\_SHORT\_MSG\_SIZE
 
 
 MPIR\_CVAR\_ALLTOALL\_MEDIUM\_MSG\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLTOALL\_MEDIUM\_MSG\_SIZE
@@ -1640,6 +1735,7 @@ MPIR\_CVAR\_ALLTOALL\_MEDIUM\_MSG\_SIZE
 
 
 MPIR\_CVAR\_ALLTOALL\_THROTTLE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLTOALL\_THROTTLE
@@ -1647,17 +1743,75 @@ MPIR\_CVAR\_ALLTOALL\_THROTTLE
   - MPICH\_ALLTOALL\_THROTTLE
 
 - **Description:**
-  -  max no. of irecvs/isends posted at a time in some alltoall
+  -  Maximum number of concurrent irecvs/isends posted at a
 
-  - algorithms. Setting it to 0 causes all irecvs/isends to be posted
+  - time in some alltoall algorithms. Setting it to 0 causes all
 
-  - at once
+  - irecvs/isends to be posted at once
 
 - **Default:** 32
 
 
 
+MPIR\_CVAR\_ALLREDUCE\_THROTTLE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_ALLREDUCE\_THROTTLE
+
+  - MPICH\_ALLREDUCE\_THROTTLE
+
+- **Description:**
+  -  Maximum number of concurrent irecvs/isends posted at a
+
+  - time in direct allreduce algorithms. Setting it to 0 causes all
+
+  - irecvs/isends to be posted at once
+
+- **Default:** 32
+
+
+
+MPIR\_CVAR\_ALLGATHER\_THROTTLE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_ALLGATHER\_THROTTLE
+
+  - MPICH\_ALLGATHER\_THROTTLE
+
+- **Description:**
+  -  Maximum number of concurrent irecvs/isends posted at a
+
+  - time in direct allgather algorithms. Setting it to 0 causes all
+
+  - irecvs/isends to be posted at once
+
+- **Default:** 8
+
+
+
+MPIR\_CVAR\_REDUCE\_SCATTER\_THROTTLE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_REDUCE\_SCATTER\_THROTTLE
+
+  - MPICH\_REDUCE\_SCATTER\_THROTTLE
+
+- **Description:**
+  -  Maximum number of concurrent irecvs/isends posted at a
+
+  - time in direct reduce scatter algorithms. Setting it to 0 causes
+
+  - all irecvs/isends to be posted at once
+
+- **Default:** 8
+
+
+
 MPIR\_CVAR\_ALLTOALL\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLTOALL\_INTRA\_ALGORITHM
@@ -1670,6 +1824,8 @@ MPIR\_CVAR\_ALLTOALL\_INTRA\_ALGORITHM
   - auto - Internal algorithm selection (can be overridden with
 
   - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
+
+  - dynamic - Internal algorithm selection using dynamic tuning
 
   - brucks  -   -     - Force brucks algorithm
 
@@ -1687,11 +1843,12 @@ MPIR\_CVAR\_ALLTOALL\_INTRA\_ALGORITHM
 
   - osu\_gpu\_compression       - Force compression algorithm
 
-- **Default:** MPIR\_CVAR\_ALLTOALL\_INTRA\_ALGORITHM\_auto
+- **Default:** MPIR\_CVAR\_ALLTOALL\_INTRA\_ALGORITHM\_dynamic
 
 
 
 MPIR\_CVAR\_ALLTOALL\_BRUCKS\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLTOALL\_BRUCKS\_KVAL
@@ -1708,6 +1865,7 @@ MPIR\_CVAR\_ALLTOALL\_BRUCKS\_KVAL
 
 
 MPIR\_CVAR\_ALLTOALL\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLTOALL\_INTER\_ALGORITHM
@@ -1730,6 +1888,7 @@ MPIR\_CVAR\_ALLTOALL\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_IALLTOALL\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLTOALL\_INTRA\_ALGORITHM
@@ -1770,6 +1929,7 @@ MPIR\_CVAR\_IALLTOALL\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_IALLTOALL\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLTOALL\_INTER\_ALGORITHM
@@ -1794,6 +1954,7 @@ MPIR\_CVAR\_IALLTOALL\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_ALLTOALLV\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLTOALLV\_INTRA\_ALGORITHM
@@ -1806,6 +1967,8 @@ MPIR\_CVAR\_ALLTOALLV\_INTRA\_ALGORITHM
   - auto - Internal algorithm selection (can be overridden with
 
   - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
+
+  - dynamic - Internal algorithm selection using dynamic tuning
 
   - nb  -   -   - - Force nonblocking algorithm
 
@@ -1820,6 +1983,7 @@ MPIR\_CVAR\_ALLTOALLV\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_ALLTOALLV\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLTOALLV\_INTER\_ALGORITHM
@@ -1842,6 +2006,7 @@ MPIR\_CVAR\_ALLTOALLV\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_IALLTOALLV\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLTOALLV\_INTRA\_ALGORITHM
@@ -1876,6 +2041,7 @@ MPIR\_CVAR\_IALLTOALLV\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_IALLTOALLV\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLTOALLV\_INTER\_ALGORITHM
@@ -1900,6 +2066,7 @@ MPIR\_CVAR\_IALLTOALLV\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_IALLTOALLV\_SCATTERED\_OUTSTANDING\_TASKS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLTOALLV\_SCATTERED\_OUTSTANDING\_TASKS
@@ -1916,6 +2083,7 @@ MPIR\_CVAR\_IALLTOALLV\_SCATTERED\_OUTSTANDING\_TASKS
 
 
 MPIR\_CVAR\_IALLTOALLV\_SCATTERED\_BATCH\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLTOALLV\_SCATTERED\_BATCH\_SIZE
@@ -1934,6 +2102,7 @@ MPIR\_CVAR\_IALLTOALLV\_SCATTERED\_BATCH\_SIZE
 
 
 MPIR\_CVAR\_ALLTOALLW\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLTOALLW\_INTRA\_ALGORITHM
@@ -1946,6 +2115,8 @@ MPIR\_CVAR\_ALLTOALLW\_INTRA\_ALGORITHM
   - auto - Internal algorithm selection (can be overridden with
 
   - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
+
+  - dynamic - Internal algorithm selection using dynamic tuning
 
   - nb  -   -   - - Force nonblocking algorithm
 
@@ -1960,6 +2131,7 @@ MPIR\_CVAR\_ALLTOALLW\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_ALLTOALLW\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLTOALLW\_INTER\_ALGORITHM
@@ -1982,6 +2154,7 @@ MPIR\_CVAR\_ALLTOALLW\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_IALLTOALLW\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLTOALLW\_INTRA\_ALGORITHM
@@ -2012,6 +2185,7 @@ MPIR\_CVAR\_IALLTOALLW\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_IALLTOALLW\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLTOALLW\_INTER\_ALGORITHM
@@ -2036,6 +2210,7 @@ MPIR\_CVAR\_IALLTOALLW\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_REDUCE\_SHORT\_MSG\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_SHORT\_MSG\_SIZE
@@ -2052,6 +2227,7 @@ MPIR\_CVAR\_REDUCE\_SHORT\_MSG\_SIZE
 
 
 MPIR\_CVAR\_MAX\_SMP\_REDUCE\_MSG\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_MAX\_SMP\_REDUCE\_MSG\_SIZE
@@ -2068,6 +2244,7 @@ MPIR\_CVAR\_MAX\_SMP\_REDUCE\_MSG\_SIZE
 
 
 MPIR\_CVAR\_REDUCE\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_INTRA\_ALGORITHM
@@ -2081,6 +2258,8 @@ MPIR\_CVAR\_REDUCE\_INTRA\_ALGORITHM
 
   - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
 
+  - dynamic - Internal algorithm selection using dynamic tuning
+
   - binomial  -       - Force binomial algorithm
 
   - nb  -   -     - Force nonblocking algorithm
@@ -2093,11 +2272,12 @@ MPIR\_CVAR\_REDUCE\_INTRA\_ALGORITHM
 
   - osu\_allreduce  -  - Force MVAPICH allreduce algorithm
 
-- **Default:** MPIR\_CVAR\_REDUCE\_INTRA\_ALGORITHM\_auto
+- **Default:** MPIR\_CVAR\_REDUCE\_INTRA\_ALGORITHM\_dynamic
 
 
 
 MPIR\_CVAR\_REDUCE\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_INTER\_ALGORITHM
@@ -2120,6 +2300,7 @@ MPIR\_CVAR\_REDUCE\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_IREDUCE\_TREE\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IREDUCE\_TREE\_KVAL
@@ -2134,6 +2315,7 @@ MPIR\_CVAR\_IREDUCE\_TREE\_KVAL
 
 
 MPIR\_CVAR\_IREDUCE\_TREE\_TYPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IREDUCE\_TREE\_TYPE
@@ -2156,6 +2338,7 @@ MPIR\_CVAR\_IREDUCE\_TREE\_TYPE
 
 
 MPIR\_CVAR\_IREDUCE\_TOPO\_REORDER\_ENABLE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IREDUCE\_TOPO\_REORDER\_ENABLE
@@ -2172,6 +2355,7 @@ MPIR\_CVAR\_IREDUCE\_TOPO\_REORDER\_ENABLE
 
 
 MPIR\_CVAR\_IREDUCE\_TOPO\_OVERHEAD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IREDUCE\_TOPO\_OVERHEAD
@@ -2186,6 +2370,7 @@ MPIR\_CVAR\_IREDUCE\_TOPO\_OVERHEAD
 
 
 MPIR\_CVAR\_IREDUCE\_TOPO\_DIFF\_GROUPS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IREDUCE\_TOPO\_DIFF\_GROUPS
@@ -2200,6 +2385,7 @@ MPIR\_CVAR\_IREDUCE\_TOPO\_DIFF\_GROUPS
 
 
 MPIR\_CVAR\_IREDUCE\_TOPO\_DIFF\_SWITCHES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IREDUCE\_TOPO\_DIFF\_SWITCHES
@@ -2216,6 +2402,7 @@ MPIR\_CVAR\_IREDUCE\_TOPO\_DIFF\_SWITCHES
 
 
 MPIR\_CVAR\_IREDUCE\_TOPO\_SAME\_SWITCHES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IREDUCE\_TOPO\_SAME\_SWITCHES
@@ -2230,6 +2417,7 @@ MPIR\_CVAR\_IREDUCE\_TOPO\_SAME\_SWITCHES
 
 
 MPIR\_CVAR\_IREDUCE\_TREE\_PIPELINE\_CHUNK\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IREDUCE\_TREE\_PIPELINE\_CHUNK\_SIZE
@@ -2246,6 +2434,7 @@ MPIR\_CVAR\_IREDUCE\_TREE\_PIPELINE\_CHUNK\_SIZE
 
 
 MPIR\_CVAR\_IREDUCE\_RING\_CHUNK\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IREDUCE\_RING\_CHUNK\_SIZE
@@ -2264,6 +2453,7 @@ MPIR\_CVAR\_IREDUCE\_RING\_CHUNK\_SIZE
 
 
 MPIR\_CVAR\_IREDUCE\_TREE\_BUFFER\_PER\_CHILD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IREDUCE\_TREE\_BUFFER\_PER\_CHILD
@@ -2290,6 +2480,7 @@ MPIR\_CVAR\_IREDUCE\_TREE\_BUFFER\_PER\_CHILD
 
 
 MPIR\_CVAR\_IREDUCE\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IREDUCE\_INTRA\_ALGORITHM
@@ -2322,6 +2513,7 @@ MPIR\_CVAR\_IREDUCE\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_IREDUCE\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IREDUCE\_INTER\_ALGORITHM
@@ -2348,6 +2540,7 @@ MPIR\_CVAR\_IREDUCE\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_ALLREDUCE\_SHORT\_MSG\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLREDUCE\_SHORT\_MSG\_SIZE
@@ -2364,6 +2557,7 @@ MPIR\_CVAR\_ALLREDUCE\_SHORT\_MSG\_SIZE
 
 
 MPIR\_CVAR\_MAX\_SMP\_ALLREDUCE\_MSG\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_MAX\_SMP\_ALLREDUCE\_MSG\_SIZE
@@ -2382,6 +2576,7 @@ MPIR\_CVAR\_MAX\_SMP\_ALLREDUCE\_MSG\_SIZE
 
 
 MPIR\_CVAR\_ALLREDUCE\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLREDUCE\_INTRA\_ALGORITHM
@@ -2395,11 +2590,15 @@ MPIR\_CVAR\_ALLREDUCE\_INTRA\_ALGORITHM
 
   - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
 
+  - dynamic - Internal algorithm selection using dynamic tuning
+
   - nb  -   -        - Force nonblocking algorithm
 
   - smp  -   -       - Force smp algorithm
 
   - recursive\_doubling       - Force recursive doubling algorithm
+
+  - recursive\_multiplying    - Force recursive multiplying algorithm
 
   - reduce\_scatter\_allgather - Force reduce scatter allgather algorithm
 
@@ -2433,11 +2632,37 @@ MPIR\_CVAR\_ALLREDUCE\_INTRA\_ALGORITHM
 
   - using GPU buffer
 
-- **Default:** MPIR\_CVAR\_ALLREDUCE\_INTRA\_ALGORITHM\_auto
+  - osu\_gpu\_ring  -      - Force ring RSA algorithm using GPU
+
+  - buffer
+
+  - osu\_gpu\_direct  -    - Force direct RSA algorithm using GPU
+
+  - buffer
+
+- **Default:** MPIR\_CVAR\_ALLREDUCE\_INTRA\_ALGORITHM\_dynamic
+
+
+
+MPIR\_CVAR\_ALLREDUCE\_RECURSIVE\_MULTIPLYING\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_ALLREDUCE\_RECURSIVE\_MULTIPLYING\_KVAL
+
+  - MPICH\_ALLREDUCE\_RECURSIVE\_MULTIPLYING\_KVAL
+
+- **Description:**
+  -  radix value (power of k) for generic recursive multiplying
+
+  - based allreduce
+
+- **Default:** 2
 
 
 
 MPIR\_CVAR\_ALLREDUCE\_TREE\_TYPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLREDUCE\_TREE\_TYPE
@@ -2466,6 +2691,7 @@ MPIR\_CVAR\_ALLREDUCE\_TREE\_TYPE
 
 
 MPIR\_CVAR\_ALLREDUCE\_TREE\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLREDUCE\_TREE\_KVAL
@@ -2480,6 +2706,7 @@ MPIR\_CVAR\_ALLREDUCE\_TREE\_KVAL
 
 
 MPIR\_CVAR\_ALLREDUCE\_TOPO\_REORDER\_ENABLE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLREDUCE\_TOPO\_REORDER\_ENABLE
@@ -2496,6 +2723,7 @@ MPIR\_CVAR\_ALLREDUCE\_TOPO\_REORDER\_ENABLE
 
 
 MPIR\_CVAR\_ALLREDUCE\_TOPO\_OVERHEAD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLREDUCE\_TOPO\_OVERHEAD
@@ -2510,6 +2738,7 @@ MPIR\_CVAR\_ALLREDUCE\_TOPO\_OVERHEAD
 
 
 MPIR\_CVAR\_ALLREDUCE\_TOPO\_DIFF\_GROUPS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLREDUCE\_TOPO\_DIFF\_GROUPS
@@ -2524,6 +2753,7 @@ MPIR\_CVAR\_ALLREDUCE\_TOPO\_DIFF\_GROUPS
 
 
 MPIR\_CVAR\_ALLREDUCE\_TOPO\_DIFF\_SWITCHES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLREDUCE\_TOPO\_DIFF\_SWITCHES
@@ -2540,6 +2770,7 @@ MPIR\_CVAR\_ALLREDUCE\_TOPO\_DIFF\_SWITCHES
 
 
 MPIR\_CVAR\_ALLREDUCE\_TOPO\_SAME\_SWITCHES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLREDUCE\_TOPO\_SAME\_SWITCHES
@@ -2554,6 +2785,7 @@ MPIR\_CVAR\_ALLREDUCE\_TOPO\_SAME\_SWITCHES
 
 
 MPIR\_CVAR\_ALLREDUCE\_TREE\_PIPELINE\_CHUNK\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLREDUCE\_TREE\_PIPELINE\_CHUNK\_SIZE
@@ -2570,6 +2802,7 @@ MPIR\_CVAR\_ALLREDUCE\_TREE\_PIPELINE\_CHUNK\_SIZE
 
 
 MPIR\_CVAR\_ALLREDUCE\_TREE\_BUFFER\_PER\_CHILD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLREDUCE\_TREE\_BUFFER\_PER\_CHILD
@@ -2598,6 +2831,7 @@ MPIR\_CVAR\_ALLREDUCE\_TREE\_BUFFER\_PER\_CHILD
 
 
 MPIR\_CVAR\_ALLREDUCE\_RECEXCH\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLREDUCE\_RECEXCH\_KVAL
@@ -2612,6 +2846,7 @@ MPIR\_CVAR\_ALLREDUCE\_RECEXCH\_KVAL
 
 
 MPIR\_CVAR\_ALLREDUCE\_RECEXCH\_SINGLE\_PHASE\_RECV
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLREDUCE\_RECEXCH\_SINGLE\_PHASE\_RECV
@@ -2630,6 +2865,7 @@ MPIR\_CVAR\_ALLREDUCE\_RECEXCH\_SINGLE\_PHASE\_RECV
 
 
 MPIR\_CVAR\_ALLREDUCE\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLREDUCE\_INTER\_ALGORITHM
@@ -2652,6 +2888,7 @@ MPIR\_CVAR\_ALLREDUCE\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_IALLREDUCE\_TREE\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLREDUCE\_TREE\_KVAL
@@ -2668,6 +2905,7 @@ MPIR\_CVAR\_IALLREDUCE\_TREE\_KVAL
 
 
 MPIR\_CVAR\_IALLREDUCE\_TREE\_TYPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLREDUCE\_TREE\_TYPE
@@ -2684,6 +2922,7 @@ MPIR\_CVAR\_IALLREDUCE\_TREE\_TYPE
 
 
 MPIR\_CVAR\_IALLREDUCE\_TREE\_PIPELINE\_CHUNK\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLREDUCE\_TREE\_PIPELINE\_CHUNK\_SIZE
@@ -2700,6 +2939,7 @@ MPIR\_CVAR\_IALLREDUCE\_TREE\_PIPELINE\_CHUNK\_SIZE
 
 
 MPIR\_CVAR\_IALLREDUCE\_TREE\_BUFFER\_PER\_CHILD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLREDUCE\_TREE\_BUFFER\_PER\_CHILD
@@ -2728,6 +2968,7 @@ MPIR\_CVAR\_IALLREDUCE\_TREE\_BUFFER\_PER\_CHILD
 
 
 MPIR\_CVAR\_IALLREDUCE\_RECEXCH\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLREDUCE\_RECEXCH\_KVAL
@@ -2742,6 +2983,7 @@ MPIR\_CVAR\_IALLREDUCE\_RECEXCH\_KVAL
 
 
 MPIR\_CVAR\_IALLREDUCE\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLREDUCE\_INTRA\_ALGORITHM
@@ -2796,6 +3038,7 @@ MPIR\_CVAR\_IALLREDUCE\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_IALLREDUCE\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLREDUCE\_INTER\_ALGORITHM
@@ -2822,6 +3065,7 @@ MPIR\_CVAR\_IALLREDUCE\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_REDUCE\_SCATTER\_COMMUTATIVE\_LONG\_MSG\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_SCATTER\_COMMUTATIVE\_LONG\_MSG\_SIZE
@@ -2838,6 +3082,7 @@ MPIR\_CVAR\_REDUCE\_SCATTER\_COMMUTATIVE\_LONG\_MSG\_SIZE
 
 
 MPIR\_CVAR\_REDUCE\_SCATTER\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_SCATTER\_INTRA\_ALGORITHM
@@ -2850,6 +3095,8 @@ MPIR\_CVAR\_REDUCE\_SCATTER\_INTRA\_ALGORITHM
   - auto  -   -  - Internal algorithm selection (can be
 
   - overridden with MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
+
+  - dynamic - Internal algorithm selection using dynamic tuning
 
   - nb  -   -    - Force nonblocking algorithm
 
@@ -2867,11 +3114,16 @@ MPIR\_CVAR\_REDUCE\_SCATTER\_INTRA\_ALGORITHM
 
   - osu\_ring\_compression - Force compression algorithm
 
+  - osu\_gpu\_direct       - Force MVAPICH gpu direct algorithm
+
+  - osu\_gpu\_ring  -  - Force MVAPICH gpu ring algorithm
+
 - **Default:** MPIR\_CVAR\_REDUCE\_SCATTER\_INTRA\_ALGORITHM\_auto
 
 
 
 MPIR\_CVAR\_REDUCE\_SCATTER\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_SCATTER\_INTER\_ALGORITHM
@@ -2896,6 +3148,7 @@ MPIR\_CVAR\_REDUCE\_SCATTER\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_IREDUCE\_SCATTER\_RECEXCH\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IREDUCE\_SCATTER\_RECEXCH\_KVAL
@@ -2910,6 +3163,7 @@ MPIR\_CVAR\_IREDUCE\_SCATTER\_RECEXCH\_KVAL
 
 
 MPIR\_CVAR\_IREDUCE\_SCATTER\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IREDUCE\_SCATTER\_INTRA\_ALGORITHM
@@ -2944,6 +3198,7 @@ MPIR\_CVAR\_IREDUCE\_SCATTER\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_IREDUCE\_SCATTER\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IREDUCE\_SCATTER\_INTER\_ALGORITHM
@@ -2970,6 +3225,7 @@ MPIR\_CVAR\_IREDUCE\_SCATTER\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_REDUCE\_SCATTER\_BLOCK\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_SCATTER\_BLOCK\_INTRA\_ALGORITHM
@@ -2982,6 +3238,8 @@ MPIR\_CVAR\_REDUCE\_SCATTER\_BLOCK\_INTRA\_ALGORITHM
   - auto - Internal algorithm selection (can be overridden with
 
   - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
+
+  - dynamic - Internal algorithm selection using dynamic tuning
 
   - noncommutative     - Force noncommutative algorithm
 
@@ -2998,6 +3256,7 @@ MPIR\_CVAR\_REDUCE\_SCATTER\_BLOCK\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_REDUCE\_SCATTER\_BLOCK\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_SCATTER\_BLOCK\_INTER\_ALGORITHM
@@ -3022,6 +3281,7 @@ MPIR\_CVAR\_REDUCE\_SCATTER\_BLOCK\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_IREDUCE\_SCATTER\_BLOCK\_RECEXCH\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IREDUCE\_SCATTER\_BLOCK\_RECEXCH\_KVAL
@@ -3036,6 +3296,7 @@ MPIR\_CVAR\_IREDUCE\_SCATTER\_BLOCK\_RECEXCH\_KVAL
 
 
 MPIR\_CVAR\_IREDUCE\_SCATTER\_BLOCK\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IREDUCE\_SCATTER\_BLOCK\_INTRA\_ALGORITHM
@@ -3070,6 +3331,7 @@ MPIR\_CVAR\_IREDUCE\_SCATTER\_BLOCK\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_IREDUCE\_SCATTER\_BLOCK\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IREDUCE\_SCATTER\_BLOCK\_INTER\_ALGORITHM
@@ -3096,6 +3358,7 @@ MPIR\_CVAR\_IREDUCE\_SCATTER\_BLOCK\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_SCAN\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_SCAN\_INTRA\_ALGORITHM
@@ -3109,6 +3372,8 @@ MPIR\_CVAR\_SCAN\_INTRA\_ALGORITHM
 
   - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
 
+  - dynamic - Internal algorithm selection using dynamic tuning
+
   - nb  -   -  - Force nonblocking algorithm
 
   - smp  -   - - Force smp algorithm
@@ -3120,6 +3385,7 @@ MPIR\_CVAR\_SCAN\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_ISCAN\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ISCAN\_INTRA\_ALGORITHM
@@ -3150,6 +3416,7 @@ MPIR\_CVAR\_ISCAN\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_EXSCAN\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_EXSCAN\_INTRA\_ALGORITHM
@@ -3163,6 +3430,8 @@ MPIR\_CVAR\_EXSCAN\_INTRA\_ALGORITHM
 
   - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
 
+  - dynamic - Internal algorithm selection using dynamic tuning
+
   - nb  -   -  - Force nonblocking algorithm
 
   - recursive\_doubling - Force recursive doubling algorithm
@@ -3172,6 +3441,7 @@ MPIR\_CVAR\_EXSCAN\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_IEXSCAN\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IEXSCAN\_INTRA\_ALGORITHM
@@ -3196,6 +3466,7 @@ MPIR\_CVAR\_IEXSCAN\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_NEIGHBOR\_ALLGATHER\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEIGHBOR\_ALLGATHER\_INTRA\_ALGORITHM
@@ -3216,6 +3487,7 @@ MPIR\_CVAR\_NEIGHBOR\_ALLGATHER\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_NEIGHBOR\_ALLGATHER\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEIGHBOR\_ALLGATHER\_INTER\_ALGORITHM
@@ -3236,6 +3508,7 @@ MPIR\_CVAR\_NEIGHBOR\_ALLGATHER\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_INEIGHBOR\_ALLGATHER\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_INEIGHBOR\_ALLGATHER\_INTRA\_ALGORITHM
@@ -3262,6 +3535,7 @@ MPIR\_CVAR\_INEIGHBOR\_ALLGATHER\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_INEIGHBOR\_ALLGATHER\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_INEIGHBOR\_ALLGATHER\_INTER\_ALGORITHM
@@ -3288,6 +3562,7 @@ MPIR\_CVAR\_INEIGHBOR\_ALLGATHER\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_NEIGHBOR\_ALLGATHERV\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEIGHBOR\_ALLGATHERV\_INTRA\_ALGORITHM
@@ -3308,6 +3583,7 @@ MPIR\_CVAR\_NEIGHBOR\_ALLGATHERV\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_NEIGHBOR\_ALLGATHERV\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEIGHBOR\_ALLGATHERV\_INTER\_ALGORITHM
@@ -3328,6 +3604,7 @@ MPIR\_CVAR\_NEIGHBOR\_ALLGATHERV\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_INEIGHBOR\_ALLGATHERV\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_INEIGHBOR\_ALLGATHERV\_INTRA\_ALGORITHM
@@ -3354,6 +3631,7 @@ MPIR\_CVAR\_INEIGHBOR\_ALLGATHERV\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_INEIGHBOR\_ALLGATHERV\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_INEIGHBOR\_ALLGATHERV\_INTER\_ALGORITHM
@@ -3380,6 +3658,7 @@ MPIR\_CVAR\_INEIGHBOR\_ALLGATHERV\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_NEIGHBOR\_ALLTOALL\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEIGHBOR\_ALLTOALL\_INTRA\_ALGORITHM
@@ -3400,6 +3679,7 @@ MPIR\_CVAR\_NEIGHBOR\_ALLTOALL\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_NEIGHBOR\_ALLTOALL\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEIGHBOR\_ALLTOALL\_INTER\_ALGORITHM
@@ -3420,6 +3700,7 @@ MPIR\_CVAR\_NEIGHBOR\_ALLTOALL\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_INEIGHBOR\_ALLTOALL\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_INEIGHBOR\_ALLTOALL\_INTRA\_ALGORITHM
@@ -3446,6 +3727,7 @@ MPIR\_CVAR\_INEIGHBOR\_ALLTOALL\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_INEIGHBOR\_ALLTOALL\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_INEIGHBOR\_ALLTOALL\_INTER\_ALGORITHM
@@ -3472,6 +3754,7 @@ MPIR\_CVAR\_INEIGHBOR\_ALLTOALL\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_NEIGHBOR\_ALLTOALLV\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEIGHBOR\_ALLTOALLV\_INTRA\_ALGORITHM
@@ -3492,6 +3775,7 @@ MPIR\_CVAR\_NEIGHBOR\_ALLTOALLV\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_NEIGHBOR\_ALLTOALLV\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEIGHBOR\_ALLTOALLV\_INTER\_ALGORITHM
@@ -3512,6 +3796,7 @@ MPIR\_CVAR\_NEIGHBOR\_ALLTOALLV\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_INEIGHBOR\_ALLTOALLV\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_INEIGHBOR\_ALLTOALLV\_INTRA\_ALGORITHM
@@ -3538,6 +3823,7 @@ MPIR\_CVAR\_INEIGHBOR\_ALLTOALLV\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_INEIGHBOR\_ALLTOALLV\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_INEIGHBOR\_ALLTOALLV\_INTER\_ALGORITHM
@@ -3564,6 +3850,7 @@ MPIR\_CVAR\_INEIGHBOR\_ALLTOALLV\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_NEIGHBOR\_ALLTOALLW\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEIGHBOR\_ALLTOALLW\_INTRA\_ALGORITHM
@@ -3584,6 +3871,7 @@ MPIR\_CVAR\_NEIGHBOR\_ALLTOALLW\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_NEIGHBOR\_ALLTOALLW\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEIGHBOR\_ALLTOALLW\_INTER\_ALGORITHM
@@ -3604,6 +3892,7 @@ MPIR\_CVAR\_NEIGHBOR\_ALLTOALLW\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_INEIGHBOR\_ALLTOALLW\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_INEIGHBOR\_ALLTOALLW\_INTRA\_ALGORITHM
@@ -3630,6 +3919,7 @@ MPIR\_CVAR\_INEIGHBOR\_ALLTOALLW\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_INEIGHBOR\_ALLTOALLW\_INTER\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_INEIGHBOR\_ALLTOALLW\_INTER\_ALGORITHM
@@ -3656,6 +3946,7 @@ MPIR\_CVAR\_INEIGHBOR\_ALLTOALLW\_INTER\_ALGORITHM
 
 
 MPIR\_CVAR\_BARRIER\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BARRIER\_DEVICE\_COLLECTIVE
@@ -3678,6 +3969,7 @@ MPIR\_CVAR\_BARRIER\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_IBARRIER\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IBARRIER\_DEVICE\_COLLECTIVE
@@ -3700,6 +3992,7 @@ MPIR\_CVAR\_IBARRIER\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_BARRIER\_INIT\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BARRIER\_INIT\_DEVICE\_COLLECTIVE
@@ -3722,6 +4015,7 @@ MPIR\_CVAR\_BARRIER\_INIT\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_BCAST\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_DEVICE\_COLLECTIVE
@@ -3744,6 +4038,7 @@ MPIR\_CVAR\_BCAST\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_IBCAST\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IBCAST\_DEVICE\_COLLECTIVE
@@ -3766,6 +4061,7 @@ MPIR\_CVAR\_IBCAST\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_BCAST\_INIT\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_INIT\_DEVICE\_COLLECTIVE
@@ -3788,6 +4084,7 @@ MPIR\_CVAR\_BCAST\_INIT\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_GATHER\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_GATHER\_DEVICE\_COLLECTIVE
@@ -3810,6 +4107,7 @@ MPIR\_CVAR\_GATHER\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_IGATHER\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IGATHER\_DEVICE\_COLLECTIVE
@@ -3832,6 +4130,7 @@ MPIR\_CVAR\_IGATHER\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_GATHER\_INIT\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_GATHER\_INIT\_DEVICE\_COLLECTIVE
@@ -3854,6 +4153,7 @@ MPIR\_CVAR\_GATHER\_INIT\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_GATHERV\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_GATHERV\_DEVICE\_COLLECTIVE
@@ -3876,6 +4176,7 @@ MPIR\_CVAR\_GATHERV\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_IGATHERV\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IGATHERV\_DEVICE\_COLLECTIVE
@@ -3898,6 +4199,7 @@ MPIR\_CVAR\_IGATHERV\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_GATHERV\_INIT\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_GATHERV\_INIT\_DEVICE\_COLLECTIVE
@@ -3920,6 +4222,7 @@ MPIR\_CVAR\_GATHERV\_INIT\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_SCATTER\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_SCATTER\_DEVICE\_COLLECTIVE
@@ -3942,6 +4245,7 @@ MPIR\_CVAR\_SCATTER\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_ISCATTER\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ISCATTER\_DEVICE\_COLLECTIVE
@@ -3964,6 +4268,7 @@ MPIR\_CVAR\_ISCATTER\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_SCATTER\_INIT\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_SCATTER\_INIT\_DEVICE\_COLLECTIVE
@@ -3986,6 +4291,7 @@ MPIR\_CVAR\_SCATTER\_INIT\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_SCATTERV\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_SCATTERV\_DEVICE\_COLLECTIVE
@@ -4008,6 +4314,7 @@ MPIR\_CVAR\_SCATTERV\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_ISCATTERV\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ISCATTERV\_DEVICE\_COLLECTIVE
@@ -4030,6 +4337,7 @@ MPIR\_CVAR\_ISCATTERV\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_SCATTERV\_INIT\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_SCATTERV\_INIT\_DEVICE\_COLLECTIVE
@@ -4052,6 +4360,7 @@ MPIR\_CVAR\_SCATTERV\_INIT\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_ALLGATHER\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLGATHER\_DEVICE\_COLLECTIVE
@@ -4074,6 +4383,7 @@ MPIR\_CVAR\_ALLGATHER\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_IALLGATHER\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLGATHER\_DEVICE\_COLLECTIVE
@@ -4096,6 +4406,7 @@ MPIR\_CVAR\_IALLGATHER\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_ALLGATHER\_INIT\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLGATHER\_INIT\_DEVICE\_COLLECTIVE
@@ -4118,6 +4429,7 @@ MPIR\_CVAR\_ALLGATHER\_INIT\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_ALLGATHERV\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLGATHERV\_DEVICE\_COLLECTIVE
@@ -4140,6 +4452,7 @@ MPIR\_CVAR\_ALLGATHERV\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_IALLGATHERV\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLGATHERV\_DEVICE\_COLLECTIVE
@@ -4162,6 +4475,7 @@ MPIR\_CVAR\_IALLGATHERV\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_ALLGATHERV\_INIT\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLGATHERV\_INIT\_DEVICE\_COLLECTIVE
@@ -4184,6 +4498,7 @@ MPIR\_CVAR\_ALLGATHERV\_INIT\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_ALLTOALL\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLTOALL\_DEVICE\_COLLECTIVE
@@ -4206,6 +4521,7 @@ MPIR\_CVAR\_ALLTOALL\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_IALLTOALL\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLTOALL\_DEVICE\_COLLECTIVE
@@ -4228,6 +4544,7 @@ MPIR\_CVAR\_IALLTOALL\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_ALLTOALL\_INIT\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLTOALL\_INIT\_DEVICE\_COLLECTIVE
@@ -4250,6 +4567,7 @@ MPIR\_CVAR\_ALLTOALL\_INIT\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_ALLTOALLV\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLTOALLV\_DEVICE\_COLLECTIVE
@@ -4272,6 +4590,7 @@ MPIR\_CVAR\_ALLTOALLV\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_IALLTOALLV\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLTOALLV\_DEVICE\_COLLECTIVE
@@ -4294,6 +4613,7 @@ MPIR\_CVAR\_IALLTOALLV\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_ALLTOALLV\_INIT\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLTOALLV\_INIT\_DEVICE\_COLLECTIVE
@@ -4316,6 +4636,7 @@ MPIR\_CVAR\_ALLTOALLV\_INIT\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_ALLTOALLW\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLTOALLW\_DEVICE\_COLLECTIVE
@@ -4338,6 +4659,7 @@ MPIR\_CVAR\_ALLTOALLW\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_IALLTOALLW\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLTOALLW\_DEVICE\_COLLECTIVE
@@ -4360,6 +4682,7 @@ MPIR\_CVAR\_IALLTOALLW\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_ALLTOALLW\_INIT\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLTOALLW\_INIT\_DEVICE\_COLLECTIVE
@@ -4382,6 +4705,7 @@ MPIR\_CVAR\_ALLTOALLW\_INIT\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_REDUCE\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_DEVICE\_COLLECTIVE
@@ -4404,6 +4728,7 @@ MPIR\_CVAR\_REDUCE\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_IREDUCE\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IREDUCE\_DEVICE\_COLLECTIVE
@@ -4426,6 +4751,7 @@ MPIR\_CVAR\_IREDUCE\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_REDUCE\_INIT\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_INIT\_DEVICE\_COLLECTIVE
@@ -4448,6 +4774,7 @@ MPIR\_CVAR\_REDUCE\_INIT\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_ALLREDUCE\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLREDUCE\_DEVICE\_COLLECTIVE
@@ -4470,6 +4797,7 @@ MPIR\_CVAR\_ALLREDUCE\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_IALLREDUCE\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLREDUCE\_DEVICE\_COLLECTIVE
@@ -4492,6 +4820,7 @@ MPIR\_CVAR\_IALLREDUCE\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_ALLREDUCE\_INIT\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLREDUCE\_INIT\_DEVICE\_COLLECTIVE
@@ -4514,6 +4843,7 @@ MPIR\_CVAR\_ALLREDUCE\_INIT\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_REDUCE\_SCATTER\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_SCATTER\_DEVICE\_COLLECTIVE
@@ -4536,6 +4866,7 @@ MPIR\_CVAR\_REDUCE\_SCATTER\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_IREDUCE\_SCATTER\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IREDUCE\_SCATTER\_DEVICE\_COLLECTIVE
@@ -4558,6 +4889,7 @@ MPIR\_CVAR\_IREDUCE\_SCATTER\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_REDUCE\_SCATTER\_INIT\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_SCATTER\_INIT\_DEVICE\_COLLECTIVE
@@ -4580,6 +4912,7 @@ MPIR\_CVAR\_REDUCE\_SCATTER\_INIT\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_REDUCE\_SCATTER\_BLOCK\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_SCATTER\_BLOCK\_DEVICE\_COLLECTIVE
@@ -4602,6 +4935,7 @@ MPIR\_CVAR\_REDUCE\_SCATTER\_BLOCK\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_IREDUCE\_SCATTER\_BLOCK\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IREDUCE\_SCATTER\_BLOCK\_DEVICE\_COLLECTIVE
@@ -4624,6 +4958,7 @@ MPIR\_CVAR\_IREDUCE\_SCATTER\_BLOCK\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_REDUCE\_SCATTER\_BLOCK\_INIT\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_SCATTER\_BLOCK\_INIT\_DEVICE\_COLLECTIVE
@@ -4646,6 +4981,7 @@ MPIR\_CVAR\_REDUCE\_SCATTER\_BLOCK\_INIT\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_SCAN\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_SCAN\_DEVICE\_COLLECTIVE
@@ -4668,6 +5004,7 @@ MPIR\_CVAR\_SCAN\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_ISCAN\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ISCAN\_DEVICE\_COLLECTIVE
@@ -4690,6 +5027,7 @@ MPIR\_CVAR\_ISCAN\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_SCAN\_INIT\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_SCAN\_INIT\_DEVICE\_COLLECTIVE
@@ -4712,6 +5050,7 @@ MPIR\_CVAR\_SCAN\_INIT\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_EXSCAN\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_EXSCAN\_DEVICE\_COLLECTIVE
@@ -4734,6 +5073,7 @@ MPIR\_CVAR\_EXSCAN\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_IEXSCAN\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IEXSCAN\_DEVICE\_COLLECTIVE
@@ -4756,6 +5096,7 @@ MPIR\_CVAR\_IEXSCAN\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_EXSCAN\_INIT\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_EXSCAN\_INIT\_DEVICE\_COLLECTIVE
@@ -4778,6 +5119,7 @@ MPIR\_CVAR\_EXSCAN\_INIT\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_NEIGHBOR\_ALLGATHER\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEIGHBOR\_ALLGATHER\_DEVICE\_COLLECTIVE
@@ -4800,6 +5142,7 @@ MPIR\_CVAR\_NEIGHBOR\_ALLGATHER\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_INEIGHBOR\_ALLGATHER\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_INEIGHBOR\_ALLGATHER\_DEVICE\_COLLECTIVE
@@ -4822,6 +5165,7 @@ MPIR\_CVAR\_INEIGHBOR\_ALLGATHER\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_NEIGHBOR\_ALLGATHER\_INIT\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEIGHBOR\_ALLGATHER\_INIT\_DEVICE\_COLLECTIVE
@@ -4844,6 +5188,7 @@ MPIR\_CVAR\_NEIGHBOR\_ALLGATHER\_INIT\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_NEIGHBOR\_ALLGATHERV\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEIGHBOR\_ALLGATHERV\_DEVICE\_COLLECTIVE
@@ -4866,6 +5211,7 @@ MPIR\_CVAR\_NEIGHBOR\_ALLGATHERV\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_INEIGHBOR\_ALLGATHERV\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_INEIGHBOR\_ALLGATHERV\_DEVICE\_COLLECTIVE
@@ -4888,6 +5234,7 @@ MPIR\_CVAR\_INEIGHBOR\_ALLGATHERV\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_NEIGHBOR\_ALLGATHERV\_INIT\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEIGHBOR\_ALLGATHERV\_INIT\_DEVICE\_COLLECTIVE
@@ -4910,6 +5257,7 @@ MPIR\_CVAR\_NEIGHBOR\_ALLGATHERV\_INIT\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_NEIGHBOR\_ALLTOALL\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEIGHBOR\_ALLTOALL\_DEVICE\_COLLECTIVE
@@ -4932,6 +5280,7 @@ MPIR\_CVAR\_NEIGHBOR\_ALLTOALL\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_INEIGHBOR\_ALLTOALL\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_INEIGHBOR\_ALLTOALL\_DEVICE\_COLLECTIVE
@@ -4954,6 +5303,7 @@ MPIR\_CVAR\_INEIGHBOR\_ALLTOALL\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_NEIGHBOR\_ALLTOALL\_INIT\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEIGHBOR\_ALLTOALL\_INIT\_DEVICE\_COLLECTIVE
@@ -4976,6 +5326,7 @@ MPIR\_CVAR\_NEIGHBOR\_ALLTOALL\_INIT\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_NEIGHBOR\_ALLTOALLV\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEIGHBOR\_ALLTOALLV\_DEVICE\_COLLECTIVE
@@ -4998,6 +5349,7 @@ MPIR\_CVAR\_NEIGHBOR\_ALLTOALLV\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_INEIGHBOR\_ALLTOALLV\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_INEIGHBOR\_ALLTOALLV\_DEVICE\_COLLECTIVE
@@ -5020,6 +5372,7 @@ MPIR\_CVAR\_INEIGHBOR\_ALLTOALLV\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_NEIGHBOR\_ALLTOALLV\_INIT\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEIGHBOR\_ALLTOALLV\_INIT\_DEVICE\_COLLECTIVE
@@ -5042,6 +5395,7 @@ MPIR\_CVAR\_NEIGHBOR\_ALLTOALLV\_INIT\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_NEIGHBOR\_ALLTOALLW\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEIGHBOR\_ALLTOALLW\_DEVICE\_COLLECTIVE
@@ -5064,6 +5418,7 @@ MPIR\_CVAR\_NEIGHBOR\_ALLTOALLW\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_INEIGHBOR\_ALLTOALLW\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_INEIGHBOR\_ALLTOALLW\_DEVICE\_COLLECTIVE
@@ -5086,6 +5441,7 @@ MPIR\_CVAR\_INEIGHBOR\_ALLTOALLW\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_NEIGHBOR\_ALLTOALLW\_INIT\_DEVICE\_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEIGHBOR\_ALLTOALLW\_INIT\_DEVICE\_COLLECTIVE
@@ -5108,6 +5464,7 @@ MPIR\_CVAR\_NEIGHBOR\_ALLTOALLW\_INIT\_DEVICE\_COLLECTIVE
 
 
 MPIR\_CVAR\_COLL\_HYBRID\_MEMORY
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_COLL\_HYBRID\_MEMORY
@@ -5125,11 +5482,12 @@ MPIR\_CVAR\_COLL\_HYBRID\_MEMORY
 
   - in a collective operation are on the same type of memory.
 
-- **Default:** 1
+- **Default:** 0
 
 
 
 MPIR\_CVAR\_GATHER\_VSMALL\_MSG\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_GATHER\_VSMALL\_MSG\_SIZE
@@ -5148,6 +5506,7 @@ MPIR\_CVAR\_GATHER\_VSMALL\_MSG\_SIZE
 
 
 MPIR\_CVAR\_IALLTOALL\_BRUCKS\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLTOALL\_BRUCKS\_KVAL
@@ -5164,6 +5523,7 @@ MPIR\_CVAR\_IALLTOALL\_BRUCKS\_KVAL
 
 
 MPIR\_CVAR\_IALLTOALL\_BRUCKS\_BUFFER\_PER\_NBR
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLTOALL\_BRUCKS\_BUFFER\_PER\_NBR
@@ -5184,6 +5544,7 @@ MPIR\_CVAR\_IALLTOALL\_BRUCKS\_BUFFER\_PER\_NBR
 
 
 MPIR\_CVAR\_IALLTOALL\_SCATTERED\_OUTSTANDING\_TASKS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLTOALL\_SCATTERED\_OUTSTANDING\_TASKS
@@ -5200,6 +5561,7 @@ MPIR\_CVAR\_IALLTOALL\_SCATTERED\_OUTSTANDING\_TASKS
 
 
 MPIR\_CVAR\_IALLTOALL\_SCATTERED\_BATCH\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IALLTOALL\_SCATTERED\_BATCH\_SIZE
@@ -5217,7 +5579,140 @@ MPIR\_CVAR\_IALLTOALL\_SCATTERED\_BATCH\_SIZE
 
 
 
+MPIR\_CVAR\_ENABLE\_DYNAMIC\_TUNING
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_ENABLE\_DYNAMIC\_TUNING
+
+  - MPICH\_ENABLE\_DYNAMIC\_TUNING
+
+- **Description:**
+  -  Enable or disable dynamic tuning
+
+- **Default:** 1
+
+
+
+MPIR\_CVAR\_DYNAMIC\_TUNE\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_DYNAMIC\_TUNE\_THRESHOLD
+
+  - MPICH\_DYNAMIC\_TUNE\_THRESHOLD
+
+- **Description:**
+  -  Number of iterations before dynamic tuning will be
+
+  - re-attempted for a given collective and message range
+
+- **Default:** 1000
+
+
+
+MPIR\_CVAR\_DYNAMIC\_TUNE\_TEST\_COUNT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_DYNAMIC\_TUNE\_TEST\_COUNT
+
+  - MPICH\_DYNAMIC\_TUNE\_TEST\_COUNT
+
+- **Description:**
+  -  Number of times each candidate algorithm will be tested
+
+  - when performing dynamic retuning.
+
+- **Default:** 5
+
+
+
+MPIR\_CVAR\_DYNAMIC\_TUNE\_LOCAL\_EVAL\_METRIC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_DYNAMIC\_TUNE\_LOCAL\_EVAL\_METRIC
+
+  - MPICH\_DYNAMIC\_TUNE\_LOCAL\_EVAL\_METRIC
+
+- **Description:**
+  -  Value reported by local processes ot the dynamic tuning
+
+  - framework
+
+  - avg - Report the average latency over
+
+  - MPIR\_CVAR\_DYNAMIC\_TUNE\_TEST\_COUNT tests (default)
+
+  - max - Report the maximum latency over
+
+  - MPIR\_CVAR\_DYNAMIC\_TUNE\_TEST\_COUNT tests
+
+  - min - Report the minimum latency over
+
+  - MPIR\_CVAR\_DYNAMIC\_TUNE\_TEST\_COUNT tests
+
+- **Default:** MPIR\_CVAR\_DYNAMIC\_TUNE\_LOCAL\_EVAL\_METRIC\_avg
+
+
+
+MPIR\_CVAR\_DYNAMIC\_TUNE\_SELECTION\_METRIC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_DYNAMIC\_TUNE\_SELECTION\_METRIC
+
+  - MPICH\_DYNAMIC\_TUNE\_SELECTION\_METRIC
+
+- **Description:**
+  -  Metric used to select the best algorithm for dynamic
+
+  - tuning
+
+  - max - Use the algorithm that minimizes the maximum per process
+
+  - latency (default)
+
+  - min - Use the algorithm that minimizes the minimum per process
+
+  - latency
+
+  - avg - Use the algorithm that minimizes the average per process
+
+  - latency
+
+- **Default:** MPIR\_CVAR\_DYNAMIC\_TUNE\_SELECTION\_METRIC\_max
+
+
+
+MPIR\_CVAR\_DYNAMIC\_TUNE\_VERBOSITY
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_DYNAMIC\_TUNE\_VERBOSITY
+
+  - MPICH\_DYNAMIC\_TUNE\_VERBOSITY
+
+- **Description:**
+  -  Debuging verbosity for dynamic tuning
+
+  - silent  - No debugging output (default)
+
+  - debug   - Logs collective selection in debug output
+
+  - basic   - Identifies selected collectives and the relevant message
+
+  - size
+
+  - verbose - Full debug output
+
+- **Default:** MPIR\_CVAR\_DYNAMIC\_TUNE\_VERBOSITY\_silent
+
+
+
 MPIR\_CVAR\_BCAST\_INTER\_KNOMIAL\_FACTOR
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_INTER\_KNOMIAL\_FACTOR
@@ -5234,6 +5729,7 @@ MPIR\_CVAR\_BCAST\_INTER\_KNOMIAL\_FACTOR
 
 
 MPIR\_CVAR\_BCAST\_INTRA\_KNOMIAL\_FACTOR
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_INTRA\_KNOMIAL\_FACTOR
@@ -5250,6 +5746,7 @@ MPIR\_CVAR\_BCAST\_INTRA\_KNOMIAL\_FACTOR
 
 
 MPIR\_CVAR\_BCAST\_SEGMENT\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_SEGMENT\_SIZE
@@ -5264,6 +5761,7 @@ MPIR\_CVAR\_BCAST\_SEGMENT\_SIZE
 
 
 MPIR\_CVAR\_REDUCE\_INTER\_KNOMIAL\_FACTOR
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_INTER\_KNOMIAL\_FACTOR
@@ -5280,6 +5778,7 @@ MPIR\_CVAR\_REDUCE\_INTER\_KNOMIAL\_FACTOR
 
 
 MPIR\_CVAR\_REDUCE\_INTRA\_KNOMIAL\_FACTOR
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_INTRA\_KNOMIAL\_FACTOR
@@ -5296,6 +5795,7 @@ MPIR\_CVAR\_REDUCE\_INTRA\_KNOMIAL\_FACTOR
 
 
 MPIR\_CVAR\_DEVICE\_COLLECTIVES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_DEVICE\_COLLECTIVES
@@ -5318,6 +5818,7 @@ MPIR\_CVAR\_DEVICE\_COLLECTIVES
 
 
 MPIR\_CVAR\_COLLECTIVE\_FALLBACK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_COLLECTIVE\_FALLBACK
@@ -5344,6 +5845,7 @@ MPIR\_CVAR\_COLLECTIVE\_FALLBACK
 
 
 MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_COLL\_SELECTION\_TUNING\_JSON\_FILE
@@ -5357,7 +5859,53 @@ MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE
 
 
 
+MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_DYNAMIC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_DYNAMIC
+
+  - MPICH\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_DYNAMIC
+
+- **Description:**
+  -  Defines the location of dynamic tuning file.
+
+- **Default:** ""
+
+
+
+MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_GPU
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_GPU
+
+  - MPICH\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_GPU
+
+- **Description:**
+  -  Defines the location of gpu tuning file.
+
+- **Default:** ""
+
+
+
+MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_GPU\_DYNAMIC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_GPU\_DYNAMIC
+
+  - MPICH\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_GPU\_DYNAMIC
+
+- **Description:**
+  -  Defines the location of dynamic gpu tuning file.
+
+- **Default:** ""
+
+
+
 MPIR\_CVAR\_HIERARCHY\_DUMP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_HIERARCHY\_DUMP
@@ -5376,6 +5924,7 @@ MPIR\_CVAR\_HIERARCHY\_DUMP
 
 
 MPIR\_CVAR\_COORDINATES\_FILE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_COORDINATES\_FILE
@@ -5390,6 +5939,7 @@ MPIR\_CVAR\_COORDINATES\_FILE
 
 
 MPIR\_CVAR\_COLL\_TREE\_DUMP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_COLL\_TREE\_DUMP
@@ -5408,6 +5958,7 @@ MPIR\_CVAR\_COLL\_TREE\_DUMP
 
 
 MPIR\_CVAR\_COORDINATES\_DUMP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_COORDINATES\_DUMP
@@ -5426,6 +5977,7 @@ MPIR\_CVAR\_COORDINATES\_DUMP
 
 
 MPIR\_CVAR\_PROGRESS\_MAX\_COLLS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_PROGRESS\_MAX\_COLLS
@@ -5442,6 +5994,7 @@ MPIR\_CVAR\_PROGRESS\_MAX\_COLLS
 
 
 MPIR\_CVAR\_COMM\_SPLIT\_USE\_QSORT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_COMM\_SPLIT\_USE\_QSORT
@@ -5458,6 +6011,7 @@ MPIR\_CVAR\_COMM\_SPLIT\_USE\_QSORT
 
 
 MPIR\_CVAR\_CTXID\_EAGER\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CTXID\_EAGER\_SIZE
@@ -5478,6 +6032,7 @@ MPIR\_CVAR\_CTXID\_EAGER\_SIZE
 
 
 MPIR\_CVAR\_DATALOOP\_FAST\_SEEK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_DATALOOP\_FAST\_SEEK
@@ -5494,6 +6049,7 @@ MPIR\_CVAR\_DATALOOP\_FAST\_SEEK
 
 
 MPIR\_CVAR\_YAKSA\_COMPLEX\_SUPPORT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_YAKSA\_COMPLEX\_SUPPORT
@@ -5510,6 +6066,7 @@ MPIR\_CVAR\_YAKSA\_COMPLEX\_SUPPORT
 
 
 MPIR\_CVAR\_GPU\_DOUBLE\_SUPPORT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_GPU\_DOUBLE\_SUPPORT
@@ -5526,6 +6083,7 @@ MPIR\_CVAR\_GPU\_DOUBLE\_SUPPORT
 
 
 MPIR\_CVAR\_GPU\_LONG\_DOUBLE\_SUPPORT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_GPU\_LONG\_DOUBLE\_SUPPORT
@@ -5542,6 +6100,7 @@ MPIR\_CVAR\_GPU\_LONG\_DOUBLE\_SUPPORT
 
 
 MPIR\_CVAR\_ENABLE\_YAKSA\_REDUCTION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ENABLE\_YAKSA\_REDUCTION
@@ -5556,6 +6115,7 @@ MPIR\_CVAR\_ENABLE\_YAKSA\_REDUCTION
 
 
 MPIR\_CVAR\_YAKSA\_REDUCTION\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_YAKSA\_REDUCTION\_THRESHOLD
@@ -5572,6 +6132,7 @@ MPIR\_CVAR\_YAKSA\_REDUCTION\_THRESHOLD
 
 
 MPIR\_CVAR\_ENABLE\_GDRCOPY
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ENABLE\_GDRCOPY
@@ -5588,6 +6149,7 @@ MPIR\_CVAR\_ENABLE\_GDRCOPY
 
 
 MPIR\_CVAR\_GDRCOPY\_MAX\_SIZE\_H2D
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_GDRCOPY\_MAX\_SIZE\_H2D
@@ -5604,6 +6166,7 @@ MPIR\_CVAR\_GDRCOPY\_MAX\_SIZE\_H2D
 
 
 MPIR\_CVAR\_GDRCOPY\_MAX\_SIZE\_D2H
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_GDRCOPY\_MAX\_SIZE\_D2H
@@ -5619,7 +6182,29 @@ MPIR\_CVAR\_GDRCOPY\_MAX\_SIZE\_D2H
 
 
 
+MPIR\_CVAR\_GPU\_UNIFIED\_DIRECT\_COPY\_MAX
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_GPU\_UNIFIED\_DIRECT\_COPY\_MAX
+
+  - MPICH\_GPU\_UNIFIED\_DIRECT\_COPY\_MAX
+
+- **Description:**
+  -  This cvar controls the maximum number of bytes for which
+
+  - systems with unified GPU memory will use the direct CPU memcpy
+
+  - support. For all messages at or above this value, the kernel driven
+
+  - Yaksa approach will be used instead.
+
+- **Default:** (4 * 1024 * 1024)
+
+
+
 MPIR\_CVAR\_PROCTABLE\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_PROCTABLE\_SIZE
@@ -5636,6 +6221,7 @@ MPIR\_CVAR\_PROCTABLE\_SIZE
 
 
 MPIR\_CVAR\_PROCTABLE\_PRINT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_PROCTABLE\_PRINT
@@ -5652,6 +6238,7 @@ MPIR\_CVAR\_PROCTABLE\_PRINT
 
 
 MPIR\_CVAR\_PRINT\_ERROR\_STACK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_PRINT\_ERROR\_STACK
@@ -5668,6 +6255,7 @@ MPIR\_CVAR\_PRINT\_ERROR\_STACK
 
 
 MPIR\_CVAR\_CHOP\_ERROR\_STACK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CHOP\_ERROR\_STACK
@@ -5686,6 +6274,7 @@ MPIR\_CVAR\_CHOP\_ERROR\_STACK
 
 
 MPIR\_CVAR\_ASYNC\_PROGRESS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ASYNC\_PROGRESS
@@ -5722,6 +6311,7 @@ MPIR\_CVAR\_ASYNC\_PROGRESS
 
 
 MPIR\_CVAR\_PROGRESS\_THREAD\_AFFINITY
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_PROGRESS\_THREAD\_AFFINITY
@@ -5760,6 +6350,7 @@ MPIR\_CVAR\_PROGRESS\_THREAD\_AFFINITY
 
 
 MPIR\_CVAR\_SUPPRESS\_ABORT\_MESSAGE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_SUPPRESS\_ABORT\_MESSAGE
@@ -5774,6 +6365,7 @@ MPIR\_CVAR\_SUPPRESS\_ABORT\_MESSAGE
 
 
 MPIR\_CVAR\_COREDUMP\_ON\_ABORT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_COREDUMP\_ON\_ABORT
@@ -5788,6 +6380,7 @@ MPIR\_CVAR\_COREDUMP\_ON\_ABORT
 
 
 MPIR\_CVAR\_ERROR\_CHECKING
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ERROR\_CHECKING
@@ -5806,6 +6399,7 @@ MPIR\_CVAR\_ERROR\_CHECKING
 
 
 MPIR\_CVAR\_MEMDUMP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_MEMDUMP
@@ -5822,6 +6416,7 @@ MPIR\_CVAR\_MEMDUMP
 
 
 MPIR\_CVAR\_DEBUG\_SUMMARY
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_DEBUG\_SUMMARY
@@ -5862,6 +6457,7 @@ MPIR\_CVAR\_DEBUG\_SUMMARY
 
 
 MPIR\_CVAR\_DEFAULT\_THREAD\_LEVEL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_DEFAULT\_THREAD\_LEVEL
@@ -5878,6 +6474,7 @@ MPIR\_CVAR\_DEFAULT\_THREAD\_LEVEL
 
 
 MPIR\_CVAR\_DEBUG\_HOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_DEBUG\_HOLD
@@ -5898,6 +6495,7 @@ MPIR\_CVAR\_DEBUG\_HOLD
 
 
 MPIR\_CVAR\_GPU\_USE\_IMMEDIATE\_COMMAND\_LIST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_GPU\_USE\_IMMEDIATE\_COMMAND\_LIST
@@ -5914,6 +6512,7 @@ MPIR\_CVAR\_GPU\_USE\_IMMEDIATE\_COMMAND\_LIST
 
 
 MPIR\_CVAR\_GPU\_ROUND\_ROBIN\_COMMAND\_QUEUES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_GPU\_ROUND\_ROBIN\_COMMAND\_QUEUES
@@ -5930,6 +6529,7 @@ MPIR\_CVAR\_GPU\_ROUND\_ROBIN\_COMMAND\_QUEUES
 
 
 MPIR\_CVAR\_NO\_COLLECTIVE\_FINALIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NO\_COLLECTIVE\_FINALIZE
@@ -5952,6 +6552,7 @@ MPIR\_CVAR\_NO\_COLLECTIVE\_FINALIZE
 
 
 MPIR\_CVAR\_FINALIZE\_WAIT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_FINALIZE\_WAIT
@@ -5972,6 +6573,7 @@ MPIR\_CVAR\_FINALIZE\_WAIT
 
 
 MPIR\_CVAR\_INIT\_SKIP\_PMI\_BARRIER
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_INIT\_SKIP\_PMI\_BARRIER
@@ -5986,6 +6588,7 @@ MPIR\_CVAR\_INIT\_SKIP\_PMI\_BARRIER
 
 
 MPIR\_CVAR\_GPU\_FAST\_COPY\_MAX\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_GPU\_FAST\_COPY\_MAX\_SIZE
@@ -6001,11 +6604,12 @@ MPIR\_CVAR\_GPU\_FAST\_COPY\_MAX\_SIZE
 
   - IPC shmmod is enabled.
 
-- **Default:** 1024
+- **Default:** 4096
 
 
 
 MPIR\_CVAR\_GPU\_FAST\_COPY\_MAX\_SIZE\_H2D
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_GPU\_FAST\_COPY\_MAX\_SIZE\_H2D
@@ -6023,7 +6627,27 @@ MPIR\_CVAR\_GPU\_FAST\_COPY\_MAX\_SIZE\_H2D
 
 
 
+MPIR\_CVAR\_GPU\_FAST\_COPY\_MAX\_SIZE\_D2H
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_GPU\_FAST\_COPY\_MAX\_SIZE\_D2H
+
+  - MPICH\_GPU\_FAST\_COPY\_MAX\_SIZE\_D2H
+
+- **Description:**
+  -  If a send message size is less than or equal to
+
+  - MPIR\_CVAR\_GPU\_FAST\_COPY\_MAX\_SIZE\_D2H (in bytes), then enable
+
+  - GPU-based fast memcpy.
+
+- **Default:** 32768
+
+
+
 MPIR\_CVAR\_REQUEST\_ERR\_FATAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REQUEST\_ERR\_FATAL
@@ -6052,6 +6676,7 @@ MPIR\_CVAR\_REQUEST\_ERR\_FATAL
 
 
 MPIR\_CVAR\_REQUEST\_POLL\_FREQ
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REQUEST\_POLL\_FREQ
@@ -6068,6 +6693,7 @@ MPIR\_CVAR\_REQUEST\_POLL\_FREQ
 
 
 MPIR\_CVAR\_REQUEST\_BATCH\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REQUEST\_BATCH\_SIZE
@@ -6086,6 +6712,7 @@ MPIR\_CVAR\_REQUEST\_BATCH\_SIZE
 
 
 MPIR\_CVAR\_DEBUG\_PROGRESS\_TIMEOUT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_DEBUG\_PROGRESS\_TIMEOUT
@@ -6102,6 +6729,7 @@ MPIR\_CVAR\_DEBUG\_PROGRESS\_TIMEOUT
 
 
 MPIR\_CVAR\_DIMS\_VERBOSE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_DIMS\_VERBOSE
@@ -6118,6 +6746,7 @@ MPIR\_CVAR\_DIMS\_VERBOSE
 
 
 MPIR\_CVAR\_QMPI\_TOOL\_LIST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_QMPI\_TOOL\_LIST
@@ -6134,6 +6763,7 @@ MPIR\_CVAR\_QMPI\_TOOL\_LIST
 
 
 MPIR\_CVAR\_NAMESERV\_FILE\_PUBDIR
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NAMESERV\_FILE\_PUBDIR
@@ -6160,6 +6790,7 @@ MPIR\_CVAR\_NAMESERV\_FILE\_PUBDIR
 
 
 MPIR\_CVAR\_ENABLE\_COMPRESSION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ENABLE\_COMPRESSION
@@ -6176,6 +6807,7 @@ MPIR\_CVAR\_ENABLE\_COMPRESSION
 
 
 MPIR\_CVAR\_COMPRESSION\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_COMPRESSION\_ALGORITHM
@@ -6194,6 +6826,7 @@ MPIR\_CVAR\_COMPRESSION\_ALGORITHM
 
 
 MPIR\_CVAR\_COMPRESSION\_GPU\_BLOCKS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_COMPRESSION\_GPU\_BLOCKS
@@ -6208,6 +6841,7 @@ MPIR\_CVAR\_COMPRESSION\_GPU\_BLOCKS
 
 
 MPIR\_CVAR\_COMPRESSION\_DIMENSION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_COMPRESSION\_DIMENSION
@@ -6224,6 +6858,7 @@ MPIR\_CVAR\_COMPRESSION\_DIMENSION
 
 
 MPIR\_CVAR\_COMPRESSION\_NUM\_STREAM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_COMPRESSION\_NUM\_STREAM
@@ -6238,6 +6873,7 @@ MPIR\_CVAR\_COMPRESSION\_NUM\_STREAM
 
 
 MPIR\_CVAR\_COMPRESSION\_DATA\_TYPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_COMPRESSION\_DATA\_TYPE
@@ -6256,6 +6892,7 @@ MPIR\_CVAR\_COMPRESSION\_DATA\_TYPE
 
 
 MPIR\_CVAR\_ENABLE\_PT2PT\_GPU\_COMPRESSION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ENABLE\_PT2PT\_GPU\_COMPRESSION
@@ -6272,6 +6909,7 @@ MPIR\_CVAR\_ENABLE\_PT2PT\_GPU\_COMPRESSION
 
 
 MPIR\_CVAR\_PT2PT\_GPU\_COMPRESSION\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_PT2PT\_GPU\_COMPRESSION\_THRESHOLD
@@ -6290,6 +6928,7 @@ MPIR\_CVAR\_PT2PT\_GPU\_COMPRESSION\_THRESHOLD
 
 
 MPIR\_CVAR\_COMPRESSION\_BUFFER\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_COMPRESSION\_BUFFER\_SIZE
@@ -6312,6 +6951,7 @@ MPIR\_CVAR\_COMPRESSION\_BUFFER\_SIZE
 
 
 MPIR\_CVAR\_COMPRESSION\_NUM\_BUFFERS\_PER\_CHUNK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_COMPRESSION\_NUM\_BUFFERS\_PER\_CHUNK
@@ -6334,6 +6974,7 @@ MPIR\_CVAR\_COMPRESSION\_NUM\_BUFFERS\_PER\_CHUNK
 
 
 MPIR\_CVAR\_COMPRESSION\_MAX\_NUM\_COMPRESSION\_BUFFERS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_COMPRESSION\_MAX\_NUM\_COMPRESSION\_BUFFERS
@@ -6352,6 +6993,7 @@ MPIR\_CVAR\_COMPRESSION\_MAX\_NUM\_COMPRESSION\_BUFFERS
 
 
 MPIR\_CVAR\_COMPRESSION\_REDUCE\_SCATTER\_CHUNK\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_COMPRESSION\_REDUCE\_SCATTER\_CHUNK\_SIZE
@@ -6368,6 +7010,7 @@ MPIR\_CVAR\_COMPRESSION\_REDUCE\_SCATTER\_CHUNK\_SIZE
 
 
 MPIR\_CVAR\_COMPRESSION\_BCAST\_CHUNKS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_COMPRESSION\_BCAST\_CHUNKS
@@ -6384,6 +7027,7 @@ MPIR\_CVAR\_COMPRESSION\_BCAST\_CHUNKS
 
 
 MPIR\_CVAR\_COMPRESSION\_BCAST\_CHUNK\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_COMPRESSION\_BCAST\_CHUNK\_SIZE
@@ -6400,6 +7044,7 @@ MPIR\_CVAR\_COMPRESSION\_BCAST\_CHUNK\_SIZE
 
 
 MPIR\_CVAR\_ZFP\_NUM\_STREAM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ZFP\_NUM\_STREAM
@@ -6416,6 +7061,7 @@ MPIR\_CVAR\_ZFP\_NUM\_STREAM
 
 
 MPIR\_CVAR\_ZFP\_RATE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ZFP\_RATE
@@ -6430,6 +7076,7 @@ MPIR\_CVAR\_ZFP\_RATE
 
 
 MPIR\_CVAR\_ZFP\_NX
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ZFP\_NX
@@ -6446,6 +7093,7 @@ MPIR\_CVAR\_ZFP\_NX
 
 
 MPIR\_CVAR\_ZFP\_NY
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ZFP\_NY
@@ -6462,6 +7110,7 @@ MPIR\_CVAR\_ZFP\_NY
 
 
 MPIR\_CVAR\_ZFP\_ALLOC\_WARNING
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ZFP\_ALLOC\_WARNING
@@ -6480,6 +7129,7 @@ MPIR\_CVAR\_ZFP\_ALLOC\_WARNING
 
 
 MPIR\_CVAR\_ZFP\_PATH
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ZFP\_PATH
@@ -6496,6 +7146,7 @@ MPIR\_CVAR\_ZFP\_PATH
 
 
 MPIR\_CVAR\_ENABLE\_ALLREDUCE\_COMPRESSION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ENABLE\_ALLREDUCE\_COMPRESSION
@@ -6514,6 +7165,7 @@ MPIR\_CVAR\_ENABLE\_ALLREDUCE\_COMPRESSION
 
 
 MPIR\_CVAR\_ABORT\_ON\_LEAKED\_HANDLES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ABORT\_ON\_LEAKED\_HANDLES
@@ -6540,6 +7192,7 @@ MPIR\_CVAR\_ABORT\_ON\_LEAKED\_HANDLES
 
 
 MPIR\_CVAR\_NETLOC\_NODE\_FILE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NETLOC\_NODE\_FILE
@@ -6554,6 +7207,7 @@ MPIR\_CVAR\_NETLOC\_NODE\_FILE
 
 
 MPIR\_CVAR\_NOLOCAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NOLOCAL
@@ -6578,6 +7232,7 @@ MPIR\_CVAR\_NOLOCAL
 
 
 MPIR\_CVAR\_ODD\_EVEN\_CLIQUES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ODD\_EVEN\_CLIQUES
@@ -6604,6 +7259,7 @@ MPIR\_CVAR\_ODD\_EVEN\_CLIQUES
 
 
 MPIR\_CVAR\_NUM\_CLIQUES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NUM\_CLIQUES
@@ -6624,6 +7280,7 @@ MPIR\_CVAR\_NUM\_CLIQUES
 
 
 MPIR\_CVAR\_CLIQUES\_BY\_BLOCK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CLIQUES\_BY\_BLOCK
@@ -6642,6 +7299,7 @@ MPIR\_CVAR\_CLIQUES\_BY\_BLOCK
 
 
 MPIR\_CVAR\_PMI\_VERSION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_PMI\_VERSION
@@ -6662,6 +7320,7 @@ MPIR\_CVAR\_PMI\_VERSION
 
 
 MPIR\_CVAR\_COLL\_ALIAS\_CHECK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_COLL\_ALIAS\_CHECK
@@ -6676,6 +7335,7 @@ MPIR\_CVAR\_COLL\_ALIAS\_CHECK
 
 
 MPIR\_CVAR\_ENABLE\_GPU
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ENABLE\_GPU
@@ -6694,6 +7354,7 @@ MPIR\_CVAR\_ENABLE\_GPU
 
 
 MPIR\_CVAR\_GPU\_HAS\_WAIT\_KERNEL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_GPU\_HAS\_WAIT\_KERNEL
@@ -6714,6 +7375,7 @@ MPIR\_CVAR\_GPU\_HAS\_WAIT\_KERNEL
 
 
 MPIR\_CVAR\_ENABLE\_GPU\_REGISTER
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ENABLE\_GPU\_REGISTER
@@ -6734,6 +7396,7 @@ MPIR\_CVAR\_ENABLE\_GPU\_REGISTER
 
 
 MPIR\_CVAR\_LMEM\_POOL\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_LMEM\_POOL\_SIZE
@@ -6750,6 +7413,7 @@ MPIR\_CVAR\_LMEM\_POOL\_SIZE
 
 
 MPIR\_CVAR\_POLLS\_BEFORE\_YIELD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_POLLS\_BEFORE\_YIELD
@@ -6770,6 +7434,7 @@ MPIR\_CVAR\_POLLS\_BEFORE\_YIELD
 
 
 MPIR\_CVAR\_CH3\_INTERFACE\_HOSTNAME
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH3\_INTERFACE\_HOSTNAME
@@ -6796,6 +7461,7 @@ MPIR\_CVAR\_CH3\_INTERFACE\_HOSTNAME
 
 
 MPIR\_CVAR\_CH3\_PORT\_RANGE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH3\_PORT\_RANGE
@@ -6828,6 +7494,7 @@ MPIR\_CVAR\_CH3\_PORT\_RANGE
 
 
 MPIR\_CVAR\_NEMESIS\_TCP\_NETWORK\_IFACE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEMESIS\_TCP\_NETWORK\_IFACE
@@ -6856,6 +7523,7 @@ MPIR\_CVAR\_NEMESIS\_TCP\_NETWORK\_IFACE
 
 
 MPIR\_CVAR\_NEMESIS\_TCP\_HOST\_LOOKUP\_RETRIES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEMESIS\_TCP\_HOST\_LOOKUP\_RETRIES
@@ -6872,6 +7540,7 @@ MPIR\_CVAR\_NEMESIS\_TCP\_HOST\_LOOKUP\_RETRIES
 
 
 MPIR\_CVAR\_NEMESIS\_ENABLE\_CKPOINT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEMESIS\_ENABLE\_CKPOINT
@@ -6888,6 +7557,7 @@ MPIR\_CVAR\_NEMESIS\_ENABLE\_CKPOINT
 
 
 MPIR\_CVAR\_NEMESIS\_SHM\_EAGER\_MAX\_SZ
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEMESIS\_SHM\_EAGER\_MAX\_SZ
@@ -6906,6 +7576,7 @@ MPIR\_CVAR\_NEMESIS\_SHM\_EAGER\_MAX\_SZ
 
 
 MPIR\_CVAR\_NEMESIS\_SHM\_READY\_EAGER\_MAX\_SZ
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEMESIS\_SHM\_READY\_EAGER\_MAX\_SZ
@@ -6928,6 +7599,7 @@ MPIR\_CVAR\_NEMESIS\_SHM\_READY\_EAGER\_MAX\_SZ
 
 
 MPIR\_CVAR\_ENABLE\_FT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ENABLE\_FT
@@ -6942,6 +7614,7 @@ MPIR\_CVAR\_ENABLE\_FT
 
 
 MPIR\_CVAR\_NEMESIS\_NETMOD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NEMESIS\_NETMOD
@@ -6960,6 +7633,7 @@ MPIR\_CVAR\_NEMESIS\_NETMOD
 
 
 MPIR\_CVAR\_CH3\_ENABLE\_HCOLL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH3\_ENABLE\_HCOLL
@@ -6974,6 +7648,7 @@ MPIR\_CVAR\_CH3\_ENABLE\_HCOLL
 
 
 MPIR\_CVAR\_CH3\_COMM\_CONNECT\_TIMEOUT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH3\_COMM\_CONNECT\_TIMEOUT
@@ -6994,6 +7669,7 @@ MPIR\_CVAR\_CH3\_COMM\_CONNECT\_TIMEOUT
 
 
 MPIR\_CVAR\_CH3\_RMA\_OP\_PIGGYBACK\_LOCK\_DATA\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH3\_RMA\_OP\_PIGGYBACK\_LOCK\_DATA\_SIZE
@@ -7022,6 +7698,7 @@ MPIR\_CVAR\_CH3\_RMA\_OP\_PIGGYBACK\_LOCK\_DATA\_SIZE
 
 
 MPIR\_CVAR\_CH3\_RMA\_ACTIVE\_REQ\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH3\_RMA\_ACTIVE\_REQ\_THRESHOLD
@@ -7048,6 +7725,7 @@ MPIR\_CVAR\_CH3\_RMA\_ACTIVE\_REQ\_THRESHOLD
 
 
 MPIR\_CVAR\_CH3\_RMA\_POKE\_PROGRESS\_REQ\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH3\_RMA\_POKE\_PROGRESS\_REQ\_THRESHOLD
@@ -7068,6 +7746,7 @@ MPIR\_CVAR\_CH3\_RMA\_POKE\_PROGRESS\_REQ\_THRESHOLD
 
 
 MPIR\_CVAR\_CH3\_RMA\_SCALABLE\_FENCE\_PROCESS\_NUM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH3\_RMA\_SCALABLE\_FENCE\_PROCESS\_NUM
@@ -7094,6 +7773,7 @@ MPIR\_CVAR\_CH3\_RMA\_SCALABLE\_FENCE\_PROCESS\_NUM
 
 
 MPIR\_CVAR\_CH3\_RMA\_DELAY\_ISSUING\_FOR\_PIGGYBACKING
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH3\_RMA\_DELAY\_ISSUING\_FOR\_PIGGYBACKING
@@ -7132,6 +7812,7 @@ MPIR\_CVAR\_CH3\_RMA\_DELAY\_ISSUING\_FOR\_PIGGYBACKING
 
 
 MPIR\_CVAR\_CH3\_RMA\_SLOTS\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH3\_RMA\_SLOTS\_SIZE
@@ -7152,6 +7833,7 @@ MPIR\_CVAR\_CH3\_RMA\_SLOTS\_SIZE
 
 
 MPIR\_CVAR\_CH3\_RMA\_TARGET\_LOCK\_DATA\_BYTES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH3\_RMA\_TARGET\_LOCK\_DATA\_BYTES
@@ -7172,6 +7854,7 @@ MPIR\_CVAR\_CH3\_RMA\_TARGET\_LOCK\_DATA\_BYTES
 
 
 MPIR\_CVAR\_CH3\_EAGER\_MAX\_MSG\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH3\_EAGER\_MAX\_MSG\_SIZE
@@ -7188,6 +7871,7 @@ MPIR\_CVAR\_CH3\_EAGER\_MAX\_MSG\_SIZE
 
 
 MPIR\_CVAR\_CH3\_PG\_VERBOSE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH3\_PG\_VERBOSE
@@ -7202,6 +7886,7 @@ MPIR\_CVAR\_CH3\_PG\_VERBOSE
 
 
 MPIR\_CVAR\_CH3\_RMA\_OP\_WIN\_POOL\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH3\_RMA\_OP\_WIN\_POOL\_SIZE
@@ -7220,6 +7905,7 @@ MPIR\_CVAR\_CH3\_RMA\_OP\_WIN\_POOL\_SIZE
 
 
 MPIR\_CVAR\_CH3\_RMA\_OP\_GLOBAL\_POOL\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH3\_RMA\_OP\_GLOBAL\_POOL\_SIZE
@@ -7238,6 +7924,7 @@ MPIR\_CVAR\_CH3\_RMA\_OP\_GLOBAL\_POOL\_SIZE
 
 
 MPIR\_CVAR\_CH3\_RMA\_TARGET\_WIN\_POOL\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH3\_RMA\_TARGET\_WIN\_POOL\_SIZE
@@ -7256,6 +7943,7 @@ MPIR\_CVAR\_CH3\_RMA\_TARGET\_WIN\_POOL\_SIZE
 
 
 MPIR\_CVAR\_CH3\_RMA\_TARGET\_GLOBAL\_POOL\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH3\_RMA\_TARGET\_GLOBAL\_POOL\_SIZE
@@ -7274,6 +7962,7 @@ MPIR\_CVAR\_CH3\_RMA\_TARGET\_GLOBAL\_POOL\_SIZE
 
 
 MPIR\_CVAR\_CH3\_RMA\_TARGET\_LOCK\_ENTRY\_WIN\_POOL\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH3\_RMA\_TARGET\_LOCK\_ENTRY\_WIN\_POOL\_SIZE
@@ -7294,6 +7983,7 @@ MPIR\_CVAR\_CH3\_RMA\_TARGET\_LOCK\_ENTRY\_WIN\_POOL\_SIZE
 
 
 MPIR\_CVAR\_OFI\_USE\_PROVIDER
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_OFI\_USE\_PROVIDER
@@ -7310,6 +8000,7 @@ MPIR\_CVAR\_OFI\_USE\_PROVIDER
 
 
 MPIR\_CVAR\_SINGLE\_HOST\_ENABLED
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_SINGLE\_HOST\_ENABLED
@@ -7328,6 +8019,7 @@ MPIR\_CVAR\_SINGLE\_HOST\_ENABLED
 
 
 MPIR\_CVAR\_CH4\_OFI\_AM\_LONG\_FORCE\_PIPELINE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_AM\_LONG\_FORCE\_PIPELINE
@@ -7344,6 +8036,7 @@ MPIR\_CVAR\_CH4\_OFI\_AM\_LONG\_FORCE\_PIPELINE
 
 
 MPIR\_CVAR\_BCAST\_OFI\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_OFI\_INTRA\_ALGORITHM
@@ -7368,6 +8061,7 @@ MPIR\_CVAR\_BCAST\_OFI\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_CH4\_OFI\_GPU\_RECEIVE\_ENGINE\_TYPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_GPU\_RECEIVE\_ENGINE\_TYPE
@@ -7392,6 +8086,7 @@ MPIR\_CVAR\_CH4\_OFI\_GPU\_RECEIVE\_ENGINE\_TYPE
 
 
 MPIR\_CVAR\_OFI\_SKIP\_IPV6
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_OFI\_SKIP\_IPV6
@@ -7406,6 +8101,7 @@ MPIR\_CVAR\_OFI\_SKIP\_IPV6
 
 
 MPIR\_CVAR\_CH4\_OFI\_ENABLE\_DATA
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_ENABLE\_DATA
@@ -7422,6 +8118,7 @@ MPIR\_CVAR\_CH4\_OFI\_ENABLE\_DATA
 
 
 MPIR\_CVAR\_CH4\_OFI\_ENABLE\_AV\_TABLE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_ENABLE\_AV\_TABLE
@@ -7438,6 +8135,7 @@ MPIR\_CVAR\_CH4\_OFI\_ENABLE\_AV\_TABLE
 
 
 MPIR\_CVAR\_CH4\_OFI\_ENABLE\_SCALABLE\_ENDPOINTS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_ENABLE\_SCALABLE\_ENDPOINTS
@@ -7452,6 +8150,7 @@ MPIR\_CVAR\_CH4\_OFI\_ENABLE\_SCALABLE\_ENDPOINTS
 
 
 MPIR\_CVAR\_CH4\_OFI\_ENABLE\_SHARED\_CONTEXTS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_ENABLE\_SHARED\_CONTEXTS
@@ -7474,6 +8173,7 @@ MPIR\_CVAR\_CH4\_OFI\_ENABLE\_SHARED\_CONTEXTS
 
 
 MPIR\_CVAR\_CH4\_OFI\_ENABLE\_MR\_VIRT\_ADDRESS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_ENABLE\_MR\_VIRT\_ADDRESS
@@ -7492,6 +8192,7 @@ MPIR\_CVAR\_CH4\_OFI\_ENABLE\_MR\_VIRT\_ADDRESS
 
 
 MPIR\_CVAR\_CH4\_OFI\_ENABLE\_MR\_ALLOCATED
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_ENABLE\_MR\_ALLOCATED
@@ -7512,6 +8213,7 @@ MPIR\_CVAR\_CH4\_OFI\_ENABLE\_MR\_ALLOCATED
 
 
 MPIR\_CVAR\_CH4\_OFI\_ENABLE\_MR\_REGISTER\_NULL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_ENABLE\_MR\_REGISTER\_NULL
@@ -7528,6 +8230,7 @@ MPIR\_CVAR\_CH4\_OFI\_ENABLE\_MR\_REGISTER\_NULL
 
 
 MPIR\_CVAR\_CH4\_OFI\_ENABLE\_MR\_PROV\_KEY
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_ENABLE\_MR\_PROV\_KEY
@@ -7548,6 +8251,7 @@ MPIR\_CVAR\_CH4\_OFI\_ENABLE\_MR\_PROV\_KEY
 
 
 MPIR\_CVAR\_CH4\_OFI\_ENABLE\_TAGGED
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_ENABLE\_TAGGED
@@ -7562,6 +8266,7 @@ MPIR\_CVAR\_CH4\_OFI\_ENABLE\_TAGGED
 
 
 MPIR\_CVAR\_CH4\_OFI\_ENABLE\_AM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_ENABLE\_AM
@@ -7576,6 +8281,7 @@ MPIR\_CVAR\_CH4\_OFI\_ENABLE\_AM
 
 
 MPIR\_CVAR\_CH4\_OFI\_ENABLE\_RMA
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_ENABLE\_RMA
@@ -7594,6 +8300,7 @@ MPIR\_CVAR\_CH4\_OFI\_ENABLE\_RMA
 
 
 MPIR\_CVAR\_CH4\_OFI\_ENABLE\_ATOMICS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_ENABLE\_ATOMICS
@@ -7608,6 +8315,7 @@ MPIR\_CVAR\_CH4\_OFI\_ENABLE\_ATOMICS
 
 
 MPIR\_CVAR\_CH4\_OFI\_FETCH\_ATOMIC\_IOVECS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_FETCH\_ATOMIC\_IOVECS
@@ -7626,6 +8334,7 @@ MPIR\_CVAR\_CH4\_OFI\_FETCH\_ATOMIC\_IOVECS
 
 
 MPIR\_CVAR\_CH4\_OFI\_ENABLE\_DATA\_AUTO\_PROGRESS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_ENABLE\_DATA\_AUTO\_PROGRESS
@@ -7640,6 +8349,7 @@ MPIR\_CVAR\_CH4\_OFI\_ENABLE\_DATA\_AUTO\_PROGRESS
 
 
 MPIR\_CVAR\_CH4\_OFI\_ENABLE\_CONTROL\_AUTO\_PROGRESS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_ENABLE\_CONTROL\_AUTO\_PROGRESS
@@ -7654,6 +8364,7 @@ MPIR\_CVAR\_CH4\_OFI\_ENABLE\_CONTROL\_AUTO\_PROGRESS
 
 
 MPIR\_CVAR\_CH4\_OFI\_ENABLE\_PT2PT\_NOPACK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_ENABLE\_PT2PT\_NOPACK
@@ -7668,6 +8379,7 @@ MPIR\_CVAR\_CH4\_OFI\_ENABLE\_PT2PT\_NOPACK
 
 
 MPIR\_CVAR\_CH4\_OFI\_ENABLE\_HMEM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_ENABLE\_HMEM
@@ -7677,11 +8389,12 @@ MPIR\_CVAR\_CH4\_OFI\_ENABLE\_HMEM
 - **Description:**
   -  If true, uses GPU direct RDMA support in the provider.
 
-- **Default:** 0
+- **Default:** -1
 
 
 
 MPIR\_CVAR\_CH4\_OFI\_ENABLE\_MR\_HMEM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_ENABLE\_MR\_HMEM
@@ -7698,6 +8411,7 @@ MPIR\_CVAR\_CH4\_OFI\_ENABLE\_MR\_HMEM
 
 
 MPIR\_CVAR\_CH4\_OFI\_GPU\_RDMA\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_GPU\_RDMA\_THRESHOLD
@@ -7712,6 +8426,7 @@ MPIR\_CVAR\_CH4\_OFI\_GPU\_RDMA\_THRESHOLD
 
 
 MPIR\_CVAR\_CH4\_OFI\_CONTEXT\_ID\_BITS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_CONTEXT\_ID\_BITS
@@ -7732,6 +8447,7 @@ MPIR\_CVAR\_CH4\_OFI\_CONTEXT\_ID\_BITS
 
 
 MPIR\_CVAR\_CH4\_OFI\_RANK\_BITS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_RANK\_BITS
@@ -7752,6 +8468,7 @@ MPIR\_CVAR\_CH4\_OFI\_RANK\_BITS
 
 
 MPIR\_CVAR\_CH4\_OFI\_TAG\_BITS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_TAG\_BITS
@@ -7772,6 +8489,7 @@ MPIR\_CVAR\_CH4\_OFI\_TAG\_BITS
 
 
 MPIR\_CVAR\_CH4\_OFI\_MAJOR\_VERSION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_MAJOR\_VERSION
@@ -7792,6 +8510,7 @@ MPIR\_CVAR\_CH4\_OFI\_MAJOR\_VERSION
 
 
 MPIR\_CVAR\_CH4\_OFI\_MINOR\_VERSION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_MINOR\_VERSION
@@ -7812,6 +8531,7 @@ MPIR\_CVAR\_CH4\_OFI\_MINOR\_VERSION
 
 
 MPIR\_CVAR\_CH4\_OFI\_MAX\_RMA\_SEP\_CTX
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_MAX\_RMA\_SEP\_CTX
@@ -7832,6 +8552,7 @@ MPIR\_CVAR\_CH4\_OFI\_MAX\_RMA\_SEP\_CTX
 
 
 MPIR\_CVAR\_CH4\_OFI\_MAX\_EAGAIN\_RETRY
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_MAX\_EAGAIN\_RETRY
@@ -7852,6 +8573,7 @@ MPIR\_CVAR\_CH4\_OFI\_MAX\_EAGAIN\_RETRY
 
 
 MPIR\_CVAR\_CH4\_OFI\_NUM\_AM\_BUFFERS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_NUM\_AM\_BUFFERS
@@ -7868,6 +8590,7 @@ MPIR\_CVAR\_CH4\_OFI\_NUM\_AM\_BUFFERS
 
 
 MPIR\_CVAR\_CH4\_OFI\_NUM\_OPTIMIZED\_MEMORY\_REGIONS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_NUM\_OPTIMIZED\_MEMORY\_REGIONS
@@ -7890,6 +8613,7 @@ MPIR\_CVAR\_CH4\_OFI\_NUM\_OPTIMIZED\_MEMORY\_REGIONS
 
 
 MPIR\_CVAR\_CH4\_OFI\_RMA\_PROGRESS\_INTERVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_RMA\_PROGRESS\_INTERVAL
@@ -7910,6 +8634,7 @@ MPIR\_CVAR\_CH4\_OFI\_RMA\_PROGRESS\_INTERVAL
 
 
 MPIR\_CVAR\_CH4\_OFI\_RMA\_IOVEC\_MAX
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_RMA\_IOVEC\_MAX
@@ -7926,6 +8651,7 @@ MPIR\_CVAR\_CH4\_OFI\_RMA\_IOVEC\_MAX
 
 
 MPIR\_CVAR\_CH4\_OFI\_EAGER\_MAX\_MSG\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_EAGER\_MAX\_MSG\_SIZE
@@ -7954,6 +8680,7 @@ MPIR\_CVAR\_CH4\_OFI\_EAGER\_MAX\_MSG\_SIZE
 
 
 MPIR\_CVAR\_CH4\_OFI\_MAX\_NICS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_MAX\_NICS
@@ -7978,6 +8705,7 @@ MPIR\_CVAR\_CH4\_OFI\_MAX\_NICS
 
 
 MPIR\_CVAR\_CH4\_OFI\_ENABLE\_MULTI\_NIC\_STRIPING
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_ENABLE\_MULTI\_NIC\_STRIPING
@@ -7994,6 +8722,7 @@ MPIR\_CVAR\_CH4\_OFI\_ENABLE\_MULTI\_NIC\_STRIPING
 
 
 MPIR\_CVAR\_CH4\_OFI\_MULTI\_NIC\_STRIPING\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_MULTI\_NIC\_STRIPING\_THRESHOLD
@@ -8010,6 +8739,7 @@ MPIR\_CVAR\_CH4\_OFI\_MULTI\_NIC\_STRIPING\_THRESHOLD
 
 
 MPIR\_CVAR\_CH4\_OFI\_ENABLE\_MULTI\_NIC\_HASHING
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_ENABLE\_MULTI\_NIC\_HASHING
@@ -8036,6 +8766,7 @@ MPIR\_CVAR\_CH4\_OFI\_ENABLE\_MULTI\_NIC\_HASHING
 
 
 MPIR\_CVAR\_CH4\_OFI\_MULTIRECV\_BUFFER\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_MULTIRECV\_BUFFER\_SIZE
@@ -8054,6 +8785,7 @@ MPIR\_CVAR\_CH4\_OFI\_MULTIRECV\_BUFFER\_SIZE
 
 
 MPIR\_CVAR\_OFI\_USE\_MIN\_NICS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_OFI\_USE\_MIN\_NICS
@@ -8072,6 +8804,7 @@ MPIR\_CVAR\_OFI\_USE\_MIN\_NICS
 
 
 MPIR\_CVAR\_CH4\_OFI\_ENABLE\_TRIGGERED
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_ENABLE\_TRIGGERED
@@ -8086,6 +8819,7 @@ MPIR\_CVAR\_CH4\_OFI\_ENABLE\_TRIGGERED
 
 
 MPIR\_CVAR\_CH4\_OFI\_ENABLE\_GPU\_PIPELINE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_ENABLE\_GPU\_PIPELINE
@@ -8108,6 +8842,7 @@ MPIR\_CVAR\_CH4\_OFI\_ENABLE\_GPU\_PIPELINE
 
 
 MPIR\_CVAR\_CH4\_OFI\_GPU\_PIPELINE\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_GPU\_PIPELINE\_THRESHOLD
@@ -8122,6 +8857,7 @@ MPIR\_CVAR\_CH4\_OFI\_GPU\_PIPELINE\_THRESHOLD
 
 
 MPIR\_CVAR\_CH4\_OFI\_GPU\_PIPELINE\_BUFFER\_SZ
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_GPU\_PIPELINE\_BUFFER\_SZ
@@ -8138,6 +8874,7 @@ MPIR\_CVAR\_CH4\_OFI\_GPU\_PIPELINE\_BUFFER\_SZ
 
 
 MPIR\_CVAR\_CH4\_OFI\_GPU\_PIPELINE\_NUM\_BUFFERS\_PER\_CHUNK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_GPU\_PIPELINE\_NUM\_BUFFERS\_PER\_CHUNK
@@ -8154,6 +8891,7 @@ MPIR\_CVAR\_CH4\_OFI\_GPU\_PIPELINE\_NUM\_BUFFERS\_PER\_CHUNK
 
 
 MPIR\_CVAR\_CH4\_OFI\_GPU\_PIPELINE\_MAX\_NUM\_BUFFERS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_GPU\_PIPELINE\_MAX\_NUM\_BUFFERS
@@ -8170,6 +8908,7 @@ MPIR\_CVAR\_CH4\_OFI\_GPU\_PIPELINE\_MAX\_NUM\_BUFFERS
 
 
 MPIR\_CVAR\_CH4\_OFI\_GPU\_PIPELINE\_D2H\_ENGINE\_TYPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_GPU\_PIPELINE\_D2H\_ENGINE\_TYPE
@@ -8186,6 +8925,7 @@ MPIR\_CVAR\_CH4\_OFI\_GPU\_PIPELINE\_D2H\_ENGINE\_TYPE
 
 
 MPIR\_CVAR\_CH4\_OFI\_GPU\_PIPELINE\_H2D\_ENGINE\_TYPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_GPU\_PIPELINE\_H2D\_ENGINE\_TYPE
@@ -8202,6 +8942,7 @@ MPIR\_CVAR\_CH4\_OFI\_GPU\_PIPELINE\_H2D\_ENGINE\_TYPE
 
 
 MPIR\_CVAR\_MALLOC\_ENABLE\_MMAP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_MALLOC\_ENABLE\_MMAP
@@ -8222,6 +8963,7 @@ MPIR\_CVAR\_MALLOC\_ENABLE\_MMAP
 
 
 MPIR\_CVAR\_MALLOC\_HEAP\_STEP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_MALLOC\_HEAP\_STEP
@@ -8246,6 +8988,7 @@ MPIR\_CVAR\_MALLOC\_HEAP\_STEP
 
 
 MPIR\_CVAR\_CH4\_OFI\_PREF\_NIC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_PREF\_NIC
@@ -8260,6 +9003,7 @@ MPIR\_CVAR\_CH4\_OFI\_PREF\_NIC
 
 
 MPIR\_CVAR\_CH4\_OFI\_DISABLE\_INJECT\_WRITE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_DISABLE\_INJECT\_WRITE
@@ -8276,6 +9020,7 @@ MPIR\_CVAR\_CH4\_OFI\_DISABLE\_INJECT\_WRITE
 
 
 MPIR\_CVAR\_CH4\_OFI\_ENABLE\_INJECT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_ENABLE\_INJECT
@@ -8294,6 +9039,7 @@ MPIR\_CVAR\_CH4\_OFI\_ENABLE\_INJECT
 
 
 MPIR\_CVAR\_CH4\_OFI\_GPU\_SEND\_ENGINE\_TYPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_OFI\_GPU\_SEND\_ENGINE\_TYPE
@@ -8317,7 +9063,35 @@ MPIR\_CVAR\_CH4\_OFI\_GPU\_SEND\_ENGINE\_TYPE
 
 
 
+MPIR\_CVAR\_CH4\_OFI\_EAGER\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_CH4\_OFI\_EAGER\_THRESHOLD
+
+  - MPICH\_CH4\_OFI\_EAGER\_THRESHOLD
+
+- **Description:**
+  -  Messages below MPIR\_CVAR\_CH4\_OFI\_EAGER\_THRESHOLD will be
+
+  - sent eagerly using fi\_tagged interfaces. Messages above the
+
+  - threshold will perform an MPICH-level rendezvous handshake before
+
+  - sending the data. If set to -1, MPICH will only perform rendezvous
+
+  - for messages larger than the provider max\_msg\_size. Note the MPICH
+
+  - eager/rendezvous threshold is independent of any internal libfabric
+
+  - provider threshold.
+
+- **Default:** -1
+
+
+
 MPIR\_CVAR\_UCX\_DT\_RECV
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_UCX\_DT\_RECV
@@ -8340,6 +9114,7 @@ MPIR\_CVAR\_UCX\_DT\_RECV
 
 
 MPIR\_CVAR\_CH4\_CMA\_ENABLE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_CMA\_ENABLE
@@ -8358,6 +9133,7 @@ MPIR\_CVAR\_CH4\_CMA\_ENABLE
 
 
 MPIR\_CVAR\_CH4\_IPC\_CMA\_P2P\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_IPC\_CMA\_P2P\_THRESHOLD
@@ -8380,6 +9156,7 @@ MPIR\_CVAR\_CH4\_IPC\_CMA\_P2P\_THRESHOLD
 
 
 MPIR\_CVAR\_CH4\_IPC\_RNDV\_PROTOCOL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_IPC\_RNDV\_PROTOCOL
@@ -8402,6 +9179,7 @@ MPIR\_CVAR\_CH4\_IPC\_RNDV\_PROTOCOL
 
 
 MPIR\_CVAR\_CH4\_IPC\_CMA\_COOP\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_IPC\_CMA\_COOP\_THRESHOLD
@@ -8424,6 +9202,7 @@ MPIR\_CVAR\_CH4\_IPC\_CMA\_COOP\_THRESHOLD
 
 
 MPIR\_CVAR\_CH4\_IPC\_GPU\_HANDLE\_CACHE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_IPC\_GPU\_HANDLE\_CACHE
@@ -8458,6 +9237,7 @@ MPIR\_CVAR\_CH4\_IPC\_GPU\_HANDLE\_CACHE
 
 
 MPIR\_CVAR\_CH4\_IPC\_GPU\_MAX\_CACHE\_ENTRIES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_IPC\_GPU\_MAX\_CACHE\_ENTRIES
@@ -8478,6 +9258,7 @@ MPIR\_CVAR\_CH4\_IPC\_GPU\_MAX\_CACHE\_ENTRIES
 
 
 MPIR\_CVAR\_CH4\_IPC\_GPU\_CACHE\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_IPC\_GPU\_CACHE\_SIZE
@@ -8500,6 +9281,7 @@ MPIR\_CVAR\_CH4\_IPC\_GPU\_CACHE\_SIZE
 
 
 MPIR\_CVAR\_CH4\_IPC\_GPU\_P2P\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_IPC\_GPU\_P2P\_THRESHOLD
@@ -8522,6 +9304,7 @@ MPIR\_CVAR\_CH4\_IPC\_GPU\_P2P\_THRESHOLD
 
 
 MPIR\_CVAR\_CH4\_IPC\_ZE\_SHAREABLE\_HANDLE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_IPC\_ZE\_SHAREABLE\_HANDLE
@@ -8542,6 +9325,7 @@ MPIR\_CVAR\_CH4\_IPC\_ZE\_SHAREABLE\_HANDLE
 
 
 MPIR\_CVAR\_CH4\_IPC\_GPU\_ENGINE\_TYPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_IPC\_GPU\_ENGINE\_TYPE
@@ -8564,6 +9348,7 @@ MPIR\_CVAR\_CH4\_IPC\_GPU\_ENGINE\_TYPE
 
 
 MPIR\_CVAR\_CH4\_IPC\_GPU\_READ\_WRITE\_PROTOCOL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_IPC\_GPU\_READ\_WRITE\_PROTOCOL
@@ -8584,6 +9369,7 @@ MPIR\_CVAR\_CH4\_IPC\_GPU\_READ\_WRITE\_PROTOCOL
 
 
 MPIR\_CVAR\_CH4\_IPC\_GPU\_RMA\_ENGINE\_TYPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_IPC\_GPU\_RMA\_ENGINE\_TYPE
@@ -8608,6 +9394,7 @@ MPIR\_CVAR\_CH4\_IPC\_GPU\_RMA\_ENGINE\_TYPE
 
 
 MPIR\_CVAR\_ALLREDUCE\_IPC\_MSG\_SIZE\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLREDUCE\_IPC\_MSG\_SIZE\_THRESHOLD
@@ -8615,15 +9402,16 @@ MPIR\_CVAR\_ALLREDUCE\_IPC\_MSG\_SIZE\_THRESHOLD
   - MPICH\_ALLREDUCE\_IPC\_MSG\_SIZE\_THRESHOLD
 
 - **Description:**
-  -  Shared memory region per rank for multi-leaders based
+  -  Messages below this threshold will fall back to staging to
 
-  - composition for MPI\_Alltoall (in bytes)
+  - avoid expensive IPC overheads 
 
-- **Default:** (128 * 1024)
+- **Default:** (16 * 1024)
 
 
 
 MPIR\_CVAR\_REDUCE\_IPC\_MSG\_SIZE\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_IPC\_MSG\_SIZE\_THRESHOLD
@@ -8631,15 +9419,31 @@ MPIR\_CVAR\_REDUCE\_IPC\_MSG\_SIZE\_THRESHOLD
   - MPICH\_REDUCE\_IPC\_MSG\_SIZE\_THRESHOLD
 
 - **Description:**
-  -  Shared memory region per rank for multi-leaders based
+  -  Messages below this threshold will fall back to staging to
 
-  - composition for MPI\_Alltoall (in bytes)
+  - avoid expensive IPC overheads 
 
-- **Default:** (512 * 1024)
+- **Default:** (16 * 1024)
+
+
+
+MPIR\_CVAR\_DYNAMIC\_GPU\_INIT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_DYNAMIC\_GPU\_INIT
+
+  - MPICH\_DYNAMIC\_GPU\_INIT
+
+- **Description:**
+  -  Enable the dynamic GPU initialization.
+
+- **Default:** 1
 
 
 
 MPIR\_CVAR\_CH4\_IPC\_MAP\_REPEAT\_ADDR
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_IPC\_MAP\_REPEAT\_ADDR
@@ -8658,6 +9462,7 @@ MPIR\_CVAR\_CH4\_IPC\_MAP\_REPEAT\_ADDR
 
 
 MPIR\_CVAR\_CH4\_XPMEM\_ENABLE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_XPMEM\_ENABLE
@@ -8674,6 +9479,7 @@ MPIR\_CVAR\_CH4\_XPMEM\_ENABLE
 
 
 MPIR\_CVAR\_CH4\_IPC\_XPMEM\_P2P\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_IPC\_XPMEM\_P2P\_THRESHOLD
@@ -8691,11 +9497,12 @@ MPIR\_CVAR\_CH4\_IPC\_XPMEM\_P2P\_THRESHOLD
 
   - enabled.
 
-- **Default:** 16384
+- **Default:** 1024
 
 
 
 MPIR\_CVAR\_BCAST\_POSIX\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_POSIX\_INTRA\_ALGORITHM
@@ -8722,6 +9529,7 @@ MPIR\_CVAR\_BCAST\_POSIX\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_IBCAST\_POSIX\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IBCAST\_POSIX\_INTRA\_ALGORITHM
@@ -8746,6 +9554,7 @@ MPIR\_CVAR\_IBCAST\_POSIX\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_REDUCE\_POSIX\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_POSIX\_INTRA\_ALGORITHM
@@ -8770,6 +9579,7 @@ MPIR\_CVAR\_REDUCE\_POSIX\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_IREDUCE\_POSIX\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_IREDUCE\_POSIX\_INTRA\_ALGORITHM
@@ -8794,6 +9604,7 @@ MPIR\_CVAR\_IREDUCE\_POSIX\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_ALLREDUCE\_POSIX\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLREDUCE\_POSIX\_INTRA\_ALGORITHM
@@ -8818,6 +9629,7 @@ MPIR\_CVAR\_ALLREDUCE\_POSIX\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_BARRIER\_POSIX\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BARRIER\_POSIX\_INTRA\_ALGORITHM
@@ -8842,6 +9654,7 @@ MPIR\_CVAR\_BARRIER\_POSIX\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_ALLTOALL\_POSIX\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLTOALL\_POSIX\_INTRA\_ALGORITHM
@@ -8860,6 +9673,7 @@ MPIR\_CVAR\_ALLTOALL\_POSIX\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_ALLGATHER\_POSIX\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLGATHER\_POSIX\_INTRA\_ALGORITHM
@@ -8878,6 +9692,7 @@ MPIR\_CVAR\_ALLGATHER\_POSIX\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_ALLGATHERV\_POSIX\_INTRA\_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLGATHERV\_POSIX\_INTRA\_ALGORITHM
@@ -8896,6 +9711,7 @@ MPIR\_CVAR\_ALLGATHERV\_POSIX\_INTRA\_ALGORITHM
 
 
 MPIR\_CVAR\_POSIX\_POLL\_FREQUENCY
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_POSIX\_POLL\_FREQUENCY
@@ -8912,6 +9728,7 @@ MPIR\_CVAR\_POSIX\_POLL\_FREQUENCY
 
 
 MPIR\_CVAR\_BCAST\_IPC\_READ\_MSG\_SIZE\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_IPC\_READ\_MSG\_SIZE\_THRESHOLD
@@ -8928,6 +9745,7 @@ MPIR\_CVAR\_BCAST\_IPC\_READ\_MSG\_SIZE\_THRESHOLD
 
 
 MPIR\_CVAR\_ALLTOALL\_IPC\_READ\_MSG\_SIZE\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLTOALL\_IPC\_READ\_MSG\_SIZE\_THRESHOLD
@@ -8944,6 +9762,7 @@ MPIR\_CVAR\_ALLTOALL\_IPC\_READ\_MSG\_SIZE\_THRESHOLD
 
 
 MPIR\_CVAR\_ALLGATHER\_IPC\_READ\_MSG\_SIZE\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLGATHER\_IPC\_READ\_MSG\_SIZE\_THRESHOLD
@@ -8960,6 +9779,7 @@ MPIR\_CVAR\_ALLGATHER\_IPC\_READ\_MSG\_SIZE\_THRESHOLD
 
 
 MPIR\_CVAR\_ALLGATHERV\_IPC\_READ\_MSG\_SIZE\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLGATHERV\_IPC\_READ\_MSG\_SIZE\_THRESHOLD
@@ -8976,6 +9796,7 @@ MPIR\_CVAR\_ALLGATHERV\_IPC\_READ\_MSG\_SIZE\_THRESHOLD
 
 
 MPIR\_CVAR\_POSIX\_NUM\_COLLS\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_POSIX\_NUM\_COLLS\_THRESHOLD
@@ -8994,6 +9815,7 @@ MPIR\_CVAR\_POSIX\_NUM\_COLLS\_THRESHOLD
 
 
 MPIR\_CVAR\_CH4\_SHM\_POSIX\_EAGER
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_SHM\_POSIX\_EAGER
@@ -9010,6 +9832,7 @@ MPIR\_CVAR\_CH4\_SHM\_POSIX\_EAGER
 
 
 MPIR\_CVAR\_CH4\_POSIX\_COLL\_SELECTION\_TUNING\_JSON\_FILE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_POSIX\_COLL\_SELECTION\_TUNING\_JSON\_FILE
@@ -9024,6 +9847,7 @@ MPIR\_CVAR\_CH4\_POSIX\_COLL\_SELECTION\_TUNING\_JSON\_FILE
 
 
 MPIR\_CVAR\_CH4\_POSIX\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_GPU
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_POSIX\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_GPU
@@ -9038,6 +9862,7 @@ MPIR\_CVAR\_CH4\_POSIX\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_GPU
 
 
 MPIR\_CVAR\_CH4\_SHM\_POSIX\_TOPO\_ENABLE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_SHM\_POSIX\_TOPO\_ENABLE
@@ -9052,6 +9877,7 @@ MPIR\_CVAR\_CH4\_SHM\_POSIX\_TOPO\_ENABLE
 
 
 MPIR\_CVAR\_CH4\_SHM\_POSIX\_IQUEUE\_NUM\_CELLS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_SHM\_POSIX\_IQUEUE\_NUM\_CELLS
@@ -9066,6 +9892,7 @@ MPIR\_CVAR\_CH4\_SHM\_POSIX\_IQUEUE\_NUM\_CELLS
 
 
 MPIR\_CVAR\_CH4\_SHM\_POSIX\_IQUEUE\_CELL\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_SHM\_POSIX\_IQUEUE\_CELL\_SIZE
@@ -9080,6 +9907,7 @@ MPIR\_CVAR\_CH4\_SHM\_POSIX\_IQUEUE\_CELL\_SIZE
 
 
 MPIR\_CVAR\_CH4\_MVP\_SHM\_POSIX\_NUM\_CELLS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_MVP\_SHM\_POSIX\_NUM\_CELLS
@@ -9094,6 +9922,7 @@ MPIR\_CVAR\_CH4\_MVP\_SHM\_POSIX\_NUM\_CELLS
 
 
 MPIR\_CVAR\_CH4\_MVP\_SHM\_POSIX\_CELL\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_MVP\_SHM\_POSIX\_CELL\_SIZE
@@ -9108,6 +9937,7 @@ MPIR\_CVAR\_CH4\_MVP\_SHM\_POSIX\_CELL\_SIZE
 
 
 MPIR\_CVAR\_COLL\_SHM\_LIMIT\_PER\_NODE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_COLL\_SHM\_LIMIT\_PER\_NODE
@@ -9124,6 +9954,7 @@ MPIR\_CVAR\_COLL\_SHM\_LIMIT\_PER\_NODE
 
 
 MPIR\_CVAR\_BCAST\_INTRANODE\_BUFFER\_TOTAL\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_INTRANODE\_BUFFER\_TOTAL\_SIZE
@@ -9138,6 +9969,7 @@ MPIR\_CVAR\_BCAST\_INTRANODE\_BUFFER\_TOTAL\_SIZE
 
 
 MPIR\_CVAR\_BCAST\_INTRANODE\_NUM\_CELLS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_INTRANODE\_NUM\_CELLS
@@ -9152,6 +9984,7 @@ MPIR\_CVAR\_BCAST\_INTRANODE\_NUM\_CELLS
 
 
 MPIR\_CVAR\_REDUCE\_INTRANODE\_BUFFER\_TOTAL\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_INTRANODE\_BUFFER\_TOTAL\_SIZE
@@ -9166,6 +9999,7 @@ MPIR\_CVAR\_REDUCE\_INTRANODE\_BUFFER\_TOTAL\_SIZE
 
 
 MPIR\_CVAR\_REDUCE\_INTRANODE\_NUM\_CELLS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_INTRANODE\_NUM\_CELLS
@@ -9182,6 +10016,7 @@ MPIR\_CVAR\_REDUCE\_INTRANODE\_NUM\_CELLS
 
 
 MPIR\_CVAR\_BCAST\_INTRANODE\_TREE\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_INTRANODE\_TREE\_KVAL
@@ -9196,6 +10031,7 @@ MPIR\_CVAR\_BCAST\_INTRANODE\_TREE\_KVAL
 
 
 MPIR\_CVAR\_BCAST\_INTRANODE\_TREE\_TYPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_INTRANODE\_TREE\_TYPE
@@ -9218,6 +10054,7 @@ MPIR\_CVAR\_BCAST\_INTRANODE\_TREE\_TYPE
 
 
 MPIR\_CVAR\_REDUCE\_INTRANODE\_MSG\_SIZE\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_INTRANODE\_MSG\_SIZE\_THRESHOLD
@@ -9242,6 +10079,7 @@ MPIR\_CVAR\_REDUCE\_INTRANODE\_MSG\_SIZE\_THRESHOLD
 
 
 MPIR\_CVAR\_REDUCE\_INTRANODE\_TREE\_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_INTRANODE\_TREE\_KVAL
@@ -9256,6 +10094,7 @@ MPIR\_CVAR\_REDUCE\_INTRANODE\_TREE\_KVAL
 
 
 MPIR\_CVAR\_REDUCE\_INTRANODE\_TREE\_KVAL\_LARGE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_INTRANODE\_TREE\_KVAL\_LARGE
@@ -9272,6 +10111,7 @@ MPIR\_CVAR\_REDUCE\_INTRANODE\_TREE\_KVAL\_LARGE
 
 
 MPIR\_CVAR\_REDUCE\_INTRANODE\_TREE\_TYPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_INTRANODE\_TREE\_TYPE
@@ -9294,6 +10134,7 @@ MPIR\_CVAR\_REDUCE\_INTRANODE\_TREE\_TYPE
 
 
 MPIR\_CVAR\_REDUCE\_INTRANODE\_TREE\_TYPE\_LARGE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_INTRANODE\_TREE\_TYPE\_LARGE
@@ -9316,6 +10157,7 @@ MPIR\_CVAR\_REDUCE\_INTRANODE\_TREE\_TYPE\_LARGE
 
 
 MPIR\_CVAR\_ENABLE\_INTRANODE\_TOPOLOGY\_AWARE\_TREES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ENABLE\_INTRANODE\_TOPOLOGY\_AWARE\_TREES
@@ -9370,6 +10212,7 @@ MPIR\_CVAR\_ENABLE\_INTRANODE\_TOPOLOGY\_AWARE\_TREES
 
 
 MPIR\_CVAR\_BARRIER\_COMPOSITION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BARRIER\_COMPOSITION
@@ -9386,6 +10229,7 @@ MPIR\_CVAR\_BARRIER\_COMPOSITION
 
 
 MPIR\_CVAR\_BCAST\_COMPOSITION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_BCAST\_COMPOSITION
@@ -9404,6 +10248,7 @@ MPIR\_CVAR\_BCAST\_COMPOSITION
 
 
 MPIR\_CVAR\_ALLREDUCE\_COMPOSITION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLREDUCE\_COMPOSITION
@@ -9432,6 +10277,7 @@ MPIR\_CVAR\_ALLREDUCE\_COMPOSITION
 
 
 MPIR\_CVAR\_ALLGATHER\_COMPOSITION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLGATHER\_COMPOSITION
@@ -9450,6 +10296,7 @@ MPIR\_CVAR\_ALLGATHER\_COMPOSITION
 
 
 MPIR\_CVAR\_ALLTOALL\_COMPOSITION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLTOALL\_COMPOSITION
@@ -9468,6 +10315,7 @@ MPIR\_CVAR\_ALLTOALL\_COMPOSITION
 
 
 MPIR\_CVAR\_REDUCE\_COMPOSITION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_REDUCE\_COMPOSITION
@@ -9487,7 +10335,31 @@ MPIR\_CVAR\_REDUCE\_COMPOSITION
 
 
 
+MPIR\_CVAR\_REDUCE\_SCATTER\_COMPOSITION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_REDUCE\_SCATTER\_COMPOSITION
+
+  - MPICH\_REDUCE\_SCATTER\_COMPOSITION
+
+- **Description:**
+  -  Select composition (inter\_node + intra\_node) for
+
+  - Reduce\_scatter 0 Auto selection 1 NM only composition 2 NM only
+
+  - composition with CPU staging 3 Intra-node only (flat) IPC and
+
+  - kernel supported reduce\_scatter 4 Pipelined multi-leader two level
+
+  - IPC enabled reduce\_scatter
+
+- **Default:** 0
+
+
+
 MPIR\_CVAR\_ALLTOALL\_SHM\_PER\_RANK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLTOALL\_SHM\_PER\_RANK
@@ -9504,6 +10376,7 @@ MPIR\_CVAR\_ALLTOALL\_SHM\_PER\_RANK
 
 
 MPIR\_CVAR\_ALLGATHER\_SHM\_PER\_RANK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLGATHER\_SHM\_PER\_RANK
@@ -9520,6 +10393,7 @@ MPIR\_CVAR\_ALLGATHER\_SHM\_PER\_RANK
 
 
 MPIR\_CVAR\_NUM\_MULTI\_LEADS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_NUM\_MULTI\_LEADS
@@ -9536,6 +10410,7 @@ MPIR\_CVAR\_NUM\_MULTI\_LEADS
 
 
 MPIR\_CVAR\_ALLREDUCE\_SHM\_PER\_LEADER
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLREDUCE\_SHM\_PER\_LEADER
@@ -9545,17 +10420,18 @@ MPIR\_CVAR\_ALLREDUCE\_SHM\_PER\_LEADER
 - **Description:**
   -  Shared memory region per node-leader for multi-leaders
 
-  - based composition for MPI\_Allreduce (in bytes) If it is undefined
+  - based composition for MPI\_Allreduce (in bytes). By default the size
 
-  - by the user, it is set to the message size of the first call to the
+  - of the first call to the algorithm will be used. Max shared memory
 
-  - algorithm. Max shared memory size is limited to 4MB.
+  - size is limited to 4MB.
 
 - **Default:** -1
 
 
 
 MPIR\_CVAR\_ALLREDUCE\_CACHE\_PER\_LEADER
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLREDUCE\_CACHE\_PER\_LEADER
@@ -9565,17 +10441,16 @@ MPIR\_CVAR\_ALLREDUCE\_CACHE\_PER\_LEADER
 - **Description:**
   -  Amount of data reduced in allreduce delta composition's
 
-  - reduce local step (in bytes). Smaller msg size per leader avoids
+  - reduce local step (in bytes). Smaller per-leader message sizes can
 
-  - cache misses and improves performance. Experiments indicate 512 to
-
-  - be the best value.
+  - avoid cache misses and improve performance.
 
 - **Default:** 512
 
 
 
 MPIR\_CVAR\_ALLREDUCE\_LOCAL\_COPY\_OFFSETS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ALLREDUCE\_LOCAL\_COPY\_OFFSETS
@@ -9593,101 +10468,8 @@ MPIR\_CVAR\_ALLREDUCE\_LOCAL\_COPY\_OFFSETS
 
 
 
-MPIR\_CVAR\_ALLREDUCE\_MULTI\_LEADER\_THRESHOLD
-
-- **Aliases:**
-  -  MVP\_ALLREDUCE\_MULTI\_LEADER\_THRESHOLD
-
-  - MPICH\_ALLREDUCE\_MULTI\_LEADER\_THRESHOLD
-
-- **Description:**
-  -  The threshold to switch from single-leader 2-level
-
-  - allreduce algorithm to multi-leader 2-level allreduce algorithm.
-
-- **Default:** (8 * 1024 * 1024)
-
-
-
-MPIR\_CVAR\_ALLREDUCE\_MULTI\_LEADER\_USE\_KERNEL\_ALLGATHERV
-
-- **Aliases:**
-  -  MVP\_ALLREDUCE\_MULTI\_LEADER\_USE\_KERNEL\_ALLGATHERV
-
-  - MPICH\_ALLREDUCE\_MULTI\_LEADER\_USE\_KERNEL\_ALLGATHERV
-
-- **Description:**
-  -  The flag to enable multi-leader 2-level allreduce
-
-  - algorithm using kernel-based Allgatherv.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_ALLREDUCE\_PERSISTENT\_GPU\_BUFFER\_SIZE
-
-- **Aliases:**
-  -  MVP\_ALLREDUCE\_PERSISTENT\_GPU\_BUFFER\_SIZE
-
-  - MPICH\_ALLREDUCE\_PERSISTENT\_GPU\_BUFFER\_SIZE
-
-- **Description:**
-  -  Size of pre-allocated persistent GPU buffer for advanced
-
-  - inter-node allreduce algorithm.
-
-- **Default:** (1024 * 1024 * 1024)
-
-
-
-MPIR\_CVAR\_ALLREDUCE\_INTER\_PIPELINE\_NUM
-
-- **Aliases:**
-  -  MVP\_ALLREDUCE\_INTER\_PIPELINE\_NUM
-
-  - MPICH\_ALLREDUCE\_INTER\_PIPELINE\_NUM
-
-- **Description:**
-  -  The flag is the pipeline number for pipelined inter-node
-
-  - allreduce algorithm. 0 is auto.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_ALLREDUCE\_INTER\_PIPELINE\_THRESHOLD
-
-- **Aliases:**
-  -  MVP\_ALLREDUCE\_INTER\_PIPELINE\_THRESHOLD
-
-  - MPICH\_ALLREDUCE\_INTER\_PIPELINE\_THRESHOLD
-
-- **Description:**
-  -  The flag is the pipeline threshold for pipelined
-
-  - inter-node allreduce algorithm.
-
-- **Default:** (32 * 1024 * 1024)
-
-
-
-MPIR\_CVAR\_ALLTOALL\_NAIVE\_MSG\_SIZE\_LIMIT
-
-- **Aliases:**
-  -  MVP\_ALLTOALL\_NAIVE\_MSG\_SIZE\_LIMIT
-
-  - MPICH\_ALLTOALL\_NAIVE\_MSG\_SIZE\_LIMIT
-
-- **Description:**
-  -  The staging limit for GPU Alltoall.
-
-- **Default:** (8 * 1024)
-
-
-
 MPIR\_CVAR\_CH4\_NETMOD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_NETMOD
@@ -9704,6 +10486,7 @@ MPIR\_CVAR\_CH4\_NETMOD
 
 
 MPIR\_CVAR\_CH4\_SHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_SHM
@@ -9718,6 +10501,7 @@ MPIR\_CVAR\_CH4\_SHM
 
 
 MPIR\_CVAR\_CH4\_ROOTS\_ONLY\_PMI
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_ROOTS\_ONLY\_PMI
@@ -9734,6 +10518,7 @@ MPIR\_CVAR\_CH4\_ROOTS\_ONLY\_PMI
 
 
 MPIR\_CVAR\_CH4\_RUNTIME\_CONF\_DEBUG
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_RUNTIME\_CONF\_DEBUG
@@ -9750,6 +10535,7 @@ MPIR\_CVAR\_CH4\_RUNTIME\_CONF\_DEBUG
 
 
 MPIR\_CVAR\_CH4\_MT\_MODEL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_MT\_MODEL
@@ -9766,6 +10552,7 @@ MPIR\_CVAR\_CH4\_MT\_MODEL
 
 
 MPIR\_CVAR\_CH4\_NUM\_VCIS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_NUM\_VCIS
@@ -9782,6 +10569,7 @@ MPIR\_CVAR\_CH4\_NUM\_VCIS
 
 
 MPIR\_CVAR\_CH4\_RESERVE\_VCIS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_RESERVE\_VCIS
@@ -9798,6 +10586,7 @@ MPIR\_CVAR\_CH4\_RESERVE\_VCIS
 
 
 MPIR\_CVAR\_CH4\_COLL\_SELECTION\_TUNING\_JSON\_FILE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_COLL\_SELECTION\_TUNING\_JSON\_FILE
@@ -9812,6 +10601,7 @@ MPIR\_CVAR\_CH4\_COLL\_SELECTION\_TUNING\_JSON\_FILE
 
 
 MPIR\_CVAR\_CH4\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_GPU
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_GPU
@@ -9826,6 +10616,7 @@ MPIR\_CVAR\_CH4\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_GPU
 
 
 MPIR\_CVAR\_CH4\_IOV\_DENSITY\_MIN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_IOV\_DENSITY\_MIN
@@ -9844,6 +10635,7 @@ MPIR\_CVAR\_CH4\_IOV\_DENSITY\_MIN
 
 
 MPIR\_CVAR\_CH4\_PACK\_BUFFER\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_PACK\_BUFFER\_SIZE
@@ -9864,6 +10656,7 @@ MPIR\_CVAR\_CH4\_PACK\_BUFFER\_SIZE
 
 
 MPIR\_CVAR\_CH4\_NUM\_PACK\_BUFFERS\_PER\_CHUNK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_NUM\_PACK\_BUFFERS\_PER\_CHUNK
@@ -9880,6 +10673,7 @@ MPIR\_CVAR\_CH4\_NUM\_PACK\_BUFFERS\_PER\_CHUNK
 
 
 MPIR\_CVAR\_CH4\_MAX\_NUM\_PACK\_BUFFERS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_MAX\_NUM\_PACK\_BUFFERS
@@ -9896,6 +10690,7 @@ MPIR\_CVAR\_CH4\_MAX\_NUM\_PACK\_BUFFERS
 
 
 MPIR\_CVAR\_CH4\_GPU\_COLL\_SWAP\_BUFFER\_SZ
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_GPU\_COLL\_SWAP\_BUFFER\_SZ
@@ -9912,6 +10707,7 @@ MPIR\_CVAR\_CH4\_GPU\_COLL\_SWAP\_BUFFER\_SZ
 
 
 MPIR\_CVAR\_CH4\_GPU\_COLL\_NUM\_BUFFERS\_PER\_CHUNK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_GPU\_COLL\_NUM\_BUFFERS\_PER\_CHUNK
@@ -9928,6 +10724,7 @@ MPIR\_CVAR\_CH4\_GPU\_COLL\_NUM\_BUFFERS\_PER\_CHUNK
 
 
 MPIR\_CVAR\_CH4\_GPU\_COLL\_MAX\_NUM\_BUFFERS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_GPU\_COLL\_MAX\_NUM\_BUFFERS
@@ -9943,7 +10740,248 @@ MPIR\_CVAR\_CH4\_GPU\_COLL\_MAX\_NUM\_BUFFERS
 
 
 
+MPIR\_CVAR\_ALLREDUCE\_MULTI\_LEADER\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_ALLREDUCE\_MULTI\_LEADER\_THRESHOLD
+
+  - MPICH\_ALLREDUCE\_MULTI\_LEADER\_THRESHOLD
+
+- **Description:**
+  -  The threshold to switch from single-leader 2-level
+
+  - allreduce algorithm to multi-leader 2-level allreduce algorithm.
+
+- **Default:** (8 * 1024 * 1024)
+
+
+
+MPIR\_CVAR\_ALLREDUCE\_MULTI\_LEADER\_USE\_KERNEL\_ALLGATHERV
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_ALLREDUCE\_MULTI\_LEADER\_USE\_KERNEL\_ALLGATHERV
+
+  - MPICH\_ALLREDUCE\_MULTI\_LEADER\_USE\_KERNEL\_ALLGATHERV
+
+- **Description:**
+  -  The flag to enable multi-leader 2-level allreduce
+
+  - algorithm using kernel-based Allgatherv.
+
+- **Default:** 1
+
+
+
+MPIR\_CVAR\_ALLREDUCE\_PERSISTENT\_GPU\_BUFFER\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_ALLREDUCE\_PERSISTENT\_GPU\_BUFFER\_SIZE
+
+  - MPICH\_ALLREDUCE\_PERSISTENT\_GPU\_BUFFER\_SIZE
+
+- **Description:**
+  -  Size of pre-allocated persistent GPU buffer for advanced
+
+  - inter-node allreduce algorithm.
+
+- **Default:** (1024 * 1024 * 1024)
+
+
+
+MPIR\_CVAR\_ALLREDUCE\_INTER\_PIPELINE\_NUM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_ALLREDUCE\_INTER\_PIPELINE\_NUM
+
+  - MPICH\_ALLREDUCE\_INTER\_PIPELINE\_NUM
+
+- **Description:**
+  -  The flag is the pipeline number for pipelined inter-node
+
+  - allreduce algorithm. 0 is auto.
+
+- **Default:** 0
+
+
+
+MPIR\_CVAR\_ALLREDUCE\_INTER\_PIPELINE\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_ALLREDUCE\_INTER\_PIPELINE\_THRESHOLD
+
+  - MPICH\_ALLREDUCE\_INTER\_PIPELINE\_THRESHOLD
+
+- **Description:**
+  -  The flag is the pipeline threshold for pipelined
+
+  - inter-node allreduce algorithm.
+
+- **Default:** (32 * 1024 * 1024)
+
+
+
+MPIR\_CVAR\_ALLTOALL\_NAIVE\_MSG\_SIZE\_LIMIT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_ALLTOALL\_NAIVE\_MSG\_SIZE\_LIMIT
+
+  - MPICH\_ALLTOALL\_NAIVE\_MSG\_SIZE\_LIMIT
+
+- **Description:**
+  -  The staging limit for GPU Alltoall.
+
+- **Default:** (8 * 1024)
+
+
+
+MPIR\_CVAR\_ALLREDUCE\_PIPELINE\_2LVL\_GPU\_NUM\_CHUNKS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_ALLREDUCE\_PIPELINE\_2LVL\_GPU\_NUM\_CHUNKS
+
+  - MPICH\_ALLREDUCE\_PIPELINE\_2LVL\_GPU\_NUM\_CHUNKS
+
+- **Description:**
+  -  The flag is the pipeline number for pipelined inter-node
+
+  - allreduce algorithm. 0 is auto.
+
+- **Default:** 0
+
+
+
+MPIR\_CVAR\_ALLREDUCE\_PIPELINE\_2LVL\_GPU\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_ALLREDUCE\_PIPELINE\_2LVL\_GPU\_THRESHOLD
+
+  - MPICH\_ALLREDUCE\_PIPELINE\_2LVL\_GPU\_THRESHOLD
+
+- **Description:**
+  -  The flag is the pipeline threshold for pipelined
+
+  - inter-node allreduce algorithm.
+
+- **Default:** (32 * 1024 * 1024)
+
+
+
+MPIR\_CVAR\_ALLREDUCE\_PIPELINE\_NUM\_CHUNKS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_ALLREDUCE\_PIPELINE\_NUM\_CHUNKS
+
+  - MPICH\_ALLREDUCE\_PIPELINE\_NUM\_CHUNKS
+
+- **Description:**
+  -  The flag is the number of pipeline chunks for the
+
+  - allreduce algorithm. 0 is auto.
+
+- **Default:** 0
+
+
+
+MPIR\_CVAR\_ALLREDUCE\_PIPELINE\_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_ALLREDUCE\_PIPELINE\_SIZE
+
+  - MPICH\_ALLREDUCE\_PIPELINE\_SIZE
+
+- **Description:**
+  -  The flag is the pipeline message size for the allreduce
+
+  - algorithm.
+
+- **Default:** (8 * 1024 * 1024)
+
+
+
+MPIR\_CVAR\_ALLREDUCE\_PIPELINE\_2LVL\_RD\_LIMIT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_ALLREDUCE\_PIPELINE\_2LVL\_RD\_LIMIT
+
+  - MPICH\_ALLREDUCE\_PIPELINE\_2LVL\_RD\_LIMIT
+
+- **Description:**
+  -  The flag is the switching point from using RD algorithm to
+
+  - other algorithms in the kernel-based two-level allreduce algorithm.
+
+- **Default:** (16 * 1024 * 1024)
+
+
+
+MPIR\_CVAR\_ALLREDUCE\_GPU\_RING\_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_ALLREDUCE\_GPU\_RING\_THRESHOLD
+
+  - MPICH\_ALLREDUCE\_GPU\_RING\_THRESHOLD
+
+- **Description:**
+  -  The flag is the switching point from using group Allreduce
+
+  - algorithm to ring Allreduce algorithm in the pipelined kernel-based
+
+  - two-level allreduce algorithm.
+
+- **Default:** INT\_MAX
+
+
+
+MPIR\_CVAR\_ALLREDUCE\_GPU\_KERNEL\_VECTORIZE\_LIMIT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_ALLREDUCE\_GPU\_KERNEL\_VECTORIZE\_LIMIT
+
+  - MPICH\_ALLREDUCE\_GPU\_KERNEL\_VECTORIZE\_LIMIT
+
+- **Description:**
+  -  The flag determines the switching point between vectorized
+
+  - and non-vectorized execution in the GPU kernel. Vectorized
+
+  - processing typically offers better performance for small message
+
+  - sizes.
+
+- **Default:** (128 * 1024 * 1024)
+
+
+
+MPIR\_CVAR\_REDUCE\_SCATTER\_NAIVE\_MSG\_SIZE\_LIMIT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **Aliases:**
+  -  MVP\_REDUCE\_SCATTER\_NAIVE\_MSG\_SIZE\_LIMIT
+
+  - MPICH\_REDUCE\_SCATTER\_NAIVE\_MSG\_SIZE\_LIMIT
+
+- **Description:**
+  -  The staging limit for GPU Reduce\_scatter.
+
+- **Default:** (8 * 1024)
+
+
+
 MPIR\_CVAR\_CH4\_GLOBAL\_PROGRESS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_GLOBAL\_PROGRESS
@@ -9962,6 +11000,7 @@ MPIR\_CVAR\_CH4\_GLOBAL\_PROGRESS
 
 
 MPIR\_CVAR\_CH4\_COMM\_CONNECT\_TIMEOUT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_COMM\_CONNECT\_TIMEOUT
@@ -9982,6 +11021,7 @@ MPIR\_CVAR\_CH4\_COMM\_CONNECT\_TIMEOUT
 
 
 MPIR\_CVAR\_CH4\_ENABLE\_STREAM\_WORKQ
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_ENABLE\_STREAM\_WORKQ
@@ -10000,6 +11040,7 @@ MPIR\_CVAR\_CH4\_ENABLE\_STREAM\_WORKQ
 
 
 MPIR\_CVAR\_CH4\_RMA\_MEM\_EFFICIENT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_RMA\_MEM\_EFFICIENT
@@ -10020,6 +11061,7 @@ MPIR\_CVAR\_CH4\_RMA\_MEM\_EFFICIENT
 
 
 MPIR\_CVAR\_CH4\_RMA\_ENABLE\_DYNAMIC\_AM\_PROGRESS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_RMA\_ENABLE\_DYNAMIC\_AM\_PROGRESS
@@ -10052,6 +11094,7 @@ MPIR\_CVAR\_CH4\_RMA\_ENABLE\_DYNAMIC\_AM\_PROGRESS
 
 
 MPIR\_CVAR\_CH4\_RMA\_AM\_PROGRESS\_INTERVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_RMA\_AM\_PROGRESS\_INTERVAL
@@ -10078,6 +11121,7 @@ MPIR\_CVAR\_CH4\_RMA\_AM\_PROGRESS\_INTERVAL
 
 
 MPIR\_CVAR\_CH4\_RMA\_AM\_PROGRESS\_LOW\_FREQ\_INTERVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_CH4\_RMA\_AM\_PROGRESS\_LOW\_FREQ\_INTERVAL
@@ -10104,6 +11148,7 @@ MPIR\_CVAR\_CH4\_RMA\_AM\_PROGRESS\_LOW\_FREQ\_INTERVAL
 
 
 MPIR\_CVAR\_PT2PT\_JSON\_TUNING\_FILE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_PT2PT\_JSON\_TUNING\_FILE
@@ -10120,6 +11165,7 @@ MPIR\_CVAR\_PT2PT\_JSON\_TUNING\_FILE
 
 
 MPIR\_CVAR\_GENQ\_SHMEM\_POOL\_FREE\_QUEUE\_SENDER\_SIDE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_GENQ\_SHMEM\_POOL\_FREE\_QUEUE\_SENDER\_SIDE
@@ -10166,6 +11212,7 @@ MPIR\_CVAR\_GENQ\_SHMEM\_POOL\_FREE\_QUEUE\_SENDER\_SIDE
 
 
 MPIR\_CVAR\_ENABLE\_HCOLL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ENABLE\_HCOLL
@@ -10180,6 +11227,7 @@ MPIR\_CVAR\_ENABLE\_HCOLL
 
 
 MPIR\_CVAR\_COLL\_SCHED\_DUMP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_COLL\_SCHED\_DUMP
@@ -10194,6 +11242,7 @@ MPIR\_CVAR\_COLL\_SCHED\_DUMP
 
 
 MPIR\_CVAR\_SHM\_RANDOM\_ADDR\_RETRY
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_SHM\_RANDOM\_ADDR\_RETRY
@@ -10210,6 +11259,7 @@ MPIR\_CVAR\_SHM\_RANDOM\_ADDR\_RETRY
 
 
 MPIR\_CVAR\_SHM\_SYMHEAP\_RETRY
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_SHM\_SYMHEAP\_RETRY
@@ -10228,6 +11278,7 @@ MPIR\_CVAR\_SHM\_SYMHEAP\_RETRY
 
 
 MPIR\_CVAR\_ENABLE\_HEAVY\_YIELD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
   -  MVP\_ENABLE\_HEAVY\_YIELD
