@@ -25,6 +25,8 @@ Contents
 
    cvar
 
+   dynamic-tuning
+
    hydra
 
    zfp
