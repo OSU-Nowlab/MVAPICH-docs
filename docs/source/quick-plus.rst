@@ -77,9 +77,19 @@ place the library.
 2.2 Installing MVAPICH-Plus using Spack
 ---------------------------------------
 MVAPICH-Plus can be installed using Spack without building
-it from source. See the Spack userguide for details:
-https://mvapich.cse.ohio-state.edu/userguide/userguide_spack/
+it from source. It is installed like any other package but there are some things you need to keep in mind.
 
+.. code:: sh
+
+	For basic cuda builds
+        $ spack install mvapich-plus@version %compiler@version ^cuda@version
+	For basic rocm builds
+        $ spack install mvapich-plus@version +rocm amdgpu_target=gpu_microarchitecture %compiler@version ^hip@version
+	For mi300a rocm  builds
+        $ spack install mvapich-plus@version +apu +rocm amdgpu_target=gpu_microarchitecture %compiler@version ^hip@version
+
+If you get an error while trying to install this is normally caused by a build of your spec not existing yet.  In this case please fill out this `<form https://mvapich.cse.ohio-state.edu/Plusform/>` that will give us information to generate it for you and get you in contact with us.
+For any other queries please contact us at mvapich-help@cse.ohio-state.edu 
 
 3 Run MPI Program
 -----------------
