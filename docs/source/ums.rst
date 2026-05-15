@@ -16,6 +16,9 @@ To Enable MVAPICH-Plus run:
 .. code:: sh
 
     ml load ums ums038
+    #Load the program enviroment you want a list can be found with module avail
+    #for more info on ums visit https://docs.olcf.ornl.gov/software/UMS/index.html#usage
+    module load PrgEnv-gnu/8.5.0
     #To enable on-the-fly compression
     ml load mvp-compression
 
