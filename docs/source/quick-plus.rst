@@ -1,9 +1,9 @@
 ======================================
-MVAPICH-Plus 5.0rc Quick Start Guide
+MVAPICH-Plus 5.0.0 Quick Start Guide
 ======================================
 
     :Author: MVAPICH Team
-    :Date: 2026/04/20
+    :Date: 2026/05/15
 
 .. contents::
 
@@ -13,7 +13,7 @@ MVAPICH-Plus 5.0rc Quick Start Guide
 -------------
 
 This Quick Start contains the necessary information for MVAPICH users
-to download, install, and use MVAPICH-Plus 5.0rc.
+to download, install, and use MVAPICH-Plus 5.0.0.
 
 MVAPICH (pronounced as “em-vah-pich”) is an open-source MPI software
 to exploit the novel features and mechanisms of high-performance
@@ -51,7 +51,7 @@ Download the appropriate MVAPICH-Plus RPM from the website:
 
 .. code:: sh
 
-	$ wget http://mvapich.cse.ohio-state.edu/download/mvapich/plus/5.0rc/<mvp-plus-rpm-name>.rpm
+	$ wget http://mvapich.cse.ohio-state.edu/download/mvapich/plus/5.0.0/<mvp-plus-rpm-name>.rpm
 	$ rpm -Uvh --nodeps <mvp-plus-rpm-name>.rpm 
 
 The RPMs contained in our libraries are relocatable and can be installed using a
