@@ -1,5 +1,5 @@
 ======================================
-MVAPICH-Plus 5.0.0 Quick Start Guide
+MVAPICH-Plus 5.0.1 Quick Start Guide
 ======================================
 
     :Author: MVAPICH Team
@@ -13,7 +13,7 @@ MVAPICH-Plus 5.0.0 Quick Start Guide
 -------------
 
 This Quick Start contains the necessary information for MVAPICH users
-to download, install, and use MVAPICH-Plus 5.0.0.
+to download, install, and use MVAPICH-Plus 5.0.1.
 
 MVAPICH (pronounced as “em-vah-pich”) is an open-source MPI software to exploit the novel features and mechanisms of high-performance networking technologies (InfiniBand, Cray Slingshot 11, iWARP, RDMA over Converged Enhanced Ethernet (RoCE v1 and v2), Cornelis OPX, Intel PSM3 and Rockport Networks) and deliver best performance and scalability to MPI applications. The above interconnects are supported through the OFI libfabric library or  the UCX communication library.
 
@@ -43,7 +43,7 @@ Download the appropriate MVAPICH-Plus RPM from the website:
 
 .. code:: sh
 
-	$ wget http://mvapich.cse.ohio-state.edu/download/mvapich/plus/5.0.0/<mvp-plus-rpm-name>.rpm
+	$ wget http://mvapich.cse.ohio-state.edu/download/mvapich/plus/5.0.1/<mvp-plus-rpm-name>.rpm
 	$ rpm -Uvh --nodeps <mvp-plus-rpm-name>.rpm 
 
 The RPMs contained in our libraries are relocatable and can be installed using a
