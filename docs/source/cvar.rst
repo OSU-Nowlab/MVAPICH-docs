@@ -19,11281 +19,6029 @@ to potential values. For example, setting the barrier intra-node algorithm:
 
 
 
-MPIR\_CVAR\_BARRIER\_INTRA\_ALGORITHM
+MPIR_CVAR_BARRIER_INTRA_ALGORITHM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_BARRIER\_INTRA\_ALGORITHM
-
-  - MPICH\_BARRIER\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select barrier algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - dynamic - Internal algorithm selection using dynamic tuning
-
-  - nb  -     - Force nonblocking algorithm
-
-  - smp  -    - Force smp algorithm
-
-  - k\_dissemination - Force high radix dissemination algorithm
-
-  - recexch       - Force recursive exchange algorithm
-
-  - osu\_pairwise  - Force OSU mcast based design
-
-- **Default:** MPIR\_CVAR\_BARRIER\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_BARRIER\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BARRIER\_INTER\_ALGORITHM
-
-  - MPICH\_BARRIER\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select barrier algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - bcast - Force bcast algorithm
-
-  - nb    - Force nonblocking algorithm
-
-- **Default:** MPIR\_CVAR\_BARRIER\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_BARRIER\_DISSEM\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BARRIER\_DISSEM\_KVAL
-
-  - MPICH\_BARRIER\_DISSEM\_KVAL
-
-- **Description:**
-  -  k value for dissemination exchange based barrier algorithm
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_BARRIER\_RECEXCH\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BARRIER\_RECEXCH\_KVAL
-
-  - MPICH\_BARRIER\_RECEXCH\_KVAL
-
-- **Description:**
-  -  k value for recursive exchange based allreduce based
-
-  - barrier
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_BARRIER\_RECEXCH\_SINGLE\_PHASE\_RECV
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BARRIER\_RECEXCH\_SINGLE\_PHASE\_RECV
-
-  - MPICH\_BARRIER\_RECEXCH\_SINGLE\_PHASE\_RECV
-
-- **Description:**
-  -  This CVAR controls whether the recv is posted for one
-
-  - phase or two phases in recexch algos. By default, we post the recvs
-
-  - for 2 phases.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_IBARRIER\_RECEXCH\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IBARRIER\_RECEXCH\_KVAL
-
-  - MPICH\_IBARRIER\_RECEXCH\_KVAL
-
-- **Description:**
-  -  k value for recursive exchange based ibarrier
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_IBARRIER\_DISSEM\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IBARRIER\_DISSEM\_KVAL
-
-  - MPICH\_IBARRIER\_DISSEM\_KVAL
-
-- **Description:**
-  -  k value for dissemination exchange based ibarrier
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_IBARRIER\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IBARRIER\_INTRA\_ALGORITHM
-
-  - MPICH\_IBARRIER\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ibarrier algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_recursive\_doubling - Force recursive doubling algorithm
-
-  - tsp\_recexch - Force generic transport based recursive exchange
-
-  - algorithm
-
-  - tsp\_k\_dissemination - Force generic transport based high-radix
-
-  - dissemination algorithm
-
-- **Default:** MPIR\_CVAR\_IBARRIER\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IBARRIER\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IBARRIER\_INTER\_ALGORITHM
-
-  - MPICH\_IBARRIER\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ibarrier algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_bcast - Force bcast algorithm
-
-- **Default:** MPIR\_CVAR\_IBARRIER\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_BCAST\_MIN\_PROCS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BCAST\_MIN\_PROCS
-
-  - MPICH\_BCAST\_MIN\_PROCS
-
-- **Description:**
-  -  Let's define short messages as messages with size <
-
-  - MPIR\_CVAR\_BCAST\_SHORT\_MSG\_SIZE, and medium messages as messages
-
-  - with size >= MPIR\_CVAR\_BCAST\_SHORT\_MSG\_SIZE but <
-
-  - MPIR\_CVAR\_BCAST\_LONG\_MSG\_SIZE, and long messages as messages with
-
-  - size >= MPIR\_CVAR\_BCAST\_LONG\_MSG\_SIZE. The broadcast algorithms
-
-  - selection procedure is as follows. For short messages or when the
-
-  - number of processes is < MPIR\_CVAR\_BCAST\_MIN\_PROCS, we do broadcast
-
-  - using the binomial tree algorithm. Otherwise, for medium messages
-
-  - and with a power-of-two number of processes, we do broadcast based
-
-  - on a scatter followed by a recursive doubling allgather algorithm.
-
-  - Otherwise, for long messages or with non power-of-two number of
-
-  - processes, we do broadcast based on a scatter followed by a ring
-
-  - allgather algorithm. (See also: MPIR\_CVAR\_BCAST\_SHORT\_MSG\_SIZE,
-
-  - MPIR\_CVAR\_BCAST\_LONG\_MSG\_SIZE)
-
-- **Default:** 8
-
-
-
-MPIR\_CVAR\_BCAST\_SHORT\_MSG\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BCAST\_SHORT\_MSG\_SIZE
-
-  - MPICH\_BCAST\_SHORT\_MSG\_SIZE
-
-- **Description:**
-  -  Let's define short messages as messages with size <
-
-  - MPIR\_CVAR\_BCAST\_SHORT\_MSG\_SIZE, and medium messages as messages
-
-  - with size >= MPIR\_CVAR\_BCAST\_SHORT\_MSG\_SIZE but <
-
-  - MPIR\_CVAR\_BCAST\_LONG\_MSG\_SIZE, and long messages as messages with
-
-  - size >= MPIR\_CVAR\_BCAST\_LONG\_MSG\_SIZE. The broadcast algorithms
-
-  - selection procedure is as follows. For short messages or when the
-
-  - number of processes is < MPIR\_CVAR\_BCAST\_MIN\_PROCS, we do broadcast
-
-  - using the binomial tree algorithm. Otherwise, for medium messages
-
-  - and with a power-of-two number of processes, we do broadcast based
-
-  - on a scatter followed by a recursive doubling allgather algorithm.
-
-  - Otherwise, for long messages or with non power-of-two number of
-
-  - processes, we do broadcast based on a scatter followed by a ring
-
-  - allgather algorithm. (See also: MPIR\_CVAR\_BCAST\_MIN\_PROCS,
-
-  - MPIR\_CVAR\_BCAST\_LONG\_MSG\_SIZE)
-
-- **Default:** 12288
-
-
-
-MPIR\_CVAR\_BCAST\_LONG\_MSG\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BCAST\_LONG\_MSG\_SIZE
-
-  - MPICH\_BCAST\_LONG\_MSG\_SIZE
-
-- **Description:**
-  -  Let's define short messages as messages with size <
-
-  - MPIR\_CVAR\_BCAST\_SHORT\_MSG\_SIZE, and medium messages as messages
-
-  - with size >= MPIR\_CVAR\_BCAST\_SHORT\_MSG\_SIZE but <
-
-  - MPIR\_CVAR\_BCAST\_LONG\_MSG\_SIZE, and long messages as messages with
-
-  - size >= MPIR\_CVAR\_BCAST\_LONG\_MSG\_SIZE. The broadcast algorithms
-
-  - selection procedure is as follows. For short messages or when the
-
-  - number of processes is < MPIR\_CVAR\_BCAST\_MIN\_PROCS, we do broadcast
-
-  - using the binomial tree algorithm. Otherwise, for medium messages
-
-  - and with a power-of-two number of processes, we do broadcast based
-
-  - on a scatter followed by a recursive doubling allgather algorithm.
-
-  - Otherwise, for long messages or with non power-of-two number of
-
-  - processes, we do broadcast based on a scatter followed by a ring
-
-  - allgather algorithm. (See also: MPIR\_CVAR\_BCAST\_MIN\_PROCS,
-
-  - MPIR\_CVAR\_BCAST\_SHORT\_MSG\_SIZE)
-
-- **Default:** 524288
-
-
-
-MPIR\_CVAR\_MAX\_SMP\_BCAST\_MSG\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_MAX\_SMP\_BCAST\_MSG\_SIZE
-
-  - MPICH\_MAX\_SMP\_BCAST\_MSG\_SIZE
-
-- **Description:**
-  -  Maximum message size for which SMP-aware broadcast is
-
-  - used.  A value of '0' uses SMP-aware broadcast for all message
-
-  - sizes.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_BCAST\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BCAST\_INTRA\_ALGORITHM
-
-  - MPICH\_BCAST\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select bcast algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - dynamic - Internal algorithm selection using dynamic tuning
-
-  - binomial  -   -   -   - - Force Binomial Tree
-
-  - nb  -   -   -   -       - Force nonblocking
-
-  - algorithm
-
-  - smp  -   -   -   -      - Force smp algorithm
-
-  - scatter\_recursive\_doubling\_allgather    - Force Scatter
-
-  - Recursive-Doubling Allgather
-
-  - scatter\_ring\_allgather  -   -   - Force Scatter Ring
-
-  - pipelined\_tree  -   -   -   - Force tree-based
-
-  - pipelined algorithm
-
-  - tree  -   -   -   -     - Force tree-based
-
-  - algorithm
-
-  - osu\_knomial  -   -   -      - Force OSU knomial
-
-  - algorithm
-
-  - osu\_pairwise  -   -   -     - Force OSU pairwise
-
-  - algorithm
-
-  - osu\_pipelined  -   -   -    - Force OSU pipelined
-
-  - algorithm
-
-- **Default:** MPIR\_CVAR\_BCAST\_INTRA\_ALGORITHM\_dynamic
-
-
-
-MPIR\_CVAR\_BCAST\_TREE\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BCAST\_TREE\_KVAL
-
-  - MPICH\_BCAST\_TREE\_KVAL
-
-- **Description:**
-  -  k value for tree (kary, knomial, etc.) based bcast
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_BCAST\_TREE\_TYPE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BCAST\_TREE\_TYPE
-
-  - MPICH\_BCAST\_TREE\_TYPE
-
-- **Description:**
-  -  Tree type for tree based bcast kary      - kary tree type
-
-  - knomial\_1 - knomial\_1 tree type knomial\_2 - knomial\_2 tree type
-
-  - topology\_aware - topology\_aware tree type topology\_aware\_k -
-
-  - topology\_aware tree type with branching factor k topology\_wave -
-
-  - topology\_wave tree type
-
-- **Default:** "kary"
-
-
-
-MPIR\_CVAR\_BCAST\_TOPO\_REORDER\_ENABLE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BCAST\_TOPO\_REORDER\_ENABLE
-
-  - MPICH\_BCAST\_TOPO\_REORDER\_ENABLE
-
-- **Description:**
-  -  This cvar controls if the leaders are reordered based on
-
-  - the number of ranks in each group.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_BCAST\_TOPO\_OVERHEAD
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BCAST\_TOPO\_OVERHEAD
-
-  - MPICH\_BCAST\_TOPO\_OVERHEAD
-
-- **Description:**
-  -  This cvar controls the size of the overhead.
-
-- **Default:** 200
-
-
-
-MPIR\_CVAR\_BCAST\_TOPO\_DIFF\_GROUPS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BCAST\_TOPO\_DIFF\_GROUPS
-
-  - MPICH\_BCAST\_TOPO\_DIFF\_GROUPS
-
-- **Description:**
-  -  This cvar controls the latency between different groups.
-
-- **Default:** 2800
-
-
-
-MPIR\_CVAR\_BCAST\_TOPO\_DIFF\_SWITCHES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BCAST\_TOPO\_DIFF\_SWITCHES
-
-  - MPICH\_BCAST\_TOPO\_DIFF\_SWITCHES
-
-- **Description:**
-  -  This cvar controls the latency between different switches
-
-  - in the same groups.
-
-- **Default:** 1900
-
-
-
-MPIR\_CVAR\_BCAST\_TOPO\_SAME\_SWITCHES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BCAST\_TOPO\_SAME\_SWITCHES
-
-  - MPICH\_BCAST\_TOPO\_SAME\_SWITCHES
-
-- **Description:**
-  -  This cvar controls the latency in the same switch.
-
-- **Default:** 1600
-
-
-
-MPIR\_CVAR\_BCAST\_IS\_NON\_BLOCKING
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BCAST\_IS\_NON\_BLOCKING
-
-  - MPICH\_BCAST\_IS\_NON\_BLOCKING
-
-- **Description:**
-  -  If set to true, MPI\_Bcast will use non-blocking send.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_BCAST\_TREE\_PIPELINE\_CHUNK\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BCAST\_TREE\_PIPELINE\_CHUNK\_SIZE
-
-  - MPICH\_BCAST\_TREE\_PIPELINE\_CHUNK\_SIZE
-
-- **Description:**
-  -  Indicates the chunk size for pipelined bcast.
-
-- **Default:** 8192
-
-
-
-MPIR\_CVAR\_BCAST\_RECV\_PRE\_POST
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BCAST\_RECV\_PRE\_POST
-
-  - MPICH\_BCAST\_RECV\_PRE\_POST
-
-- **Description:**
-  -  If set to true, MPI\_Bcast will pre-post all the receives.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_BCAST\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BCAST\_INTER\_ALGORITHM
-
-  - MPICH\_BCAST\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select bcast algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - nb  -   -       - Force nonblocking algorithm
-
-  - remote\_send\_local\_bcast - Force remote-send-local-bcast algorithm
-
-- **Default:** MPIR\_CVAR\_BCAST\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IBCAST\_TREE\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IBCAST\_TREE\_KVAL
-
-  - MPICH\_IBCAST\_TREE\_KVAL
-
-- **Description:**
-  -  k value for tree (kary, knomial, etc.) based ibcast
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_IBCAST\_TREE\_TYPE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IBCAST\_TREE\_TYPE
-
-  - MPICH\_IBCAST\_TREE\_TYPE
-
-- **Description:**
-  -  Tree type for tree based ibcast kary      - kary tree type
-
-  - knomial\_1 - knomial\_1 tree type knomial\_2 - knomial\_2 tree type
-
-- **Default:** "kary"
-
-
-
-MPIR\_CVAR\_IBCAST\_TREE\_PIPELINE\_CHUNK\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IBCAST\_TREE\_PIPELINE\_CHUNK\_SIZE
-
-  - MPICH\_IBCAST\_TREE\_PIPELINE\_CHUNK\_SIZE
-
-- **Description:**
-  -  Maximum chunk size (in bytes) for pipelining in tree based
-
-  - ibcast. Default value is 0, that is, no pipelining by default
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_IBCAST\_RING\_CHUNK\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IBCAST\_RING\_CHUNK\_SIZE
-
-  - MPICH\_IBCAST\_RING\_CHUNK\_SIZE
-
-- **Description:**
-  -  Maximum chunk size (in bytes) for pipelining in ibcast
-
-  - ring algorithm. Default value is 0, that is, no pipelining by
-
-  - default
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_IBCAST\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IBCAST\_INTRA\_ALGORITHM
-
-  - MPICH\_IBCAST\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ibcast algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_binomial  -   -   -      - Force Binomial
-
-  - algorithm
-
-  - sched\_smp  -   -   -   -   - Force smp algorithm
-
-  - sched\_scatter\_recursive\_doubling\_allgather - Force Scatter
-
-  - Recursive Doubling Allgather algorithm
-
-  - sched\_scatter\_ring\_allgather  -        - Force Scatter Ring
-
-  - Allgather algorithm
-
-  - tsp\_tree  -   -   -        - Force Generic Transport
-
-  - Tree algorithm
-
-  - tsp\_scatterv\_recexch\_allgatherv  - - Force Generic Transport
-
-  - Scatterv followed by Recursive Exchange Allgatherv algorithm
-
-  - tsp\_scatterv\_ring\_allgatherv  -    - Force Generic Transport
-
-  - Scatterv followed by Ring Allgatherv algorithm
-
-  - tsp\_ring  -   -   -        - Force Generic Transport
-
-  - Ring algorithm
-
-- **Default:** MPIR\_CVAR\_IBCAST\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IBCAST\_SCATTERV\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IBCAST\_SCATTERV\_KVAL
-
-  - MPICH\_IBCAST\_SCATTERV\_KVAL
-
-- **Description:**
-  -  k value for tree based scatter in
-
-  - scatter\_recexch\_allgather algorithm
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_IBCAST\_ALLGATHERV\_RECEXCH\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IBCAST\_ALLGATHERV\_RECEXCH\_KVAL
-
-  - MPICH\_IBCAST\_ALLGATHERV\_RECEXCH\_KVAL
-
-- **Description:**
-  -  k value for recursive exchange based allgather in
-
-  - scatter\_recexch\_allgather algorithm
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_IBCAST\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IBCAST\_INTER\_ALGORITHM
-
-  - MPICH\_IBCAST\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ibcast algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_flat - Force flat algorithm
-
-- **Default:** MPIR\_CVAR\_IBCAST\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_GATHER\_INTER\_SHORT\_MSG\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_GATHER\_INTER\_SHORT\_MSG\_SIZE
-
-  - MPICH\_GATHER\_INTER\_SHORT\_MSG\_SIZE
-
-- **Description:**
-  -  use the short message algorithm for intercommunicator
-
-  - MPI\_Gather if the send buffer size is < this value (in bytes) (See
-
-  - also: MPIR\_CVAR\_GATHER\_VSMALL\_MSG\_SIZE)
-
-- **Default:** 2048
-
-
-
-MPIR\_CVAR\_GATHER\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_GATHER\_INTRA\_ALGORITHM
-
-  - MPICH\_GATHER\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select gather algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - dynamic - Internal algorithm selection using dynamic tuning
-
-  - binomial - Force binomial algorithm
-
-  - nb       - Force nonblocking algorithm
-
-  - osu\_direct - Force OSU direct algorithm
-
-  - osu\_direct\_block - Force OSU direct block algorithm
-
-- **Default:** MPIR\_CVAR\_GATHER\_INTRA\_ALGORITHM\_dynamic
-
-
-
-MPIR\_CVAR\_GATHER\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_GATHER\_INTER\_ALGORITHM
-
-  - MPICH\_GATHER\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select gather algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - linear  -   -    - Force linear algorithm
-
-  - local\_gather\_remote\_send - Force local-gather-remote-send algorithm
-
-  - nb  -   -        - Force nonblocking algorithm
-
-- **Default:** MPIR\_CVAR\_GATHER\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IGATHER\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IGATHER\_INTRA\_ALGORITHM
-
-  - MPICH\_IGATHER\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select igather algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_binomial     - Force binomial algorithm
-
-  - tsp\_tree       - Force genetric transport based tree algorithm
-
-- **Default:** MPIR\_CVAR\_IGATHER\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IGATHER\_TREE\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IGATHER\_TREE\_KVAL
-
-  - MPICH\_IGATHER\_TREE\_KVAL
-
-- **Description:**
-  -  k value for tree based igather
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_IGATHER\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IGATHER\_INTER\_ALGORITHM
-
-  - MPICH\_IGATHER\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select igather algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_long  - Force long inter algorithm
-
-  - sched\_short - Force short inter algorithm
-
-- **Default:** MPIR\_CVAR\_IGATHER\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_GATHERV\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_GATHERV\_INTRA\_ALGORITHM
-
-  - MPICH\_GATHERV\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select gatherv algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - dynamic - Internal algorithm selection using dynamic tuning
-
-  - linear - Force linear algorithm
-
-  - nb     - Force nonblocking algorithm
-
-- **Default:** MPIR\_CVAR\_GATHERV\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_GATHERV\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_GATHERV\_INTER\_ALGORITHM
-
-  - MPICH\_GATHERV\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select gatherv algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - linear - Force linear algorithm
-
-  - nb     - Force nonblocking algorithm
-
-- **Default:** MPIR\_CVAR\_GATHERV\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IGATHERV\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IGATHERV\_INTRA\_ALGORITHM
-
-  - MPICH\_IGATHERV\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select igatherv algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_linear  -  - Force linear algorithm
-
-  - tsp\_linear       - Force generic transport based linear algorithm
-
-- **Default:** MPIR\_CVAR\_IGATHERV\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IGATHERV\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IGATHERV\_INTER\_ALGORITHM
-
-  - MPICH\_IGATHERV\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select igatherv algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_linear - Force linear algorithm
-
-  - tsp\_linear - Force generic transport based linear algorithm
-
-- **Default:** MPIR\_CVAR\_IGATHERV\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_SCATTER\_INTER\_SHORT\_MSG\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_SCATTER\_INTER\_SHORT\_MSG\_SIZE
-
-  - MPICH\_SCATTER\_INTER\_SHORT\_MSG\_SIZE
-
-- **Description:**
-  -  use the short message algorithm for intercommunicator
-
-  - MPI\_Scatter if the send buffer size is < this value (in bytes)
-
-- **Default:** 2048
-
-
-
-MPIR\_CVAR\_SCATTER\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_SCATTER\_INTRA\_ALGORITHM
-
-  - MPICH\_SCATTER\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select scatter algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - dynamic - Internal algorithm selection using dynamic tuning
-
-  - binomial - Force binomial algorithm
-
-  - nb       - Force nonblocking algorithm
-
-  - osu\_direct - Force OSU direct alogirthm
-
-- **Default:** MPIR\_CVAR\_SCATTER\_INTRA\_ALGORITHM\_dynamic
-
-
-
-MPIR\_CVAR\_SCATTER\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_SCATTER\_INTER\_ALGORITHM
-
-  - MPICH\_SCATTER\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select scatter algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - linear  -   -     - Force linear algorithm
-
-  - nb  -   -   - - Force nonblocking algorithm
-
-  - remote\_send\_local\_scatter - Force remote-send-local-scatter
-
-  - algorithm
-
-- **Default:** MPIR\_CVAR\_SCATTER\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_ISCATTER\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ISCATTER\_INTRA\_ALGORITHM
-
-  - MPICH\_ISCATTER\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select iscatter algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_binomial     - Force binomial algorithm
-
-  - tsp\_tree       - Force genetric transport based tree algorithm
-
-- **Default:** MPIR\_CVAR\_ISCATTER\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_ISCATTER\_TREE\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ISCATTER\_TREE\_KVAL
-
-  - MPICH\_ISCATTER\_TREE\_KVAL
-
-- **Description:**
-  -  k value for tree based iscatter
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_ISCATTER\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ISCATTER\_INTER\_ALGORITHM
-
-  - MPICH\_ISCATTER\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select iscatter algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_linear  -   -     - Force linear algorithm
-
-  - sched\_remote\_send\_local\_scatter - Force remote-send-local-scatter
-
-  - algorithm
-
-- **Default:** MPIR\_CVAR\_ISCATTER\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_SCATTERV\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_SCATTERV\_INTRA\_ALGORITHM
-
-  - MPICH\_SCATTERV\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select scatterv algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - dynamic - Internal algorithm selection using dynamic tuning
-
-  - linear - Force linear algorithm
-
-  - nb     - Force nonblocking algorithm
-
-- **Default:** MPIR\_CVAR\_SCATTERV\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_SCATTERV\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_SCATTERV\_INTER\_ALGORITHM
-
-  - MPICH\_SCATTERV\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select scatterv algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - linear - Force linear algorithm
-
-  - nb     - Force nonblocking algorithm
-
-- **Default:** MPIR\_CVAR\_SCATTERV\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_ISCATTERV\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ISCATTERV\_INTRA\_ALGORITHM
-
-  - MPICH\_ISCATTERV\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select iscatterv algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_linear    - Force linear algorithm
-
-  - tsp\_linear  - Force generic transport based linear algorithm
-
-- **Default:** MPIR\_CVAR\_ISCATTERV\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_ISCATTERV\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ISCATTERV\_INTER\_ALGORITHM
-
-  - MPICH\_ISCATTERV\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select iscatterv algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_linear - Force linear algorithm
-
-  - tsp\_linear - Force generic transport based linear algorithm
-
-- **Default:** MPIR\_CVAR\_ISCATTERV\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_ALLGATHER\_SHORT\_MSG\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLGATHER\_SHORT\_MSG\_SIZE
-
-  - MPICH\_ALLGATHER\_SHORT\_MSG\_SIZE
-
-- **Description:**
-  -  For MPI\_Allgather and MPI\_Allgatherv, the short message
-
-  - algorithm will be used if the send buffer size is < this value (in
-
-  - bytes). (See also: MPIR\_CVAR\_ALLGATHER\_LONG\_MSG\_SIZE)
-
-- **Default:** 81920
-
-
-
-MPIR\_CVAR\_ALLGATHER\_LONG\_MSG\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLGATHER\_LONG\_MSG\_SIZE
-
-  - MPICH\_ALLGATHER\_LONG\_MSG\_SIZE
-
-- **Description:**
-  -  For MPI\_Allgather and MPI\_Allgatherv, the long message
-
-  - algorithm will be used if the send buffer size is >= this value (in
-
-  - bytes) (See also: MPIR\_CVAR\_ALLGATHER\_SHORT\_MSG\_SIZE)
-
-- **Default:** 524288
-
-
-
-MPIR\_CVAR\_ALLGATHER\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLGATHER\_INTRA\_ALGORITHM
-
-  - MPICH\_ALLGATHER\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select allgather algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - dynamic - Internal algorithm selection using dynamic tuning
-
-  - brucks  -       - Force brucks algorithm
-
-  - k\_brucks  -     - Force brucks algorithm
-
-  - nb  -   -   - Force nonblocking algorithm
-
-  - recursive\_doubling  - Force recursive doubling algorithm
-
-  - ring  -   - - Force ring algorithm
-
-  - recexch\_doubling    - Force recexch distance doubling algorithm
-
-  - recexch\_halving     - Force recexch distance halving algorithm
-
-  - osu\_direct  -   - Force MVAPICH direct algorithm
-
-  - osu\_direct\_spread   - Force MVAPICH direct spread algorithm
-
-  - osu\_direct\_throttling - Force MVAPICH direct throttling algorithm
-
-  - osu\_gather\_bcast    - Force MVAPICH gather-bcast algorithm
-
-  - osu\_gpu\_compression - Force MVAPICH gpu compression algorithm
-
-- **Default:** MPIR\_CVAR\_ALLGATHER\_INTRA\_ALGORITHM\_dynamic
-
-
-
-MPIR\_CVAR\_ALLGATHER\_BRUCKS\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLGATHER\_BRUCKS\_KVAL
-
-  - MPICH\_ALLGATHER\_BRUCKS\_KVAL
-
-- **Description:**
-  -  radix (k) value for generic transport brucks based
-
-  - allgather
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_ALLGATHER\_RECEXCH\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLGATHER\_RECEXCH\_KVAL
-
-  - MPICH\_ALLGATHER\_RECEXCH\_KVAL
-
-- **Description:**
-  -  k value for recursive exchange based allgather
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_ALLGATHER\_RECEXCH\_SINGLE\_PHASE\_RECV
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLGATHER\_RECEXCH\_SINGLE\_PHASE\_RECV
-
-  - MPICH\_ALLGATHER\_RECEXCH\_SINGLE\_PHASE\_RECV
-
-- **Description:**
-  -  This CVAR controls whether the recv is posted for one
-
-  - phase or two phases in recexch algos. By default, we post the recvs
-
-  - for 2 phases.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_ALLGATHER\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLGATHER\_INTER\_ALGORITHM
-
-  - MPICH\_ALLGATHER\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select allgather algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - local\_gather\_remote\_bcast - Force local-gather-remote-bcast
-
-  - algorithm
-
-  - nb  -   -   - - Force nonblocking algorithm
-
-- **Default:** MPIR\_CVAR\_ALLGATHER\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IALLGATHER\_RECEXCH\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLGATHER\_RECEXCH\_KVAL
-
-  - MPICH\_IALLGATHER\_RECEXCH\_KVAL
-
-- **Description:**
-  -  k value for recursive exchange based iallgather
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_IALLGATHER\_BRUCKS\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLGATHER\_BRUCKS\_KVAL
-
-  - MPICH\_IALLGATHER\_BRUCKS\_KVAL
-
-- **Description:**
-  -  k value for radix in brucks based iallgather
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_IALLGATHER\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLGATHER\_INTRA\_ALGORITHM
-
-  - MPICH\_IALLGATHER\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select iallgather algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_ring  -        - Force ring algorithm
-
-  - sched\_brucks  -      - Force brucks algorithm
-
-  - sched\_recursive\_doubling - Force recursive doubling algorithm
-
-  - tsp\_ring       - Force generic transport ring algorithm
-
-  - tsp\_brucks     - Force generic transport based brucks algorithm
-
-  - tsp\_recexch\_doubling - Force generic transport recursive exchange
-
-  - with neighbours doubling in distance in each phase
-
-  - tsp\_recexch\_halving  - Force generic transport recursive exchange
-
-  - with neighbours halving in distance in each phase
-
-- **Default:** MPIR\_CVAR\_IALLGATHER\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IALLGATHER\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLGATHER\_INTER\_ALGORITHM
-
-  - MPICH\_IALLGATHER\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select iallgather algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_local\_gather\_remote\_bcast - Force local-gather-remote-bcast
-
-  - algorithm
-
-- **Default:** MPIR\_CVAR\_IALLGATHER\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_ALLGATHERV\_PIPELINE\_MSG\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLGATHERV\_PIPELINE\_MSG\_SIZE
-
-  - MPICH\_ALLGATHERV\_PIPELINE\_MSG\_SIZE
-
-- **Description:**
-  -  The smallest message size that will be used for the
-
-  - pipelined, large-message, ring algorithm in the MPI\_Allgatherv
-
-  - implementation.
-
-- **Default:** 32768
-
-
-
-MPIR\_CVAR\_ALLGATHERV\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLGATHERV\_INTRA\_ALGORITHM
-
-  - MPICH\_ALLGATHERV\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select allgatherv algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - dynamic - Internal algorithm selection using dynamic tuning
-
-  - brucks  -      - Force brucks algorithm
-
-  - nb  -   -  - Force nonblocking algorithm
-
-  - recursive\_doubling - Force recursive doubling algorithm
-
-  - ring  -        - Force ring algorithm
-
-  - osu\_direct\_throttling - Force MVAPICH direct throttling algorithm
-
-- **Default:** MPIR\_CVAR\_ALLGATHERV\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_ALLGATHERV\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLGATHERV\_INTER\_ALGORITHM
-
-  - MPICH\_ALLGATHERV\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select allgatherv algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - nb  -   -   - - Force nonblocking algorithm
-
-  - remote\_gather\_local\_bcast - Force remote-gather-local-bcast
-
-  - algorithm
-
-- **Default:** MPIR\_CVAR\_ALLGATHERV\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IALLGATHERV\_RECEXCH\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLGATHERV\_RECEXCH\_KVAL
-
-  - MPICH\_IALLGATHERV\_RECEXCH\_KVAL
-
-- **Description:**
-  -  k value for recursive exchange based iallgatherv
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_IALLGATHERV\_BRUCKS\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLGATHERV\_BRUCKS\_KVAL
-
-  - MPICH\_IALLGATHERV\_BRUCKS\_KVAL
-
-- **Description:**
-  -  k value for radix in brucks based iallgatherv
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_IALLGATHERV\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLGATHERV\_INTRA\_ALGORITHM
-
-  - MPICH\_IALLGATHERV\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select iallgatherv algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_brucks  -      - Force brucks algorithm
-
-  - sched\_recursive\_doubling - Force recursive doubling algorithm
-
-  - sched\_ring  -        - Force ring algorithm
-
-  - tsp\_recexch\_doubling - Force generic transport recursive exchange
-
-  - with neighbours doubling in distance in each phase
-
-  - tsp\_recexch\_halving  - Force generic transport recursive exchange
-
-  - with neighbours halving in distance in each phase
-
-  - tsp\_ring  -      - Force generic transport ring algorithm
-
-  - tsp\_brucks  -    - Force generic transport based brucks
-
-  - algorithm
-
-- **Default:** MPIR\_CVAR\_IALLGATHERV\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IALLGATHERV\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLGATHERV\_INTER\_ALGORITHM
-
-  - MPICH\_IALLGATHERV\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select iallgatherv algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_remote\_gather\_local\_bcast - Force remote-gather-local-bcast
-
-  - algorithm
-
-- **Default:** MPIR\_CVAR\_IALLGATHERV\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_ALLTOALL\_SHORT\_MSG\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLTOALL\_SHORT\_MSG\_SIZE
-
-  - MPICH\_ALLTOALL\_SHORT\_MSG\_SIZE
-
-- **Description:**
-  -  the short message algorithm will be used if the
-
-  - per-destination message size (sendcount*size(sendtype)) is <= this
-
-  - value (See also: MPIR\_CVAR\_ALLTOALL\_MEDIUM\_MSG\_SIZE)
-
-- **Default:** 256
-
-
-
-MPIR\_CVAR\_ALLTOALL\_MEDIUM\_MSG\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLTOALL\_MEDIUM\_MSG\_SIZE
-
-  - MPICH\_ALLTOALL\_MEDIUM\_MSG\_SIZE
-
-- **Description:**
-  -  the medium message algorithm will be used if the
-
-  - per-destination message size (sendcount*size(sendtype)) is <= this
-
-  - value and larger than MPIR\_CVAR\_ALLTOALL\_SHORT\_MSG\_SIZE (See also:
-
-  - MPIR\_CVAR\_ALLTOALL\_SHORT\_MSG\_SIZE)
-
-- **Default:** 32768
-
-
-
-MPIR\_CVAR\_ALLTOALL\_THROTTLE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLTOALL\_THROTTLE
-
-  - MPICH\_ALLTOALL\_THROTTLE
-
-- **Description:**
-  -  Maximum number of concurrent irecvs/isends posted at a
-
-  - time in some alltoall algorithms. Setting it to 0 causes all
-
-  - irecvs/isends to be posted at once
-
-- **Default:** 32
-
-
-
-MPIR\_CVAR\_ALLREDUCE\_THROTTLE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLREDUCE\_THROTTLE
-
-  - MPICH\_ALLREDUCE\_THROTTLE
-
-- **Description:**
-  -  Maximum number of concurrent irecvs/isends posted at a
-
-  - time in direct allreduce algorithms. Setting it to 0 causes all
-
-  - irecvs/isends to be posted at once
-
-- **Default:** 32
-
-
-
-MPIR\_CVAR\_ALLGATHER\_THROTTLE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLGATHER\_THROTTLE
-
-  - MPICH\_ALLGATHER\_THROTTLE
-
-- **Description:**
-  -  Maximum number of concurrent irecvs/isends posted at a
-
-  - time in direct allgather algorithms. Setting it to 0 causes all
-
-  - irecvs/isends to be posted at once
-
-- **Default:** 8
-
-
-
-MPIR\_CVAR\_REDUCE\_SCATTER\_THROTTLE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_REDUCE\_SCATTER\_THROTTLE
-
-  - MPICH\_REDUCE\_SCATTER\_THROTTLE
-
-- **Description:**
-  -  Maximum number of concurrent irecvs/isends posted at a
-
-  - time in direct reduce scatter algorithms. Setting it to 0 causes
-
-  - all irecvs/isends to be posted at once
-
-- **Default:** 8
-
-
-
-MPIR\_CVAR\_ALLTOALL\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLTOALL\_INTRA\_ALGORITHM
-
-  - MPICH\_ALLTOALL\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select alltoall algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - dynamic - Internal algorithm selection using dynamic tuning
-
-  - brucks  -   -     - Force brucks algorithm
-
-  - k\_brucks  -   -   - Force Force radix k brucks algorithm
-
-  - nb  -   -   - - Force nonblocking algorithm
-
-  - pairwise  -   -   - Force pairwise algorithm
-
-  - pairwise\_sendrecv\_replace - Force pairwise sendrecv replace
-
-  - algorithm
-
-  - scattered  -   -  - Force scattered algorithm
-
-  - osu\_gpu\_compression       - Force compression algorithm
-
-- **Default:** MPIR\_CVAR\_ALLTOALL\_INTRA\_ALGORITHM\_dynamic
-
-
-
-MPIR\_CVAR\_ALLTOALL\_BRUCKS\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLTOALL\_BRUCKS\_KVAL
-
-  - MPICH\_ALLTOALL\_BRUCKS\_KVAL
-
-- **Description:**
-  -  radix (k) value for generic transport brucks based
-
-  - alltoall
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_ALLTOALL\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLTOALL\_INTER\_ALGORITHM
-
-  - MPICH\_ALLTOALL\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select alltoall algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - nb  -   - - Force nonblocking algorithm
-
-  - pairwise\_exchange - Force pairwise exchange algorithm
-
-- **Default:** MPIR\_CVAR\_ALLTOALL\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IALLTOALL\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLTOALL\_INTRA\_ALGORITHM
-
-  - MPICH\_IALLTOALL\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ialltoall algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_brucks  -     - Force brucks algorithm
-
-  - sched\_inplace  -    - Force inplace algorithm
-
-  - sched\_pairwise  -   - Force pairwise algorithm
-
-  - sched\_permuted\_sendrecv - Force permuted sendrecv algorithm
-
-  - tsp\_ring  -     - Force generic transport based ring algorithm
-
-  - tsp\_brucks  -   - Force generic transport based brucks
-
-  - algorithm
-
-  - tsp\_scattered       - Force generic transport based scattered
-
-  - algorithm
-
-- **Default:** MPIR\_CVAR\_IALLTOALL\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IALLTOALL\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLTOALL\_INTER\_ALGORITHM
-
-  - MPICH\_IALLTOALL\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ialltoall algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_pairwise\_exchange - Force pairwise exchange algorithm
-
-- **Default:** MPIR\_CVAR\_IALLTOALL\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_ALLTOALLV\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLTOALLV\_INTRA\_ALGORITHM
-
-  - MPICH\_ALLTOALLV\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select alltoallv algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - dynamic - Internal algorithm selection using dynamic tuning
-
-  - nb  -   -   - - Force nonblocking algorithm
-
-  - pairwise\_sendrecv\_replace - Force pairwise\_sendrecv\_replace
-
-  - algorithm
-
-  - scattered  -   -  - Force scattered algorithm
-
-- **Default:** MPIR\_CVAR\_ALLTOALLV\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_ALLTOALLV\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLTOALLV\_INTER\_ALGORITHM
-
-  - MPICH\_ALLTOALLV\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select alltoallv algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - pairwise\_exchange - Force pairwise exchange algorithm
-
-  - nb  -   - - Force nonblocking algorithm
-
-- **Default:** MPIR\_CVAR\_ALLTOALLV\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IALLTOALLV\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLTOALLV\_INTRA\_ALGORITHM
-
-  - MPICH\_IALLTOALLV\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ialltoallv algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_blocked  -    - Force blocked algorithm
-
-  - sched\_inplace  -    - Force inplace algorithm
-
-  - tsp\_scattered       - Force generic transport based scattered
-
-  - algorithm
-
-  - tsp\_blocked  -  - Force generic transport blocked algorithm
-
-  - tsp\_inplace  -  - Force generic transport inplace algorithm
-
-- **Default:** MPIR\_CVAR\_IALLTOALLV\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IALLTOALLV\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLTOALLV\_INTER\_ALGORITHM
-
-  - MPICH\_IALLTOALLV\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ialltoallv algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_pairwise\_exchange - Force pairwise exchange algorithm
-
-- **Default:** MPIR\_CVAR\_IALLTOALLV\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IALLTOALLV\_SCATTERED\_OUTSTANDING\_TASKS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLTOALLV\_SCATTERED\_OUTSTANDING\_TASKS
-
-  - MPICH\_IALLTOALLV\_SCATTERED\_OUTSTANDING\_TASKS
-
-- **Description:**
-  -  Maximum number of outstanding sends and recvs posted at a
-
-  - time
-
-- **Default:** 64
-
-
-
-MPIR\_CVAR\_IALLTOALLV\_SCATTERED\_BATCH\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLTOALLV\_SCATTERED\_BATCH\_SIZE
-
-  - MPICH\_IALLTOALLV\_SCATTERED\_BATCH\_SIZE
-
-- **Description:**
-  -  Number of send/receive tasks that scattered algorithm
-
-  - waits for completion before posting another batch of send/receives
-
-  - of that size
-
-- **Default:** 4
-
-
-
-MPIR\_CVAR\_ALLTOALLW\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLTOALLW\_INTRA\_ALGORITHM
-
-  - MPICH\_ALLTOALLW\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select alltoallw algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - dynamic - Internal algorithm selection using dynamic tuning
-
-  - nb  -   -   - - Force nonblocking algorithm
-
-  - pairwise\_sendrecv\_replace - Force pairwise sendrecv replace
-
-  - algorithm
-
-  - scattered  -   -  - Force scattered algorithm
-
-- **Default:** MPIR\_CVAR\_ALLTOALLW\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_ALLTOALLW\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLTOALLW\_INTER\_ALGORITHM
-
-  - MPICH\_ALLTOALLW\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select alltoallw algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - nb  -   - - Force nonblocking algorithm
-
-  - pairwise\_exchange - Force pairwise exchange algorithm
-
-- **Default:** MPIR\_CVAR\_ALLTOALLW\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IALLTOALLW\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLTOALLW\_INTRA\_ALGORITHM
-
-  - MPICH\_IALLTOALLW\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ialltoallw algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_blocked  -    - Force blocked algorithm
-
-  - sched\_inplace  -    - Force inplace algorithm
-
-  - tsp\_blocked   - Force generic transport based blocked algorithm
-
-  - tsp\_inplace   - Force generic transport based inplace algorithm
-
-- **Default:** MPIR\_CVAR\_IALLTOALLW\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IALLTOALLW\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLTOALLW\_INTER\_ALGORITHM
-
-  - MPICH\_IALLTOALLW\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ialltoallw algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_pairwise\_exchange - Force pairwise exchange algorithm
-
-- **Default:** MPIR\_CVAR\_IALLTOALLW\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_REDUCE\_SHORT\_MSG\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_REDUCE\_SHORT\_MSG\_SIZE
-
-  - MPICH\_REDUCE\_SHORT\_MSG\_SIZE
-
-- **Description:**
-  -  the short message algorithm will be used if the send
-
-  - buffer size is <= this value (in bytes)
-
-- **Default:** 2048
-
-
-
-MPIR\_CVAR\_MAX\_SMP\_REDUCE\_MSG\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_MAX\_SMP\_REDUCE\_MSG\_SIZE
-
-  - MPICH\_MAX\_SMP\_REDUCE\_MSG\_SIZE
-
-- **Description:**
-  -  Maximum message size for which SMP-aware reduce is used. 
-
-  - A value of '0' uses SMP-aware reduce for all message sizes.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_REDUCE\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_REDUCE\_INTRA\_ALGORITHM
-
-  - MPICH\_REDUCE\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select reduce algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - dynamic - Internal algorithm selection using dynamic tuning
-
-  - binomial  -       - Force binomial algorithm
-
-  - nb  -   -     - Force nonblocking algorithm
-
-  - smp  -   -    - Force smp algorithm
-
-  - reduce\_scatter\_gather - Force reduce scatter gather algorithm
-
-  - osu\_knomial  -    - Force MVAPICH knomial algorithm
-
-  - osu\_allreduce  -  - Force MVAPICH allreduce algorithm
-
-- **Default:** MPIR\_CVAR\_REDUCE\_INTRA\_ALGORITHM\_dynamic
-
-
-
-MPIR\_CVAR\_REDUCE\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_REDUCE\_INTER\_ALGORITHM
-
-  - MPICH\_REDUCE\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select reduce algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - local\_reduce\_remote\_send - Force local-reduce-remote-send algorithm
-
-  - nb  -   -        - Force nonblocking algorithm
-
-- **Default:** MPIR\_CVAR\_REDUCE\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IREDUCE\_TREE\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IREDUCE\_TREE\_KVAL
-
-  - MPICH\_IREDUCE\_TREE\_KVAL
-
-- **Description:**
-  -  k value for tree (kary, knomial, etc.) based ireduce
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_IREDUCE\_TREE\_TYPE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IREDUCE\_TREE\_TYPE
-
-  - MPICH\_IREDUCE\_TREE\_TYPE
-
-- **Description:**
-  -  Tree type for tree based ireduce kary      - kary tree
-
-  - knomial\_1 - knomial\_1 tree knomial\_2 - knomial\_2 tree
-
-  - topology\_aware - topology\_aware tree type topology\_aware\_k -
-
-  - topology\_aware tree type with branching factor k topology\_wave -
-
-  - topology\_wave tree type
-
-- **Default:** "kary"
-
-
-
-MPIR\_CVAR\_IREDUCE\_TOPO\_REORDER\_ENABLE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IREDUCE\_TOPO\_REORDER\_ENABLE
-
-  - MPICH\_IREDUCE\_TOPO\_REORDER\_ENABLE
-
-- **Description:**
-  -  This cvar controls if the leaders are reordered based on
-
-  - the number of ranks in each group.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_IREDUCE\_TOPO\_OVERHEAD
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IREDUCE\_TOPO\_OVERHEAD
-
-  - MPICH\_IREDUCE\_TOPO\_OVERHEAD
-
-- **Description:**
-  -  This cvar controls the size of the overhead.
-
-- **Default:** 200
-
-
-
-MPIR\_CVAR\_IREDUCE\_TOPO\_DIFF\_GROUPS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IREDUCE\_TOPO\_DIFF\_GROUPS
-
-  - MPICH\_IREDUCE\_TOPO\_DIFF\_GROUPS
-
-- **Description:**
-  -  This cvar controls the latency between different groups.
-
-- **Default:** 2800
-
-
-
-MPIR\_CVAR\_IREDUCE\_TOPO\_DIFF\_SWITCHES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IREDUCE\_TOPO\_DIFF\_SWITCHES
-
-  - MPICH\_IREDUCE\_TOPO\_DIFF\_SWITCHES
-
-- **Description:**
-  -  This cvar controls the latency between different switches
-
-  - in the same groups.
-
-- **Default:** 1900
-
-
-
-MPIR\_CVAR\_IREDUCE\_TOPO\_SAME\_SWITCHES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IREDUCE\_TOPO\_SAME\_SWITCHES
-
-  - MPICH\_IREDUCE\_TOPO\_SAME\_SWITCHES
-
-- **Description:**
-  -  This cvar controls the latency in the same switch.
-
-- **Default:** 1600
-
-
-
-MPIR\_CVAR\_IREDUCE\_TREE\_PIPELINE\_CHUNK\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IREDUCE\_TREE\_PIPELINE\_CHUNK\_SIZE
-
-  - MPICH\_IREDUCE\_TREE\_PIPELINE\_CHUNK\_SIZE
-
-- **Description:**
-  -  Maximum chunk size (in bytes) for pipelining in tree based
-
-  - ireduce. Default value is 0, that is, no pipelining by default
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_IREDUCE\_RING\_CHUNK\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IREDUCE\_RING\_CHUNK\_SIZE
-
-  - MPICH\_IREDUCE\_RING\_CHUNK\_SIZE
-
-- **Description:**
-  -  Maximum chunk size (in bytes) for pipelining in ireduce
-
-  - ring algorithm. Default value is 0, that is, no pipelining by
-
-  - default
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_IREDUCE\_TREE\_BUFFER\_PER\_CHILD
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IREDUCE\_TREE\_BUFFER\_PER\_CHILD
-
-  - MPICH\_IREDUCE\_TREE\_BUFFER\_PER\_CHILD
-
-- **Description:**
-  -  If set to true, a rank in tree algorithms will allocate a
-
-  - dedicated buffer for every child it receives data from. This would
-
-  - mean more memory consumption but it would allow preposting of the
-
-  - receives and hence reduce the number of unexpected messages. If set
-
-  - to false, there is only one buffer that is used to receive the data
-
-  - from all the children. The receives are therefore serialized, that
-
-  - is, only one receive can be posted at a time.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_IREDUCE\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IREDUCE\_INTRA\_ALGORITHM
-
-  - MPICH\_IREDUCE\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ireduce algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_smp  -   -    - Force smp algorithm
-
-  - sched\_binomial  -       - Force binomial algorithm
-
-  - sched\_reduce\_scatter\_gather - Force reduce scatter gather algorithm
-
-  - tsp\_tree  -   - - Force Generic Transport Tree
-
-  - tsp\_ring  -   - - Force Generic Transport Ring
-
-- **Default:** MPIR\_CVAR\_IREDUCE\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IREDUCE\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IREDUCE\_INTER\_ALGORITHM
-
-  - MPICH\_IREDUCE\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ireduce algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_local\_reduce\_remote\_send - Force local-reduce-remote-send
-
-  - algorithm
-
-- **Default:** MPIR\_CVAR\_IREDUCE\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_ALLREDUCE\_SHORT\_MSG\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLREDUCE\_SHORT\_MSG\_SIZE
-
-  - MPICH\_ALLREDUCE\_SHORT\_MSG\_SIZE
-
-- **Description:**
-  -  the short message algorithm will be used if the send
-
-  - buffer size is <= this value (in bytes)
-
-- **Default:** 2048
-
-
-
-MPIR\_CVAR\_MAX\_SMP\_ALLREDUCE\_MSG\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_MAX\_SMP\_ALLREDUCE\_MSG\_SIZE
-
-  - MPICH\_MAX\_SMP\_ALLREDUCE\_MSG\_SIZE
-
-- **Description:**
-  -  Maximum message size for which SMP-aware allreduce is
-
-  - used.  A value of '0' uses SMP-aware allreduce for all message
-
-  - sizes.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_ALLREDUCE\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLREDUCE\_INTRA\_ALGORITHM
-
-  - MPICH\_ALLREDUCE\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select allreduce algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - dynamic - Internal algorithm selection using dynamic tuning
-
-  - nb  -   -        - Force nonblocking algorithm
-
-  - smp  -   -       - Force smp algorithm
-
-  - recursive\_doubling       - Force recursive doubling algorithm
-
-  - recursive\_multiplying    - Force recursive multiplying algorithm
-
-  - reduce\_scatter\_allgather - Force reduce scatter allgather algorithm
-
-  - tree  -   -      - Force pipelined tree algorithm
-
-  - recexch  -   -   - Force generic transport recursive
-
-  - exchange algorithm
-
-  - ring  -   -      - Force ring algorithm
-
-  - k\_reduce\_scatter\_allgather - Force reduce scatter allgather
-
-  - algorithm
-
-  - osu\_rd\_compression - Force GPU compression recursive doubling
-
-  - osu\_rsa\_ring\_compression - Force GPU compression ring
-
-  - osu\_gpu\_rd  -        - Force recursive doubling algorithm using
-
-  - GPU buffer
-
-  - osu\_gpu\_rsa  -       - Force reduce scatter allgather algorithm
-
-  - using GPU buffer
-
-  - osu\_gpu\_krsa  -      - Force k reduce scatter allgather
-
-  - algorithm
-
-  - using GPU buffer
-
-  - osu\_gpu\_ring  -      - Force ring RSA algorithm using GPU
-
-  - buffer
-
-  - osu\_gpu\_direct  -    - Force direct RSA algorithm using GPU
-
-  - buffer
-
-- **Default:** MPIR\_CVAR\_ALLREDUCE\_INTRA\_ALGORITHM\_dynamic
-
-
-
-MPIR\_CVAR\_ALLREDUCE\_RECURSIVE\_MULTIPLYING\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLREDUCE\_RECURSIVE\_MULTIPLYING\_KVAL
-
-  - MPICH\_ALLREDUCE\_RECURSIVE\_MULTIPLYING\_KVAL
-
-- **Description:**
-  -  radix value (power of k) for generic recursive multiplying
-
-  - based allreduce
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_ALLREDUCE\_TREE\_TYPE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLREDUCE\_TREE\_TYPE
-
-  - MPICH\_ALLREDUCE\_TREE\_TYPE
-
-- **Description:**
-  -  Tree type for tree based allreduce knomial\_1 is default as
-
-  - it supports both commutative and non-commutative reduce operations
-
-  - kary      - kary tree type knomial\_1 - knomial\_1 tree type (tree
-
-  - grows starting from the left of the root) knomial\_2 - knomial\_2
-
-  - tree type (tree grows starting from the right of the root)
-
-  - topology\_aware - topology\_aware tree type topology\_aware\_k -
-
-  - topology\_aware tree type with branching factor k topology\_wave -
-
-  - topology\_wave tree type
-
-- **Default:** "knomial\_1"
-
-
-
-MPIR\_CVAR\_ALLREDUCE\_TREE\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLREDUCE\_TREE\_KVAL
-
-  - MPICH\_ALLREDUCE\_TREE\_KVAL
-
-- **Description:**
-  -  Indicates the branching factor for kary or knomial trees.
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_ALLREDUCE\_TOPO\_REORDER\_ENABLE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLREDUCE\_TOPO\_REORDER\_ENABLE
-
-  - MPICH\_ALLREDUCE\_TOPO\_REORDER\_ENABLE
-
-- **Description:**
-  -  This cvar controls if the leaders are reordered based on
-
-  - the number of ranks in each group.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_ALLREDUCE\_TOPO\_OVERHEAD
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLREDUCE\_TOPO\_OVERHEAD
-
-  - MPICH\_ALLREDUCE\_TOPO\_OVERHEAD
-
-- **Description:**
-  -  This cvar controls the size of the overhead.
-
-- **Default:** 200
-
-
-
-MPIR\_CVAR\_ALLREDUCE\_TOPO\_DIFF\_GROUPS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLREDUCE\_TOPO\_DIFF\_GROUPS
-
-  - MPICH\_ALLREDUCE\_TOPO\_DIFF\_GROUPS
-
-- **Description:**
-  -  This cvar controls the latency between different groups.
-
-- **Default:** 2800
-
-
-
-MPIR\_CVAR\_ALLREDUCE\_TOPO\_DIFF\_SWITCHES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLREDUCE\_TOPO\_DIFF\_SWITCHES
-
-  - MPICH\_ALLREDUCE\_TOPO\_DIFF\_SWITCHES
-
-- **Description:**
-  -  This cvar controls the latency between different switches
-
-  - in the same groups.
-
-- **Default:** 1900
-
-
-
-MPIR\_CVAR\_ALLREDUCE\_TOPO\_SAME\_SWITCHES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLREDUCE\_TOPO\_SAME\_SWITCHES
-
-  - MPICH\_ALLREDUCE\_TOPO\_SAME\_SWITCHES
-
-- **Description:**
-  -  This cvar controls the latency in the same switch.
-
-- **Default:** 1600
-
-
-
-MPIR\_CVAR\_ALLREDUCE\_TREE\_PIPELINE\_CHUNK\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLREDUCE\_TREE\_PIPELINE\_CHUNK\_SIZE
-
-  - MPICH\_ALLREDUCE\_TREE\_PIPELINE\_CHUNK\_SIZE
-
-- **Description:**
-  -  Maximum chunk size (in bytes) for pipelining in tree based
-
-  - allreduce. Default value is 0, that is, no pipelining by default
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_ALLREDUCE\_TREE\_BUFFER\_PER\_CHILD
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLREDUCE\_TREE\_BUFFER\_PER\_CHILD
-
-  - MPICH\_ALLREDUCE\_TREE\_BUFFER\_PER\_CHILD
-
-- **Description:**
-  -  If set to true, a rank in tree\_kary and tree\_knomial
-
-  - algorithms will allocate a dedicated buffer for every child it
-
-  - receives data from. This would mean more memory consumption but it
-
-  - would allow preposting of the receives and hence reduce the number
-
-  - of unexpected messages. If set to false, there is only one buffer
-
-  - that is used to receive the data from all the children. The
-
-  - receives are therefore serialized, that is, only one receive can be
-
-  - posted at a time.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_ALLREDUCE\_RECEXCH\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLREDUCE\_RECEXCH\_KVAL
-
-  - MPICH\_ALLREDUCE\_RECEXCH\_KVAL
-
-- **Description:**
-  -  k value for recursive exchange based allreduce
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_ALLREDUCE\_RECEXCH\_SINGLE\_PHASE\_RECV
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLREDUCE\_RECEXCH\_SINGLE\_PHASE\_RECV
-
-  - MPICH\_ALLREDUCE\_RECEXCH\_SINGLE\_PHASE\_RECV
-
-- **Description:**
-  -  This CVAR controls whether the recv is posted for one
-
-  - phase or two phases in recexch algos. By default, we post the recvs
-
-  - for 2 phases.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_ALLREDUCE\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLREDUCE\_INTER\_ALGORITHM
-
-  - MPICH\_ALLREDUCE\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select allreduce algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - nb  -   -     - Force nonblocking algorithm
-
-  - reduce\_exchange\_bcast - Force reduce-exchange-bcast algorithm
-
-- **Default:** MPIR\_CVAR\_ALLREDUCE\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IALLREDUCE\_TREE\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLREDUCE\_TREE\_KVAL
-
-  - MPICH\_IALLREDUCE\_TREE\_KVAL
-
-- **Description:**
-  -  k value for tree based iallreduce (for tree\_kary and
-
-  - tree\_knomial)
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_IALLREDUCE\_TREE\_TYPE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLREDUCE\_TREE\_TYPE
-
-  - MPICH\_IALLREDUCE\_TREE\_TYPE
-
-- **Description:**
-  -  Tree type for tree based ibcast kary      - kary tree type
-
-  - knomial\_1 - knomial\_1 tree type knomial\_2 - knomial\_2 tree type
-
-- **Default:** "kary"
-
-
-
-MPIR\_CVAR\_IALLREDUCE\_TREE\_PIPELINE\_CHUNK\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLREDUCE\_TREE\_PIPELINE\_CHUNK\_SIZE
-
-  - MPICH\_IALLREDUCE\_TREE\_PIPELINE\_CHUNK\_SIZE
-
-- **Description:**
-  -  Maximum chunk size (in bytes) for pipelining in tree based
-
-  - iallreduce. Default value is 0, that is, no pipelining by default
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_IALLREDUCE\_TREE\_BUFFER\_PER\_CHILD
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLREDUCE\_TREE\_BUFFER\_PER\_CHILD
-
-  - MPICH\_IALLREDUCE\_TREE\_BUFFER\_PER\_CHILD
-
-- **Description:**
-  -  If set to true, a rank in tree\_kary and tree\_knomial
-
-  - algorithms will allocate a dedicated buffer for every child it
-
-  - receives data from. This would mean more memory consumption but it
-
-  - would allow preposting of the receives and hence reduce the number
-
-  - of unexpected messages. If set to false, there is only one buffer
-
-  - that is used to receive the data from all the children. The
-
-  - receives are therefore serialized, that is, only one receive can be
-
-  - posted at a time.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_IALLREDUCE\_RECEXCH\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLREDUCE\_RECEXCH\_KVAL
-
-  - MPICH\_IALLREDUCE\_RECEXCH\_KVAL
-
-- **Description:**
-  -  k value for recursive exchange based iallreduce
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_IALLREDUCE\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLREDUCE\_INTRA\_ALGORITHM
-
-  - MPICH\_IALLREDUCE\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select iallreduce algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_naive  -   -       - Force naive algorithm
-
-  - sched\_smp  -   -   - - Force smp algorithm
-
-  - sched\_recursive\_doubling  -  - Force recursive doubling
-
-  - algorithm
-
-  - sched\_reduce\_scatter\_allgather   - Force reduce scatter allgather
-
-  - algorithm
-
-  - tsp\_recexch\_single\_buffer    - Force generic transport recursive
-
-  - exchange with single buffer for receives
-
-  - tsp\_recexch\_multiple\_buffer  - Force generic transport recursive
-
-  - exchange with multiple buffers for receives
-
-  - tsp\_tree  -   -      - Force generic transport tree
-
-  - algorithm
-
-  - tsp\_ring  -   -      - Force generic transport ring
-
-  - algorithm
-
-  - tsp\_recexch\_reduce\_scatter\_recexch\_allgatherv  - Force generic
-
-  - transport recursive exchange with reduce scatter and allgatherv
-
-- **Default:** MPIR\_CVAR\_IALLREDUCE\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IALLREDUCE\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLREDUCE\_INTER\_ALGORITHM
-
-  - MPICH\_IALLREDUCE\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select iallreduce algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_remote\_reduce\_local\_bcast - Force remote-reduce-local-bcast
-
-  - algorithm
-
-- **Default:** MPIR\_CVAR\_IALLREDUCE\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_REDUCE\_SCATTER\_COMMUTATIVE\_LONG\_MSG\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_REDUCE\_SCATTER\_COMMUTATIVE\_LONG\_MSG\_SIZE
-
-  - MPICH\_REDUCE\_SCATTER\_COMMUTATIVE\_LONG\_MSG\_SIZE
-
-- **Description:**
-  -  the long message algorithm will be used if the operation
-
-  - is commutative and the send buffer size is >= this value (in bytes)
-
-- **Default:** 524288
-
-
-
-MPIR\_CVAR\_REDUCE\_SCATTER\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_REDUCE\_SCATTER\_INTRA\_ALGORITHM
-
-  - MPICH\_REDUCE\_SCATTER\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select reduce\_scatter algorithm
-
-  - auto  -   -  - Internal algorithm selection (can be
-
-  - overridden with MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - dynamic - Internal algorithm selection using dynamic tuning
-
-  - nb  -   -    - Force nonblocking algorithm
-
-  - noncommutative       - Force noncommutative algorithm
-
-  - pairwise  -      - Force pairwise algorithm
-
-  - recursive\_doubling   - Force recursive doubling algorithm
-
-  - recursive\_halving    - Force recursive halving algorithm
-
-  - osu\_basic  -     - Force MVAPICH basic algorithm
-
-  - osu\_ring  -      - Force MVAPICH ring algorithm
-
-  - osu\_ring\_compression - Force compression algorithm
-
-  - osu\_gpu\_direct       - Force MVAPICH gpu direct algorithm
-
-  - osu\_gpu\_ring  -  - Force MVAPICH gpu ring algorithm
-
-- **Default:** MPIR\_CVAR\_REDUCE\_SCATTER\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_REDUCE\_SCATTER\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_REDUCE\_SCATTER\_INTER\_ALGORITHM
-
-  - MPICH\_REDUCE\_SCATTER\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select reduce\_scatter algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - nb  -   -   -   - Force nonblocking algorithm
-
-  - remote\_reduce\_local\_scatter - Force remote-reduce-local-scatter
-
-  - algorithm
-
-- **Default:** MPIR\_CVAR\_REDUCE\_SCATTER\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IREDUCE\_SCATTER\_RECEXCH\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IREDUCE\_SCATTER\_RECEXCH\_KVAL
-
-  - MPICH\_IREDUCE\_SCATTER\_RECEXCH\_KVAL
-
-- **Description:**
-  -  k value for recursive exchange based ireduce\_scatter
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_IREDUCE\_SCATTER\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IREDUCE\_SCATTER\_INTRA\_ALGORITHM
-
-  - MPICH\_IREDUCE\_SCATTER\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ireduce\_scatter algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_noncommutative     - Force noncommutative algorithm
-
-  - sched\_recursive\_doubling - Force recursive doubling algorithm
-
-  - sched\_pairwise  -    - Force pairwise algorithm
-
-  - sched\_recursive\_halving  - Force recursive halving algorithm
-
-  - tsp\_recexch  -   - Force generic transport recursive exchange
-
-  - algorithm
-
-- **Default:** MPIR\_CVAR\_IREDUCE\_SCATTER\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IREDUCE\_SCATTER\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IREDUCE\_SCATTER\_INTER\_ALGORITHM
-
-  - MPICH\_IREDUCE\_SCATTER\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ireduce\_scatter algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_remote\_reduce\_local\_scatterv - Force
-
-  - remote-reduce-local-scatterv algorithm
-
-- **Default:** MPIR\_CVAR\_IREDUCE\_SCATTER\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_REDUCE\_SCATTER\_BLOCK\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_REDUCE\_SCATTER\_BLOCK\_INTRA\_ALGORITHM
-
-  - MPICH\_REDUCE\_SCATTER\_BLOCK\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select reduce\_scatter\_block algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - dynamic - Internal algorithm selection using dynamic tuning
-
-  - noncommutative     - Force noncommutative algorithm
-
-  - recursive\_doubling - Force recursive doubling algorithm
-
-  - pairwise  -    - Force pairwise algorithm
-
-  - recursive\_halving  - Force recursive halving algorithm
-
-  - nb  -   -  - Force nonblocking algorithm
-
-- **Default:** MPIR\_CVAR\_REDUCE\_SCATTER\_BLOCK\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_REDUCE\_SCATTER\_BLOCK\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_REDUCE\_SCATTER\_BLOCK\_INTER\_ALGORITHM
-
-  - MPICH\_REDUCE\_SCATTER\_BLOCK\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select reduce\_scatter\_block algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - nb  -   -   -   - Force nonblocking algorithm
-
-  - remote\_reduce\_local\_scatter - Force remote-reduce-local-scatter
-
-  - algorithm
-
-- **Default:** MPIR\_CVAR\_REDUCE\_SCATTER\_BLOCK\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IREDUCE\_SCATTER\_BLOCK\_RECEXCH\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IREDUCE\_SCATTER\_BLOCK\_RECEXCH\_KVAL
-
-  - MPICH\_IREDUCE\_SCATTER\_BLOCK\_RECEXCH\_KVAL
-
-- **Description:**
-  -  k value for recursive exchange based ireduce\_scatter\_block
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_IREDUCE\_SCATTER\_BLOCK\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IREDUCE\_SCATTER\_BLOCK\_INTRA\_ALGORITHM
-
-  - MPICH\_IREDUCE\_SCATTER\_BLOCK\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ireduce\_scatter\_block algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_noncommutative     - Force noncommutative algorithm
-
-  - sched\_recursive\_doubling - Force recursive doubling algorithm
-
-  - sched\_pairwise  -    - Force pairwise algorithm
-
-  - sched\_recursive\_halving  - Force recursive halving algorithm
-
-  - tsp\_recexch  -   - Force generic transport recursive exchange
-
-  - algorithm
-
-- **Default:** MPIR\_CVAR\_IREDUCE\_SCATTER\_BLOCK\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IREDUCE\_SCATTER\_BLOCK\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IREDUCE\_SCATTER\_BLOCK\_INTER\_ALGORITHM
-
-  - MPICH\_IREDUCE\_SCATTER\_BLOCK\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ireduce\_scatter\_block algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_remote\_reduce\_local\_scatterv - Force
-
-  - remote-reduce-local-scatterv algorithm
-
-- **Default:** MPIR\_CVAR\_IREDUCE\_SCATTER\_BLOCK\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_SCAN\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_SCAN\_INTRA\_ALGORITHM
-
-  - MPICH\_SCAN\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select allgather algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - dynamic - Internal algorithm selection using dynamic tuning
-
-  - nb  -   -  - Force nonblocking algorithm
-
-  - smp  -   - - Force smp algorithm
-
-  - recursive\_doubling - Force recursive doubling algorithm
-
-- **Default:** MPIR\_CVAR\_SCAN\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_ISCAN\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ISCAN\_INTRA\_ALGORITHM
-
-  - MPICH\_ISCAN\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select allgather algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_smp  -   -   - Force smp algorithm
-
-  - sched\_recursive\_doubling   - Force recursive doubling algorithm
-
-  - tsp\_recursive\_doubling - Force generic transport recursive doubling
-
-  - algorithm
-
-- **Default:** MPIR\_CVAR\_ISCAN\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_EXSCAN\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_EXSCAN\_INTRA\_ALGORITHM
-
-  - MPICH\_EXSCAN\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select allgather algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - dynamic - Internal algorithm selection using dynamic tuning
-
-  - nb  -   -  - Force nonblocking algorithm
-
-  - recursive\_doubling - Force recursive doubling algorithm
-
-- **Default:** MPIR\_CVAR\_EXSCAN\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_IEXSCAN\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IEXSCAN\_INTRA\_ALGORITHM
-
-  - MPICH\_IEXSCAN\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select iexscan algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_recursive\_doubling - Force recursive doubling algorithm
-
-- **Default:** MPIR\_CVAR\_IEXSCAN\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_NEIGHBOR\_ALLGATHER\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEIGHBOR\_ALLGATHER\_INTRA\_ALGORITHM
-
-  - MPICH\_NEIGHBOR\_ALLGATHER\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ineighbor\_allgather algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - nb   - Force nonblocking algorithm
-
-- **Default:** MPIR\_CVAR\_NEIGHBOR\_ALLGATHER\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_NEIGHBOR\_ALLGATHER\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEIGHBOR\_ALLGATHER\_INTER\_ALGORITHM
-
-  - MPICH\_NEIGHBOR\_ALLGATHER\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ineighbor\_allgather algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - nb   - Force nonblocking algorithm
-
-- **Default:** MPIR\_CVAR\_NEIGHBOR\_ALLGATHER\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_INEIGHBOR\_ALLGATHER\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_INEIGHBOR\_ALLGATHER\_INTRA\_ALGORITHM
-
-  - MPICH\_INEIGHBOR\_ALLGATHER\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ineighbor\_allgather algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_linear    - Force linear algorithm
-
-  - tsp\_linear  - Force generic transport based linear algorithm
-
-- **Default:** MPIR\_CVAR\_INEIGHBOR\_ALLGATHER\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_INEIGHBOR\_ALLGATHER\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_INEIGHBOR\_ALLGATHER\_INTER\_ALGORITHM
-
-  - MPICH\_INEIGHBOR\_ALLGATHER\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ineighbor\_allgather algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_linear    - Force linear algorithm
-
-  - tsp\_linear  - Force generic transport based linear algorithm
-
-- **Default:** MPIR\_CVAR\_INEIGHBOR\_ALLGATHER\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_NEIGHBOR\_ALLGATHERV\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEIGHBOR\_ALLGATHERV\_INTRA\_ALGORITHM
-
-  - MPICH\_NEIGHBOR\_ALLGATHERV\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select neighbor\_allgatherv algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - nb   - Force nb algorithm
-
-- **Default:** MPIR\_CVAR\_NEIGHBOR\_ALLGATHERV\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_NEIGHBOR\_ALLGATHERV\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEIGHBOR\_ALLGATHERV\_INTER\_ALGORITHM
-
-  - MPICH\_NEIGHBOR\_ALLGATHERV\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select neighbor\_allgatherv algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - nb   - Force nb algorithm
-
-- **Default:** MPIR\_CVAR\_NEIGHBOR\_ALLGATHERV\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_INEIGHBOR\_ALLGATHERV\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_INEIGHBOR\_ALLGATHERV\_INTRA\_ALGORITHM
-
-  - MPICH\_INEIGHBOR\_ALLGATHERV\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ineighbor\_allgatherv algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_linear  -   - Force linear algorithm
-
-  - tsp\_linear  - - Force generic transport based linear algorithm
-
-- **Default:** MPIR\_CVAR\_INEIGHBOR\_ALLGATHERV\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_INEIGHBOR\_ALLGATHERV\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_INEIGHBOR\_ALLGATHERV\_INTER\_ALGORITHM
-
-  - MPICH\_INEIGHBOR\_ALLGATHERV\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ineighbor\_allgatherv algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_linear  -   - Force linear algorithm
-
-  - tsp\_linear  - - Force generic transport based linear algorithm
-
-- **Default:** MPIR\_CVAR\_INEIGHBOR\_ALLGATHERV\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_NEIGHBOR\_ALLTOALL\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEIGHBOR\_ALLTOALL\_INTRA\_ALGORITHM
-
-  - MPICH\_NEIGHBOR\_ALLTOALL\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select neighbor\_alltoall algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - nb   - Force nb algorithm
-
-- **Default:** MPIR\_CVAR\_NEIGHBOR\_ALLTOALL\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_NEIGHBOR\_ALLTOALL\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEIGHBOR\_ALLTOALL\_INTER\_ALGORITHM
-
-  - MPICH\_NEIGHBOR\_ALLTOALL\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select neighbor\_alltoall algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - nb   - Force nb algorithm
-
-- **Default:** MPIR\_CVAR\_NEIGHBOR\_ALLTOALL\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_INEIGHBOR\_ALLTOALL\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_INEIGHBOR\_ALLTOALL\_INTRA\_ALGORITHM
-
-  - MPICH\_INEIGHBOR\_ALLTOALL\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ineighbor\_alltoall algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_linear  -   - Force linear algorithm
-
-  - tsp\_linear  - - Force generic transport based linear algorithm
-
-- **Default:** MPIR\_CVAR\_INEIGHBOR\_ALLTOALL\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_INEIGHBOR\_ALLTOALL\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_INEIGHBOR\_ALLTOALL\_INTER\_ALGORITHM
-
-  - MPICH\_INEIGHBOR\_ALLTOALL\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ineighbor\_alltoall algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_linear  -   - Force linear algorithm
-
-  - tsp\_linear  - - Force generic transport based linear algorithm
-
-- **Default:** MPIR\_CVAR\_INEIGHBOR\_ALLTOALL\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_NEIGHBOR\_ALLTOALLV\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEIGHBOR\_ALLTOALLV\_INTRA\_ALGORITHM
-
-  - MPICH\_NEIGHBOR\_ALLTOALLV\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select neighbor\_alltoallv algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - nb   - Force nb algorithm
-
-- **Default:** MPIR\_CVAR\_NEIGHBOR\_ALLTOALLV\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_NEIGHBOR\_ALLTOALLV\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEIGHBOR\_ALLTOALLV\_INTER\_ALGORITHM
-
-  - MPICH\_NEIGHBOR\_ALLTOALLV\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select neighbor\_alltoallv algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - nb   - Force nb algorithm
-
-- **Default:** MPIR\_CVAR\_NEIGHBOR\_ALLTOALLV\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_INEIGHBOR\_ALLTOALLV\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_INEIGHBOR\_ALLTOALLV\_INTRA\_ALGORITHM
-
-  - MPICH\_INEIGHBOR\_ALLTOALLV\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ineighbor\_alltoallv algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_linear  -   - Force linear algorithm
-
-  - tsp\_linear  - Force generic transport based linear algorithm
-
-- **Default:** MPIR\_CVAR\_INEIGHBOR\_ALLTOALLV\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_INEIGHBOR\_ALLTOALLV\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_INEIGHBOR\_ALLTOALLV\_INTER\_ALGORITHM
-
-  - MPICH\_INEIGHBOR\_ALLTOALLV\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ineighbor\_alltoallv algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_linear  -   - Force linear algorithm
-
-  - tsp\_linear  - Force generic transport based linear algorithm
-
-- **Default:** MPIR\_CVAR\_INEIGHBOR\_ALLTOALLV\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_NEIGHBOR\_ALLTOALLW\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEIGHBOR\_ALLTOALLW\_INTRA\_ALGORITHM
-
-  - MPICH\_NEIGHBOR\_ALLTOALLW\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select neighbor\_alltoallw algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - nb   - Force nb algorithm
-
-- **Default:** MPIR\_CVAR\_NEIGHBOR\_ALLTOALLW\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_NEIGHBOR\_ALLTOALLW\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEIGHBOR\_ALLTOALLW\_INTER\_ALGORITHM
-
-  - MPICH\_NEIGHBOR\_ALLTOALLW\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select neighbor\_alltoallw algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - nb   - Force nb algorithm
-
-- **Default:** MPIR\_CVAR\_NEIGHBOR\_ALLTOALLW\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_INEIGHBOR\_ALLTOALLW\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_INEIGHBOR\_ALLTOALLW\_INTRA\_ALGORITHM
-
-  - MPICH\_INEIGHBOR\_ALLTOALLW\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ineighbor\_alltoallw algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_linear  -   - Force linear algorithm
-
-  - tsp\_linear  - - Force generic transport based linear algorithm
-
-- **Default:** MPIR\_CVAR\_INEIGHBOR\_ALLTOALLW\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_INEIGHBOR\_ALLTOALLW\_INTER\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_INEIGHBOR\_ALLTOALLW\_INTER\_ALGORITHM
-
-  - MPICH\_INEIGHBOR\_ALLTOALLW\_INTER\_ALGORITHM
-
-- **Description:**
-  -  Variable to select ineighbor\_alltoallw algorithm
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-  - sched\_auto - Internal algorithm selection for sched-based
-
-  - algorithms
-
-  - sched\_linear  -   - Force linear algorithm
-
-  - tsp\_linear  - - Force generic transport based linear algorithm
-
-- **Default:** MPIR\_CVAR\_INEIGHBOR\_ALLTOALLW\_INTER\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_BARRIER\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BARRIER\_DEVICE\_COLLECTIVE
-
-  - MPICH\_BARRIER\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Barrier will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_IBARRIER\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IBARRIER\_DEVICE\_COLLECTIVE
-
-  - MPICH\_IBARRIER\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Ibarrier will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_BARRIER\_INIT\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BARRIER\_INIT\_DEVICE\_COLLECTIVE
-
-  - MPICH\_BARRIER\_INIT\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Barrier will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_BCAST\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BCAST\_DEVICE\_COLLECTIVE
-
-  - MPICH\_BCAST\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Bcast will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_IBCAST\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IBCAST\_DEVICE\_COLLECTIVE
-
-  - MPICH\_IBCAST\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Ibcast will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_BCAST\_INIT\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BCAST\_INIT\_DEVICE\_COLLECTIVE
-
-  - MPICH\_BCAST\_INIT\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Bcast\_init will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_GATHER\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_GATHER\_DEVICE\_COLLECTIVE
-
-  - MPICH\_GATHER\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Gather will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_IGATHER\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IGATHER\_DEVICE\_COLLECTIVE
-
-  - MPICH\_IGATHER\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Igather will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_GATHER\_INIT\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_GATHER\_INIT\_DEVICE\_COLLECTIVE
-
-  - MPICH\_GATHER\_INIT\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Gather\_init will allow
-
-  - the device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_GATHERV\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_GATHERV\_DEVICE\_COLLECTIVE
-
-  - MPICH\_GATHERV\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Gatherv will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_IGATHERV\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IGATHERV\_DEVICE\_COLLECTIVE
-
-  - MPICH\_IGATHERV\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Igatherv will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_GATHERV\_INIT\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_GATHERV\_INIT\_DEVICE\_COLLECTIVE
-
-  - MPICH\_GATHERV\_INIT\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Gatherv\_init will allow
-
-  - the device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_SCATTER\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_SCATTER\_DEVICE\_COLLECTIVE
-
-  - MPICH\_SCATTER\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Scatter will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_ISCATTER\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ISCATTER\_DEVICE\_COLLECTIVE
-
-  - MPICH\_ISCATTER\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Iscatter will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_SCATTER\_INIT\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_SCATTER\_INIT\_DEVICE\_COLLECTIVE
-
-  - MPICH\_SCATTER\_INIT\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Scatter\_init will allow
-
-  - the device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_SCATTERV\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_SCATTERV\_DEVICE\_COLLECTIVE
-
-  - MPICH\_SCATTERV\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Scatterv will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_ISCATTERV\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ISCATTERV\_DEVICE\_COLLECTIVE
-
-  - MPICH\_ISCATTERV\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Iscatterv will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_SCATTERV\_INIT\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_SCATTERV\_INIT\_DEVICE\_COLLECTIVE
-
-  - MPICH\_SCATTERV\_INIT\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Scatterv\_init will allow
-
-  - the device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_ALLGATHER\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLGATHER\_DEVICE\_COLLECTIVE
-
-  - MPICH\_ALLGATHER\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Allgather will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_IALLGATHER\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLGATHER\_DEVICE\_COLLECTIVE
-
-  - MPICH\_IALLGATHER\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Iallgather will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_ALLGATHER\_INIT\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLGATHER\_INIT\_DEVICE\_COLLECTIVE
-
-  - MPICH\_ALLGATHER\_INIT\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Allgather\_init will allow
-
-  - the device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_ALLGATHERV\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLGATHERV\_DEVICE\_COLLECTIVE
-
-  - MPICH\_ALLGATHERV\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Allgatherv will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_IALLGATHERV\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLGATHERV\_DEVICE\_COLLECTIVE
-
-  - MPICH\_IALLGATHERV\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Iallgatherv will allow
-
-  - the device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_ALLGATHERV\_INIT\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLGATHERV\_INIT\_DEVICE\_COLLECTIVE
-
-  - MPICH\_ALLGATHERV\_INIT\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Allgatherv\_init will
-
-  - allow the device to override the MPIR-level collective algorithms. 
-
-  - The device might still call the MPIR-level algorithms manually.  If
-
-  - set to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_ALLTOALL\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLTOALL\_DEVICE\_COLLECTIVE
-
-  - MPICH\_ALLTOALL\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Alltoall will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_IALLTOALL\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLTOALL\_DEVICE\_COLLECTIVE
-
-  - MPICH\_IALLTOALL\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Ialltoall will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_ALLTOALL\_INIT\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLTOALL\_INIT\_DEVICE\_COLLECTIVE
-
-  - MPICH\_ALLTOALL\_INIT\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Alltoall\_init will allow
-
-  - the device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_ALLTOALLV\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLTOALLV\_DEVICE\_COLLECTIVE
-
-  - MPICH\_ALLTOALLV\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Alltoallv will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_IALLTOALLV\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLTOALLV\_DEVICE\_COLLECTIVE
-
-  - MPICH\_IALLTOALLV\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Ialltoallv will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_ALLTOALLV\_INIT\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLTOALLV\_INIT\_DEVICE\_COLLECTIVE
-
-  - MPICH\_ALLTOALLV\_INIT\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Alltoallv\_init will allow
-
-  - the device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_ALLTOALLW\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLTOALLW\_DEVICE\_COLLECTIVE
-
-  - MPICH\_ALLTOALLW\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Alltoallw will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_IALLTOALLW\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLTOALLW\_DEVICE\_COLLECTIVE
-
-  - MPICH\_IALLTOALLW\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Ialltoallw will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_ALLTOALLW\_INIT\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLTOALLW\_INIT\_DEVICE\_COLLECTIVE
-
-  - MPICH\_ALLTOALLW\_INIT\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Alltoallw\_init will allow
-
-  - the device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_REDUCE\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_REDUCE\_DEVICE\_COLLECTIVE
-
-  - MPICH\_REDUCE\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Reduce will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_IREDUCE\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IREDUCE\_DEVICE\_COLLECTIVE
-
-  - MPICH\_IREDUCE\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Ireduce will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_REDUCE\_INIT\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_REDUCE\_INIT\_DEVICE\_COLLECTIVE
-
-  - MPICH\_REDUCE\_INIT\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Reduce\_init will allow
-
-  - the device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_ALLREDUCE\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLREDUCE\_DEVICE\_COLLECTIVE
-
-  - MPICH\_ALLREDUCE\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Allreduce will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_IALLREDUCE\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLREDUCE\_DEVICE\_COLLECTIVE
-
-  - MPICH\_IALLREDUCE\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Iallreduce will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_ALLREDUCE\_INIT\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ALLREDUCE\_INIT\_DEVICE\_COLLECTIVE
-
-  - MPICH\_ALLREDUCE\_INIT\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Allreduce\_init will allow
-
-  - the device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_REDUCE\_SCATTER\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_REDUCE\_SCATTER\_DEVICE\_COLLECTIVE
-
-  - MPICH\_REDUCE\_SCATTER\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Reduce\_scatter will allow
-
-  - the device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_IREDUCE\_SCATTER\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IREDUCE\_SCATTER\_DEVICE\_COLLECTIVE
-
-  - MPICH\_IREDUCE\_SCATTER\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Ireduce\_scatter will
-
-  - allow the device to override the MPIR-level collective algorithms. 
-
-  - The device might still call the MPIR-level algorithms manually.  If
-
-  - set to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_REDUCE\_SCATTER\_INIT\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_REDUCE\_SCATTER\_INIT\_DEVICE\_COLLECTIVE
-
-  - MPICH\_REDUCE\_SCATTER\_INIT\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Reduce\_scatter\_init will
-
-  - allow the device to override the MPIR-level collective algorithms. 
-
-  - The device might still call the MPIR-level algorithms manually.  If
-
-  - set to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_REDUCE\_SCATTER\_BLOCK\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_REDUCE\_SCATTER\_BLOCK\_DEVICE\_COLLECTIVE
-
-  - MPICH\_REDUCE\_SCATTER\_BLOCK\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Reduce\_scatter\_block will
-
-  - allow the device to override the MPIR-level collective algorithms. 
-
-  - The device might still call the MPIR-level algorithms manually.  If
-
-  - set to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_IREDUCE\_SCATTER\_BLOCK\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IREDUCE\_SCATTER\_BLOCK\_DEVICE\_COLLECTIVE
-
-  - MPICH\_IREDUCE\_SCATTER\_BLOCK\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Ireduce\_scatter\_block
-
-  - will allow the device to override the MPIR-level collective
-
-  - algorithms.  The device might still call the MPIR-level algorithms
-
-  - manually.  If set to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_REDUCE\_SCATTER\_BLOCK\_INIT\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_REDUCE\_SCATTER\_BLOCK\_INIT\_DEVICE\_COLLECTIVE
-
-  - MPICH\_REDUCE\_SCATTER\_BLOCK\_INIT\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Reduce\_scatter\_block\_init
-
-  - will allow the device to override the MPIR-level collective
-
-  - algorithms.  The device might still call the MPIR-level algorithms
-
-  - manually.  If set to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_SCAN\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_SCAN\_DEVICE\_COLLECTIVE
-
-  - MPICH\_SCAN\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Scan will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_ISCAN\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ISCAN\_DEVICE\_COLLECTIVE
-
-  - MPICH\_ISCAN\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Iscan will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_SCAN\_INIT\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_SCAN\_INIT\_DEVICE\_COLLECTIVE
-
-  - MPICH\_SCAN\_INIT\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Scan\_init will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_EXSCAN\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_EXSCAN\_DEVICE\_COLLECTIVE
-
-  - MPICH\_EXSCAN\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Exscan will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_IEXSCAN\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IEXSCAN\_DEVICE\_COLLECTIVE
-
-  - MPICH\_IEXSCAN\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Iexscan will allow the
-
-  - device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_EXSCAN\_INIT\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_EXSCAN\_INIT\_DEVICE\_COLLECTIVE
-
-  - MPICH\_EXSCAN\_INIT\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Exscan\_init will allow
-
-  - the device to override the MPIR-level collective algorithms.  The
-
-  - device might still call the MPIR-level algorithms manually.  If set
-
-  - to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_NEIGHBOR\_ALLGATHER\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEIGHBOR\_ALLGATHER\_DEVICE\_COLLECTIVE
-
-  - MPICH\_NEIGHBOR\_ALLGATHER\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Neighbor\_allgather will
-
-  - allow the device to override the MPIR-level collective algorithms. 
-
-  - The device might still call the MPIR-level algorithms manually.  If
-
-  - set to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_INEIGHBOR\_ALLGATHER\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_INEIGHBOR\_ALLGATHER\_DEVICE\_COLLECTIVE
-
-  - MPICH\_INEIGHBOR\_ALLGATHER\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Ineighbor\_allgather will
-
-  - allow the device to override the MPIR-level collective algorithms. 
-
-  - The device might still call the MPIR-level algorithms manually.  If
-
-  - set to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_NEIGHBOR\_ALLGATHER\_INIT\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEIGHBOR\_ALLGATHER\_INIT\_DEVICE\_COLLECTIVE
-
-  - MPICH\_NEIGHBOR\_ALLGATHER\_INIT\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Neighbor\_allgather\_init
-
-  - will allow the device to override the MPIR-level collective
-
-  - algorithms.  The device might still call the MPIR-level algorithms
-
-  - manually.  If set to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_NEIGHBOR\_ALLGATHERV\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEIGHBOR\_ALLGATHERV\_DEVICE\_COLLECTIVE
-
-  - MPICH\_NEIGHBOR\_ALLGATHERV\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Neighbor\_allgatherv will
-
-  - allow the device to override the MPIR-level collective algorithms. 
-
-  - The device might still call the MPIR-level algorithms manually.  If
-
-  - set to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_INEIGHBOR\_ALLGATHERV\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_INEIGHBOR\_ALLGATHERV\_DEVICE\_COLLECTIVE
-
-  - MPICH\_INEIGHBOR\_ALLGATHERV\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Ineighbor\_allgatherv will
-
-  - allow the device to override the MPIR-level collective algorithms. 
-
-  - The device might still call the MPIR-level algorithms manually.  If
-
-  - set to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_NEIGHBOR\_ALLGATHERV\_INIT\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEIGHBOR\_ALLGATHERV\_INIT\_DEVICE\_COLLECTIVE
-
-  - MPICH\_NEIGHBOR\_ALLGATHERV\_INIT\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Neighbor\_allgatherv\_init
-
-  - will allow the device to override the MPIR-level collective
-
-  - algorithms.  The device might still call the MPIR-level algorithms
-
-  - manually.  If set to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_NEIGHBOR\_ALLTOALL\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEIGHBOR\_ALLTOALL\_DEVICE\_COLLECTIVE
-
-  - MPICH\_NEIGHBOR\_ALLTOALL\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Neighbor\_alltoall will
-
-  - allow the device to override the MPIR-level collective algorithms. 
-
-  - The device might still call the MPIR-level algorithms manually.  If
-
-  - set to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_INEIGHBOR\_ALLTOALL\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_INEIGHBOR\_ALLTOALL\_DEVICE\_COLLECTIVE
-
-  - MPICH\_INEIGHBOR\_ALLTOALL\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Ineighbor\_alltoall will
-
-  - allow the device to override the MPIR-level collective algorithms. 
-
-  - The device might still call the MPIR-level algorithms manually.  If
-
-  - set to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_NEIGHBOR\_ALLTOALL\_INIT\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEIGHBOR\_ALLTOALL\_INIT\_DEVICE\_COLLECTIVE
-
-  - MPICH\_NEIGHBOR\_ALLTOALL\_INIT\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Neighbor\_alltoall\_init
-
-  - will allow the device to override the MPIR-level collective
-
-  - algorithms.  The device might still call the MPIR-level algorithms
-
-  - manually.  If set to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_NEIGHBOR\_ALLTOALLV\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEIGHBOR\_ALLTOALLV\_DEVICE\_COLLECTIVE
-
-  - MPICH\_NEIGHBOR\_ALLTOALLV\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Neighbor\_alltoallv will
-
-  - allow the device to override the MPIR-level collective algorithms. 
-
-  - The device might still call the MPIR-level algorithms manually.  If
-
-  - set to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_INEIGHBOR\_ALLTOALLV\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_INEIGHBOR\_ALLTOALLV\_DEVICE\_COLLECTIVE
-
-  - MPICH\_INEIGHBOR\_ALLTOALLV\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Ineighbor\_alltoallv will
-
-  - allow the device to override the MPIR-level collective algorithms. 
-
-  - The device might still call the MPIR-level algorithms manually.  If
-
-  - set to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_NEIGHBOR\_ALLTOALLV\_INIT\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEIGHBOR\_ALLTOALLV\_INIT\_DEVICE\_COLLECTIVE
-
-  - MPICH\_NEIGHBOR\_ALLTOALLV\_INIT\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Neighbor\_alltoallv\_init
-
-  - will allow the device to override the MPIR-level collective
-
-  - algorithms.  The device might still call the MPIR-level algorithms
-
-  - manually.  If set to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_NEIGHBOR\_ALLTOALLW\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEIGHBOR\_ALLTOALLW\_DEVICE\_COLLECTIVE
-
-  - MPICH\_NEIGHBOR\_ALLTOALLW\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Neighbor\_alltoallw will
-
-  - allow the device to override the MPIR-level collective algorithms. 
-
-  - The device might still call the MPIR-level algorithms manually.  If
-
-  - set to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_INEIGHBOR\_ALLTOALLW\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_INEIGHBOR\_ALLTOALLW\_DEVICE\_COLLECTIVE
-
-  - MPICH\_INEIGHBOR\_ALLTOALLW\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Ineighbor\_alltoallw will
-
-  - allow the device to override the MPIR-level collective algorithms. 
-
-  - The device might still call the MPIR-level algorithms manually.  If
-
-  - set to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_NEIGHBOR\_ALLTOALLW\_INIT\_DEVICE\_COLLECTIVE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEIGHBOR\_ALLTOALLW\_INIT\_DEVICE\_COLLECTIVE
-
-  - MPICH\_NEIGHBOR\_ALLTOALLW\_INIT\_DEVICE\_COLLECTIVE
-
-- **Description:**
-  -  This CVAR is only used when MPIR\_CVAR\_DEVICE\_COLLECTIVES
-
-  - is set to "percoll".  If set to true, MPI\_Neighbor\_alltoallw\_init
-
-  - will allow the device to override the MPIR-level collective
-
-  - algorithms.  The device might still call the MPIR-level algorithms
-
-  - manually.  If set to false, the device-override will be disabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_COLL\_HYBRID\_MEMORY
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_COLL\_HYBRID\_MEMORY
-
-  - MPICH\_COLL\_HYBRID\_MEMORY
-
-- **Description:**
-  -  This cvar indicates if the memory used in the collective
-
-  - operations are the same type. It set to true, it means in a
-
-  - collective operation, some buffers could be on the CPU and some
-
-  - buffers could be on the GPU. If set to false, it means all the data
-
-  - in a collective operation are on the same type of memory.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_GATHER\_VSMALL\_MSG\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_GATHER\_VSMALL\_MSG\_SIZE
-
-  - MPICH\_GATHER\_VSMALL\_MSG\_SIZE
-
-- **Description:**
-  -  use a temporary buffer for intracommunicator MPI\_Gather if
-
-  - the send buffer size is < this value (in bytes) (See also:
-
-  - MPIR\_CVAR\_GATHER\_INTER\_SHORT\_MSG\_SIZE)
-
-- **Default:** 1024
-
-
-
-MPIR\_CVAR\_IALLTOALL\_BRUCKS\_KVAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLTOALL\_BRUCKS\_KVAL
-
-  - MPICH\_IALLTOALL\_BRUCKS\_KVAL
-
-- **Description:**
-  -  radix (k) value for generic transport brucks based
-
-  - ialltoall
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_IALLTOALL\_BRUCKS\_BUFFER\_PER\_NBR
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLTOALL\_BRUCKS\_BUFFER\_PER\_NBR
-
-  - MPICH\_IALLTOALL\_BRUCKS\_BUFFER\_PER\_NBR
-
-- **Description:**
-  -  If set to true, the tsp based brucks algorithm will
-
-  - allocate dedicated send and receive buffers for every neighbor in
-
-  - the brucks algorithm. Otherwise, it would reuse a single buffer for
-
-  - sending and receiving data to/from neighbors
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_IALLTOALL\_SCATTERED\_OUTSTANDING\_TASKS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLTOALL\_SCATTERED\_OUTSTANDING\_TASKS
-
-  - MPICH\_IALLTOALL\_SCATTERED\_OUTSTANDING\_TASKS
-
-- **Description:**
-  -  Maximum number of outstanding sends and recvs posted at a
-
-  - time
-
-- **Default:** 64
-
-
-
-MPIR\_CVAR\_IALLTOALL\_SCATTERED\_BATCH\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_IALLTOALL\_SCATTERED\_BATCH\_SIZE
-
-  - MPICH\_IALLTOALL\_SCATTERED\_BATCH\_SIZE
-
-- **Description:**
-  -  Number of send/receive tasks that scattered algorithm
-
-  - waits for completion before posting another batch of send/receives
-
-  - of that size
-
-- **Default:** 4
-
-
-
-MPIR\_CVAR\_ENABLE\_DYNAMIC\_TUNING
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ENABLE\_DYNAMIC\_TUNING
-
-  - MPICH\_ENABLE\_DYNAMIC\_TUNING
-
-- **Description:**
-  -  Enable or disable dynamic tuning
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_DYNAMIC\_TUNE\_THRESHOLD
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_DYNAMIC\_TUNE\_THRESHOLD
-
-  - MPICH\_DYNAMIC\_TUNE\_THRESHOLD
-
-- **Description:**
-  -  Number of iterations before dynamic tuning will be
-
-  - re-attempted for a given collective and message range
-
-- **Default:** 1000
-
-
-
-MPIR\_CVAR\_DYNAMIC\_TUNE\_TEST\_COUNT
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_DYNAMIC\_TUNE\_TEST\_COUNT
-
-  - MPICH\_DYNAMIC\_TUNE\_TEST\_COUNT
-
-- **Description:**
-  -  Number of times each candidate algorithm will be tested
-
-  - when performing dynamic retuning.
-
-- **Default:** 5
-
-
-
-MPIR\_CVAR\_DYNAMIC\_TUNE\_LOCAL\_EVAL\_METRIC
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_DYNAMIC\_TUNE\_LOCAL\_EVAL\_METRIC
-
-  - MPICH\_DYNAMIC\_TUNE\_LOCAL\_EVAL\_METRIC
-
-- **Description:**
-  -  Value reported by local processes ot the dynamic tuning
-
-  - framework
-
-  - avg - Report the average latency over
-
-  - MPIR\_CVAR\_DYNAMIC\_TUNE\_TEST\_COUNT tests (default)
-
-  - max - Report the maximum latency over
-
-  - MPIR\_CVAR\_DYNAMIC\_TUNE\_TEST\_COUNT tests
-
-  - min - Report the minimum latency over
-
-  - MPIR\_CVAR\_DYNAMIC\_TUNE\_TEST\_COUNT tests
-
-- **Default:** MPIR\_CVAR\_DYNAMIC\_TUNE\_LOCAL\_EVAL\_METRIC\_avg
-
-
-
-MPIR\_CVAR\_DYNAMIC\_TUNE\_SELECTION\_METRIC
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_DYNAMIC\_TUNE\_SELECTION\_METRIC
-
-  - MPICH\_DYNAMIC\_TUNE\_SELECTION\_METRIC
-
-- **Description:**
-  -  Metric used to select the best algorithm for dynamic
-
-  - tuning
-
-  - max - Use the algorithm that minimizes the maximum per process
-
-  - latency (default)
-
-  - min - Use the algorithm that minimizes the minimum per process
-
-  - latency
-
-  - avg - Use the algorithm that minimizes the average per process
-
-  - latency
-
-- **Default:** MPIR\_CVAR\_DYNAMIC\_TUNE\_SELECTION\_METRIC\_max
-
-
-
-MPIR\_CVAR\_DYNAMIC\_TUNE\_VERBOSITY
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_DYNAMIC\_TUNE\_VERBOSITY
-
-  - MPICH\_DYNAMIC\_TUNE\_VERBOSITY
-
-- **Description:**
-  -  Debuging verbosity for dynamic tuning
-
-  - silent  - No debugging output (default)
-
-  - debug   - Logs collective selection in debug output
-
-  - basic   - Identifies selected collectives and the relevant message
-
-  - size
-
-  - verbose - Full debug output
-
-- **Default:** MPIR\_CVAR\_DYNAMIC\_TUNE\_VERBOSITY\_silent
-
-
-
-MPIR\_CVAR\_BCAST\_INTER\_KNOMIAL\_FACTOR
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BCAST\_INTER\_KNOMIAL\_FACTOR
-
-  - MPICH\_BCAST\_INTER\_KNOMIAL\_FACTOR
-
-- **Description:**
-  -  This defines the degree of the knomial operation during
-
-  - the inter-node knomial broadcast phase.
-
-- **Default:** 4
-
-
-
-MPIR\_CVAR\_BCAST\_INTRA\_KNOMIAL\_FACTOR
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BCAST\_INTRA\_KNOMIAL\_FACTOR
-
-  - MPICH\_BCAST\_INTRA\_KNOMIAL\_FACTOR
-
-- **Description:**
-  -  This defines the degree of the knomial operation during
-
-  - the intra-node knomial broadcast phase.
-
-- **Default:** 4
-
-
-
-MPIR\_CVAR\_BCAST\_SEGMENT\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BCAST\_SEGMENT\_SIZE
-
-  - MPICH\_BCAST\_SEGMENT\_SIZE
-
-- **Description:**
-  -  Size of the segments used for PIPELINED bcast
-
-- **Default:** 8192
-
-
-
-MPIR\_CVAR\_REDUCE\_INTER\_KNOMIAL\_FACTOR
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_REDUCE\_INTER\_KNOMIAL\_FACTOR
-
-  - MPICH\_REDUCE\_INTER\_KNOMIAL\_FACTOR
-
-- **Description:**
-  -  This defines the degree of the knomial operation during
-
-  - the inter-node knomial reduce phase.
-
-- **Default:** 4
-
-
-
-MPIR\_CVAR\_REDUCE\_INTRA\_KNOMIAL\_FACTOR
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_REDUCE\_INTRA\_KNOMIAL\_FACTOR
-
-  - MPICH\_REDUCE\_INTRA\_KNOMIAL\_FACTOR
-
-- **Description:**
-  -  This defines the degree of the knomial operation during
-
-  - the intra-node knomial reduce phase.
-
-- **Default:** 4
-
-
-
-MPIR\_CVAR\_DEVICE\_COLLECTIVES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_DEVICE\_COLLECTIVES
-
-  - MPICH\_DEVICE\_COLLECTIVES
-
-- **Description:**
-  -  Variable to select whether the device can override the
-
-  - MPIR-level collective algorithms.
-
-  - all     - Always prefer the device collectives
-
-  - none    - Never pick the device collectives
-
-  - percoll - Use the per-collective CVARs to decide
-
-- **Default:** MPIR\_CVAR\_DEVICE\_COLLECTIVES\_percoll
-
-
-
-MPIR\_CVAR\_COLLECTIVE\_FALLBACK
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_COLLECTIVE\_FALLBACK
-
-  - MPICH\_COLLECTIVE\_FALLBACK
-
-- **Description:**
-  -  Variable to control what the MPI library should do if the
-
-  - user-specified collective algorithm does not work for the
-
-  - arguments passed in by the user.
-
-  - error   - throw an error
-
-  - print   - print an error message and fallback to the internally
-
-  - selected algorithm
-
-  - silent  - silently fallback to the internally selected algorithm
-
-- **Default:** MPIR\_CVAR\_COLLECTIVE\_FALLBACK\_silent
-
-
-
-MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_COLL\_SELECTION\_TUNING\_JSON\_FILE
-
-  - MPICH\_COLL\_SELECTION\_TUNING\_JSON\_FILE
-
-- **Description:**
-  -  Defines the location of tuning file.
-
-- **Default:** ""
-
-
-
-MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_DYNAMIC
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_DYNAMIC
-
-  - MPICH\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_DYNAMIC
-
-- **Description:**
-  -  Defines the location of dynamic tuning file.
-
-- **Default:** ""
-
-
-
-MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_GPU
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_GPU
-
-  - MPICH\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_GPU
-
-- **Description:**
-  -  Defines the location of gpu tuning file.
-
-- **Default:** ""
-
-
-
-MPIR\_CVAR\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_GPU\_DYNAMIC
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_GPU\_DYNAMIC
-
-  - MPICH\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_GPU\_DYNAMIC
-
-- **Description:**
-  -  Defines the location of dynamic gpu tuning file.
-
-- **Default:** ""
-
-
-
-MPIR\_CVAR\_HIERARCHY\_DUMP
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_HIERARCHY\_DUMP
-
-  - MPICH\_HIERARCHY\_DUMP
-
-- **Description:**
-  -  If set to true, each rank will dump the hierarchy data
-
-  - structure to a file named "hierarchy[rank]" in the current folder.
-
-  - If set to false, the hierarchy data structure will not be dumped.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_COORDINATES\_FILE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_COORDINATES\_FILE
-
-  - MPICH\_COORDINATES\_FILE
-
-- **Description:**
-  -  Defines the location of the input coordinates file.
-
-- **Default:** ""
-
-
-
-MPIR\_CVAR\_COLL\_TREE\_DUMP
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_COLL\_TREE\_DUMP
-
-  - MPICH\_COLL\_TREE\_DUMP
-
-- **Description:**
-  -  If set to true, each rank will dump the tree to a file
-
-  - named "colltree[rank].json" in the current folder. If set to false,
-
-  - the tree will not be dumped.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_COORDINATES\_DUMP
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_COORDINATES\_DUMP
-
-  - MPICH\_COORDINATES\_DUMP
-
-- **Description:**
-  -  If set to true, rank 0 will dump the network coordinates
-
-  - to a file named "coords" in the current folder. If set to false,
-
-  - the network coordinates will not be dumped.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_PROGRESS\_MAX\_COLLS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_PROGRESS\_MAX\_COLLS
-
-  - MPICH\_PROGRESS\_MAX\_COLLS
-
-- **Description:**
-  -  Maximum number of collective operations at a time that the
-
-  - progress engine should make progress on
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_COMM\_SPLIT\_USE\_QSORT
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_COMM\_SPLIT\_USE\_QSORT
-
-  - MPICH\_COMM\_SPLIT\_USE\_QSORT
-
-- **Description:**
-  -  Use qsort(3) in the implementation of MPI\_Comm\_split
-
-  - instead of bubble sort.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_CTXID\_EAGER\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CTXID\_EAGER\_SIZE
-
-  - MPICH\_CTXID\_EAGER\_SIZE
-
-- **Description:**
-  -  The MPIR\_CVAR\_CTXID\_EAGER\_SIZE environment variable allows
-
-  - you to specify how many words in the context ID mask will be set
-
-  - aside for the eager allocation protocol.  If the application is
-
-  - running out of context IDs, reducing this value may help.
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_DATALOOP\_FAST\_SEEK
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_DATALOOP\_FAST\_SEEK
-
-  - MPICH\_DATALOOP\_FAST\_SEEK
-
-- **Description:**
-  -  use a datatype-specialized algorithm to shortcut seeking
-
-  - to the correct location in a noncontiguous buffer
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_YAKSA\_COMPLEX\_SUPPORT
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_YAKSA\_COMPLEX\_SUPPORT
-
-  - MPICH\_YAKSA\_COMPLEX\_SUPPORT
-
-- **Description:**
-  -  This CVAR indicates that complex type reduction is not
-
-  - supported in yaksa.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_GPU\_DOUBLE\_SUPPORT
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_GPU\_DOUBLE\_SUPPORT
-
-  - MPICH\_GPU\_DOUBLE\_SUPPORT
-
-- **Description:**
-  -  This CVAR indicates that double type is not supported on
-
-  - the GPU.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_GPU\_LONG\_DOUBLE\_SUPPORT
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_GPU\_LONG\_DOUBLE\_SUPPORT
-
-  - MPICH\_GPU\_LONG\_DOUBLE\_SUPPORT
-
-- **Description:**
-  -  This CVAR indicates that double type is not supported on
-
-  - the GPU.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_ENABLE\_YAKSA\_REDUCTION
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ENABLE\_YAKSA\_REDUCTION
-
-  - MPICH\_ENABLE\_YAKSA\_REDUCTION
-
-- **Description:**
-  -  This cvar enables yaksa based reduction for local reduce.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_YAKSA\_REDUCTION\_THRESHOLD
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_YAKSA\_REDUCTION\_THRESHOLD
-
-  - MPICH\_YAKSA\_REDUCTION\_THRESHOLD
-
-- **Description:**
-  -  This cvar disables yaksa based reduction for messages
-
-  - above the threshold. The default is no limit.
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_ENABLE\_GDRCOPY
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ENABLE\_GDRCOPY
-
-  - MPICH\_ENABLE\_GDRCOPY
-
-- **Description:**
-  -  This cvar enables gdrcopy based staging for yaksa
-
-  - operations
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_GDRCOPY\_MAX\_SIZE\_H2D
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_GDRCOPY\_MAX\_SIZE\_H2D
-
-  - MPICH\_GDRCOPY\_MAX\_SIZE\_H2D
-
-- **Description:**
-  -  This cvar controls the maximum number of bytes for which
-
-  - gdrcopy will be used for staging from host to device
-
-- **Default:** 32768
-
-
-
-MPIR\_CVAR\_GDRCOPY\_MAX\_SIZE\_D2H
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_GDRCOPY\_MAX\_SIZE\_D2H
-
-  - MPICH\_GDRCOPY\_MAX\_SIZE\_D2H
-
-- **Description:**
-  -  This cvar controls the maximum number of bytes for which
-
-  - gdrcopy will be used for staging from a device to host
-
-- **Default:** 2048
-
-
-
-MPIR\_CVAR\_GPU\_UNIFIED\_DIRECT\_COPY\_MAX
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_GPU\_UNIFIED\_DIRECT\_COPY\_MAX
-
-  - MPICH\_GPU\_UNIFIED\_DIRECT\_COPY\_MAX
-
-- **Description:**
-  -  This cvar controls the maximum number of bytes for which
-
-  - systems with unified GPU memory will use the direct CPU memcpy
-
-  - support. For all messages at or above this value, the kernel driven
-
-  - Yaksa approach will be used instead.
-
-- **Default:** (4 * 1024 * 1024)
-
-
-
-MPIR\_CVAR\_PROCTABLE\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_PROCTABLE\_SIZE
-
-  - MPICH\_PROCTABLE\_SIZE
-
-- **Description:**
-  -  Size of the "MPIR" debugger interface proctable (process
-
-  - table).
-
-- **Default:** 64
-
-
-
-MPIR\_CVAR\_PROCTABLE\_PRINT
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_PROCTABLE\_PRINT
-
-  - MPICH\_PROCTABLE\_PRINT
-
-- **Description:**
-  -  If true, dump the proctable entries at
-
-  - MPII\_Wait\_for\_debugger-time.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_PRINT\_ERROR\_STACK
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_PRINT\_ERROR\_STACK
-
-  - MPICH\_PRINT\_ERROR\_STACK
-
-- **Description:**
-  -  If true, print an error stack trace at error handling
-
-  - time.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_CHOP\_ERROR\_STACK
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CHOP\_ERROR\_STACK
-
-  - MPICH\_CHOP\_ERROR\_STACK
-
-- **Description:**
-  -  If >0, truncate error stack output lines this many
-
-  - characters wide.  If 0, do not truncate, and if <0 use a sensible
-
-  - default.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_ASYNC\_PROGRESS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ASYNC\_PROGRESS
-
-  - MPICH\_ASYNC\_PROGRESS
-
-- **Description:**
-  -  If set to true, MPICH will initiate an additional thread
-
-  - to make asynchronous progress on all communication operations
-
-  - including point-to-point, collective, one-sided operations and I/O.
-
-  -  Setting this variable will automatically increase the
-
-  - thread-safety level to MPI\_THREAD\_MULTIPLE.  While this improves
-
-  - the progress semantics, it might cause a small amount of
-
-  - performance overhead for regular MPI operations.  The user is
-
-  - encouraged to leave one or more hardware threads vacant in order to
-
-  - prevent contention between the application threads and the progress
-
-  - thread(s).  The impact of oversubscription is highly system
-
-  - dependent but may be substantial in some cases, hence this
-
-  - recommendation.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_PROGRESS\_THREAD\_AFFINITY
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_PROGRESS\_THREAD\_AFFINITY
-
-  - MPICH\_PROGRESS\_THREAD\_AFFINITY
-
-- **Description:**
-  -  Specifies affinity for all progress threads of local
-
-  - processes. Can be set to auto or comma-separated list of logical
-
-  - processors. When set to auto - MPICH will automatically select
-
-  - logical CPU cores to decide affinity of the progress threads. When
-
-  - set to comma-separated list of logical processors - In case of N
-
-  - progress threads per process, the first N logical processors from
-
-  - list will be assigned to threads of first local process, the next N
-
-  - logical processors from list - to second local process and so on.
-
-  - For example, thread affinity is "0,1,2,3", 2 progress threads per
-
-  - process and 2 processes per node. Progress threads of first local
-
-  - process will be pinned on logical processors "0,1", progress
-
-  - threads of second local process - on "2,3". Cannot work together
-
-  - with MPIR\_CVAR\_NUM\_CLIQUES or MPIR\_CVAR\_ODD\_EVEN\_CLIQUES.
-
-- **Default:** ""
-
-
-
-MPIR\_CVAR\_SUPPRESS\_ABORT\_MESSAGE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_SUPPRESS\_ABORT\_MESSAGE
-
-  - MPICH\_SUPPRESS\_ABORT\_MESSAGE
-
-- **Description:**
-  -  Disable printing of abort error message.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_COREDUMP\_ON\_ABORT
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_COREDUMP\_ON\_ABORT
-
-  - MPICH\_COREDUMP\_ON\_ABORT
-
-- **Description:**
-  -  Call libc abort() to generate a corefile
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_ERROR\_CHECKING
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ERROR\_CHECKING
-
-  - MPICH\_ERROR\_CHECKING
-
-- **Description:**
-  -  If true, perform checks for errors, typically to verify
-
-  - valid inputs to MPI routines.  Only effective when MPICH is
-
-  - configured with --enable-error-checking=runtime .
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_MEMDUMP
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_MEMDUMP
-
-  - MPICH\_MEMDUMP
-
-- **Description:**
-  -  If true, list any memory that was allocated by MPICH and
-
-  - that remains allocated when MPI\_Finalize completes.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_DEBUG\_SUMMARY
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_DEBUG\_SUMMARY
-
-  - MPICH\_DEBUG\_SUMMARY
-
-  - MPIR\_CVAR\_MEM\_CATEGORY\_INFORMATION
-
-  - MPIR\_CVAR\_CH4\_OFI\_CAPABILITY\_SETS\_DEBUG
-
-  - MPIR\_CVAR\_CH4\_UCX\_CAPABILITY\_DEBUG
-
-  - MVP\_MEM\_CATEGORY\_INFORMATION
-
-  - MVP\_CH4\_OFI\_CAPABILITY\_SETS\_DEBUG
-
-  - MVP\_CH4\_UCX\_CAPABILITY\_DEBUG
-
-  - MPICH\_MEM\_CATEGORY\_INFORMATION
-
-  - MPICH\_CH4\_OFI\_CAPABILITY\_SETS\_DEBUG
-
-  - MPICH\_CH4\_UCX\_CAPABILITY\_DEBUG
-
-- **Description:**
-  -  1: Print internal summary of various debug information,
-
-  - such as memory allocation by category. Each layer may print their
-
-  - own summary information. For example, ch4-ofi may print its
-
-  - provider capability settings. 2: Also print the preferred NIC for
-
-  - each rank
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_DEFAULT\_THREAD\_LEVEL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_DEFAULT\_THREAD\_LEVEL
-
-  - MPICH\_DEFAULT\_THREAD\_LEVEL
-
-- **Description:**
-  -  Sets the default thread level to use when using MPI\_INIT.
-
-  - This variable is case-insensitive.
-
-- **Default:** "MPI\_THREAD\_SINGLE"
-
-
-
-MPIR\_CVAR\_DEBUG\_HOLD
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_DEBUG\_HOLD
-
-  - MPICH\_DEBUG\_HOLD
-
-- **Description:**
-  -  If true, causes processes to wait in MPI\_Init and
-
-  - MPI\_Initthread for a debugger to be attached.  Once the debugger
-
-  - has attached, the variable 'hold' should be set to 0 in order to
-
-  - allow the process to continue (e.g., in gdb, "set hold=0").
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_GPU\_USE\_IMMEDIATE\_COMMAND\_LIST
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_GPU\_USE\_IMMEDIATE\_COMMAND\_LIST
-
-  - MPICH\_GPU\_USE\_IMMEDIATE\_COMMAND\_LIST
-
-- **Description:**
-  -  If true, mpl/ze will use immediate command list for
-
-  - copying
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_GPU\_ROUND\_ROBIN\_COMMAND\_QUEUES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_GPU\_ROUND\_ROBIN\_COMMAND\_QUEUES
-
-  - MPICH\_GPU\_ROUND\_ROBIN\_COMMAND\_QUEUES
-
-- **Description:**
-  -  If true, mpl/ze will use command queues in a round-robin
-
-  - fashion. If false, only command queues of index 0 will be used.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_NO\_COLLECTIVE\_FINALIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NO\_COLLECTIVE\_FINALIZE
-
-  - MPICH\_NO\_COLLECTIVE\_FINALIZE
-
-- **Description:**
-  -  If true, prevent MPI\_Finalize to invoke collective
-
-  - behavior such as barrier or communicating to other processes.
-
-  - Consequently, it may result in leaking memory or losing messages
-
-  - due to pre-mature exiting. The default is false, which may invoke
-
-  - collective behaviors at finalize.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_FINALIZE\_WAIT
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_FINALIZE\_WAIT
-
-  - MPICH\_FINALIZE\_WAIT
-
-- **Description:**
-  -  If true, poll progress at MPI\_Finalize until reference
-
-  - count on MPI\_COMM\_WORLD and MPI\_COMM\_SELF reaches zero. This may be
-
-  - necessary to prevent remote processes hanging if it has pending
-
-  - communication protocols, e.g. a rendezvous send.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_INIT\_SKIP\_PMI\_BARRIER
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_INIT\_SKIP\_PMI\_BARRIER
-
-  - MPICH\_INIT\_SKIP\_PMI\_BARRIER
-
-- **Description:**
-  -  Skip MPIR\_pmi\_barrier() in MPI\_Init
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_GPU\_FAST\_COPY\_MAX\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_GPU\_FAST\_COPY\_MAX\_SIZE
-
-  - MPICH\_GPU\_FAST\_COPY\_MAX\_SIZE
-
-- **Description:**
-  -  If a send message size is less than or equal to
-
-  - MPIR\_CVAR\_GPU\_FAST\_COPY\_MAX\_SIZE (in bytes), then enable GPU-based
-
-  - fast memcpy. The environment variable is valid only when then GPU
-
-  - IPC shmmod is enabled.
-
-- **Default:** 4096
-
-
-
-MPIR\_CVAR\_GPU\_FAST\_COPY\_MAX\_SIZE\_H2D
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_GPU\_FAST\_COPY\_MAX\_SIZE\_H2D
-
-  - MPICH\_GPU\_FAST\_COPY\_MAX\_SIZE\_H2D
-
-- **Description:**
-  -  If a receive message size is less than or equal to
-
-  - MPIR\_CVAR\_GPU\_FAST\_COPY\_MAX\_SIZE\_H2D (in bytes), then enable
-
-  - GPU-based fast memcpy.
-
-- **Default:** 1048576
-
-
-
-MPIR\_CVAR\_GPU\_FAST\_COPY\_MAX\_SIZE\_D2H
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_GPU\_FAST\_COPY\_MAX\_SIZE\_D2H
-
-  - MPICH\_GPU\_FAST\_COPY\_MAX\_SIZE\_D2H
-
-- **Description:**
-  -  If a send message size is less than or equal to
-
-  - MPIR\_CVAR\_GPU\_FAST\_COPY\_MAX\_SIZE\_D2H (in bytes), then enable
-
-  - GPU-based fast memcpy.
-
-- **Default:** 32768
-
-
-
-MPIR\_CVAR\_REQUEST\_ERR\_FATAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_REQUEST\_ERR\_FATAL
-
-  - MPICH\_REQUEST\_ERR\_FATAL
-
-- **Description:**
-  -  By default, MPI\_Waitall, MPI\_Testall, MPI\_Waitsome, and
-
-  - MPI\_Testsome return MPI\_ERR\_IN\_STATUS when one of the request
-
-  - fails. If MPIR\_CVAR\_REQUEST\_ERR\_FATAL is set to true, these
-
-  - routines will return the error code of the request immediately. The
-
-  - default MPI\_ERRS\_ARE\_FATAL error handler will dump a error stack in
-
-  - this case, which maybe more convenient for debugging. This cvar
-
-  - will also make nonblocking shched return error right away as it
-
-  - issues operations.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_REQUEST\_POLL\_FREQ
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_REQUEST\_POLL\_FREQ
-
-  - MPICH\_REQUEST\_POLL\_FREQ
-
-- **Description:**
-  -  How frequent to poll during MPI\_{Waitany,Waitsome} in
-
-  - terms of number of processed requests before polling.
-
-- **Default:** 8
-
-
-
-MPIR\_CVAR\_REQUEST\_BATCH\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_REQUEST\_BATCH\_SIZE
-
-  - MPICH\_REQUEST\_BATCH\_SIZE
-
-- **Description:**
-  -  The number of requests to make completion as a batch in
-
-  - MPI\_Waitall and MPI\_Testall implementation. A large number is
-
-  - likely to cause more cache misses.
-
-- **Default:** 64
-
-
-
-MPIR\_CVAR\_DEBUG\_PROGRESS\_TIMEOUT
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_DEBUG\_PROGRESS\_TIMEOUT
-
-  - MPICH\_DEBUG\_PROGRESS\_TIMEOUT
-
-- **Description:**
-  -  Sets the timeout in seconds to dump outstanding requests
-
-  - when progress wait is not making progress for some time.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_DIMS\_VERBOSE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_DIMS\_VERBOSE
-
-  - MPICH\_DIMS\_VERBOSE
-
-- **Description:**
-  -  If true, enable verbose output about the actions of the
-
-  - implementation of MPI\_Dims\_create.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_QMPI\_TOOL\_LIST
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_QMPI\_TOOL\_LIST
-
-  - MPICH\_QMPI\_TOOL\_LIST
-
-- **Description:**
-  -  Set the number and order of QMPI tools to be loaded by the
-
-  - MPI library when it is initialized.
-
-- **Default:** NULL
-
-
-
-MPIR\_CVAR\_NAMESERV\_FILE\_PUBDIR
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NAMESERV\_FILE\_PUBDIR
-
-  - MPICH\_NAMESERV\_FILE\_PUBDIR
-
-  - MPIR\_CVAR\_NAMEPUB\_DIR
-
-  - MVP\_NAMEPUB\_DIR
-
-  - MPICH\_NAMEPUB\_DIR
-
-- **Description:**
-  -  Sets the directory to use for MPI service publishing in
-
-  - the file nameserv implementation.  Allows the user to override
-
-  - where the publish and lookup information is placed for
-
-  - connect/accept based applications.
-
-- **Default:** NULL
-
-
-
-MPIR\_CVAR\_ENABLE\_COMPRESSION
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ENABLE\_COMPRESSION
-
-  - MPICH\_ENABLE\_COMPRESSION
-
-- **Description:**
-  -  Possible values: 0, 1 If set to 1, turn on compression If
-
-  - set to 2, turn off ompression
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_COMPRESSION\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_COMPRESSION\_ALGORITHM
-
-  - MPICH\_COMPRESSION\_ALGORITHM
-
-- **Description:**
-  -  Used to force a particular GPU compression algorithm
-
-  - mpc - Use MPC lossless compression algorithm
-
-  - zfp - Use ZFP lossy compression algorithm
-
-- **Default:** MPIR\_CVAR\_COMPRESSION\_ALGORITHM\_mpc
-
-
-
-MPIR\_CVAR\_COMPRESSION\_GPU\_BLOCKS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_COMPRESSION\_GPU\_BLOCKS
-
-  - MPICH\_COMPRESSION\_GPU\_BLOCKS
-
-- **Description:**
-  -  GPU thread blocks
-
-- **Default:** 216
-
-
-
-MPIR\_CVAR\_COMPRESSION\_DIMENSION
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_COMPRESSION\_DIMENSION
-
-  - MPICH\_COMPRESSION\_DIMENSION
-
-- **Description:**
-  -  Dimensionality in compression Possible values: integer
-
-  - between 1 and 32
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_COMPRESSION\_NUM\_STREAM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_COMPRESSION\_NUM\_STREAM
-
-  - MPICH\_COMPRESSION\_NUM\_STREAM
-
-- **Description:**
-  -  Number of streams in compression
-
-- **Default:** 512
-
-
-
-MPIR\_CVAR\_COMPRESSION\_DATA\_TYPE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_COMPRESSION\_DATA\_TYPE
-
-  - MPICH\_COMPRESSION\_DATA\_TYPE
-
-- **Description:**
-  -  Used to force a particular GPU compression algorithm
-
-  - FLOAT  - use compression with floating point type
-
-  - DOUBLE - use compression with double precision type
-
-- **Default:** MPIR\_CVAR\_COMPRESSION\_DATA\_TYPE\_FLOAT
-
-
-
-MPIR\_CVAR\_ENABLE\_PT2PT\_GPU\_COMPRESSION
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ENABLE\_PT2PT\_GPU\_COMPRESSION
-
-  - MPICH\_ENABLE\_PT2PT\_GPU\_COMPRESSION
-
-- **Description:**
-  -  Possible values: 0, 1 If set to 0, turn off point to point
-
-  - compression If set to 1, use point to point compression
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_PT2PT\_GPU\_COMPRESSION\_THRESHOLD
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_PT2PT\_GPU\_COMPRESSION\_THRESHOLD
-
-  - MPICH\_PT2PT\_GPU\_COMPRESSION\_THRESHOLD
-
-- **Description:**
-  -  Use compression for point-to-point messages only when the
-
-  - message size exceeds this setting, if point to point compression is
-
-  - enabled.
-
-- **Default:** 1048576
-
-
-
-MPIR\_CVAR\_COMPRESSION\_BUFFER\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_COMPRESSION\_BUFFER\_SIZE
-
-  - MPICH\_COMPRESSION\_BUFFER\_SIZE
-
-- **Description:**
-  -  Specifies the size of buffers for
-
-  - compressing/decompressing active messages in each block of the
-
-  - pool. The size here should be the maximum size needed for
-
-  - compression algorithms, but in the future will be the chunk size
-
-  - used for a pipelined compression.
-
-- **Default:** 33554432
-
-
-
-MPIR\_CVAR\_COMPRESSION\_NUM\_BUFFERS\_PER\_CHUNK
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_COMPRESSION\_NUM\_BUFFERS\_PER\_CHUNK
-
-  - MPICH\_COMPRESSION\_NUM\_BUFFERS\_PER\_CHUNK
-
-- **Description:**
-  -  Specifies the number of buffers for
-
-  - compressing/decompressing active messages in each block of the
-
-  - pool. Setting to one for now because the buffers are so large. In
-
-  - the future, we will set this higher once the default buffer size is
-
-  - lowered.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_COMPRESSION\_MAX\_NUM\_COMPRESSION\_BUFFERS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_COMPRESSION\_MAX\_NUM\_COMPRESSION\_BUFFERS
-
-  - MPICH\_COMPRESSION\_MAX\_NUM\_COMPRESSION\_BUFFERS
-
-- **Description:**
-  -  Specifies the max number of buffers for
-
-  - compressing/decompressing in the pool. Capped at 64 by default,
-
-  - meaning a maximum of 2GB can be allocated by this pool.
-
-- **Default:** 64
-
-
-
-MPIR\_CVAR\_COMPRESSION\_REDUCE\_SCATTER\_CHUNK\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_COMPRESSION\_REDUCE\_SCATTER\_CHUNK\_SIZE
-
-  - MPICH\_COMPRESSION\_REDUCE\_SCATTER\_CHUNK\_SIZE
-
-- **Description:**
-  -  Chunk data size for COLLECTIVEective compression in
-
-  - ring-based reduce-scatter
-
-- **Default:** (2*1024*1024)
-
-
-
-MPIR\_CVAR\_COMPRESSION\_BCAST\_CHUNKS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_COMPRESSION\_BCAST\_CHUNKS
-
-  - MPICH\_COMPRESSION\_BCAST\_CHUNKS
-
-- **Description:**
-  -  Default number of chunks for chunked-chain bcast with
-
-  - compression
-
-- **Default:** 2
-
-
-
-MPIR\_CVAR\_COMPRESSION\_BCAST\_CHUNK\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_COMPRESSION\_BCAST\_CHUNK\_SIZE
-
-  - MPICH\_COMPRESSION\_BCAST\_CHUNK\_SIZE
-
-- **Description:**
-  -  Default chunk size for chunked-chain bcast with
-
-  - compression
-
-- **Default:** (512*1024)
-
-
-
-MPIR\_CVAR\_ZFP\_NUM\_STREAM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ZFP\_NUM\_STREAM
-
-  - MPICH\_ZFP\_NUM\_STREAM
-
-- **Description:**
-  -  number of zfp streams to preallocate pool Possible values:
-
-  - integer greater than 1
-
-- **Default:** 64
-
-
-
-MPIR\_CVAR\_ZFP\_RATE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ZFP\_RATE
-
-  - MPICH\_ZFP\_RATE
-
-- **Description:**
-  -  Possible values: [1,32] for float, [1-64] for double
-
-- **Default:** 16
-
-
-
-MPIR\_CVAR\_ZFP\_NX
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ZFP\_NX
-
-  - MPICH\_ZFP\_NX
-
-- **Description:**
-  -  For 2D dimension Possible values: Positive integer,
-
-  - multiple of 4
-
-- **Default:** 4
-
-
-
-MPIR\_CVAR\_ZFP\_NY
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ZFP\_NY
-
-  - MPICH\_ZFP\_NY
-
-- **Description:**
-  -  For 3D dimension Possible values: Positive integer,
-
-  - multiple of 4
-
-- **Default:** 4
-
-
-
-MPIR\_CVAR\_ZFP\_ALLOC\_WARNING
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ZFP\_ALLOC\_WARNING
-
-  - MPICH\_ZFP\_ALLOC\_WARNING
-
-- **Description:**
-  -  Possible values: 0, 1 If set to 0, turn off warning for
-
-  - allocation of zfp stream pool If set to 1, turn on warning for
-
-  - allocation of zfp stream pool
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_ZFP\_PATH
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ZFP\_PATH
-
-  - MPICH\_ZFP\_PATH
-
-- **Description:**
-  -  Path to an alternate ZFP library to be opened with dlsym
-
-  - at runtime. By default ZFP is linked to an included version.
-
-- **Default:** NULL
-
-
-
-MPIR\_CVAR\_ENABLE\_ALLREDUCE\_COMPRESSION
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ENABLE\_ALLREDUCE\_COMPRESSION
-
-  - MPICH\_ENABLE\_ALLREDUCE\_COMPRESSION
-
-- **Description:**
-  -  Possible values: 0, 1 If set to 0, turn off collective
-
-  - compression for allreduce If set to 1, use collective compression
-
-  - for allreduce
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_ABORT\_ON\_LEAKED\_HANDLES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ABORT\_ON\_LEAKED\_HANDLES
-
-  - MPICH\_ABORT\_ON\_LEAKED\_HANDLES
-
-- **Description:**
-  -  If true, MPI will call MPI\_Abort at MPI\_Finalize if any
-
-  - MPI object handles have been leaked.  For example, if MPI\_Comm\_dup
-
-  - is called without calling a corresponding MPI\_Comm\_free.  For
-
-  - uninteresting reasons, enabling this option may prevent all known
-
-  - object leaks from being reported.  MPICH must have been configure
-
-  - with "--enable-g=handlealloc" or better in order for this
-
-  - functionality to work.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_NETLOC\_NODE\_FILE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NETLOC\_NODE\_FILE
-
-  - MPICH\_NETLOC\_NODE\_FILE
-
-- **Description:**
-  -  Subnet json file
-
-- **Default:** "auto"
-
-
-
-MPIR\_CVAR\_NOLOCAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NOLOCAL
-
-  - MPICH\_NOLOCAL
-
-  - MPIR\_CVAR\_NO\_LOCAL
-
-  - MVP\_NO\_LOCAL
-
-  - MPICH\_NO\_LOCAL
-
-- **Description:**
-  -  If true, force all processes to operate as though all
-
-  - processes are located on another node.  For example, this disables
-
-  - shared memory communication hierarchical collectives.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_ODD\_EVEN\_CLIQUES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ODD\_EVEN\_CLIQUES
-
-  - MPICH\_ODD\_EVEN\_CLIQUES
-
-  - MPIR\_CVAR\_EVEN\_ODD\_CLIQUES
-
-  - MVP\_EVEN\_ODD\_CLIQUES
-
-  - MPICH\_EVEN\_ODD\_CLIQUES
-
-- **Description:**
-  -  If true, odd procs on a node are seen as local to each
-
-  - other, and even procs on a node are seen as local to each other. 
-
-  - Used for debugging on a single machine. Deprecated in favor of
-
-  - MPIR\_CVAR\_NUM\_CLIQUES.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_NUM\_CLIQUES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NUM\_CLIQUES
-
-  - MPICH\_NUM\_CLIQUES
-
-- **Description:**
-  -  Specify the number of cliques that should be used to
-
-  - partition procs on a local node. Procs with the same clique number
-
-  - are seen as local to each other. Used for debugging on a single
-
-  - machine.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_CLIQUES\_BY\_BLOCK
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CLIQUES\_BY\_BLOCK
-
-  - MPICH\_CLIQUES\_BY\_BLOCK
-
-- **Description:**
-  -  Specify to divide processes into cliques by uniform
-
-  - blocks. The default is to divide in round-robin fashion. Used for
-
-  - debugging on a single machine.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_PMI\_VERSION
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_PMI\_VERSION
-
-  - MPICH\_PMI\_VERSION
-
-- **Description:**
-  -  Variable to select runtime PMI version.
-
-  - 1  - - PMI (default)
-
-  - 2  - - PMI2
-
-  - x  - - PMIx
-
-- **Default:** MPIR\_CVAR\_PMI\_VERSION\_1
-
-
-
-MPIR\_CVAR\_COLL\_ALIAS\_CHECK
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_COLL\_ALIAS\_CHECK
-
-  - MPICH\_COLL\_ALIAS\_CHECK
-
-- **Description:**
-  -  Enable checking of aliasing in collective operations
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_ENABLE\_GPU
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ENABLE\_GPU
-
-  - MPICH\_ENABLE\_GPU
-
-- **Description:**
-  -  Control MPICH GPU support. If set to 0, all GPU support is
-
-  - disabled and we do not query the buffer type internally because we
-
-  - assume no GPU buffer is use.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_GPU\_HAS\_WAIT\_KERNEL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_GPU\_HAS\_WAIT\_KERNEL
-
-  - MPICH\_GPU\_HAS\_WAIT\_KERNEL
-
-- **Description:**
-  -  If set to 1, avoid allocate allocating GPU registered host
-
-  - buffers for temporary buffers. When stream workq and GPU wait
-
-  - kernels are in use, access APIs for GPU registered memory may cause
-
-  - deadlock.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_ENABLE\_GPU\_REGISTER
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ENABLE\_GPU\_REGISTER
-
-  - MPICH\_ENABLE\_GPU\_REGISTER
-
-- **Description:**
-  -  Control whether to actually register buffers with the GPU
-
-  - runtime in MPIR\_gpu\_register\_host. This could lower the latency of
-
-  - certain GPU communication at the cost of some amount of GPU memory
-
-  - consumed by the MPI library. By default, registration is enabled.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_LMEM\_POOL\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_LMEM\_POOL\_SIZE
-
-  - MPICH\_LMEM\_POOL\_SIZE
-
-- **Description:**
-  -  Sets the amount of space allocated at init time to be used
-
-  - by internal functions for local temp buffers.
-
-- **Default:** 32 * 1024 * 1024
-
-
-
-MPIR\_CVAR\_POLLS\_BEFORE\_YIELD
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_POLLS\_BEFORE\_YIELD
-
-  - MPICH\_POLLS\_BEFORE\_YIELD
-
-- **Description:**
-  -  When MPICH is in a busy waiting loop, it will periodically
-
-  - call a function to yield the processor.  This cvar sets the number
-
-  - of loops before the yield function is called.  A value of 0
-
-  - disables yielding.
-
-- **Default:** 1000
-
-
-
-MPIR\_CVAR\_CH3\_INTERFACE\_HOSTNAME
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH3\_INTERFACE\_HOSTNAME
-
-  - MPICH\_CH3\_INTERFACE\_HOSTNAME
-
-  - MPIR\_CVAR\_INTERFACE\_HOSTNAME
-
-  - MVP\_INTERFACE\_HOSTNAME
-
-  - MPICH\_INTERFACE\_HOSTNAME
-
-- **Description:**
-  -  If non-NULL, this cvar specifies the IP address that other
-
-  - processes should use when connecting to this process. This cvar is
-
-  - mutually exclusive with the MPIR\_CVAR\_CH3\_NETWORK\_IFACE cvar and it
-
-  - is an error to set them both.
-
-- **Default:** NULL
-
-
-
-MPIR\_CVAR\_CH3\_PORT\_RANGE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH3\_PORT\_RANGE
-
-  - MPICH\_CH3\_PORT\_RANGE
-
-  - MPIR\_CVAR\_PORTRANGE
-
-  - MPIR\_CVAR\_PORT\_RANGE
-
-  - MVP\_PORTRANGE
-
-  - MVP\_PORT\_RANGE
-
-  - MPICH\_PORTRANGE
-
-  - MPICH\_PORT\_RANGE
-
-- **Description:**
-  -  The MPIR\_CVAR\_CH3\_PORT\_RANGE environment variable allows
-
-  - you to specify the range of TCP ports to be used by the process
-
-  - manager and the MPICH library. The format of this variable is
-
-  - <low>:<high>.  To specify any available port, use 0:0.
-
-- **Default:** {0,0}
-
-
-
-MPIR\_CVAR\_NEMESIS\_TCP\_NETWORK\_IFACE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEMESIS\_TCP\_NETWORK\_IFACE
-
-  - MPICH\_NEMESIS\_TCP\_NETWORK\_IFACE
-
-  - MPIR\_CVAR\_NETWORK\_IFACE
-
-  - MVP\_NETWORK\_IFACE
-
-  - MPICH\_NETWORK\_IFACE
-
-- **Description:**
-  -  If non-NULL, this cvar specifies which pseudo-ethernet
-
-  - interface the tcp netmod should use (e.g., "eth1", "ib0"). Note,
-
-  - this is a Linux-specific cvar. This cvar is mutually exclusive with
-
-  - the MPIR\_CVAR\_CH3\_INTERFACE\_HOSTNAME cvar and it is an error to set
-
-  - them both.
-
-- **Default:** NULL
-
-
-
-MPIR\_CVAR\_NEMESIS\_TCP\_HOST\_LOOKUP\_RETRIES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEMESIS\_TCP\_HOST\_LOOKUP\_RETRIES
-
-  - MPICH\_NEMESIS\_TCP\_HOST\_LOOKUP\_RETRIES
-
-- **Description:**
-  -  This cvar controls the number of times to retry the
-
-  - gethostbyname() function before giving up.
-
-- **Default:** 10
-
-
-
-MPIR\_CVAR\_NEMESIS\_ENABLE\_CKPOINT
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEMESIS\_ENABLE\_CKPOINT
-
-  - MPICH\_NEMESIS\_ENABLE\_CKPOINT
-
-- **Description:**
-  -  If true, enables checkpointing support and returns an
-
-  - error if checkpointing library cannot be initialized.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_NEMESIS\_SHM\_EAGER\_MAX\_SZ
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEMESIS\_SHM\_EAGER\_MAX\_SZ
-
-  - MPICH\_NEMESIS\_SHM\_EAGER\_MAX\_SZ
-
-- **Description:**
-  -  This cvar controls the message size at which Nemesis
-
-  - switches from eager to rendezvous mode for shared memory. If this
-
-  - cvar is set to -1, then Nemesis will choose an appropriate value.
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_NEMESIS\_SHM\_READY\_EAGER\_MAX\_SZ
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEMESIS\_SHM\_READY\_EAGER\_MAX\_SZ
-
-  - MPICH\_NEMESIS\_SHM\_READY\_EAGER\_MAX\_SZ
-
-- **Description:**
-  -  This cvar controls the message size at which Nemesis
-
-  - switches from eager to rendezvous mode for ready-send messages.  If
-
-  - this cvar is set to -1, then ready messages will always be sent
-
-  - eagerly.  If this cvar is set to -2, then Nemesis will choose an
-
-  - appropriate value.
-
-- **Default:** -2
-
-
-
-MPIR\_CVAR\_ENABLE\_FT
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_ENABLE\_FT
-
-  - MPICH\_ENABLE\_FT
-
-- **Description:**
-  -  Enable fault tolerance functions
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_NEMESIS\_NETMOD
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_NEMESIS\_NETMOD
-
-  - MPICH\_NEMESIS\_NETMOD
-
-- **Description:**
-  -  If non-empty, this cvar specifies which network module
-
-  - should be used for communication. This variable is
-
-  - case-insensitive.
-
-- **Default:** ""
-
-
-
-MPIR\_CVAR\_CH3\_ENABLE\_HCOLL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH3\_ENABLE\_HCOLL
-
-  - MPICH\_CH3\_ENABLE\_HCOLL
-
-- **Description:**
-  -  If true, enable HCOLL collectives.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_CH3\_COMM\_CONNECT\_TIMEOUT
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH3\_COMM\_CONNECT\_TIMEOUT
-
-  - MPICH\_CH3\_COMM\_CONNECT\_TIMEOUT
-
-- **Description:**
-  -  The default time out period in seconds for a connection
-
-  - attempt to the server communicator where the named port exists but
-
-  - no pending accept. User can change the value for a specified
-
-  - connection through its info argument.
-
-- **Default:** 180
-
-
-
-MPIR\_CVAR\_CH3\_RMA\_OP\_PIGGYBACK\_LOCK\_DATA\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH3\_RMA\_OP\_PIGGYBACK\_LOCK\_DATA\_SIZE
-
-  - MPICH\_CH3\_RMA\_OP\_PIGGYBACK\_LOCK\_DATA\_SIZE
-
-- **Description:**
-  -  Specify the threshold of data size of a RMA operation
-
-  - which can be piggybacked with a LOCK message. It is always a
-
-  - positive value and should not be smaller than
-
-  - MPIDI\_RMA\_IMMED\_BYTES. If user sets it as a small value, for middle
-
-  - and large data size, we will lose performance because of always
-
-  - waiting for round-trip of LOCK synchronization; if user sets it as
-
-  - a large value, we need to consume more memory on target side to
-
-  - buffer this lock request when lock is not satisfied.
-
-- **Default:** 65536
-
-
-
-MPIR\_CVAR\_CH3\_RMA\_ACTIVE\_REQ\_THRESHOLD
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH3\_RMA\_ACTIVE\_REQ\_THRESHOLD
-
-  - MPICH\_CH3\_RMA\_ACTIVE\_REQ\_THRESHOLD
-
-- **Description:**
-  -  Threshold of number of active requests to trigger blocking
-
-  - waiting in operation routines. When the value is negative, we never
-
-  - blockingly wait in operation routines. When the value is zero, we
-
-  - always trigger blocking waiting in operation routines to wait until
-
-  - no. of active requests becomes zero. When the value is positive, we
-
-  - do blocking waiting in operation routines to wait until no. of
-
-  - active requests being reduced to this value.
-
-- **Default:** 65536
-
-
-
-MPIR\_CVAR\_CH3\_RMA\_POKE\_PROGRESS\_REQ\_THRESHOLD
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH3\_RMA\_POKE\_PROGRESS\_REQ\_THRESHOLD
-
-  - MPICH\_CH3\_RMA\_POKE\_PROGRESS\_REQ\_THRESHOLD
-
-- **Description:**
-  -  Threshold at which the RMA implementation attempts to
-
-  - complete requests while completing RMA operations and while using
-
-  - the lazy synchronization approach.  Change this value if programs
-
-  - fail because they run out of requests or other internal resources
-
-- **Default:** 128
-
-
-
-MPIR\_CVAR\_CH3\_RMA\_SCALABLE\_FENCE\_PROCESS\_NUM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH3\_RMA\_SCALABLE\_FENCE\_PROCESS\_NUM
-
-  - MPICH\_CH3\_RMA\_SCALABLE\_FENCE\_PROCESS\_NUM
-
-- **Description:**
-  -  Specify the threshold of switching the algorithm used in
-
-  - FENCE from the basic algorithm to the scalable algorithm. The value
-
-  - can be negative, zero or positive. When the number of processes is
-
-  - larger than or equal to this value, FENCE will use a scalable
-
-  - algorithm which do not use O(P) data structure; when the number of
-
-  - processes is smaller than the value, FENCE will use a basic but
-
-  - fast algorithm which requires an O(P) data structure.
-
-- **Default:** 1024
-
-
-
-MPIR\_CVAR\_CH3\_RMA\_DELAY\_ISSUING\_FOR\_PIGGYBACKING
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH3\_RMA\_DELAY\_ISSUING\_FOR\_PIGGYBACKING
-
-  - MPICH\_CH3\_RMA\_DELAY\_ISSUING\_FOR\_PIGGYBACKING
-
-- **Description:**
-  -  Specify if delay issuing of RMA operations for
-
-  - piggybacking LOCK/UNLOCK/FLUSH is enabled. It can be either 0 or 1.
-
-  - When it is set to 1, the issuing of LOCK message is delayed until
-
-  - origin process see the first RMA operation and piggyback LOCK with
-
-  - that operation, and the origin process always keeps the current
-
-  - last operation until the ending synchronization call in order to
-
-  - piggyback UNLOCK/FLUSH with that operation. When it is set to 0, in
-
-  - WIN\_LOCK/UNLOCK case, the LOCK message is sent out as early as
-
-  - possible, in WIN\_LOCK\_ALL/UNLOCK\_ALL case, the origin process still
-
-  - tries to piggyback LOCK message with the first operation; for
-
-  - UNLOCK/FLUSH message, the origin process no longer keeps the
-
-  - current last operation but only piggyback UNLOCK/FLUSH if there is
-
-  - an operation available in the ending synchronization call.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_CH3\_RMA\_SLOTS\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH3\_RMA\_SLOTS\_SIZE
-
-  - MPICH\_CH3\_RMA\_SLOTS\_SIZE
-
-- **Description:**
-  -  Number of RMA slots during window creation. Each slot
-
-  - contains a linked list of target elements. The distribution of
-
-  - ranks among slots follows a round-robin pattern. Requires a
-
-  - positive value.
-
-- **Default:** 262144
-
-
-
-MPIR\_CVAR\_CH3\_RMA\_TARGET\_LOCK\_DATA\_BYTES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH3\_RMA\_TARGET\_LOCK\_DATA\_BYTES
-
-  - MPICH\_CH3\_RMA\_TARGET\_LOCK\_DATA\_BYTES
-
-- **Description:**
-  -  Size (in bytes) of available lock data this window can
-
-  - provided. If current buffered lock data is more than this value,
-
-  - the process will drop the upcoming operation data. Requires a
-
-  - positive value.
-
-- **Default:** 655360
-
-
-
-MPIR\_CVAR\_CH3\_EAGER\_MAX\_MSG\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH3\_EAGER\_MAX\_MSG\_SIZE
-
-  - MPICH\_CH3\_EAGER\_MAX\_MSG\_SIZE
-
-- **Description:**
-  -  This cvar controls the message size at which CH3 switches
-
-  - from eager to rendezvous mode.
-
-- **Default:** 131072
-
-
-
-MPIR\_CVAR\_CH3\_PG\_VERBOSE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH3\_PG\_VERBOSE
-
-  - MPICH\_CH3\_PG\_VERBOSE
-
-- **Description:**
-  -  If set, print the PG state on finalize.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_CH3\_RMA\_OP\_WIN\_POOL\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH3\_RMA\_OP\_WIN\_POOL\_SIZE
-
-  - MPICH\_CH3\_RMA\_OP\_WIN\_POOL\_SIZE
-
-- **Description:**
-  -  Size of the window-private RMA operations pool (in number
-
-  - of operations) that stores information about RMA operations that
-
-  - could not be issued immediately.  Requires a positive value.
-
-- **Default:** 256
-
-
-
-MPIR\_CVAR\_CH3\_RMA\_OP\_GLOBAL\_POOL\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH3\_RMA\_OP\_GLOBAL\_POOL\_SIZE
-
-  - MPICH\_CH3\_RMA\_OP\_GLOBAL\_POOL\_SIZE
-
-- **Description:**
-  -  Size of the Global RMA operations pool (in number of
-
-  - operations) that stores information about RMA operations that could
-
-  - not be issued immediately.  Requires a positive value.
-
-- **Default:** 16384
-
-
-
-MPIR\_CVAR\_CH3\_RMA\_TARGET\_WIN\_POOL\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH3\_RMA\_TARGET\_WIN\_POOL\_SIZE
-
-  - MPICH\_CH3\_RMA\_TARGET\_WIN\_POOL\_SIZE
-
-- **Description:**
-  -  Size of the window-private RMA target pool (in number of
-
-  - targets) that stores information about RMA targets that could not
-
-  - be issued immediately.  Requires a positive value.
-
-- **Default:** 256
-
-
-
-MPIR\_CVAR\_CH3\_RMA\_TARGET\_GLOBAL\_POOL\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH3\_RMA\_TARGET\_GLOBAL\_POOL\_SIZE
-
-  - MPICH\_CH3\_RMA\_TARGET\_GLOBAL\_POOL\_SIZE
-
-- **Description:**
-  -  Size of the Global RMA targets pool (in number of targets)
-
-  - that stores information about RMA targets that could not be issued
-
-  - immediately.  Requires a positive value.
-
-- **Default:** 16384
-
-
-
-MPIR\_CVAR\_CH3\_RMA\_TARGET\_LOCK\_ENTRY\_WIN\_POOL\_SIZE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH3\_RMA\_TARGET\_LOCK\_ENTRY\_WIN\_POOL\_SIZE
-
-  - MPICH\_CH3\_RMA\_TARGET\_LOCK\_ENTRY\_WIN\_POOL\_SIZE
-
-- **Description:**
-  -  Size of the window-private RMA lock entries pool (in
-
-  - number of lock entries) that stores information about RMA lock
-
-  - requests that could not be satisfied immediately.  Requires a
-
-  - positive value.
-
-- **Default:** 256
-
-
-
-MPIR\_CVAR\_OFI\_USE\_PROVIDER
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_OFI\_USE\_PROVIDER
-
-  - MPICH\_OFI\_USE\_PROVIDER
-
-- **Description:**
-  -  This variable is no longer supported. Use FI\_PROVIDER
-
-  - instead to select libfabric providers.
-
-- **Default:** NULL
-
-
-
-MPIR\_CVAR\_SINGLE\_HOST\_ENABLED
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_SINGLE\_HOST\_ENABLED
-
-  - MPICH\_SINGLE\_HOST\_ENABLED
-
-- **Description:**
-  -  Set this variable to true to indicate that processes are
-
-  - launched on a single host. The current implication is to avoid the
-
-  - cxi provider to prevent the use of scarce hardware resources.
-
-- **Default:** 1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_AM\_LONG\_FORCE\_PIPELINE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_AM\_LONG\_FORCE\_PIPELINE
-
-  - MPICH\_CH4\_OFI\_AM\_LONG\_FORCE\_PIPELINE
-
-- **Description:**
-  -  For long message to be sent using pipeline rather than
-
-  - default RDMA read.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_BCAST\_OFI\_INTRA\_ALGORITHM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_BCAST\_OFI\_INTRA\_ALGORITHM
-
-  - MPICH\_BCAST\_OFI\_INTRA\_ALGORITHM
-
-- **Description:**
-  -  Variable to select algorithm for intra-node bcast
-
-  - mpir  -   -   - - Fallback to MPIR collectives
-
-  - trigger\_tree\_tagged  -  - Force triggered ops based Tagged Tree
-
-  - trigger\_tree\_rma  -     - Force triggered ops based RMA Tree
-
-  - auto - Internal algorithm selection (can be overridden with
-
-  - MPIR\_CVAR\_CH4\_OFI\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
-
-- **Default:** MPIR\_CVAR\_BCAST\_OFI\_INTRA\_ALGORITHM\_auto
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_GPU\_RECEIVE\_ENGINE\_TYPE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_GPU\_RECEIVE\_ENGINE\_TYPE
-
-  - MPICH\_CH4\_OFI\_GPU\_RECEIVE\_ENGINE\_TYPE
-
-- **Description:**
-  -  Specifies GPU engine type for GPU pt2pt on the receiver
-
-  - side.
-
-  - compute - use a compute engine
-
-  - copy\_high\_bandwidth - use a high-bandwidth copy engine
-
-  - copy\_low\_latency - use a low-latency copy engine
-
-  - yaksa - use Yaksa
-
-- **Default:** MPIR\_CVAR\_CH4\_OFI\_GPU\_RECEIVE\_ENGINE\_TYPE\_copy\_low\_latency
-
-
-
-MPIR\_CVAR\_OFI\_SKIP\_IPV6
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_OFI\_SKIP\_IPV6
-
-  - MPICH\_OFI\_SKIP\_IPV6
-
-- **Description:**
-  -  Skip IPv6 providers.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_ENABLE\_DATA
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_ENABLE\_DATA
-
-  - MPICH\_CH4\_OFI\_ENABLE\_DATA
-
-- **Description:**
-  -  Enable immediate data fields in OFI to transmit source
-
-  - rank outside of the match bits
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_ENABLE\_AV\_TABLE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_ENABLE\_AV\_TABLE
-
-  - MPICH\_CH4\_OFI\_ENABLE\_AV\_TABLE
-
-- **Description:**
-  -  If true, the OFI addressing information will be stored
-
-  - with an FI\_AV\_TABLE. If false, an FI\_AV\_MAP will be used.
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_ENABLE\_SCALABLE\_ENDPOINTS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_ENABLE\_SCALABLE\_ENDPOINTS
-
-  - MPICH\_CH4\_OFI\_ENABLE\_SCALABLE\_ENDPOINTS
-
-- **Description:**
-  -  If true, use OFI scalable endpoints.
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_ENABLE\_SHARED\_CONTEXTS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_ENABLE\_SHARED\_CONTEXTS
-
-  - MPICH\_CH4\_OFI\_ENABLE\_SHARED\_CONTEXTS
-
-- **Description:**
-  -  If set to false (zero), MPICH does not use OFI shared
-
-  - contexts. If set to -1, it is determined by the OFI capability sets
-
-  - based on the provider. Otherwise, MPICH tries to use OFI shared
-
-  - contexts. If they are unavailable, it'll fall back to the mode
-
-  - without shared contexts.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_ENABLE\_MR\_VIRT\_ADDRESS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_ENABLE\_MR\_VIRT\_ADDRESS
-
-  - MPICH\_CH4\_OFI\_ENABLE\_MR\_VIRT\_ADDRESS
-
-- **Description:**
-  -  If true, enable virtual addressing for OFI memory regions.
-
-  - This variable is only meaningful for OFI versions 1.5+. It is
-
-  - equivalent to using FI\_MR\_BASIC in versions of OFI older than 1.5.
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_ENABLE\_MR\_ALLOCATED
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_ENABLE\_MR\_ALLOCATED
-
-  - MPICH\_CH4\_OFI\_ENABLE\_MR\_ALLOCATED
-
-- **Description:**
-  -  If true, require all OFI memory regions must be backed by
-
-  - physical memory pages at the time the registration call is made.
-
-  - This variable is only meaningful for OFI versions 1.5+. It is
-
-  - equivalent to using FI\_MR\_BASIC in versions of OFI older than 1.5.
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_ENABLE\_MR\_REGISTER\_NULL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_ENABLE\_MR\_REGISTER\_NULL
-
-  - MPICH\_CH4\_OFI\_ENABLE\_MR\_REGISTER\_NULL
-
-- **Description:**
-  -  If true, memory registration call supports registering
-
-  - with NULL addresses.
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_ENABLE\_MR\_PROV\_KEY
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_ENABLE\_MR\_PROV\_KEY
-
-  - MPICH\_CH4\_OFI\_ENABLE\_MR\_PROV\_KEY
-
-- **Description:**
-  -  If true, enable provider supplied key for OFI memory
-
-  - regions. This variable is only meaningful for OFI versions 1.5+. It
-
-  - is equivalent to using FI\_MR\_BASIC in versions of OFI older than
-
-  - 1.5.
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_ENABLE\_TAGGED
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_ENABLE\_TAGGED
-
-  - MPICH\_CH4\_OFI\_ENABLE\_TAGGED
-
-- **Description:**
-  -  If true, use tagged message transmission functions in OFI.
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_ENABLE\_AM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_ENABLE\_AM
-
-  - MPICH\_CH4\_OFI\_ENABLE\_AM
-
-- **Description:**
-  -  If true, enable OFI active message support.
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_ENABLE\_RMA
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_ENABLE\_RMA
-
-  - MPICH\_CH4\_OFI\_ENABLE\_RMA
-
-- **Description:**
-  -  If true, enable OFI RMA support for MPI RMA operations.
-
-  - OFI support for basic RMA is always required to implement large
-
-  - messgage transfers in the active message code path.
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_ENABLE\_ATOMICS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_ENABLE\_ATOMICS
-
-  - MPICH\_CH4\_OFI\_ENABLE\_ATOMICS
-
-- **Description:**
-  -  If true, enable OFI Atomics support.
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_FETCH\_ATOMIC\_IOVECS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_FETCH\_ATOMIC\_IOVECS
-
-  - MPICH\_CH4\_OFI\_FETCH\_ATOMIC\_IOVECS
-
-- **Description:**
-  -  Specifies the maximum number of iovecs that can be used by
-
-  - the OFI provider for fetch\_atomic operations. The default value is
-
-  - -1, indicating that no value is set.
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_ENABLE\_DATA\_AUTO\_PROGRESS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_ENABLE\_DATA\_AUTO\_PROGRESS
-
-  - MPICH\_CH4\_OFI\_ENABLE\_DATA\_AUTO\_PROGRESS
-
-- **Description:**
-  -  If true, enable MPI data auto progress.
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_ENABLE\_CONTROL\_AUTO\_PROGRESS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_ENABLE\_CONTROL\_AUTO\_PROGRESS
-
-  - MPICH\_CH4\_OFI\_ENABLE\_CONTROL\_AUTO\_PROGRESS
-
-- **Description:**
-  -  If true, enable MPI control auto progress.
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_ENABLE\_PT2PT\_NOPACK
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_ENABLE\_PT2PT\_NOPACK
-
-  - MPICH\_CH4\_OFI\_ENABLE\_PT2PT\_NOPACK
-
-- **Description:**
-  -  If true, enable iovec for pt2pt.
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_ENABLE\_HMEM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_ENABLE\_HMEM
-
-  - MPICH\_CH4\_OFI\_ENABLE\_HMEM
-
-- **Description:**
-  -  If true, uses GPU direct RDMA support in the provider.
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_ENABLE\_MR\_HMEM
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_ENABLE\_MR\_HMEM
-
-  - MPICH\_CH4\_OFI\_ENABLE\_MR\_HMEM
-
-- **Description:**
-  -  If true, need to register the buffer to use GPU direct
-
-  - RDMA.
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_GPU\_RDMA\_THRESHOLD
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_GPU\_RDMA\_THRESHOLD
-
-  - MPICH\_CH4\_OFI\_GPU\_RDMA\_THRESHOLD
-
-- **Description:**
-  -  The threshold to start using GPU direct RDMA.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_CONTEXT\_ID\_BITS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_CONTEXT\_ID\_BITS
-
-  - MPICH\_CH4\_OFI\_CONTEXT\_ID\_BITS
-
-- **Description:**
-  -  Specifies the number of bits that will be used for
-
-  - matching the context ID. The default value is -1, indicating that
-
-  - no value is set and that the default will be defined in the
-
-  - ofi\_types.h file.
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_RANK\_BITS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_RANK\_BITS
-
-  - MPICH\_CH4\_OFI\_RANK\_BITS
-
-- **Description:**
-  -  Specifies the number of bits that will be used for
-
-  - matching the MPI rank. The default value is -1, indicating that no
-
-  - value is set and that the default will be defined in the
-
-  - ofi\_types.h file.
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_TAG\_BITS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_TAG\_BITS
-
-  - MPICH\_CH4\_OFI\_TAG\_BITS
-
-- **Description:**
-  -  Specifies the number of bits that will be used for
-
-  - matching the user tag. The default value is -1, indicating that no
-
-  - value is set and that the default will be defined in the
-
-  - ofi\_types.h file.
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_MAJOR\_VERSION
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_MAJOR\_VERSION
-
-  - MPICH\_CH4\_OFI\_MAJOR\_VERSION
-
-- **Description:**
-  -  Specifies the major version of the OFI library. The
-
-  - default is the major version of the OFI library used with MPICH. If
-
-  - using this CVAR, it is recommended that the user also specifies a
-
-  - specific OFI provider.
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_MINOR\_VERSION
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_MINOR\_VERSION
-
-  - MPICH\_CH4\_OFI\_MINOR\_VERSION
-
-- **Description:**
-  -  Specifies the major version of the OFI library. The
-
-  - default is the minor version of the OFI library used with MPICH. If
-
-  - using this CVAR, it is recommended that the user also specifies a
-
-  - specific OFI provider.
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_MAX\_RMA\_SEP\_CTX
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_MAX\_RMA\_SEP\_CTX
-
-  - MPICH\_CH4\_OFI\_MAX\_RMA\_SEP\_CTX
-
-- **Description:**
-  -  If set to positive, this CVAR specifies the maximum number
-
-  - of transmit contexts RMA can utilize in a scalable endpoint. This
-
-  - value is effective only when scalable endpoint is available,
-
-  - otherwise it will be ignored.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_MAX\_EAGAIN\_RETRY
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_MAX\_EAGAIN\_RETRY
-
-  - MPICH\_CH4\_OFI\_MAX\_EAGAIN\_RETRY
-
-- **Description:**
-  -  If set to positive, this CVAR specifies the maximum number
-
-  - of retries of an ofi operations before returning MPIX\_ERR\_EAGAIN.
-
-  - This value is effective only when the communicator has the
-
-  - MPI\_OFI\_set\_eagain info hint set to true.
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_NUM\_AM\_BUFFERS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_CH4\_OFI\_NUM\_AM\_BUFFERS
-
-  - MPICH\_CH4\_OFI\_NUM\_AM\_BUFFERS
-
+   -  MVP_BARRIER_INTRA_ALGORITHM
+  -  MPICH_BARRIER_INTRA_ALGORITHM
 - **Description:**
-  -  Specifies the number of buffers for receiving active
-
-  - messages.
-
-- **Default:** -1
+ Variable to select barrier algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   dynamic - Internal algorithm selection using dynamic tuning
+  -   nb            - Force nonblocking algorithm
+  -   smp           - Force smp algorithm
+  -   k_dissemination - Force high radix dissemination algorithm
+  -   recexch       - Force recursive exchange algorithm
+  -   osu_pairwise  - Force OSU mcast based design 
+- **Default:**  MPIR_CVAR_BARRIER_INTRA_ALGORITHM_auto
 
-
-
-MPIR\_CVAR\_CH4\_OFI\_NUM\_OPTIMIZED\_MEMORY\_REGIONS
+MPIR_CVAR_BARRIER_INTER_ALGORITHM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_OFI\_NUM\_OPTIMIZED\_MEMORY\_REGIONS
-
-  - MPICH\_CH4\_OFI\_NUM\_OPTIMIZED\_MEMORY\_REGIONS
-
+   -  MVP_BARRIER_INTER_ALGORITHM
+  -  MPICH_BARRIER_INTER_ALGORITHM
 - **Description:**
-  -  Specifies the number of optimized memory regions supported
+ Variable to select barrier algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   bcast - Force bcast algorithm
+  -   nb    - Force nonblocking algorithm 
+- **Default:**  MPIR_CVAR_BARRIER_INTER_ALGORITHM_auto
 
-  - by the provider. An optimized memory region is used for
-
-  - lower-overhead, unordered RMA operations. It uses a low-overhead RX
-
-  - path and additionally, a low-overhead packet format may be used to
-
-  - target an optimized memory region.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_RMA\_PROGRESS\_INTERVAL
+MPIR_CVAR_BARRIER_DISSEM_KVAL
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_OFI\_RMA\_PROGRESS\_INTERVAL
-
-  - MPICH\_CH4\_OFI\_RMA\_PROGRESS\_INTERVAL
-
+   -  MVP_BARRIER_DISSEM_KVAL
+  -  MPICH_BARRIER_DISSEM_KVAL
 - **Description:**
-  -  Specifies the interval for manually flushing RMA
-
-  - operations when automatic progress is not enabled. It the
-
-  - underlying OFI provider supports auto data progress, this value is
-
-  - ignored. If the value is -1, this optimization will be turned off.
+ k value for dissemination exchange based barrier algorithm 
+- **Default:**  2
 
-- **Default:** 100
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_RMA\_IOVEC\_MAX
+MPIR_CVAR_BARRIER_RECEXCH_KVAL
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_OFI\_RMA\_IOVEC\_MAX
-
-  - MPICH\_CH4\_OFI\_RMA\_IOVEC\_MAX
-
+   -  MVP_BARRIER_RECEXCH_KVAL
+  -  MPICH_BARRIER_RECEXCH_KVAL
 - **Description:**
-  -  Specifies the maximum number of iovecs to allocate for RMA
-
-  - operations to/from noncontiguous buffers.
-
-- **Default:** 16384
-
+ k value for recursive exchange based allreduce based barrier 
+- **Default:**  2
 
-
-MPIR\_CVAR\_CH4\_OFI\_EAGER\_MAX\_MSG\_SIZE
+MPIR_CVAR_BARRIER_RECEXCH_SINGLE_PHASE_RECV
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_OFI\_EAGER\_MAX\_MSG\_SIZE
-
-  - MPICH\_CH4\_OFI\_EAGER\_MAX\_MSG\_SIZE
-
+   -  MVP_BARRIER_RECEXCH_SINGLE_PHASE_RECV
+  -  MPICH_BARRIER_RECEXCH_SINGLE_PHASE_RECV
 - **Description:**
-  -  This cvar controls the message size at which OFI native
-
-  - path switches from eager to rendezvous mode. It does not affect the
+ This CVAR controls whether the recv is posted for one phase or two phases in recexch algos. By default, we post the recvs for 2 phases. 
+- **Default:**  0
 
-  - AM path eager limit. Having this gives a way to reliably test
-
-  - native non-path. If the number is positive, OFI will init the
-
-  - MPIDI\_OFI\_global.max\_msg\_size to the value of cvar. If the number
-
-  - is negative, OFI will init the MPIDI\_OFI\_globa.max\_msg\_size using
-
-  - whatever provider gives (which might be unlimited for socket
-
-  - provider).
-
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_MAX\_NICS
+MPIR_CVAR_IBARRIER_RECEXCH_KVAL
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_OFI\_MAX\_NICS
-
-  - MPICH\_CH4\_OFI\_MAX\_NICS
-
+   -  MVP_IBARRIER_RECEXCH_KVAL
+  -  MPICH_IBARRIER_RECEXCH_KVAL
 - **Description:**
-  -  If set to positive number, this cvar determines the
-
-  - maximum number of physical nics to use (if more than one is
-
-  - available). If the number is -1, underlying netmod or shmmod
-
-  - automatically uses an optimal number depending on what is detected
-
-  - on the system up to the limit determined by MPIDI\_MAX\_NICS (in
-
-  - ofi\_types.h).
+ k value for recursive exchange based ibarrier 
+- **Default:**  2
 
-- **Default:** -1
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_ENABLE\_MULTI\_NIC\_STRIPING
+MPIR_CVAR_IBARRIER_DISSEM_KVAL
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_OFI\_ENABLE\_MULTI\_NIC\_STRIPING
-
-  - MPICH\_CH4\_OFI\_ENABLE\_MULTI\_NIC\_STRIPING
-
+   -  MVP_IBARRIER_DISSEM_KVAL
+  -  MPICH_IBARRIER_DISSEM_KVAL
 - **Description:**
-  -  If true, this cvar enables striping of large messages
-
-  - across multiple NICs.
-
-- **Default:** 0
-
+ k value for dissemination exchange based ibarrier 
+- **Default:**  2
 
-
-MPIR\_CVAR\_CH4\_OFI\_MULTI\_NIC\_STRIPING\_THRESHOLD
+MPIR_CVAR_IBARRIER_INTRA_ALGORITHM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_OFI\_MULTI\_NIC\_STRIPING\_THRESHOLD
-
-  - MPICH\_CH4\_OFI\_MULTI\_NIC\_STRIPING\_THRESHOLD
-
+   -  MVP_IBARRIER_INTRA_ALGORITHM
+  -  MPICH_IBARRIER_INTRA_ALGORITHM
 - **Description:**
-  -  Striping will happen for message sizes beyond this
-
-  - threshold.
+ Variable to select ibarrier algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_recursive_doubling - Force recursive doubling algorithm
+  -   tsp_recexch - Force generic transport based recursive exchange algorithm
+  -   tsp_k_dissemination - Force generic transport based high-radix dissemination algorithm 
+- **Default:**  MPIR_CVAR_IBARRIER_INTRA_ALGORITHM_auto
 
-- **Default:** 1048576
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_ENABLE\_MULTI\_NIC\_HASHING
+MPIR_CVAR_IBARRIER_INTER_ALGORITHM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_OFI\_ENABLE\_MULTI\_NIC\_HASHING
-
-  - MPICH\_CH4\_OFI\_ENABLE\_MULTI\_NIC\_HASHING
-
+   -  MVP_IBARRIER_INTER_ALGORITHM
+  -  MPICH_IBARRIER_INTER_ALGORITHM
 - **Description:**
-  -  Multi-NIC hashing means to use more than one NIC to send
-
-  - and receive messages above a certain size.  If set to positive
-
-  - number, this feature will be turned on. If set to 0, this feature
-
-  - will be turned off. If the number is -1, MPICH automatically
-
-  - determines whether to use multi-nic hashing depending on what is
-
-  - detected on the system (e.g., number of NICs available, number of
-
-  - processes sharing the NICs).
-
-- **Default:** 0
+ Variable to select ibarrier algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_bcast - Force bcast algorithm 
+- **Default:**  MPIR_CVAR_IBARRIER_INTER_ALGORITHM_auto
 
-
-
-MPIR\_CVAR\_CH4\_OFI\_MULTIRECV\_BUFFER\_SIZE
+MPIR_CVAR_BCAST_MIN_PROCS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_OFI\_MULTIRECV\_BUFFER\_SIZE
-
-  - MPICH\_CH4\_OFI\_MULTIRECV\_BUFFER\_SIZE
-
+   -  MVP_BCAST_MIN_PROCS
+  -  MPICH_BCAST_MIN_PROCS
 - **Description:**
-  -  Controls the multirecv am buffer size. It is recommended
-
-  - to match this to the hugepage size so that the buffer can be
-
-  - allocated at the page boundary.
-
-- **Default:** 2097152
-
+ Let's define short messages as messages with size < MPIR_CVAR_BCAST_SHORT_MSG_SIZE, and medium messages as messages with size >= MPIR_CVAR_BCAST_SHORT_MSG_SIZE but < MPIR_CVAR_BCAST_LONG_MSG_SIZE, and long messages as messages with size >= MPIR_CVAR_BCAST_LONG_MSG_SIZE. The broadcast algorithms selection procedure is as follows. For short messages or when the number of processes is < MPIR_CVAR_BCAST_MIN_PROCS, we do broadcast using the binomial tree algorithm. Otherwise, for medium messages and with a power-of-two number of processes, we do broadcast based on a scatter followed by a recursive doubling allgather algorithm. Otherwise, for long messages or with non power-of-two number of processes, we do broadcast based on a scatter followed by a ring allgather algorithm. (See also: MPIR_CVAR_BCAST_SHORT_MSG_SIZE, MPIR_CVAR_BCAST_LONG_MSG_SIZE) 
+- **Default:**  8
 
-
-MPIR\_CVAR\_OFI\_USE\_MIN\_NICS
+MPIR_CVAR_BCAST_SHORT_MSG_SIZE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_OFI\_USE\_MIN\_NICS
-
-  - MPICH\_OFI\_USE\_MIN\_NICS
-
+   -  MVP_BCAST_SHORT_MSG_SIZE
+  -  MPICH_BCAST_SHORT_MSG_SIZE
 - **Description:**
-  -  If true and all nodes do not have the same number of NICs,
-
-  - MPICH will fall back to using the fewest number of NICs instead of
-
-  - returning an error.
-
-- **Default:** 1
-
-
+ Let's define short messages as messages with size < MPIR_CVAR_BCAST_SHORT_MSG_SIZE, and medium messages as messages with size >= MPIR_CVAR_BCAST_SHORT_MSG_SIZE but < MPIR_CVAR_BCAST_LONG_MSG_SIZE, and long messages as messages with size >= MPIR_CVAR_BCAST_LONG_MSG_SIZE. The broadcast algorithms selection procedure is as follows. For short messages or when the number of processes is < MPIR_CVAR_BCAST_MIN_PROCS, we do broadcast using the binomial tree algorithm. Otherwise, for medium messages and with a power-of-two number of processes, we do broadcast based on a scatter followed by a recursive doubling allgather algorithm. Otherwise, for long messages or with non power-of-two number of processes, we do broadcast based on a scatter followed by a ring allgather algorithm. (See also: MPIR_CVAR_BCAST_MIN_PROCS, MPIR_CVAR_BCAST_LONG_MSG_SIZE) 
+- **Default:**  12288
 
-MPIR\_CVAR\_CH4\_OFI\_ENABLE\_TRIGGERED
+MPIR_CVAR_BCAST_LONG_MSG_SIZE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_OFI\_ENABLE\_TRIGGERED
-
-  - MPICH\_CH4\_OFI\_ENABLE\_TRIGGERED
-
+   -  MVP_BCAST_LONG_MSG_SIZE
+  -  MPICH_BCAST_LONG_MSG_SIZE
 - **Description:**
-  -  If true, enable OFI triggered ops for MPI collectives.
-
-- **Default:** -1
-
+ Let's define short messages as messages with size < MPIR_CVAR_BCAST_SHORT_MSG_SIZE, and medium messages as messages with size >= MPIR_CVAR_BCAST_SHORT_MSG_SIZE but < MPIR_CVAR_BCAST_LONG_MSG_SIZE, and long messages as messages with size >= MPIR_CVAR_BCAST_LONG_MSG_SIZE. The broadcast algorithms selection procedure is as follows. For short messages or when the number of processes is < MPIR_CVAR_BCAST_MIN_PROCS, we do broadcast using the binomial tree algorithm. Otherwise, for medium messages and with a power-of-two number of processes, we do broadcast based on a scatter followed by a recursive doubling allgather algorithm. Otherwise, for long messages or with non power-of-two number of processes, we do broadcast based on a scatter followed by a ring allgather algorithm. (See also: MPIR_CVAR_BCAST_MIN_PROCS, MPIR_CVAR_BCAST_SHORT_MSG_SIZE) 
+- **Default:**  524288
 
-
-MPIR\_CVAR\_CH4\_OFI\_ENABLE\_GPU\_PIPELINE
+MPIR_CVAR_BCAST_INTRA_ALGORITHM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_OFI\_ENABLE\_GPU\_PIPELINE
-
-  - MPICH\_CH4\_OFI\_ENABLE\_GPU\_PIPELINE
-
+   -  MVP_BCAST_INTRA_ALGORITHM
+  -  MPICH_BCAST_INTRA_ALGORITHM
 - **Description:**
-  -  If true, enable pipeline for GPU data transfer. GPU
-
-  - pipeline does not support non-contiguous datatypes or mixed buffer
+ Variable to select bcast algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   dynamic - Internal algorithm selection using dynamic tuning
+  -   binomial                                - Force Binomial Tree
+  -   nb                                      - Force nonblocking algorithm
+  -   smp                                     - Force smp algorithm
+  -   scatter_recursive_doubling_allgather    - Force Scatter Recursive-Doubling Allgather
+  -   scatter_ring_allgather                  - Force Scatter Ring
+  -   pipelined_tree                          - Force tree-based pipelined algorithm
+  -   tree                                    - Force tree-based algorithm
+  -   osu_knomial                             - Force OSU knomial algorithm
+  -   osu_pairwise                            - Force OSU pairwise algorithm
+  -   osu_pipelined                           - Force OSU pipelined algorithm 
+- **Default:**  MPIR_CVAR_BCAST_INTRA_ALGORITHM_dynamic
 
-  - types (i.e. GPU send buffer, host recv buffer). If GPU pipeline is
-
-  - enabled, the unsupported scenarios will cause undefined behavior if
-
-  - encountered.
-
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_GPU\_PIPELINE\_THRESHOLD
+MPIR_CVAR_BCAST_TREE_KVAL
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_OFI\_GPU\_PIPELINE\_THRESHOLD
-
-  - MPICH\_CH4\_OFI\_GPU\_PIPELINE\_THRESHOLD
-
+   -  MVP_BCAST_TREE_KVAL
+  -  MPICH_BCAST_TREE_KVAL
 - **Description:**
-  -  This is the threshold to start using GPU pipeline.
+ k value for tree (kary, knomial, etc.) based bcast 
+- **Default:**  2
 
-- **Default:** 131072
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_GPU\_PIPELINE\_BUFFER\_SZ
+MPIR_CVAR_BCAST_TREE_TYPE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_OFI\_GPU\_PIPELINE\_BUFFER\_SZ
-
-  - MPICH\_CH4\_OFI\_GPU\_PIPELINE\_BUFFER\_SZ
-
+   -  MVP_BCAST_TREE_TYPE
+  -  MPICH_BCAST_TREE_TYPE
 - **Description:**
-  -  Specifies the buffer size (in bytes) for GPU pipeline data
-
-  - transfer.
-
-- **Default:** 1048576
-
+ Tree type for tree based bcast kary      - kary tree type knomial_1 - knomial_1 tree type knomial_2 - knomial_2 tree type topology_aware - topology_aware tree type topology_aware_k - topology_aware tree type with branching factor k topology_wave - topology_wave tree type 
+- **Default:**  "kary"
 
-
-MPIR\_CVAR\_CH4\_OFI\_GPU\_PIPELINE\_NUM\_BUFFERS\_PER\_CHUNK
+MPIR_CVAR_BCAST_TOPO_REORDER_ENABLE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_OFI\_GPU\_PIPELINE\_NUM\_BUFFERS\_PER\_CHUNK
-
-  - MPICH\_CH4\_OFI\_GPU\_PIPELINE\_NUM\_BUFFERS\_PER\_CHUNK
-
+   -  MVP_BCAST_TOPO_REORDER_ENABLE
+  -  MPICH_BCAST_TOPO_REORDER_ENABLE
 - **Description:**
-  -  Specifies the number of buffers for GPU pipeline data
-
-  - transfer in each block/chunk of the pool.
+ This cvar controls if the leaders are reordered based on the number of ranks in each group. 
+- **Default:**  1
 
-- **Default:** 32
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_GPU\_PIPELINE\_MAX\_NUM\_BUFFERS
+MPIR_CVAR_BCAST_TOPO_OVERHEAD
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_OFI\_GPU\_PIPELINE\_MAX\_NUM\_BUFFERS
-
-  - MPICH\_CH4\_OFI\_GPU\_PIPELINE\_MAX\_NUM\_BUFFERS
-
+   -  MVP_BCAST_TOPO_OVERHEAD
+  -  MPICH_BCAST_TOPO_OVERHEAD
 - **Description:**
-  -  Specifies the total number of buffers for GPU pipeline
-
-  - data transfer
-
-- **Default:** 32
-
+ This cvar controls the size of the overhead. 
+- **Default:**  200
 
-
-MPIR\_CVAR\_CH4\_OFI\_GPU\_PIPELINE\_D2H\_ENGINE\_TYPE
+MPIR_CVAR_BCAST_TOPO_DIFF_GROUPS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_OFI\_GPU\_PIPELINE\_D2H\_ENGINE\_TYPE
-
-  - MPICH\_CH4\_OFI\_GPU\_PIPELINE\_D2H\_ENGINE\_TYPE
-
+   -  MVP_BCAST_TOPO_DIFF_GROUPS
+  -  MPICH_BCAST_TOPO_DIFF_GROUPS
 - **Description:**
-  -  Specifies the GPU engine type for GPU pipeline on the
-
-  - sender side, default is MPL\_GPU\_ENGINE\_TYPE\_COMPUTE
+ This cvar controls the latency between different groups. 
+- **Default:**  2800
 
-- **Default:** 0
-
-
-
-MPIR\_CVAR\_CH4\_OFI\_GPU\_PIPELINE\_H2D\_ENGINE\_TYPE
+MPIR_CVAR_BCAST_TOPO_DIFF_SWITCHES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_OFI\_GPU\_PIPELINE\_H2D\_ENGINE\_TYPE
-
-  - MPICH\_CH4\_OFI\_GPU\_PIPELINE\_H2D\_ENGINE\_TYPE
-
+   -  MVP_BCAST_TOPO_DIFF_SWITCHES
+  -  MPICH_BCAST_TOPO_DIFF_SWITCHES
 - **Description:**
-  -  Specifies the GPU engine type for GPU pipeline on the
-
-  - receiver side, default is MPL\_GPU\_ENGINE\_TYPE\_COMPUTE
-
-- **Default:** 0
-
+ This cvar controls the latency between different switches in the same groups. 
+- **Default:**  1900
 
-
-MPIR\_CVAR\_MALLOC\_ENABLE\_MMAP
+MPIR_CVAR_BCAST_TOPO_SAME_SWITCHES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- **Aliases:**
-  -  MVP\_MALLOC\_ENABLE\_MMAP
-
-  - MPICH\_MALLOC\_ENABLE\_MMAP
-
-- **Description:**
-  -  Set to 0 to disable the use of MMAP by the standard memory
-
-  - allocator. Doing so provides cache performance improvements for
-
-  - most cases. Setting to 1 will return to the system default
-
-  - behaviour.
 
-- **Default:** 0
+- **Aliases:**
+   -  MVP_BCAST_TOPO_SAME_SWITCHES
+  -  MPICH_BCAST_TOPO_SAME_SWITCHES
+- **Description:**
+ This cvar controls the latency in the same switch. 
+- **Default:**  1600
 
+MPIR_CVAR_BCAST_IS_NON_BLOCKING
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_BCAST_IS_NON_BLOCKING
+  -  MPICH_BCAST_IS_NON_BLOCKING
+- **Description:**
+ If set to true, MPI_Bcast will use non-blocking send. 
+- **Default:**  1
 
-MPIR\_CVAR\_MALLOC\_HEAP\_STEP
+MPIR_CVAR_BCAST_TREE_PIPELINE_CHUNK_SIZE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_MALLOC\_HEAP\_STEP
+   -  MVP_BCAST_TREE_PIPELINE_CHUNK_SIZE
+  -  MPICH_BCAST_TREE_PIPELINE_CHUNK_SIZE
+- **Description:**
+ Indicates the chunk size for pipelined bcast. 
+- **Default:**  8192
 
-  - MPICH\_MALLOC\_HEAP\_STEP
+MPIR_CVAR_BCAST_RECV_PRE_POST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_BCAST_RECV_PRE_POST
+  -  MPICH_BCAST_RECV_PRE_POST
 - **Description:**
-  -  Sets the size by which the malloc program heap is expanded
+ If set to true, MPI_Bcast will pre-post all the receives. 
+- **Default:**  0
 
-  - by the memory allocator when new memory is required by the program.
+MPIR_CVAR_BCAST_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - A higher value will generally provide better cache performance, but
+- **Aliases:**
+   -  MVP_BCAST_INTER_ALGORITHM
+  -  MPICH_BCAST_INTER_ALGORITHM
+- **Description:**
+ Variable to select bcast algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   nb                      - Force nonblocking algorithm
+  -   remote_send_local_bcast - Force remote-send-local-bcast algorithm 
+- **Default:**  MPIR_CVAR_BCAST_INTER_ALGORITHM_auto
 
-  - will result in a higher memory footprint. The program heap exists
+MPIR_CVAR_IBCAST_TREE_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - on a per-processes basis. Setting this value to zero will use the
+- **Aliases:**
+   -  MVP_IBCAST_TREE_KVAL
+  -  MPICH_IBCAST_TREE_KVAL
+- **Description:**
+ k value for tree (kary, knomial, etc.) based ibcast 
+- **Default:**  2
 
-  - system default.
+MPIR_CVAR_IBCAST_TREE_TYPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 32 * 1024 * 1024
+- **Aliases:**
+   -  MVP_IBCAST_TREE_TYPE
+  -  MPICH_IBCAST_TREE_TYPE
+- **Description:**
+ Tree type for tree based ibcast kary      - kary tree type knomial_1 - knomial_1 tree type knomial_2 - knomial_2 tree type 
+- **Default:**  "kary"
 
+MPIR_CVAR_IBCAST_TREE_PIPELINE_CHUNK_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IBCAST_TREE_PIPELINE_CHUNK_SIZE
+  -  MPICH_IBCAST_TREE_PIPELINE_CHUNK_SIZE
+- **Description:**
+ Maximum chunk size (in bytes) for pipelining in tree based ibcast. Default value is 0, that is, no pipelining by default 
+- **Default:**  0
 
-MPIR\_CVAR\_CH4\_OFI\_PREF\_NIC
+MPIR_CVAR_IBCAST_RING_CHUNK_SIZE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_OFI\_PREF\_NIC
+   -  MVP_IBCAST_RING_CHUNK_SIZE
+  -  MPICH_IBCAST_RING_CHUNK_SIZE
+- **Description:**
+ Maximum chunk size (in bytes) for pipelining in ibcast ring algorithm. Default value is 0, that is, no pipelining by default 
+- **Default:**  0
 
-  - MPICH\_CH4\_OFI\_PREF\_NIC
+MPIR_CVAR_IBCAST_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IBCAST_INTRA_ALGORITHM
+  -  MPICH_IBCAST_INTRA_ALGORITHM
 - **Description:**
-  -  Accept the NIC value from a user
-
-- **Default:** -1
+ Variable to select ibcast algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_binomial                             - Force Binomial algorithm
+  -   sched_smp                                  - Force smp algorithm
+  -   sched_scatter_recursive_doubling_allgather - Force Scatter Recursive Doubling Allgather algorithm
+  -   sched_scatter_ring_allgather               - Force Scatter Ring Allgather algorithm
+  -   tsp_tree                               - Force Generic Transport Tree algorithm
+  -   tsp_scatterv_recexch_allgatherv        - Force Generic Transport Scatterv followed by Recursive Exchange Allgatherv algorithm
+  -   tsp_scatterv_ring_allgatherv           - Force Generic Transport Scatterv followed by Ring Allgatherv algorithm
+  -   tsp_ring                               - Force Generic Transport Ring algorithm 
+- **Default:**  MPIR_CVAR_IBCAST_INTRA_ALGORITHM_auto
 
+MPIR_CVAR_IBCAST_SCATTERV_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IBCAST_SCATTERV_KVAL
+  -  MPICH_IBCAST_SCATTERV_KVAL
+- **Description:**
+ k value for tree based scatter in scatter_recexch_allgather algorithm 
+- **Default:**  2
 
-MPIR\_CVAR\_CH4\_OFI\_DISABLE\_INJECT\_WRITE
+MPIR_CVAR_IBCAST_ALLGATHERV_RECEXCH_KVAL
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_OFI\_DISABLE\_INJECT\_WRITE
+   -  MVP_IBCAST_ALLGATHERV_RECEXCH_KVAL
+  -  MPICH_IBCAST_ALLGATHERV_RECEXCH_KVAL
+- **Description:**
+ k value for recursive exchange based allgather in scatter_recexch_allgather algorithm 
+- **Default:**  2
 
-  - MPICH\_CH4\_OFI\_DISABLE\_INJECT\_WRITE
+MPIR_CVAR_IBCAST_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IBCAST_INTER_ALGORITHM
+  -  MPICH_IBCAST_INTER_ALGORITHM
 - **Description:**
-  -  Avoid use fi\_inject\_write. For some provider, e.g.
+ Variable to select ibcast algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_flat - Force flat algorithm 
+- **Default:**  MPIR_CVAR_IBCAST_INTER_ALGORITHM_auto
 
-  - tcp;ofi\_rxm, inject write may break the synchronization.
+MPIR_CVAR_GATHER_INTER_SHORT_MSG_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 0
+- **Aliases:**
+   -  MVP_GATHER_INTER_SHORT_MSG_SIZE
+  -  MPICH_GATHER_INTER_SHORT_MSG_SIZE
+- **Description:**
+ use the short message algorithm for intercommunicator MPI_Gather if the send buffer size is < this value (in bytes) (See also: MPIR_CVAR_GATHER_VSMALL_MSG_SIZE) 
+- **Default:**  2048
 
+MPIR_CVAR_GATHER_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_GATHER_INTRA_ALGORITHM
+  -  MPICH_GATHER_INTRA_ALGORITHM
+- **Description:**
+ Variable to select gather algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   dynamic - Internal algorithm selection using dynamic tuning
+  -   binomial - Force binomial algorithm
+  -   nb       - Force nonblocking algorithm
+  -   osu_direct - Force OSU direct algorithm
+  -   osu_direct_block - Force OSU direct block algorithm 
+- **Default:**  MPIR_CVAR_GATHER_INTRA_ALGORITHM_dynamic
 
-MPIR\_CVAR\_CH4\_OFI\_ENABLE\_INJECT
+MPIR_CVAR_GATHER_INTER_ALGORITHM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_OFI\_ENABLE\_INJECT
+   -  MVP_GATHER_INTER_ALGORITHM
+  -  MPICH_GATHER_INTER_ALGORITHM
+- **Description:**
+ Variable to select gather algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   linear                   - Force linear algorithm
+  -   local_gather_remote_send - Force local-gather-remote-send algorithm
+  -   nb                       - Force nonblocking algorithm 
+- **Default:**  MPIR_CVAR_GATHER_INTER_ALGORITHM_auto
 
-  - MPICH\_CH4\_OFI\_ENABLE\_INJECT
+MPIR_CVAR_IGATHER_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IGATHER_INTRA_ALGORITHM
+  -  MPICH_IGATHER_INTRA_ALGORITHM
 - **Description:**
-  -  Set MPIR\_CVAR\_CH4\_OFI\_ENABLE\_INJECT=0 to disable buffered
-
-  - send for small messages. This may help avoid hang due to lack of
+ Variable to select igather algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_binomial     - Force binomial algorithm
+  -   tsp_tree       - Force genetric transport based tree algorithm 
+- **Default:**  MPIR_CVAR_IGATHER_INTRA_ALGORITHM_auto
 
-  - global progress.
+MPIR_CVAR_IGATHER_TREE_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 1
+- **Aliases:**
+   -  MVP_IGATHER_TREE_KVAL
+  -  MPICH_IGATHER_TREE_KVAL
+- **Description:**
+ k value for tree based igather 
+- **Default:**  2
 
+MPIR_CVAR_IGATHER_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IGATHER_INTER_ALGORITHM
+  -  MPICH_IGATHER_INTER_ALGORITHM
+- **Description:**
+ Variable to select igather algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_long  - Force long inter algorithm
+  -   sched_short - Force short inter algorithm 
+- **Default:**  MPIR_CVAR_IGATHER_INTER_ALGORITHM_auto
 
-MPIR\_CVAR\_CH4\_OFI\_GPU\_SEND\_ENGINE\_TYPE
+MPIR_CVAR_GATHERV_INTRA_ALGORITHM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_OFI\_GPU\_SEND\_ENGINE\_TYPE
+   -  MVP_GATHERV_INTRA_ALGORITHM
+  -  MPICH_GATHERV_INTRA_ALGORITHM
+- **Description:**
+ Variable to select gatherv algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   dynamic - Internal algorithm selection using dynamic tuning
+  -   linear - Force linear algorithm
+  -   nb     - Force nonblocking algorithm 
+- **Default:**  MPIR_CVAR_GATHERV_INTRA_ALGORITHM_auto
 
-  - MPICH\_CH4\_OFI\_GPU\_SEND\_ENGINE\_TYPE
+MPIR_CVAR_GATHERV_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_GATHERV_INTER_ALGORITHM
+  -  MPICH_GATHERV_INTER_ALGORITHM
 - **Description:**
-  -  Specifies GPU engine type for GPU pt2pt on the sender
+ Variable to select gatherv algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   linear - Force linear algorithm
+  -   nb     - Force nonblocking algorithm 
+- **Default:**  MPIR_CVAR_GATHERV_INTER_ALGORITHM_auto
 
-  - side.
+MPIR_CVAR_IGATHERV_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - compute - use a compute engine
+- **Aliases:**
+   -  MVP_IGATHERV_INTRA_ALGORITHM
+  -  MPICH_IGATHERV_INTRA_ALGORITHM
+- **Description:**
+ Variable to select igatherv algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_linear         - Force linear algorithm
+  -   tsp_linear       - Force generic transport based linear algorithm 
+- **Default:**  MPIR_CVAR_IGATHERV_INTRA_ALGORITHM_auto
 
-  - copy\_high\_bandwidth - use a high-bandwidth copy engine
+MPIR_CVAR_IGATHERV_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - copy\_low\_latency - use a low-latency copy engine
+- **Aliases:**
+   -  MVP_IGATHERV_INTER_ALGORITHM
+  -  MPICH_IGATHERV_INTER_ALGORITHM
+- **Description:**
+ Variable to select igatherv algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_linear - Force linear algorithm
+  -   tsp_linear - Force generic transport based linear algorithm 
+- **Default:**  MPIR_CVAR_IGATHERV_INTER_ALGORITHM_auto
 
-  - yaksa - use Yaksa
+MPIR_CVAR_SCATTER_INTER_SHORT_MSG_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** MPIR\_CVAR\_CH4\_OFI\_GPU\_SEND\_ENGINE\_TYPE\_copy\_low\_latency
+- **Aliases:**
+   -  MVP_SCATTER_INTER_SHORT_MSG_SIZE
+  -  MPICH_SCATTER_INTER_SHORT_MSG_SIZE
+- **Description:**
+ use the short message algorithm for intercommunicator MPI_Scatter if the send buffer size is < this value (in bytes) 
+- **Default:**  2048
 
+MPIR_CVAR_SCATTER_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_SCATTER_INTRA_ALGORITHM
+  -  MPICH_SCATTER_INTRA_ALGORITHM
+- **Description:**
+ Variable to select scatter algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   dynamic - Internal algorithm selection using dynamic tuning
+  -   binomial - Force binomial algorithm
+  -   nb       - Force nonblocking algorithm
+  -   osu_direct - Force OSU direct alogirthm 
+- **Default:**  MPIR_CVAR_SCATTER_INTRA_ALGORITHM_dynamic
 
-MPIR\_CVAR\_CH4\_OFI\_EAGER\_THRESHOLD
+MPIR_CVAR_SCATTER_INTER_ALGORITHM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_OFI\_EAGER\_THRESHOLD
+   -  MVP_SCATTER_INTER_ALGORITHM
+  -  MPICH_SCATTER_INTER_ALGORITHM
+- **Description:**
+ Variable to select scatter algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   linear                    - Force linear algorithm
+  -   nb                        - Force nonblocking algorithm
+  -   remote_send_local_scatter - Force remote-send-local-scatter algorithm 
+- **Default:**  MPIR_CVAR_SCATTER_INTER_ALGORITHM_auto
 
-  - MPICH\_CH4\_OFI\_EAGER\_THRESHOLD
+MPIR_CVAR_ISCATTER_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ISCATTER_INTRA_ALGORITHM
+  -  MPICH_ISCATTER_INTRA_ALGORITHM
 - **Description:**
-  -  Messages below MPIR\_CVAR\_CH4\_OFI\_EAGER\_THRESHOLD will be
+ Variable to select iscatter algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_binomial     - Force binomial algorithm
+  -   tsp_tree       - Force genetric transport based tree algorithm 
+- **Default:**  MPIR_CVAR_ISCATTER_INTRA_ALGORITHM_auto
 
-  - sent eagerly using fi\_tagged interfaces. Messages above the
-
-  - threshold will perform an MPICH-level rendezvous handshake before
+MPIR_CVAR_ISCATTER_TREE_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - sending the data. If set to -1, MPICH will only perform rendezvous
+- **Aliases:**
+   -  MVP_ISCATTER_TREE_KVAL
+  -  MPICH_ISCATTER_TREE_KVAL
+- **Description:**
+ k value for tree based iscatter 
+- **Default:**  2
 
-  - for messages larger than the provider max\_msg\_size. Note the MPICH
+MPIR_CVAR_ISCATTER_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - eager/rendezvous threshold is independent of any internal libfabric
+- **Aliases:**
+   -  MVP_ISCATTER_INTER_ALGORITHM
+  -  MPICH_ISCATTER_INTER_ALGORITHM
+- **Description:**
+ Variable to select iscatter algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_linear                    - Force linear algorithm
+  -   sched_remote_send_local_scatter - Force remote-send-local-scatter algorithm 
+- **Default:**  MPIR_CVAR_ISCATTER_INTER_ALGORITHM_auto
 
-  - provider threshold.
+MPIR_CVAR_SCATTERV_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** -1
+- **Aliases:**
+   -  MVP_SCATTERV_INTRA_ALGORITHM
+  -  MPICH_SCATTERV_INTRA_ALGORITHM
+- **Description:**
+ Variable to select scatterv algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   dynamic - Internal algorithm selection using dynamic tuning
+  -   linear - Force linear algorithm
+  -   nb     - Force nonblocking algorithm 
+- **Default:**  MPIR_CVAR_SCATTERV_INTRA_ALGORITHM_auto
 
+MPIR_CVAR_SCATTERV_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_SCATTERV_INTER_ALGORITHM
+  -  MPICH_SCATTERV_INTER_ALGORITHM
+- **Description:**
+ Variable to select scatterv algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   linear - Force linear algorithm
+  -   nb     - Force nonblocking algorithm 
+- **Default:**  MPIR_CVAR_SCATTERV_INTER_ALGORITHM_auto
 
-MPIR\_CVAR\_UCX\_DT\_RECV
+MPIR_CVAR_ISCATTERV_INTRA_ALGORITHM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_UCX\_DT\_RECV
+   -  MVP_ISCATTERV_INTRA_ALGORITHM
+  -  MPICH_ISCATTERV_INTRA_ALGORITHM
+- **Description:**
+ Variable to select iscatterv algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_linear    - Force linear algorithm
+  -   tsp_linear  - Force generic transport based linear algorithm 
+- **Default:**  MPIR_CVAR_ISCATTERV_INTRA_ALGORITHM_auto
 
-  - MPICH\_UCX\_DT\_RECV
+MPIR_CVAR_ISCATTERV_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ISCATTERV_INTER_ALGORITHM
+  -  MPICH_ISCATTERV_INTER_ALGORITHM
 - **Description:**
-  -  Variable to select method for receiving noncontiguous data
+ Variable to select iscatterv algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_linear - Force linear algorithm
+  -   tsp_linear - Force generic transport based linear algorithm 
+- **Default:**  MPIR_CVAR_ISCATTERV_INTER_ALGORITHM_auto
 
-  - true  -   - - Use UCX datatype with pack/unpack callbacks
-
-  - false  -        - MPICH will decide to pack/unpack at
+MPIR_CVAR_ALLGATHER_SHORT_MSG_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - completion or use IOVs
+- **Aliases:**
+   -  MVP_ALLGATHER_SHORT_MSG_SIZE
+  -  MPICH_ALLGATHER_SHORT_MSG_SIZE
+- **Description:**
+ For MPI_Allgather and MPI_Allgatherv, the short message algorithm will be used if the send buffer size is < this value (in bytes). (See also: MPIR_CVAR_ALLGATHER_LONG_MSG_SIZE) 
+- **Default:**  81920
 
-  - based on the datatype
+MPIR_CVAR_ALLGATHER_LONG_MSG_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 0
+- **Aliases:**
+   -  MVP_ALLGATHER_LONG_MSG_SIZE
+  -  MPICH_ALLGATHER_LONG_MSG_SIZE
+- **Description:**
+ For MPI_Allgather and MPI_Allgatherv, the long message algorithm will be used if the send buffer size is >= this value (in bytes) (See also: MPIR_CVAR_ALLGATHER_SHORT_MSG_SIZE) 
+- **Default:**  524288
 
+MPIR_CVAR_ALLGATHER_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLGATHER_INTRA_ALGORITHM
+  -  MPICH_ALLGATHER_INTRA_ALGORITHM
+- **Description:**
+ Variable to select allgather algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   dynamic - Internal algorithm selection using dynamic tuning
+  -   brucks              - Force brucks algorithm
+  -   k_brucks            - Force brucks algorithm
+  -   nb                  - Force nonblocking algorithm
+  -   recursive_doubling  - Force recursive doubling algorithm
+  -   ring                - Force ring algorithm
+  -   recexch_doubling    - Force recexch distance doubling algorithm
+  -   recexch_halving     - Force recexch distance halving algorithm
+  -   osu_direct          - Force MVAPICH direct algorithm
+  -   osu_direct_spread   - Force MVAPICH direct spread algorithm
+  -   osu_direct_throttling - Force MVAPICH direct throttling algorithm
+  -   osu_gather_bcast    - Force MVAPICH gather-bcast algorithm
+  -   osu_gpu_compression - Force MVAPICH gpu compression algorithm 
+- **Default:**  MPIR_CVAR_ALLGATHER_INTRA_ALGORITHM_dynamic
 
-MPIR\_CVAR\_CH4\_CMA\_ENABLE
+MPIR_CVAR_ALLGATHER_BRUCKS_KVAL
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_CMA\_ENABLE
+   -  MVP_ALLGATHER_BRUCKS_KVAL
+  -  MPICH_ALLGATHER_BRUCKS_KVAL
+- **Description:**
+ radix (k) value for generic transport brucks based allgather 
+- **Default:**  2
 
-  - MPICH\_CH4\_CMA\_ENABLE
+MPIR_CVAR_ALLGATHER_RECEXCH_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLGATHER_RECEXCH_KVAL
+  -  MPICH_ALLGATHER_RECEXCH_KVAL
 - **Description:**
-  -  Set to 1 to manually enable CMA. It is disabled by default
-
-  - because the CMA requires the ptrace\_scope permission, which is
+ k value for recursive exchange based allgather 
+- **Default:**  2
 
-  - often disabled.
+MPIR_CVAR_ALLGATHER_RECEXCH_SINGLE_PHASE_RECV
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 1
+- **Aliases:**
+   -  MVP_ALLGATHER_RECEXCH_SINGLE_PHASE_RECV
+  -  MPICH_ALLGATHER_RECEXCH_SINGLE_PHASE_RECV
+- **Description:**
+ This CVAR controls whether the recv is posted for one phase or two phases in recexch algos. By default, we post the recvs for 2 phases. 
+- **Default:**  0
 
+MPIR_CVAR_ALLGATHER_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLGATHER_INTER_ALGORITHM
+  -  MPICH_ALLGATHER_INTER_ALGORITHM
+- **Description:**
+ Variable to select allgather algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   local_gather_remote_bcast - Force local-gather-remote-bcast algorithm
+  -   nb                        - Force nonblocking algorithm 
+- **Default:**  MPIR_CVAR_ALLGATHER_INTER_ALGORITHM_auto
 
-MPIR\_CVAR\_CH4\_IPC\_CMA\_P2P\_THRESHOLD
+MPIR_CVAR_IALLGATHER_RECEXCH_KVAL
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_IPC\_CMA\_P2P\_THRESHOLD
+   -  MVP_IALLGATHER_RECEXCH_KVAL
+  -  MPICH_IALLGATHER_RECEXCH_KVAL
+- **Description:**
+ k value for recursive exchange based iallgather 
+- **Default:**  2
 
-  - MPICH\_CH4\_IPC\_CMA\_P2P\_THRESHOLD
+MPIR_CVAR_IALLGATHER_BRUCKS_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IALLGATHER_BRUCKS_KVAL
+  -  MPICH_IALLGATHER_BRUCKS_KVAL
 - **Description:**
-  -  If a send message size is greater than or equal to
-
-  - MPIR\_CVAR\_CH4\_IPC\_CMA\_P2P\_THRESHOLD (in bytes), then enable
+ k value for radix in brucks based iallgather 
+- **Default:**  2
 
-  - CMA-based single copy protocol for intranode communication. The
+MPIR_CVAR_IALLGATHER_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - environment variable is valid only when the CMA submodule is
+- **Aliases:**
+   -  MVP_IALLGATHER_INTRA_ALGORITHM
+  -  MPICH_IALLGATHER_INTRA_ALGORITHM
+- **Description:**
+ Variable to select iallgather algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_ring               - Force ring algorithm
+  -   sched_brucks             - Force brucks algorithm
+  -   sched_recursive_doubling - Force recursive doubling algorithm
+  -   tsp_ring       - Force generic transport ring algorithm
+  -   tsp_brucks     - Force generic transport based brucks algorithm
+  -   tsp_recexch_doubling - Force generic transport recursive exchange with neighbours doubling in distance in each phase
+  -   tsp_recexch_halving  - Force generic transport recursive exchange with neighbours halving in distance in each phase 
+- **Default:**  MPIR_CVAR_IALLGATHER_INTRA_ALGORITHM_auto
 
-  - enabled.
+MPIR_CVAR_IALLGATHER_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 16384
+- **Aliases:**
+   -  MVP_IALLGATHER_INTER_ALGORITHM
+  -  MPICH_IALLGATHER_INTER_ALGORITHM
+- **Description:**
+ Variable to select iallgather algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_local_gather_remote_bcast - Force local-gather-remote-bcast algorithm 
+- **Default:**  MPIR_CVAR_IALLGATHER_INTER_ALGORITHM_auto
 
+MPIR_CVAR_ALLGATHERV_PIPELINE_MSG_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLGATHERV_PIPELINE_MSG_SIZE
+  -  MPICH_ALLGATHERV_PIPELINE_MSG_SIZE
+- **Description:**
+ The smallest message size that will be used for the pipelined, large-message, ring algorithm in the MPI_Allgatherv implementation. 
+- **Default:**  32768
 
-MPIR\_CVAR\_CH4\_IPC\_RNDV\_PROTOCOL
+MPIR_CVAR_ALLGATHERV_INTRA_ALGORITHM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_IPC\_RNDV\_PROTOCOL
+   -  MVP_ALLGATHERV_INTRA_ALGORITHM
+  -  MPICH_ALLGATHERV_INTRA_ALGORITHM
+- **Description:**
+ Variable to select allgatherv algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   dynamic - Internal algorithm selection using dynamic tuning
+  -   brucks             - Force brucks algorithm
+  -   nb                 - Force nonblocking algorithm
+  -   recursive_doubling - Force recursive doubling algorithm
+  -   ring               - Force ring algorithm
+  -   osu_direct_throttling - Force MVAPICH direct throttling algorithm 
+- **Default:**  MPIR_CVAR_ALLGATHERV_INTRA_ALGORITHM_auto
 
-  - MPICH\_CH4\_IPC\_RNDV\_PROTOCOL
+MPIR_CVAR_ALLGATHERV_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLGATHERV_INTER_ALGORITHM
+  -  MPICH_ALLGATHERV_INTER_ALGORITHM
 - **Description:**
-  -  Variable to select the RNDV protocol.
+ Variable to select allgatherv algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   nb                        - Force nonblocking algorithm
+  -   remote_gather_local_bcast - Force remote-gather-local-bcast algorithm 
+- **Default:**  MPIR_CVAR_ALLGATHERV_INTER_ALGORITHM_auto
 
-  - auto    - Default RNDV Protocol that enable COOP automatically
-
-  - rget    - RNDV RGET Protocol
+MPIR_CVAR_IALLGATHERV_RECEXCH_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - rput    - RNDV RPUT Protocol
+- **Aliases:**
+   -  MVP_IALLGATHERV_RECEXCH_KVAL
+  -  MPICH_IALLGATHERV_RECEXCH_KVAL
+- **Description:**
+ k value for recursive exchange based iallgatherv 
+- **Default:**  2
 
-  - coop    - RNDV COOP Protocol
+MPIR_CVAR_IALLGATHERV_BRUCKS_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** MPIR\_CVAR\_CH4\_IPC\_RNDV\_PROTOCOL\_rget
+- **Aliases:**
+   -  MVP_IALLGATHERV_BRUCKS_KVAL
+  -  MPICH_IALLGATHERV_BRUCKS_KVAL
+- **Description:**
+ k value for radix in brucks based iallgatherv 
+- **Default:**  2
 
+MPIR_CVAR_IALLGATHERV_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IALLGATHERV_INTRA_ALGORITHM
+  -  MPICH_IALLGATHERV_INTRA_ALGORITHM
+- **Description:**
+ Variable to select iallgatherv algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_brucks             - Force brucks algorithm
+  -   sched_recursive_doubling - Force recursive doubling algorithm
+  -   sched_ring               - Force ring algorithm
+  -   tsp_recexch_doubling - Force generic transport recursive exchange with neighbours doubling in distance in each phase
+  -   tsp_recexch_halving  - Force generic transport recursive exchange with neighbours halving in distance in each phase
+  -   tsp_ring             - Force generic transport ring algorithm
+  -   tsp_brucks           - Force generic transport based brucks algorithm 
+- **Default:**  MPIR_CVAR_IALLGATHERV_INTRA_ALGORITHM_auto
 
-MPIR\_CVAR\_CH4\_IPC\_CMA\_COOP\_THRESHOLD
+MPIR_CVAR_IALLGATHERV_INTER_ALGORITHM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_IPC\_CMA\_COOP\_THRESHOLD
+   -  MVP_IALLGATHERV_INTER_ALGORITHM
+  -  MPICH_IALLGATHERV_INTER_ALGORITHM
+- **Description:**
+ Variable to select iallgatherv algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_remote_gather_local_bcast - Force remote-gather-local-bcast algorithm 
+- **Default:**  MPIR_CVAR_IALLGATHERV_INTER_ALGORITHM_auto
 
-  - MPICH\_CH4\_IPC\_CMA\_COOP\_THRESHOLD
+MPIR_CVAR_ALLTOALL_SHORT_MSG_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLTOALL_SHORT_MSG_SIZE
+  -  MPICH_ALLTOALL_SHORT_MSG_SIZE
 - **Description:**
-  -  If a send message size is greater than or equal to
-
-  - MPIR\_CVAR\_CH4\_CMA\_COOP\_THRESHOLD (in bytes), then enable CMA-based
+ the short message algorithm will be used if the per-destination message size (sendcount*size(sendtype)) is <= this value (See also: MPIR_CVAR_ALLTOALL_MEDIUM_MSG_SIZE) 
+- **Default:**  256
 
-  - COOP rndv protocol for intra-node communication. Messages below
+MPIR_CVAR_ALLTOALL_MEDIUM_MSG_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - this  threshold will use either RPUT or RGET protocol as set by 
+- **Aliases:**
+   -  MVP_ALLTOALL_MEDIUM_MSG_SIZE
+  -  MPICH_ALLTOALL_MEDIUM_MSG_SIZE
+- **Description:**
+ the medium message algorithm will be used if the per-destination message size (sendcount*size(sendtype)) is <= this value and larger than MPIR_CVAR_ALLTOALL_SHORT_MSG_SIZE (See also: MPIR_CVAR_ALLTOALL_SHORT_MSG_SIZE) 
+- **Default:**  32768
 
-  - MPIR\_CVAR\_CH4\_IPC\_RNDV\_PROTOCOL.
+MPIR_CVAR_ALLTOALL_THROTTLE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 16384
+- **Aliases:**
+   -  MVP_ALLTOALL_THROTTLE
+  -  MPICH_ALLTOALL_THROTTLE
+- **Description:**
+ Maximum number of concurrent irecvs/isends posted at a time in some alltoall algorithms. Setting it to 0 causes all irecvs/isends to be posted at once 
+- **Default:**  32
 
+MPIR_CVAR_ALLREDUCE_THROTTLE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLREDUCE_THROTTLE
+  -  MPICH_ALLREDUCE_THROTTLE
+- **Description:**
+ Maximum number of concurrent irecvs/isends posted at a time in direct allreduce algorithms. Setting it to 0 causes all irecvs/isends to be posted at once 
+- **Default:**  32
 
-MPIR\_CVAR\_CH4\_IPC\_GPU\_HANDLE\_CACHE
+MPIR_CVAR_ALLGATHER_THROTTLE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_IPC\_GPU\_HANDLE\_CACHE
+   -  MVP_ALLGATHER_THROTTLE
+  -  MPICH_ALLGATHER_THROTTLE
+- **Description:**
+ Maximum number of concurrent irecvs/isends posted at a time in direct allgather algorithms. Setting it to 0 causes all irecvs/isends to be posted at once 
+- **Default:**  8
 
-  - MPICH\_CH4\_IPC\_GPU\_HANDLE\_CACHE
+MPIR_CVAR_REDUCE_SCATTER_THROTTLE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_REDUCE_SCATTER_THROTTLE
+  -  MPICH_REDUCE_SCATTER_THROTTLE
 - **Description:**
-  -  By default, we will cache ipc handles using the
+ Maximum number of concurrent irecvs/isends posted at a time in direct reduce scatter algorithms. Setting it to 0 causes all irecvs/isends to be posted at once 
+- **Default:**  8
 
-  - specialized cache mechanism. If the
-
-  - gpu-specific backend does not implement a specialized cache, then
+MPIR_CVAR_ALLTOALL_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - we will fallback to
+- **Aliases:**
+   -  MVP_ALLTOALL_INTRA_ALGORITHM
+  -  MPICH_ALLTOALL_INTRA_ALGORITHM
+- **Description:**
+ Variable to select alltoall algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   dynamic - Internal algorithm selection using dynamic tuning
+  -   brucks                    - Force brucks algorithm
+  -   k_brucks                  - Force Force radix k brucks algorithm
+  -   nb                        - Force nonblocking algorithm
+  -   pairwise                  - Force pairwise algorithm
+  -   pairwise_sendrecv_replace - Force pairwise sendrecv replace algorithm
+  -   scattered                 - Force scattered algorithm
+  -   osu_gpu_compression       - Force compression algorithm 
+- **Default:**  MPIR_CVAR_ALLTOALL_INTRA_ALGORITHM_dynamic
 
-  - the generic cache mechanism. Users can optionally force the generic
+MPIR_CVAR_ALLTOALL_BRUCKS_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - cache mechanism or
+- **Aliases:**
+   -  MVP_ALLTOALL_BRUCKS_KVAL
+  -  MPICH_ALLTOALL_BRUCKS_KVAL
+- **Description:**
+ radix (k) value for generic transport brucks based alltoall 
+- **Default:**  2
 
-  - disable ipc caching entirely.
+MPIR_CVAR_ALLTOALL_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - generic - use the cache mechanism in the generic layer
+- **Aliases:**
+   -  MVP_ALLTOALL_INTER_ALGORITHM
+  -  MPICH_ALLTOALL_INTER_ALGORITHM
+- **Description:**
+ Variable to select alltoall algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   nb                - Force nonblocking algorithm
+  -   pairwise_exchange - Force pairwise exchange algorithm 
+- **Default:**  MPIR_CVAR_ALLTOALL_INTER_ALGORITHM_auto
 
-  - specialized - use the cache mechanism in a gpu-specific mpl layer
+MPIR_CVAR_IALLTOALL_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - (if applicable)
+- **Aliases:**
+   -  MVP_IALLTOALL_INTRA_ALGORITHM
+  -  MPICH_IALLTOALL_INTRA_ALGORITHM
+- **Description:**
+ Variable to select ialltoall algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_brucks            - Force brucks algorithm
+  -   sched_inplace           - Force inplace algorithm
+  -   sched_pairwise          - Force pairwise algorithm
+  -   sched_permuted_sendrecv - Force permuted sendrecv algorithm
+  -   tsp_ring            - Force generic transport based ring algorithm
+  -   tsp_brucks          - Force generic transport based brucks algorithm
+  -   tsp_scattered       - Force generic transport based scattered algorithm 
+- **Default:**  MPIR_CVAR_IALLTOALL_INTRA_ALGORITHM_auto
 
-  - disabled - disable caching completely
+MPIR_CVAR_IALLTOALL_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** MPIR\_CVAR\_CH4\_IPC\_GPU\_HANDLE\_CACHE\_specialized
+- **Aliases:**
+   -  MVP_IALLTOALL_INTER_ALGORITHM
+  -  MPICH_IALLTOALL_INTER_ALGORITHM
+- **Description:**
+ Variable to select ialltoall algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_pairwise_exchange - Force pairwise exchange algorithm 
+- **Default:**  MPIR_CVAR_IALLTOALL_INTER_ALGORITHM_auto
 
+MPIR_CVAR_ALLTOALLV_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLTOALLV_INTRA_ALGORITHM
+  -  MPICH_ALLTOALLV_INTRA_ALGORITHM
+- **Description:**
+ Variable to select alltoallv algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   dynamic - Internal algorithm selection using dynamic tuning
+  -   nb                        - Force nonblocking algorithm
+  -   pairwise_sendrecv_replace - Force pairwise_sendrecv_replace algorithm
+  -   scattered                 - Force scattered algorithm 
+- **Default:**  MPIR_CVAR_ALLTOALLV_INTRA_ALGORITHM_auto
 
-MPIR\_CVAR\_CH4\_IPC\_GPU\_MAX\_CACHE\_ENTRIES
+MPIR_CVAR_ALLTOALLV_INTER_ALGORITHM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_IPC\_GPU\_MAX\_CACHE\_ENTRIES
+   -  MVP_ALLTOALLV_INTER_ALGORITHM
+  -  MPICH_ALLTOALLV_INTER_ALGORITHM
+- **Description:**
+ Variable to select alltoallv algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   pairwise_exchange - Force pairwise exchange algorithm
+  -   nb                - Force nonblocking algorithm 
+- **Default:**  MPIR_CVAR_ALLTOALLV_INTER_ALGORITHM_auto
 
-  - MPICH\_CH4\_IPC\_GPU\_MAX\_CACHE\_ENTRIES
+MPIR_CVAR_IALLTOALLV_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IALLTOALLV_INTRA_ALGORITHM
+  -  MPICH_IALLTOALLV_INTRA_ALGORITHM
 - **Description:**
-  -  The maximum number of entries to hold per device in the
+ Variable to select ialltoallv algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_blocked           - Force blocked algorithm
+  -   sched_inplace           - Force inplace algorithm
+  -   tsp_scattered       - Force generic transport based scattered algorithm
+  -   tsp_blocked         - Force generic transport blocked algorithm
+  -   tsp_inplace         - Force generic transport inplace algorithm 
+- **Default:**  MPIR_CVAR_IALLTOALLV_INTRA_ALGORITHM_auto
 
-  - cache containing IPC mapped buffers. When an entry is evicted, the
+MPIR_CVAR_IALLTOALLV_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - corresponding IPC handle is closed. This value is relevant only
+- **Aliases:**
+   -  MVP_IALLTOALLV_INTER_ALGORITHM
+  -  MPICH_IALLTOALLV_INTER_ALGORITHM
+- **Description:**
+ Variable to select ialltoallv algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_pairwise_exchange - Force pairwise exchange algorithm 
+- **Default:**  MPIR_CVAR_IALLTOALLV_INTER_ALGORITHM_auto
 
-  - when MPIR\_CVAR\_CH4\_IPC\_GPU\_CACHE\_SIZE=limited.
+MPIR_CVAR_IALLTOALLV_SCATTERED_OUTSTANDING_TASKS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 16
+- **Aliases:**
+   -  MVP_IALLTOALLV_SCATTERED_OUTSTANDING_TASKS
+  -  MPICH_IALLTOALLV_SCATTERED_OUTSTANDING_TASKS
+- **Description:**
+ Maximum number of outstanding sends and recvs posted at a time 
+- **Default:**  64
 
+MPIR_CVAR_IALLTOALLV_SCATTERED_BATCH_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IALLTOALLV_SCATTERED_BATCH_SIZE
+  -  MPICH_IALLTOALLV_SCATTERED_BATCH_SIZE
+- **Description:**
+ Number of send/receive tasks that scattered algorithm waits for completion before posting another batch of send/receives of that size 
+- **Default:**  4
 
-MPIR\_CVAR\_CH4\_IPC\_GPU\_CACHE\_SIZE
+MPIR_CVAR_ALLTOALLW_INTRA_ALGORITHM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_IPC\_GPU\_CACHE\_SIZE
+   -  MVP_ALLTOALLW_INTRA_ALGORITHM
+  -  MPICH_ALLTOALLW_INTRA_ALGORITHM
+- **Description:**
+ Variable to select alltoallw algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   dynamic - Internal algorithm selection using dynamic tuning
+  -   nb                        - Force nonblocking algorithm
+  -   pairwise_sendrecv_replace - Force pairwise sendrecv replace algorithm
+  -   scattered                 - Force scattered algorithm 
+- **Default:**  MPIR_CVAR_ALLTOALLW_INTRA_ALGORITHM_auto
 
-  - MPICH\_CH4\_IPC\_GPU\_CACHE\_SIZE
+MPIR_CVAR_ALLTOALLW_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLTOALLW_INTER_ALGORITHM
+  -  MPICH_ALLTOALLW_INTER_ALGORITHM
 - **Description:**
-  -  The behavior of the cache containing IPC mapped buffers.
+ Variable to select alltoallw algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   nb                - Force nonblocking algorithm
+  -   pairwise_exchange - Force pairwise exchange algorithm 
+- **Default:**  MPIR_CVAR_ALLTOALLW_INTER_ALGORITHM_auto
 
-  - unlimited - don't restrict the cache size
-
-  - limited - limit the cache size based on
+MPIR_CVAR_IALLTOALLW_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - MPIR\_CVAR\_CH4\_IPC\_GPU\_MAX\_CACHE\_ENTRIES
+- **Aliases:**
+   -  MVP_IALLTOALLW_INTRA_ALGORITHM
+  -  MPICH_IALLTOALLW_INTRA_ALGORITHM
+- **Description:**
+ Variable to select ialltoallw algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_blocked           - Force blocked algorithm
+  -   sched_inplace           - Force inplace algorithm
+  -   tsp_blocked   - Force generic transport based blocked algorithm
+  -   tsp_inplace   - Force generic transport based inplace algorithm 
+- **Default:**  MPIR_CVAR_IALLTOALLW_INTRA_ALGORITHM_auto
 
-  - disabled - don't cache mapped IPC buffers
+MPIR_CVAR_IALLTOALLW_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** MPIR\_CVAR\_CH4\_IPC\_GPU\_CACHE\_SIZE\_limited
+- **Aliases:**
+   -  MVP_IALLTOALLW_INTER_ALGORITHM
+  -  MPICH_IALLTOALLW_INTER_ALGORITHM
+- **Description:**
+ Variable to select ialltoallw algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_pairwise_exchange - Force pairwise exchange algorithm 
+- **Default:**  MPIR_CVAR_IALLTOALLW_INTER_ALGORITHM_auto
 
+MPIR_CVAR_REDUCE_SHORT_MSG_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_REDUCE_SHORT_MSG_SIZE
+  -  MPICH_REDUCE_SHORT_MSG_SIZE
+- **Description:**
+ the short message algorithm will be used if the send buffer size is <= this value (in bytes) 
+- **Default:**  2048
 
-MPIR\_CVAR\_CH4\_IPC\_GPU\_P2P\_THRESHOLD
+MPIR_CVAR_REDUCE_INTRA_ALGORITHM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_IPC\_GPU\_P2P\_THRESHOLD
+   -  MVP_REDUCE_INTRA_ALGORITHM
+  -  MPICH_REDUCE_INTRA_ALGORITHM
+- **Description:**
+ Variable to select reduce algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   dynamic - Internal algorithm selection using dynamic tuning
+  -   binomial              - Force binomial algorithm
+  -   nb                    - Force nonblocking algorithm
+  -   smp                   - Force smp algorithm
+  -   reduce_scatter_gather - Force reduce scatter gather algorithm
+  -   osu_knomial           - Force MVAPICH knomial algorithm
+  -   osu_allreduce         - Force MVAPICH allreduce algorithm 
+- **Default:**  MPIR_CVAR_REDUCE_INTRA_ALGORITHM_dynamic
 
-  - MPICH\_CH4\_IPC\_GPU\_P2P\_THRESHOLD
+MPIR_CVAR_REDUCE_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_REDUCE_INTER_ALGORITHM
+  -  MPICH_REDUCE_INTER_ALGORITHM
 - **Description:**
-  -  If a send message size is greater than or equal to
-
-  - MPIR\_CVAR\_CH4\_IPC\_GPU\_P2P\_THRESHOLD (in bytes), then enable
+ Variable to select reduce algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   local_reduce_remote_send - Force local-reduce-remote-send algorithm
+  -   nb                       - Force nonblocking algorithm 
+- **Default:**  MPIR_CVAR_REDUCE_INTER_ALGORITHM_auto
 
-  - GPU-based single copy protocol for intranode communication. The
+MPIR_CVAR_IREDUCE_TREE_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - environment variable is valid only when then GPU IPC shmmod is
+- **Aliases:**
+   -  MVP_IREDUCE_TREE_KVAL
+  -  MPICH_IREDUCE_TREE_KVAL
+- **Description:**
+ k value for tree (kary, knomial, etc.) based ireduce 
+- **Default:**  2
 
-  - enabled.
+MPIR_CVAR_IREDUCE_TREE_TYPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** (16 * 1024)
+- **Aliases:**
+   -  MVP_IREDUCE_TREE_TYPE
+  -  MPICH_IREDUCE_TREE_TYPE
+- **Description:**
+ Tree type for tree based ireduce kary      - kary tree knomial_1 - knomial_1 tree knomial_2 - knomial_2 tree topology_aware - topology_aware tree type topology_aware_k - topology_aware tree type with branching factor k topology_wave - topology_wave tree type 
+- **Default:**  "kary"
 
+MPIR_CVAR_IREDUCE_TOPO_REORDER_ENABLE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IREDUCE_TOPO_REORDER_ENABLE
+  -  MPICH_IREDUCE_TOPO_REORDER_ENABLE
+- **Description:**
+ This cvar controls if the leaders are reordered based on the number of ranks in each group. 
+- **Default:**  1
 
-MPIR\_CVAR\_CH4\_IPC\_ZE\_SHAREABLE\_HANDLE
+MPIR_CVAR_IREDUCE_TOPO_OVERHEAD
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_IPC\_ZE\_SHAREABLE\_HANDLE
+   -  MVP_IREDUCE_TOPO_OVERHEAD
+  -  MPICH_IREDUCE_TOPO_OVERHEAD
+- **Description:**
+ This cvar controls the size of the overhead. 
+- **Default:**  200
 
-  - MPICH\_CH4\_IPC\_ZE\_SHAREABLE\_HANDLE
+MPIR_CVAR_IREDUCE_TOPO_DIFF_GROUPS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IREDUCE_TOPO_DIFF_GROUPS
+  -  MPICH_IREDUCE_TOPO_DIFF_GROUPS
 - **Description:**
-  -  Variable to select implementation for ZE shareable IPC
+ This cvar controls the latency between different groups. 
+- **Default:**  2800
 
-  - handle
+MPIR_CVAR_IREDUCE_TOPO_DIFF_SWITCHES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - pidfd - use pidfd\_getfd syscall to implement shareable IPC handle
+- **Aliases:**
+   -  MVP_IREDUCE_TOPO_DIFF_SWITCHES
+  -  MPICH_IREDUCE_TOPO_DIFF_SWITCHES
+- **Description:**
+ This cvar controls the latency between different switches in the same groups. 
+- **Default:**  1900
 
-  - drmfd - force to use device fd-based shareable IPC handle
+MPIR_CVAR_IREDUCE_TOPO_SAME_SWITCHES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** MPIR\_CVAR\_CH4\_IPC\_ZE\_SHAREABLE\_HANDLE\_drmfd
+- **Aliases:**
+   -  MVP_IREDUCE_TOPO_SAME_SWITCHES
+  -  MPICH_IREDUCE_TOPO_SAME_SWITCHES
+- **Description:**
+ This cvar controls the latency in the same switch. 
+- **Default:**  1600
 
+MPIR_CVAR_IREDUCE_TREE_PIPELINE_CHUNK_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IREDUCE_TREE_PIPELINE_CHUNK_SIZE
+  -  MPICH_IREDUCE_TREE_PIPELINE_CHUNK_SIZE
+- **Description:**
+ Maximum chunk size (in bytes) for pipelining in tree based ireduce. Default value is 0, that is, no pipelining by default 
+- **Default:**  -1
 
-MPIR\_CVAR\_CH4\_IPC\_GPU\_ENGINE\_TYPE
+MPIR_CVAR_IREDUCE_RING_CHUNK_SIZE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_IPC\_GPU\_ENGINE\_TYPE
+   -  MVP_IREDUCE_RING_CHUNK_SIZE
+  -  MPICH_IREDUCE_RING_CHUNK_SIZE
+- **Description:**
+ Maximum chunk size (in bytes) for pipelining in ireduce ring algorithm. Default value is 0, that is, no pipelining by default 
+- **Default:**  0
 
-  - MPICH\_CH4\_IPC\_GPU\_ENGINE\_TYPE
+MPIR_CVAR_IREDUCE_TREE_BUFFER_PER_CHILD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IREDUCE_TREE_BUFFER_PER_CHILD
+  -  MPICH_IREDUCE_TREE_BUFFER_PER_CHILD
 - **Description:**
-  -  By default, select engine type automatically
+ If set to true, a rank in tree algorithms will allocate a dedicated buffer for every child it receives data from. This would mean more memory consumption but it would allow preposting of the receives and hence reduce the number of unexpected messages. If set to false, there is only one buffer that is used to receive the data from all the children. The receives are therefore serialized, that is, only one receive can be posted at a time. 
+- **Default:**  0
 
-  - auto - select automatically
-
-  - compute - use compute engine
+MPIR_CVAR_IREDUCE_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - copy\_high\_bandwidth - use high-bandwidth copy engine
+- **Aliases:**
+   -  MVP_IREDUCE_INTRA_ALGORITHM
+  -  MPICH_IREDUCE_INTRA_ALGORITHM
+- **Description:**
+ Variable to select ireduce algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_smp                   - Force smp algorithm
+  -   sched_binomial              - Force binomial algorithm
+  -   sched_reduce_scatter_gather - Force reduce scatter gather algorithm
+  -   tsp_tree                - Force Generic Transport Tree
+  -   tsp_ring                - Force Generic Transport Ring 
+- **Default:**  MPIR_CVAR_IREDUCE_INTRA_ALGORITHM_auto
 
-  - copy\_low\_latency - use low-latency copy engine
+MPIR_CVAR_IREDUCE_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** MPIR\_CVAR\_CH4\_IPC\_GPU\_ENGINE\_TYPE\_auto
+- **Aliases:**
+   -  MVP_IREDUCE_INTER_ALGORITHM
+  -  MPICH_IREDUCE_INTER_ALGORITHM
+- **Description:**
+ Variable to select ireduce algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_local_reduce_remote_send - Force local-reduce-remote-send algorithm 
+- **Default:**  MPIR_CVAR_IREDUCE_INTER_ALGORITHM_auto
 
+MPIR_CVAR_ALLREDUCE_SHORT_MSG_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLREDUCE_SHORT_MSG_SIZE
+  -  MPICH_ALLREDUCE_SHORT_MSG_SIZE
+- **Description:**
+ the short message algorithm will be used if the send buffer size is <= this value (in bytes) 
+- **Default:**  2048
 
-MPIR\_CVAR\_CH4\_IPC\_GPU\_READ\_WRITE\_PROTOCOL
+MPIR_CVAR_ALLREDUCE_INTRA_ALGORITHM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_IPC\_GPU\_READ\_WRITE\_PROTOCOL
+   -  MVP_ALLREDUCE_INTRA_ALGORITHM
+  -  MPICH_ALLREDUCE_INTRA_ALGORITHM
+- **Description:**
+ Variable to select allreduce algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   dynamic - Internal algorithm selection using dynamic tuning
+  -   nb                       - Force nonblocking algorithm
+  -   smp                      - Force smp algorithm
+  -   recursive_doubling       - Force recursive doubling algorithm
+  -   recursive_multiplying    - Force recursive multiplying algorithm
+  -   reduce_scatter_allgather - Force reduce scatter allgather algorithm
+  -   tree                     - Force pipelined tree algorithm
+  -   recexch                  - Force generic transport recursive exchange algorithm
+  -   ring                     - Force ring algorithm
+  -   k_reduce_scatter_allgather - Force reduce scatter allgather algorithm
+  -   ccl                      - Force CCL algorithm
+  -   osu_rd_compression - Force GPU compression recursive doubling
+  -   osu_rsa_ring_compression - Force GPU compression ring
+  -   osu_gpu_rd               - Force recursive doubling algorithm using
+  -   GPU buffer
+  -   osu_gpu_rsa              - Force reduce scatter allgather algorithm
+  -   using GPU buffer
+  -   osu_gpu_krsa             - Force k reduce scatter allgather algorithm
+  -   using GPU buffer
+  -   osu_gpu_ring             - Force ring RSA algorithm using GPU buffer
+  -   osu_gpu_direct           - Force direct RSA algorithm using GPU buffer 
+- **Default:**  MPIR_CVAR_ALLREDUCE_INTRA_ALGORITHM_dynamic
 
-  - MPICH\_CH4\_IPC\_GPU\_READ\_WRITE\_PROTOCOL
+MPIR_CVAR_ALLREDUCE_RECURSIVE_MULTIPLYING_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLREDUCE_RECURSIVE_MULTIPLYING_KVAL
+  -  MPICH_ALLREDUCE_RECURSIVE_MULTIPLYING_KVAL
 - **Description:**
-  -  By default, use read protocol.
+ radix value (power of k) for generic recursive multiplying based allreduce 
+- **Default:**  2
 
-  - auto - select automatically
+MPIR_CVAR_ALLREDUCE_TREE_TYPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - read - use read protocol
+- **Aliases:**
+   -  MVP_ALLREDUCE_TREE_TYPE
+  -  MPICH_ALLREDUCE_TREE_TYPE
+- **Description:**
+ Tree type for tree based allreduce knomial_1 is default as it supports both commutative and non-commutative reduce operations kary      - kary tree type knomial_1 - knomial_1 tree type (tree grows starting from the left of the root) knomial_2 - knomial_2 tree type (tree grows starting from the right of the root) topology_aware - topology_aware tree type topology_aware_k - topology_aware tree type with branching factor k topology_wave - topology_wave tree type 
+- **Default:**  "knomial_1"
 
-  - write - use write protocol if remote device is visible
+MPIR_CVAR_ALLREDUCE_TREE_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** MPIR\_CVAR\_CH4\_IPC\_GPU\_READ\_WRITE\_PROTOCOL\_read
+- **Aliases:**
+   -  MVP_ALLREDUCE_TREE_KVAL
+  -  MPICH_ALLREDUCE_TREE_KVAL
+- **Description:**
+ Indicates the branching factor for kary or knomial trees. 
+- **Default:**  2
 
+MPIR_CVAR_ALLREDUCE_TOPO_REORDER_ENABLE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLREDUCE_TOPO_REORDER_ENABLE
+  -  MPICH_ALLREDUCE_TOPO_REORDER_ENABLE
+- **Description:**
+ This cvar controls if the leaders are reordered based on the number of ranks in each group. 
+- **Default:**  1
 
-MPIR\_CVAR\_CH4\_IPC\_GPU\_RMA\_ENGINE\_TYPE
+MPIR_CVAR_ALLREDUCE_TOPO_OVERHEAD
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_IPC\_GPU\_RMA\_ENGINE\_TYPE
+   -  MVP_ALLREDUCE_TOPO_OVERHEAD
+  -  MPICH_ALLREDUCE_TOPO_OVERHEAD
+- **Description:**
+ This cvar controls the size of the overhead. 
+- **Default:**  200
 
-  - MPICH\_CH4\_IPC\_GPU\_RMA\_ENGINE\_TYPE
+MPIR_CVAR_ALLREDUCE_TOPO_DIFF_GROUPS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLREDUCE_TOPO_DIFF_GROUPS
+  -  MPICH_ALLREDUCE_TOPO_DIFF_GROUPS
 - **Description:**
-  -  By default, select engine type automatically
+ This cvar controls the latency between different groups. 
+- **Default:**  2800
 
-  - yaksa - don't select, use yaksa
+MPIR_CVAR_ALLREDUCE_TOPO_DIFF_SWITCHES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - auto - select automatically
+- **Aliases:**
+   -  MVP_ALLREDUCE_TOPO_DIFF_SWITCHES
+  -  MPICH_ALLREDUCE_TOPO_DIFF_SWITCHES
+- **Description:**
+ This cvar controls the latency between different switches in the same groups. 
+- **Default:**  1900
 
-  - compute - use compute engine
+MPIR_CVAR_ALLREDUCE_TOPO_SAME_SWITCHES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - copy\_high\_bandwidth - use high-bandwidth copy engine
+- **Aliases:**
+   -  MVP_ALLREDUCE_TOPO_SAME_SWITCHES
+  -  MPICH_ALLREDUCE_TOPO_SAME_SWITCHES
+- **Description:**
+ This cvar controls the latency in the same switch. 
+- **Default:**  1600
 
-  - copy\_low\_latency - use low-latency copy engine
+MPIR_CVAR_ALLREDUCE_TREE_PIPELINE_CHUNK_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** MPIR\_CVAR\_CH4\_IPC\_GPU\_RMA\_ENGINE\_TYPE\_auto
+- **Aliases:**
+   -  MVP_ALLREDUCE_TREE_PIPELINE_CHUNK_SIZE
+  -  MPICH_ALLREDUCE_TREE_PIPELINE_CHUNK_SIZE
+- **Description:**
+ Maximum chunk size (in bytes) for pipelining in tree based allreduce. Default value is 0, that is, no pipelining by default 
+- **Default:**  0
 
+MPIR_CVAR_ALLREDUCE_TREE_BUFFER_PER_CHILD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLREDUCE_TREE_BUFFER_PER_CHILD
+  -  MPICH_ALLREDUCE_TREE_BUFFER_PER_CHILD
+- **Description:**
+ If set to true, a rank in tree_kary and tree_knomial algorithms will allocate a dedicated buffer for every child it receives data from. This would mean more memory consumption but it would allow preposting of the receives and hence reduce the number of unexpected messages. If set to false, there is only one buffer that is used to receive the data from all the children. The receives are therefore serialized, that is, only one receive can be posted at a time. 
+- **Default:**  0
 
-MPIR\_CVAR\_ALLREDUCE\_IPC\_MSG\_SIZE\_THRESHOLD
+MPIR_CVAR_ALLREDUCE_RECEXCH_KVAL
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLREDUCE\_IPC\_MSG\_SIZE\_THRESHOLD
+   -  MVP_ALLREDUCE_RECEXCH_KVAL
+  -  MPICH_ALLREDUCE_RECEXCH_KVAL
+- **Description:**
+ k value for recursive exchange based allreduce 
+- **Default:**  2
 
-  - MPICH\_ALLREDUCE\_IPC\_MSG\_SIZE\_THRESHOLD
+MPIR_CVAR_ALLREDUCE_RECEXCH_SINGLE_PHASE_RECV
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLREDUCE_RECEXCH_SINGLE_PHASE_RECV
+  -  MPICH_ALLREDUCE_RECEXCH_SINGLE_PHASE_RECV
 - **Description:**
-  -  Messages below this threshold will fall back to staging to
+ This CVAR controls whether the recv is posted for one phase or two phases in recexch algos. By default, we post the recvs for 2 phases. 
+- **Default:**  0
 
-  - avoid expensive IPC overheads 
+MPIR_CVAR_ALLREDUCE_CCL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** (16 * 1024)
+- **Aliases:**
+   -  MVP_ALLREDUCE_CCL
+  -  MPICH_ALLREDUCE_CCL
+- **Description:**
+ CCL to use for CCL allreduce
+  -   auto - Internal algorithm selection (use the value from the .json tuning file)
+  -   nccl - Force NCCL
+  -   rccl - Force RCCL 
+- **Default:**  MPIR_CVAR_ALLREDUCE_CCL_auto
 
+MPIR_CVAR_ALLREDUCE_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLREDUCE_INTER_ALGORITHM
+  -  MPICH_ALLREDUCE_INTER_ALGORITHM
+- **Description:**
+ Variable to select allreduce algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   nb                    - Force nonblocking algorithm
+  -   reduce_exchange_bcast - Force reduce-exchange-bcast algorithm 
+- **Default:**  MPIR_CVAR_ALLREDUCE_INTER_ALGORITHM_auto
 
-MPIR\_CVAR\_REDUCE\_IPC\_MSG\_SIZE\_THRESHOLD
+MPIR_CVAR_IALLREDUCE_TREE_KVAL
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_REDUCE\_IPC\_MSG\_SIZE\_THRESHOLD
+   -  MVP_IALLREDUCE_TREE_KVAL
+  -  MPICH_IALLREDUCE_TREE_KVAL
+- **Description:**
+ k value for tree based iallreduce (for tree_kary and tree_knomial) 
+- **Default:**  2
 
-  - MPICH\_REDUCE\_IPC\_MSG\_SIZE\_THRESHOLD
+MPIR_CVAR_IALLREDUCE_TREE_TYPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IALLREDUCE_TREE_TYPE
+  -  MPICH_IALLREDUCE_TREE_TYPE
 - **Description:**
-  -  Messages below this threshold will fall back to staging to
+ Tree type for tree based ibcast kary      - kary tree type knomial_1 - knomial_1 tree type knomial_2 - knomial_2 tree type 
+- **Default:**  "kary"
 
-  - avoid expensive IPC overheads 
+MPIR_CVAR_IALLREDUCE_TREE_PIPELINE_CHUNK_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** (16 * 1024)
+- **Aliases:**
+   -  MVP_IALLREDUCE_TREE_PIPELINE_CHUNK_SIZE
+  -  MPICH_IALLREDUCE_TREE_PIPELINE_CHUNK_SIZE
+- **Description:**
+ Maximum chunk size (in bytes) for pipelining in tree based iallreduce. Default value is 0, that is, no pipelining by default 
+- **Default:**  0
 
+MPIR_CVAR_IALLREDUCE_TREE_BUFFER_PER_CHILD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IALLREDUCE_TREE_BUFFER_PER_CHILD
+  -  MPICH_IALLREDUCE_TREE_BUFFER_PER_CHILD
+- **Description:**
+ If set to true, a rank in tree_kary and tree_knomial algorithms will allocate a dedicated buffer for every child it receives data from. This would mean more memory consumption but it would allow preposting of the receives and hence reduce the number of unexpected messages. If set to false, there is only one buffer that is used to receive the data from all the children. The receives are therefore serialized, that is, only one receive can be posted at a time. 
+- **Default:**  0
 
-MPIR\_CVAR\_DYNAMIC\_GPU\_INIT
+MPIR_CVAR_IALLREDUCE_RECEXCH_KVAL
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_DYNAMIC\_GPU\_INIT
+   -  MVP_IALLREDUCE_RECEXCH_KVAL
+  -  MPICH_IALLREDUCE_RECEXCH_KVAL
+- **Description:**
+ k value for recursive exchange based iallreduce 
+- **Default:**  2
 
-  - MPICH\_DYNAMIC\_GPU\_INIT
+MPIR_CVAR_IALLREDUCE_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IALLREDUCE_INTRA_ALGORITHM
+  -  MPICH_IALLREDUCE_INTRA_ALGORITHM
 - **Description:**
-  -  Enable the dynamic GPU initialization.
-
-- **Default:** 1
+ Variable to select iallreduce algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_naive                      - Force naive algorithm
+  -   sched_smp                        - Force smp algorithm
+  -   sched_recursive_doubling         - Force recursive doubling algorithm
+  -   sched_reduce_scatter_allgather   - Force reduce scatter allgather algorithm
+  -   tsp_recexch_single_buffer    - Force generic transport recursive exchange with single buffer for receives
+  -   tsp_recexch_multiple_buffer  - Force generic transport recursive exchange with multiple buffers for receives
+  -   tsp_tree                     - Force generic transport tree algorithm
+  -   tsp_ring                     - Force generic transport ring algorithm
+  -   tsp_recexch_reduce_scatter_recexch_allgatherv  - Force generic transport recursive exchange with reduce scatter and allgatherv 
+- **Default:**  MPIR_CVAR_IALLREDUCE_INTRA_ALGORITHM_auto
 
+MPIR_CVAR_IALLREDUCE_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IALLREDUCE_INTER_ALGORITHM
+  -  MPICH_IALLREDUCE_INTER_ALGORITHM
+- **Description:**
+ Variable to select iallreduce algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_remote_reduce_local_bcast - Force remote-reduce-local-bcast algorithm 
+- **Default:**  MPIR_CVAR_IALLREDUCE_INTER_ALGORITHM_auto
 
-MPIR\_CVAR\_CH4\_IPC\_MAP\_REPEAT\_ADDR
+MPIR_CVAR_IREDUCE_SCATTER_COMMUTATIVE_LONG_MSG_SIZE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_IPC\_MAP\_REPEAT\_ADDR
+   -  MVP_IREDUCE_SCATTER_COMMUTATIVE_LONG_MSG_SIZE
+  -  MPICH_IREDUCE_SCATTER_COMMUTATIVE_LONG_MSG_SIZE
+- **Description:**
+ the long message algorithm will be used if the operation is commutative and the send buffer size is >= this value (in bytes) 
+- **Default:**  524288
 
-  - MPICH\_CH4\_IPC\_MAP\_REPEAT\_ADDR
+MPIR_CVAR_REDUCE_SCATTER_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_REDUCE_SCATTER_INTRA_ALGORITHM
+  -  MPICH_REDUCE_SCATTER_INTRA_ALGORITHM
 - **Description:**
-  -  If an address is used more than once in the last ten send
+ Variable to select reduce_scatter algorithm
+  -   auto                 - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   dynamic - Internal algorithm selection using dynamic tuning
+  -   nb                   - Force nonblocking algorithm
+  -   noncommutative       - Force noncommutative algorithm
+  -   pairwise             - Force pairwise algorithm
+  -   recursive_doubling   - Force recursive doubling algorithm
+  -   recursive_halving    - Force recursive halving algorithm
+  -   osu_basic            - Force MVAPICH basic algorithm
+  -   osu_ring             - Force MVAPICH ring algorithm
+  -   osu_ring_compression - Force compression algorithm
+  -   osu_gpu_direct       - Force MVAPICH gpu direct algorithm
+  -   osu_gpu_ring         - Force MVAPICH gpu ring algorithm 
+- **Default:**  MPIR_CVAR_REDUCE_SCATTER_INTRA_ALGORITHM_dynamic
 
-  - operations, map it for IPC use even if it is below the IPC
-
-  - threshold.
+MPIR_CVAR_REDUCE_SCATTER_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 1
+- **Aliases:**
+   -  MVP_REDUCE_SCATTER_INTER_ALGORITHM
+  -  MPICH_REDUCE_SCATTER_INTER_ALGORITHM
+- **Description:**
+ Variable to select reduce_scatter algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   nb                          - Force nonblocking algorithm
+  -   remote_reduce_local_scatter - Force remote-reduce-local-scatter algorithm 
+- **Default:**  MPIR_CVAR_REDUCE_SCATTER_INTER_ALGORITHM_auto
 
+MPIR_CVAR_IREDUCE_SCATTER_RECEXCH_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IREDUCE_SCATTER_RECEXCH_KVAL
+  -  MPICH_IREDUCE_SCATTER_RECEXCH_KVAL
+- **Description:**
+ k value for recursive exchange based ireduce_scatter 
+- **Default:**  2
 
-MPIR\_CVAR\_CH4\_XPMEM\_ENABLE
+MPIR_CVAR_IREDUCE_SCATTER_INTRA_ALGORITHM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_XPMEM\_ENABLE
+   -  MVP_IREDUCE_SCATTER_INTRA_ALGORITHM
+  -  MPICH_IREDUCE_SCATTER_INTRA_ALGORITHM
+- **Description:**
+ Variable to select ireduce_scatter algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_noncommutative     - Force noncommutative algorithm
+  -   sched_recursive_doubling - Force recursive doubling algorithm
+  -   sched_pairwise           - Force pairwise algorithm
+  -   sched_recursive_halving  - Force recursive halving algorithm
+  -   tsp_recexch          - Force generic transport recursive exchange algorithm 
+- **Default:**  MPIR_CVAR_IREDUCE_SCATTER_INTRA_ALGORITHM_auto
 
-  - MPICH\_CH4\_XPMEM\_ENABLE
+MPIR_CVAR_IREDUCE_SCATTER_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IREDUCE_SCATTER_INTER_ALGORITHM
+  -  MPICH_IREDUCE_SCATTER_INTER_ALGORITHM
 - **Description:**
-  -  To manually disable XPMEM set to 0. The environment
+ Variable to select ireduce_scatter algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_remote_reduce_local_scatterv - Force remote-reduce-local-scatterv algorithm 
+- **Default:**  MPIR_CVAR_IREDUCE_SCATTER_INTER_ALGORITHM_auto
 
-  - variable is valid only when the XPMEM submodule is enabled.
+MPIR_CVAR_REDUCE_SCATTER_BLOCK_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 1
+- **Aliases:**
+   -  MVP_REDUCE_SCATTER_BLOCK_INTRA_ALGORITHM
+  -  MPICH_REDUCE_SCATTER_BLOCK_INTRA_ALGORITHM
+- **Description:**
+ Variable to select reduce_scatter_block algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   dynamic - Internal algorithm selection using dynamic tuning
+  -   noncommutative     - Force noncommutative algorithm
+  -   recursive_doubling - Force recursive doubling algorithm
+  -   pairwise           - Force pairwise algorithm
+  -   recursive_halving  - Force recursive halving algorithm
+  -   nb                 - Force nonblocking algorithm 
+- **Default:**  MPIR_CVAR_REDUCE_SCATTER_BLOCK_INTRA_ALGORITHM_auto
 
+MPIR_CVAR_REDUCE_SCATTER_BLOCK_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_REDUCE_SCATTER_BLOCK_INTER_ALGORITHM
+  -  MPICH_REDUCE_SCATTER_BLOCK_INTER_ALGORITHM
+- **Description:**
+ Variable to select reduce_scatter_block algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   nb                          - Force nonblocking algorithm
+  -   remote_reduce_local_scatter - Force remote-reduce-local-scatter algorithm 
+- **Default:**  MPIR_CVAR_REDUCE_SCATTER_BLOCK_INTER_ALGORITHM_auto
 
-MPIR\_CVAR\_CH4\_IPC\_XPMEM\_P2P\_THRESHOLD
+MPIR_CVAR_IREDUCE_SCATTER_BLOCK_RECEXCH_KVAL
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_IPC\_XPMEM\_P2P\_THRESHOLD
+   -  MVP_IREDUCE_SCATTER_BLOCK_RECEXCH_KVAL
+  -  MPICH_IREDUCE_SCATTER_BLOCK_RECEXCH_KVAL
+- **Description:**
+ k value for recursive exchange based ireduce_scatter_block 
+- **Default:**  2
 
-  - MPICH\_CH4\_IPC\_XPMEM\_P2P\_THRESHOLD
+MPIR_CVAR_IREDUCE_SCATTER_BLOCK_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IREDUCE_SCATTER_BLOCK_INTRA_ALGORITHM
+  -  MPICH_IREDUCE_SCATTER_BLOCK_INTRA_ALGORITHM
 - **Description:**
-  -  If a send message size is greater than or equal to
-
-  - MPIR\_CVAR\_CH4\_IPC\_XPMEM\_P2P\_THRESHOLD (in bytes), then enable
+ Variable to select ireduce_scatter_block algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_noncommutative     - Force noncommutative algorithm
+  -   sched_recursive_doubling - Force recursive doubling algorithm
+  -   sched_pairwise           - Force pairwise algorithm
+  -   sched_recursive_halving  - Force recursive halving algorithm
+  -   tsp_recexch          - Force generic transport recursive exchange algorithm 
+- **Default:**  MPIR_CVAR_IREDUCE_SCATTER_BLOCK_INTRA_ALGORITHM_auto
 
-  - XPMEM-based single copy protocol for intranode communication. The
+MPIR_CVAR_IREDUCE_SCATTER_BLOCK_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - environment variable is valid only when the XPMEM submodule is
+- **Aliases:**
+   -  MVP_IREDUCE_SCATTER_BLOCK_INTER_ALGORITHM
+  -  MPICH_IREDUCE_SCATTER_BLOCK_INTER_ALGORITHM
+- **Description:**
+ Variable to select ireduce_scatter_block algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_remote_reduce_local_scatterv - Force remote-reduce-local-scatterv algorithm 
+- **Default:**  MPIR_CVAR_IREDUCE_SCATTER_BLOCK_INTER_ALGORITHM_auto
 
-  - enabled.
+MPIR_CVAR_SCAN_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 1024
+- **Aliases:**
+   -  MVP_SCAN_INTRA_ALGORITHM
+  -  MPICH_SCAN_INTRA_ALGORITHM
+- **Description:**
+ Variable to select allgather algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   dynamic - Internal algorithm selection using dynamic tuning
+  -   nb                 - Force nonblocking algorithm
+  -   smp                - Force smp algorithm
+  -   recursive_doubling - Force recursive doubling algorithm 
+- **Default:**  MPIR_CVAR_SCAN_INTRA_ALGORITHM_auto
 
+MPIR_CVAR_ISCAN_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ISCAN_INTRA_ALGORITHM
+  -  MPICH_ISCAN_INTRA_ALGORITHM
+- **Description:**
+ Variable to select allgather algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_smp                  - Force smp algorithm
+  -   sched_recursive_doubling   - Force recursive doubling algorithm
+  -   tsp_recursive_doubling - Force generic transport recursive doubling algorithm 
+- **Default:**  MPIR_CVAR_ISCAN_INTRA_ALGORITHM_auto
 
-MPIR\_CVAR\_BCAST\_POSIX\_INTRA\_ALGORITHM
+MPIR_CVAR_EXSCAN_INTRA_ALGORITHM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_BCAST\_POSIX\_INTRA\_ALGORITHM
+   -  MVP_EXSCAN_INTRA_ALGORITHM
+  -  MPICH_EXSCAN_INTRA_ALGORITHM
+- **Description:**
+ Variable to select allgather algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   dynamic - Internal algorithm selection using dynamic tuning
+  -   nb                 - Force nonblocking algorithm
+  -   recursive_doubling - Force recursive doubling algorithm 
+- **Default:**  MPIR_CVAR_EXSCAN_INTRA_ALGORITHM_auto
 
-  - MPICH\_BCAST\_POSIX\_INTRA\_ALGORITHM
+MPIR_CVAR_IEXSCAN_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IEXSCAN_INTRA_ALGORITHM
+  -  MPICH_IEXSCAN_INTRA_ALGORITHM
 - **Description:**
-  -  Variable to select algorithm for intra-node bcast
+ Variable to select iexscan algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_recursive_doubling - Force recursive doubling algorithm 
+- **Default:**  MPIR_CVAR_IEXSCAN_INTRA_ALGORITHM_auto
 
-  - mpir  -    - Fallback to MPIR collectives
-
-  - release\_gather - Force shm optimized algo using release, gather
+MPIR_CVAR_NEIGHBOR_ALLGATHER_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - primitives
+- **Aliases:**
+   -  MVP_NEIGHBOR_ALLGATHER_INTRA_ALGORITHM
+  -  MPICH_NEIGHBOR_ALLGATHER_INTRA_ALGORITHM
+- **Description:**
+ Variable to select ineighbor_allgather algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   nb   - Force nonblocking algorithm 
+- **Default:**  MPIR_CVAR_NEIGHBOR_ALLGATHER_INTRA_ALGORITHM_auto
 
-  - auto - Internal algorithm selection (can be overridden with
+MPIR_CVAR_NEIGHBOR_ALLGATHER_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - MPIR\_CVAR\_CH4\_POSIX\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
+- **Aliases:**
+   -  MVP_NEIGHBOR_ALLGATHER_INTER_ALGORITHM
+  -  MPICH_NEIGHBOR_ALLGATHER_INTER_ALGORITHM
+- **Description:**
+ Variable to select ineighbor_allgather algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   nb   - Force nonblocking algorithm 
+- **Default:**  MPIR_CVAR_NEIGHBOR_ALLGATHER_INTER_ALGORITHM_auto
 
-  - ipc\_read - Uses read-based collective with ipc
+MPIR_CVAR_INEIGHBOR_ALLGATHER_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** MPIR\_CVAR\_BCAST\_POSIX\_INTRA\_ALGORITHM\_auto
+- **Aliases:**
+   -  MVP_INEIGHBOR_ALLGATHER_INTRA_ALGORITHM
+  -  MPICH_INEIGHBOR_ALLGATHER_INTRA_ALGORITHM
+- **Description:**
+ Variable to select ineighbor_allgather algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_linear    - Force linear algorithm
+  -   tsp_linear  - Force generic transport based linear algorithm 
+- **Default:**  MPIR_CVAR_INEIGHBOR_ALLGATHER_INTRA_ALGORITHM_auto
 
+MPIR_CVAR_INEIGHBOR_ALLGATHER_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_INEIGHBOR_ALLGATHER_INTER_ALGORITHM
+  -  MPICH_INEIGHBOR_ALLGATHER_INTER_ALGORITHM
+- **Description:**
+ Variable to select ineighbor_allgather algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_linear    - Force linear algorithm
+  -   tsp_linear  - Force generic transport based linear algorithm 
+- **Default:**  MPIR_CVAR_INEIGHBOR_ALLGATHER_INTER_ALGORITHM_auto
 
-MPIR\_CVAR\_IBCAST\_POSIX\_INTRA\_ALGORITHM
+MPIR_CVAR_NEIGHBOR_ALLGATHERV_INTRA_ALGORITHM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_IBCAST\_POSIX\_INTRA\_ALGORITHM
+   -  MVP_NEIGHBOR_ALLGATHERV_INTRA_ALGORITHM
+  -  MPICH_NEIGHBOR_ALLGATHERV_INTRA_ALGORITHM
+- **Description:**
+ Variable to select neighbor_allgatherv algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   nb   - Force nb algorithm 
+- **Default:**  MPIR_CVAR_NEIGHBOR_ALLGATHERV_INTRA_ALGORITHM_auto
 
-  - MPICH\_IBCAST\_POSIX\_INTRA\_ALGORITHM
+MPIR_CVAR_NEIGHBOR_ALLGATHERV_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_NEIGHBOR_ALLGATHERV_INTER_ALGORITHM
+  -  MPICH_NEIGHBOR_ALLGATHERV_INTER_ALGORITHM
 - **Description:**
-  -  Variable to select algorithm for intra-node bcast
+ Variable to select neighbor_allgatherv algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   nb   - Force nb algorithm 
+- **Default:**  MPIR_CVAR_NEIGHBOR_ALLGATHERV_INTER_ALGORITHM_auto
 
-  - mpir  -    - Fallback to MPIR collectives
+MPIR_CVAR_INEIGHBOR_ALLGATHERV_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - release\_gather - Force shm optimized algo using release, gather
+- **Aliases:**
+   -  MVP_INEIGHBOR_ALLGATHERV_INTRA_ALGORITHM
+  -  MPICH_INEIGHBOR_ALLGATHERV_INTRA_ALGORITHM
+- **Description:**
+ Variable to select ineighbor_allgatherv algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_linear          - Force linear algorithm
+  -   tsp_linear        - Force generic transport based linear algorithm 
+- **Default:**  MPIR_CVAR_INEIGHBOR_ALLGATHERV_INTRA_ALGORITHM_auto
 
-  - primitives
+MPIR_CVAR_INEIGHBOR_ALLGATHERV_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - auto - Internal algorithm selection (can be overridden with
+- **Aliases:**
+   -  MVP_INEIGHBOR_ALLGATHERV_INTER_ALGORITHM
+  -  MPICH_INEIGHBOR_ALLGATHERV_INTER_ALGORITHM
+- **Description:**
+ Variable to select ineighbor_allgatherv algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_linear          - Force linear algorithm
+  -   tsp_linear        - Force generic transport based linear algorithm 
+- **Default:**  MPIR_CVAR_INEIGHBOR_ALLGATHERV_INTER_ALGORITHM_auto
 
-  - MPIR\_CVAR\_CH4\_POSIX\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
+MPIR_CVAR_NEIGHBOR_ALLTOALL_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** MPIR\_CVAR\_IBCAST\_POSIX\_INTRA\_ALGORITHM\_auto
+- **Aliases:**
+   -  MVP_NEIGHBOR_ALLTOALL_INTRA_ALGORITHM
+  -  MPICH_NEIGHBOR_ALLTOALL_INTRA_ALGORITHM
+- **Description:**
+ Variable to select neighbor_alltoall algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   nb   - Force nb algorithm 
+- **Default:**  MPIR_CVAR_NEIGHBOR_ALLTOALL_INTRA_ALGORITHM_auto
 
+MPIR_CVAR_NEIGHBOR_ALLTOALL_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_NEIGHBOR_ALLTOALL_INTER_ALGORITHM
+  -  MPICH_NEIGHBOR_ALLTOALL_INTER_ALGORITHM
+- **Description:**
+ Variable to select neighbor_alltoall algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   nb   - Force nb algorithm 
+- **Default:**  MPIR_CVAR_NEIGHBOR_ALLTOALL_INTER_ALGORITHM_auto
 
-MPIR\_CVAR\_REDUCE\_POSIX\_INTRA\_ALGORITHM
+MPIR_CVAR_INEIGHBOR_ALLTOALL_INTRA_ALGORITHM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_REDUCE\_POSIX\_INTRA\_ALGORITHM
+   -  MVP_INEIGHBOR_ALLTOALL_INTRA_ALGORITHM
+  -  MPICH_INEIGHBOR_ALLTOALL_INTRA_ALGORITHM
+- **Description:**
+ Variable to select ineighbor_alltoall algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_linear          - Force linear algorithm
+  -   tsp_linear        - Force generic transport based linear algorithm 
+- **Default:**  MPIR_CVAR_INEIGHBOR_ALLTOALL_INTRA_ALGORITHM_auto
 
-  - MPICH\_REDUCE\_POSIX\_INTRA\_ALGORITHM
+MPIR_CVAR_INEIGHBOR_ALLTOALL_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_INEIGHBOR_ALLTOALL_INTER_ALGORITHM
+  -  MPICH_INEIGHBOR_ALLTOALL_INTER_ALGORITHM
 - **Description:**
-  -  Variable to select algorithm for intra-node reduce
+ Variable to select ineighbor_alltoall algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_linear          - Force linear algorithm
+  -   tsp_linear        - Force generic transport based linear algorithm 
+- **Default:**  MPIR_CVAR_INEIGHBOR_ALLTOALL_INTER_ALGORITHM_auto
 
-  - mpir  -    - Fallback to MPIR collectives
+MPIR_CVAR_NEIGHBOR_ALLTOALLV_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - release\_gather - Force shm optimized algo using release, gather
+- **Aliases:**
+   -  MVP_NEIGHBOR_ALLTOALLV_INTRA_ALGORITHM
+  -  MPICH_NEIGHBOR_ALLTOALLV_INTRA_ALGORITHM
+- **Description:**
+ Variable to select neighbor_alltoallv algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   nb   - Force nb algorithm 
+- **Default:**  MPIR_CVAR_NEIGHBOR_ALLTOALLV_INTRA_ALGORITHM_auto
 
-  - primitives
+MPIR_CVAR_NEIGHBOR_ALLTOALLV_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - auto - Internal algorithm selection (can be overridden with
+- **Aliases:**
+   -  MVP_NEIGHBOR_ALLTOALLV_INTER_ALGORITHM
+  -  MPICH_NEIGHBOR_ALLTOALLV_INTER_ALGORITHM
+- **Description:**
+ Variable to select neighbor_alltoallv algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   nb   - Force nb algorithm 
+- **Default:**  MPIR_CVAR_NEIGHBOR_ALLTOALLV_INTER_ALGORITHM_auto
 
-  - MPIR\_CVAR\_CH4\_POSIX\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
+MPIR_CVAR_INEIGHBOR_ALLTOALLV_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** MPIR\_CVAR\_REDUCE\_POSIX\_INTRA\_ALGORITHM\_auto
+- **Aliases:**
+   -  MVP_INEIGHBOR_ALLTOALLV_INTRA_ALGORITHM
+  -  MPICH_INEIGHBOR_ALLTOALLV_INTRA_ALGORITHM
+- **Description:**
+ Variable to select ineighbor_alltoallv algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_linear          - Force linear algorithm
+  -   tsp_linear  - Force generic transport based linear algorithm 
+- **Default:**  MPIR_CVAR_INEIGHBOR_ALLTOALLV_INTRA_ALGORITHM_auto
 
+MPIR_CVAR_INEIGHBOR_ALLTOALLV_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_INEIGHBOR_ALLTOALLV_INTER_ALGORITHM
+  -  MPICH_INEIGHBOR_ALLTOALLV_INTER_ALGORITHM
+- **Description:**
+ Variable to select ineighbor_alltoallv algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_linear          - Force linear algorithm
+  -   tsp_linear  - Force generic transport based linear algorithm 
+- **Default:**  MPIR_CVAR_INEIGHBOR_ALLTOALLV_INTER_ALGORITHM_auto
 
-MPIR\_CVAR\_IREDUCE\_POSIX\_INTRA\_ALGORITHM
+MPIR_CVAR_NEIGHBOR_ALLTOALLW_INTRA_ALGORITHM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_IREDUCE\_POSIX\_INTRA\_ALGORITHM
+   -  MVP_NEIGHBOR_ALLTOALLW_INTRA_ALGORITHM
+  -  MPICH_NEIGHBOR_ALLTOALLW_INTRA_ALGORITHM
+- **Description:**
+ Variable to select neighbor_alltoallw algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   nb   - Force nb algorithm 
+- **Default:**  MPIR_CVAR_NEIGHBOR_ALLTOALLW_INTRA_ALGORITHM_auto
 
-  - MPICH\_IREDUCE\_POSIX\_INTRA\_ALGORITHM
+MPIR_CVAR_NEIGHBOR_ALLTOALLW_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_NEIGHBOR_ALLTOALLW_INTER_ALGORITHM
+  -  MPICH_NEIGHBOR_ALLTOALLW_INTER_ALGORITHM
 - **Description:**
-  -  Variable to select algorithm for intra-node reduce
+ Variable to select neighbor_alltoallw algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   nb   - Force nb algorithm 
+- **Default:**  MPIR_CVAR_NEIGHBOR_ALLTOALLW_INTER_ALGORITHM_auto
 
-  - mpir  -    - Fallback to MPIR collectives
+MPIR_CVAR_INEIGHBOR_ALLTOALLW_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - release\_gather - Force shm optimized algo using release, gather
+- **Aliases:**
+   -  MVP_INEIGHBOR_ALLTOALLW_INTRA_ALGORITHM
+  -  MPICH_INEIGHBOR_ALLTOALLW_INTRA_ALGORITHM
+- **Description:**
+ Variable to select ineighbor_alltoallw algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_linear          - Force linear algorithm
+  -   tsp_linear        - Force generic transport based linear algorithm 
+- **Default:**  MPIR_CVAR_INEIGHBOR_ALLTOALLW_INTRA_ALGORITHM_auto
 
-  - primitives
+MPIR_CVAR_INEIGHBOR_ALLTOALLW_INTER_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - auto - Internal algorithm selection (can be overridden with
+- **Aliases:**
+   -  MVP_INEIGHBOR_ALLTOALLW_INTER_ALGORITHM
+  -  MPICH_INEIGHBOR_ALLTOALLW_INTER_ALGORITHM
+- **Description:**
+ Variable to select ineighbor_alltoallw algorithm
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
+  -   sched_auto - Internal algorithm selection for sched-based algorithms
+  -   sched_linear          - Force linear algorithm
+  -   tsp_linear        - Force generic transport based linear algorithm 
+- **Default:**  MPIR_CVAR_INEIGHBOR_ALLTOALLW_INTER_ALGORITHM_auto
 
-  - MPIR\_CVAR\_CH4\_POSIX\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
+MPIR_CVAR_BARRIER_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** MPIR\_CVAR\_IREDUCE\_POSIX\_INTRA\_ALGORITHM\_auto
+- **Aliases:**
+   -  MVP_BARRIER_DEVICE_COLLECTIVE
+  -  MPICH_BARRIER_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Barrier will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
+MPIR_CVAR_IBARRIER_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IBARRIER_DEVICE_COLLECTIVE
+  -  MPICH_IBARRIER_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Ibarrier will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-MPIR\_CVAR\_ALLREDUCE\_POSIX\_INTRA\_ALGORITHM
+MPIR_CVAR_BARRIER_INIT_DEVICE_COLLECTIVE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLREDUCE\_POSIX\_INTRA\_ALGORITHM
+   -  MVP_BARRIER_INIT_DEVICE_COLLECTIVE
+  -  MPICH_BARRIER_INIT_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Barrier will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - MPICH\_ALLREDUCE\_POSIX\_INTRA\_ALGORITHM
+MPIR_CVAR_BCAST_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_BCAST_DEVICE_COLLECTIVE
+  -  MPICH_BCAST_DEVICE_COLLECTIVE
 - **Description:**
-  -  Variable to select algorithm for intra-node allreduce
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Bcast will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - mpir  -    - Fallback to MPIR collectives
+MPIR_CVAR_IBCAST_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - release\_gather - Force shm optimized algo using release, gather
+- **Aliases:**
+   -  MVP_IBCAST_DEVICE_COLLECTIVE
+  -  MPICH_IBCAST_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Ibcast will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - primitives
+MPIR_CVAR_BCAST_INIT_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - auto - Internal algorithm selection (can be overridden with
+- **Aliases:**
+   -  MVP_BCAST_INIT_DEVICE_COLLECTIVE
+  -  MPICH_BCAST_INIT_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Bcast_init will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - MPIR\_CVAR\_CH4\_POSIX\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
+MPIR_CVAR_GATHER_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** MPIR\_CVAR\_ALLREDUCE\_POSIX\_INTRA\_ALGORITHM\_auto
+- **Aliases:**
+   -  MVP_GATHER_DEVICE_COLLECTIVE
+  -  MPICH_GATHER_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Gather will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
+MPIR_CVAR_IGATHER_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IGATHER_DEVICE_COLLECTIVE
+  -  MPICH_IGATHER_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Igather will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-MPIR\_CVAR\_BARRIER\_POSIX\_INTRA\_ALGORITHM
+MPIR_CVAR_GATHER_INIT_DEVICE_COLLECTIVE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_BARRIER\_POSIX\_INTRA\_ALGORITHM
+   -  MVP_GATHER_INIT_DEVICE_COLLECTIVE
+  -  MPICH_GATHER_INIT_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Gather_init will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - MPICH\_BARRIER\_POSIX\_INTRA\_ALGORITHM
+MPIR_CVAR_GATHERV_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_GATHERV_DEVICE_COLLECTIVE
+  -  MPICH_GATHERV_DEVICE_COLLECTIVE
 - **Description:**
-  -  Variable to select algorithm for intra-node barrier
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Gatherv will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - mpir  -    - Fallback to MPIR collectives
+MPIR_CVAR_IGATHERV_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - release\_gather - Force shm optimized algo using release, gather
+- **Aliases:**
+   -  MVP_IGATHERV_DEVICE_COLLECTIVE
+  -  MPICH_IGATHERV_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Igatherv will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - primitives
+MPIR_CVAR_GATHERV_INIT_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - auto - Internal algorithm selection (can be overridden with
+- **Aliases:**
+   -  MVP_GATHERV_INIT_DEVICE_COLLECTIVE
+  -  MPICH_GATHERV_INIT_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Gatherv_init will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - MPIR\_CVAR\_CH4\_POSIX\_COLL\_SELECTION\_TUNING\_JSON\_FILE)
+MPIR_CVAR_SCATTER_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** MPIR\_CVAR\_BARRIER\_POSIX\_INTRA\_ALGORITHM\_auto
+- **Aliases:**
+   -  MVP_SCATTER_DEVICE_COLLECTIVE
+  -  MPICH_SCATTER_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Scatter will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
+MPIR_CVAR_ISCATTER_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ISCATTER_DEVICE_COLLECTIVE
+  -  MPICH_ISCATTER_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Iscatter will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-MPIR\_CVAR\_ALLTOALL\_POSIX\_INTRA\_ALGORITHM
+MPIR_CVAR_SCATTER_INIT_DEVICE_COLLECTIVE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLTOALL\_POSIX\_INTRA\_ALGORITHM
+   -  MVP_SCATTER_INIT_DEVICE_COLLECTIVE
+  -  MPICH_SCATTER_INIT_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Scatter_init will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - MPICH\_ALLTOALL\_POSIX\_INTRA\_ALGORITHM
+MPIR_CVAR_SCATTERV_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_SCATTERV_DEVICE_COLLECTIVE
+  -  MPICH_SCATTERV_DEVICE_COLLECTIVE
 - **Description:**
-  -  Variable to select algorithm for intra-node alltoall
-
-  - mpir  -    - Fallback to MPIR collectives (default)
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Scatterv will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - ipc\_read    - Uses read-based collective with ipc
+MPIR_CVAR_ISCATTERV_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** MPIR\_CVAR\_ALLTOALL\_POSIX\_INTRA\_ALGORITHM\_mpir
+- **Aliases:**
+   -  MVP_ISCATTERV_DEVICE_COLLECTIVE
+  -  MPICH_ISCATTERV_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Iscatterv will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
+MPIR_CVAR_SCATTERV_INIT_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_SCATTERV_INIT_DEVICE_COLLECTIVE
+  -  MPICH_SCATTERV_INIT_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Scatterv_init will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-MPIR\_CVAR\_ALLGATHER\_POSIX\_INTRA\_ALGORITHM
+MPIR_CVAR_ALLGATHER_DEVICE_COLLECTIVE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLGATHER\_POSIX\_INTRA\_ALGORITHM
+   -  MVP_ALLGATHER_DEVICE_COLLECTIVE
+  -  MPICH_ALLGATHER_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Allgather will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - MPICH\_ALLGATHER\_POSIX\_INTRA\_ALGORITHM
+MPIR_CVAR_IALLGATHER_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IALLGATHER_DEVICE_COLLECTIVE
+  -  MPICH_IALLGATHER_DEVICE_COLLECTIVE
 - **Description:**
-  -  Variable to select algorithm for intra-node allgather
-
-  - mpir  - - Fallback to MPIR collectives (default)
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Iallgather will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - ipc\_read    - Uses read-based collective with ipc
+MPIR_CVAR_ALLGATHER_INIT_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** MPIR\_CVAR\_ALLGATHER\_POSIX\_INTRA\_ALGORITHM\_mpir
+- **Aliases:**
+   -  MVP_ALLGATHER_INIT_DEVICE_COLLECTIVE
+  -  MPICH_ALLGATHER_INIT_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Allgather_init will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
+MPIR_CVAR_ALLGATHERV_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLGATHERV_DEVICE_COLLECTIVE
+  -  MPICH_ALLGATHERV_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Allgatherv will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-MPIR\_CVAR\_ALLGATHERV\_POSIX\_INTRA\_ALGORITHM
+MPIR_CVAR_IALLGATHERV_DEVICE_COLLECTIVE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLGATHERV\_POSIX\_INTRA\_ALGORITHM
+   -  MVP_IALLGATHERV_DEVICE_COLLECTIVE
+  -  MPICH_IALLGATHERV_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Iallgatherv will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - MPICH\_ALLGATHERV\_POSIX\_INTRA\_ALGORITHM
+MPIR_CVAR_ALLGATHERV_INIT_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLGATHERV_INIT_DEVICE_COLLECTIVE
+  -  MPICH_ALLGATHERV_INIT_DEVICE_COLLECTIVE
 - **Description:**
-  -  Variable to select algorithm for intra-node allgatherv
-
-  - mpir  - - Fallback to MPIR collectives (default)
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Allgatherv_init will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - ipc\_read    - Uses read-based collective with ipc
+MPIR_CVAR_ALLTOALL_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** MPIR\_CVAR\_ALLGATHERV\_POSIX\_INTRA\_ALGORITHM\_mpir
+- **Aliases:**
+   -  MVP_ALLTOALL_DEVICE_COLLECTIVE
+  -  MPICH_ALLTOALL_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Alltoall will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
+MPIR_CVAR_IALLTOALL_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IALLTOALL_DEVICE_COLLECTIVE
+  -  MPICH_IALLTOALL_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Ialltoall will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-MPIR\_CVAR\_POSIX\_POLL\_FREQUENCY
+MPIR_CVAR_ALLTOALL_INIT_DEVICE_COLLECTIVE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_POSIX\_POLL\_FREQUENCY
+   -  MVP_ALLTOALL_INIT_DEVICE_COLLECTIVE
+  -  MPICH_ALLTOALL_INIT_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Alltoall_init will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - MPICH\_POSIX\_POLL\_FREQUENCY
+MPIR_CVAR_ALLTOALLV_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLTOALLV_DEVICE_COLLECTIVE
+  -  MPICH_ALLTOALLV_DEVICE_COLLECTIVE
 - **Description:**
-  -  This cvar sets the number of loops before the yield
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Alltoallv will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - function is called.  A value of 0 disables yielding.
+MPIR_CVAR_IALLTOALLV_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 1000
+- **Aliases:**
+   -  MVP_IALLTOALLV_DEVICE_COLLECTIVE
+  -  MPICH_IALLTOALLV_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Ialltoallv will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
+MPIR_CVAR_ALLTOALLV_INIT_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLTOALLV_INIT_DEVICE_COLLECTIVE
+  -  MPICH_ALLTOALLV_INIT_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Alltoallv_init will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-MPIR\_CVAR\_BCAST\_IPC\_READ\_MSG\_SIZE\_THRESHOLD
+MPIR_CVAR_ALLTOALLW_DEVICE_COLLECTIVE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_BCAST\_IPC\_READ\_MSG\_SIZE\_THRESHOLD
+   -  MVP_ALLTOALLW_DEVICE_COLLECTIVE
+  -  MPICH_ALLTOALLW_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Alltoallw will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - MPICH\_BCAST\_IPC\_READ\_MSG\_SIZE\_THRESHOLD
+MPIR_CVAR_IALLTOALLW_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IALLTOALLW_DEVICE_COLLECTIVE
+  -  MPICH_IALLTOALLW_DEVICE_COLLECTIVE
 - **Description:**
-  -  Use gpu ipc read bcast only when the message size is
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Ialltoallw will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - larger than this threshold.
+MPIR_CVAR_ALLTOALLW_INIT_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 256
+- **Aliases:**
+   -  MVP_ALLTOALLW_INIT_DEVICE_COLLECTIVE
+  -  MPICH_ALLTOALLW_INIT_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Alltoallw_init will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
+MPIR_CVAR_REDUCE_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_REDUCE_DEVICE_COLLECTIVE
+  -  MPICH_REDUCE_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Reduce will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-MPIR\_CVAR\_ALLTOALL\_IPC\_READ\_MSG\_SIZE\_THRESHOLD
+MPIR_CVAR_IREDUCE_DEVICE_COLLECTIVE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLTOALL\_IPC\_READ\_MSG\_SIZE\_THRESHOLD
+   -  MVP_IREDUCE_DEVICE_COLLECTIVE
+  -  MPICH_IREDUCE_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Ireduce will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - MPICH\_ALLTOALL\_IPC\_READ\_MSG\_SIZE\_THRESHOLD
+MPIR_CVAR_REDUCE_INIT_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_REDUCE_INIT_DEVICE_COLLECTIVE
+  -  MPICH_REDUCE_INIT_DEVICE_COLLECTIVE
 - **Description:**
-  -  Use gpu ipc read alltoall only when the message size is
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Reduce_init will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - larger than this threshold.
+MPIR_CVAR_ALLREDUCE_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 256
+- **Aliases:**
+   -  MVP_ALLREDUCE_DEVICE_COLLECTIVE
+  -  MPICH_ALLREDUCE_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Allreduce will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
+MPIR_CVAR_IALLREDUCE_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IALLREDUCE_DEVICE_COLLECTIVE
+  -  MPICH_IALLREDUCE_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Iallreduce will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-MPIR\_CVAR\_ALLGATHER\_IPC\_READ\_MSG\_SIZE\_THRESHOLD
+MPIR_CVAR_ALLREDUCE_INIT_DEVICE_COLLECTIVE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLGATHER\_IPC\_READ\_MSG\_SIZE\_THRESHOLD
+   -  MVP_ALLREDUCE_INIT_DEVICE_COLLECTIVE
+  -  MPICH_ALLREDUCE_INIT_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Allreduce_init will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - MPICH\_ALLGATHER\_IPC\_READ\_MSG\_SIZE\_THRESHOLD
+MPIR_CVAR_REDUCE_SCATTER_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_REDUCE_SCATTER_DEVICE_COLLECTIVE
+  -  MPICH_REDUCE_SCATTER_DEVICE_COLLECTIVE
 - **Description:**
-  -  Use gpu ipc read allgather only when the message size is
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Reduce_scatter will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - larger than this threshold.
+MPIR_CVAR_IREDUCE_SCATTER_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 256
+- **Aliases:**
+   -  MVP_IREDUCE_SCATTER_DEVICE_COLLECTIVE
+  -  MPICH_IREDUCE_SCATTER_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Ireduce_scatter will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
+MPIR_CVAR_REDUCE_SCATTER_INIT_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_REDUCE_SCATTER_INIT_DEVICE_COLLECTIVE
+  -  MPICH_REDUCE_SCATTER_INIT_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Reduce_scatter_init will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-MPIR\_CVAR\_ALLGATHERV\_IPC\_READ\_MSG\_SIZE\_THRESHOLD
+MPIR_CVAR_REDUCE_SCATTER_BLOCK_DEVICE_COLLECTIVE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLGATHERV\_IPC\_READ\_MSG\_SIZE\_THRESHOLD
+   -  MVP_REDUCE_SCATTER_BLOCK_DEVICE_COLLECTIVE
+  -  MPICH_REDUCE_SCATTER_BLOCK_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Reduce_scatter_block will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - MPICH\_ALLGATHERV\_IPC\_READ\_MSG\_SIZE\_THRESHOLD
+MPIR_CVAR_IREDUCE_SCATTER_BLOCK_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IREDUCE_SCATTER_BLOCK_DEVICE_COLLECTIVE
+  -  MPICH_IREDUCE_SCATTER_BLOCK_DEVICE_COLLECTIVE
 - **Description:**
-  -  Use gpu ipc read allgatherv only when the message size is
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Ireduce_scatter_block will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - larger than this threshold.
+MPIR_CVAR_REDUCE_SCATTER_BLOCK_INIT_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 256
+- **Aliases:**
+   -  MVP_REDUCE_SCATTER_BLOCK_INIT_DEVICE_COLLECTIVE
+  -  MPICH_REDUCE_SCATTER_BLOCK_INIT_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Reduce_scatter_block_init will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
+MPIR_CVAR_SCAN_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_SCAN_DEVICE_COLLECTIVE
+  -  MPICH_SCAN_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Scan will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-MPIR\_CVAR\_POSIX\_NUM\_COLLS\_THRESHOLD
+MPIR_CVAR_ISCAN_DEVICE_COLLECTIVE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_POSIX\_NUM\_COLLS\_THRESHOLD
+   -  MVP_ISCAN_DEVICE_COLLECTIVE
+  -  MPICH_ISCAN_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Iscan will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - MPICH\_POSIX\_NUM\_COLLS\_THRESHOLD
+MPIR_CVAR_SCAN_INIT_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_SCAN_INIT_DEVICE_COLLECTIVE
+  -  MPICH_SCAN_INIT_DEVICE_COLLECTIVE
 - **Description:**
-  -  Use posix optimized collectives (release\_gather) only when
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Scan_init will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - the total number of Bcast, Reduce, Barrier, and Allreduce calls on
-
-  - the node level communicator is more than this threshold.
+MPIR_CVAR_EXSCAN_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 5
+- **Aliases:**
+   -  MVP_EXSCAN_DEVICE_COLLECTIVE
+  -  MPICH_EXSCAN_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Exscan will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
+MPIR_CVAR_IEXSCAN_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IEXSCAN_DEVICE_COLLECTIVE
+  -  MPICH_IEXSCAN_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Iexscan will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-MPIR\_CVAR\_CH4\_SHM\_POSIX\_EAGER
+MPIR_CVAR_EXSCAN_INIT_DEVICE_COLLECTIVE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_SHM\_POSIX\_EAGER
+   -  MVP_EXSCAN_INIT_DEVICE_COLLECTIVE
+  -  MPICH_EXSCAN_INIT_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Exscan_init will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - MPICH\_CH4\_SHM\_POSIX\_EAGER
+MPIR_CVAR_NEIGHBOR_ALLGATHER_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_NEIGHBOR_ALLGATHER_DEVICE_COLLECTIVE
+  -  MPICH_NEIGHBOR_ALLGATHER_DEVICE_COLLECTIVE
 - **Description:**
-  -  If non-empty, this cvar specifies which shm posix eager
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Neighbor_allgather will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - module to use
+MPIR_CVAR_INEIGHBOR_ALLGATHER_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** ""
+- **Aliases:**
+   -  MVP_INEIGHBOR_ALLGATHER_DEVICE_COLLECTIVE
+  -  MPICH_INEIGHBOR_ALLGATHER_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Ineighbor_allgather will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
+MPIR_CVAR_NEIGHBOR_ALLGATHER_INIT_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_NEIGHBOR_ALLGATHER_INIT_DEVICE_COLLECTIVE
+  -  MPICH_NEIGHBOR_ALLGATHER_INIT_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Neighbor_allgather_init will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-MPIR\_CVAR\_CH4\_POSIX\_COLL\_SELECTION\_TUNING\_JSON\_FILE
+MPIR_CVAR_NEIGHBOR_ALLGATHERV_DEVICE_COLLECTIVE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_POSIX\_COLL\_SELECTION\_TUNING\_JSON\_FILE
+   -  MVP_NEIGHBOR_ALLGATHERV_DEVICE_COLLECTIVE
+  -  MPICH_NEIGHBOR_ALLGATHERV_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Neighbor_allgatherv will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - MPICH\_CH4\_POSIX\_COLL\_SELECTION\_TUNING\_JSON\_FILE
+MPIR_CVAR_INEIGHBOR_ALLGATHERV_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_INEIGHBOR_ALLGATHERV_DEVICE_COLLECTIVE
+  -  MPICH_INEIGHBOR_ALLGATHERV_DEVICE_COLLECTIVE
 - **Description:**
-  -  Defines the location of tuning file.
-
-- **Default:** ""
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Ineighbor_allgatherv will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
+MPIR_CVAR_NEIGHBOR_ALLGATHERV_INIT_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_NEIGHBOR_ALLGATHERV_INIT_DEVICE_COLLECTIVE
+  -  MPICH_NEIGHBOR_ALLGATHERV_INIT_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Neighbor_allgatherv_init will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-MPIR\_CVAR\_CH4\_POSIX\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_GPU
+MPIR_CVAR_NEIGHBOR_ALLTOALL_DEVICE_COLLECTIVE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_POSIX\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_GPU
+   -  MVP_NEIGHBOR_ALLTOALL_DEVICE_COLLECTIVE
+  -  MPICH_NEIGHBOR_ALLTOALL_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Neighbor_alltoall will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - MPICH\_CH4\_POSIX\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_GPU
+MPIR_CVAR_INEIGHBOR_ALLTOALL_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_INEIGHBOR_ALLTOALL_DEVICE_COLLECTIVE
+  -  MPICH_INEIGHBOR_ALLTOALL_DEVICE_COLLECTIVE
 - **Description:**
-  -  Defines the location of tuning file for GPU.
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Ineighbor_alltoall will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-- **Default:** ""
-
+MPIR_CVAR_NEIGHBOR_ALLTOALL_INIT_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_NEIGHBOR_ALLTOALL_INIT_DEVICE_COLLECTIVE
+  -  MPICH_NEIGHBOR_ALLTOALL_INIT_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Neighbor_alltoall_init will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-MPIR\_CVAR\_CH4\_SHM\_POSIX\_TOPO\_ENABLE
+MPIR_CVAR_NEIGHBOR_ALLTOALLV_DEVICE_COLLECTIVE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_SHM\_POSIX\_TOPO\_ENABLE
+   -  MVP_NEIGHBOR_ALLTOALLV_DEVICE_COLLECTIVE
+  -  MPICH_NEIGHBOR_ALLTOALLV_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Neighbor_alltoallv will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - MPICH\_CH4\_SHM\_POSIX\_TOPO\_ENABLE
+MPIR_CVAR_INEIGHBOR_ALLTOALLV_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_INEIGHBOR_ALLTOALLV_DEVICE_COLLECTIVE
+  -  MPICH_INEIGHBOR_ALLTOALLV_DEVICE_COLLECTIVE
 - **Description:**
-  -  Controls topology-aware communication in POSIX.
-
-- **Default:** 0
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Ineighbor_alltoallv will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
+MPIR_CVAR_NEIGHBOR_ALLTOALLV_INIT_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_NEIGHBOR_ALLTOALLV_INIT_DEVICE_COLLECTIVE
+  -  MPICH_NEIGHBOR_ALLTOALLV_INIT_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Neighbor_alltoallv_init will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-MPIR\_CVAR\_CH4\_SHM\_POSIX\_IQUEUE\_NUM\_CELLS
+MPIR_CVAR_NEIGHBOR_ALLTOALLW_DEVICE_COLLECTIVE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_SHM\_POSIX\_IQUEUE\_NUM\_CELLS
-
-  - MPICH\_CH4\_SHM\_POSIX\_IQUEUE\_NUM\_CELLS
-
+   -  MVP_NEIGHBOR_ALLTOALLW_DEVICE_COLLECTIVE
+  -  MPICH_NEIGHBOR_ALLTOALLW_DEVICE_COLLECTIVE
 - **Description:**
-  -  The number of cells used for the depth of the iqueue.
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Neighbor_alltoallw will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-- **Default:** 64
-
+MPIR_CVAR_INEIGHBOR_ALLTOALLW_DEVICE_COLLECTIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_INEIGHBOR_ALLTOALLW_DEVICE_COLLECTIVE
+  -  MPICH_INEIGHBOR_ALLTOALLW_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Ineighbor_alltoallw will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-MPIR\_CVAR\_CH4\_SHM\_POSIX\_IQUEUE\_CELL\_SIZE
+MPIR_CVAR_NEIGHBOR_ALLTOALLW_INIT_DEVICE_COLLECTIVE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_SHM\_POSIX\_IQUEUE\_CELL\_SIZE
+   -  MVP_NEIGHBOR_ALLTOALLW_INIT_DEVICE_COLLECTIVE
+  -  MPICH_NEIGHBOR_ALLTOALLW_INIT_DEVICE_COLLECTIVE
+- **Description:**
+ This CVAR is only used when MPIR_CVAR_DEVICE_COLLECTIVES is set to "percoll".  If set to true, MPI_Neighbor_alltoallw_init will allow the device to override the MPIR-level collective algorithms.  The device might still call the MPIR-level algorithms manually.  If set to false, the device-override will be disabled. 
+- **Default:**  1
 
-  - MPICH\_CH4\_SHM\_POSIX\_IQUEUE\_CELL\_SIZE
+MPIR_CVAR_COLL_HYBRID_MEMORY
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_COLL_HYBRID_MEMORY
+  -  MPICH_COLL_HYBRID_MEMORY
 - **Description:**
-  -  Size of each cell.
-
-- **Default:** 16384
+ This cvar indicates if the memory used in the collective operations are the same type. It set to true, it means in a collective operation, some buffers could be on the CPU and some buffers could be on the GPU. If set to false, it means all the data in a collective operation are on the same type of memory. 
+- **Default:**  0
 
+MPIR_CVAR_ALLTOALLV_PAIRWISE_NEW
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLTOALLV_PAIRWISE_NEW
+  -  MPICH_ALLTOALLV_PAIRWISE_NEW
+  -  MPIR_CVAR_ALLTOALL_PAIRWISE_NEW
+  -  MPIR_CVAR_ALLTOALLW_PAIRWISE_NEW
+  -  MVP_ALLTOALL_PAIRWISE_NEW
+  -  MVP_ALLTOALLW_PAIRWISE_NEW
+  -  MPICH_ALLTOALL_PAIRWISE_NEW
+  -  MPICH_ALLTOALLW_PAIRWISE_NEW
+- **Description:**
+ If on, use a new algorithm that orders bit-wise pairs on all processes. 
+- **Default:**  0
 
-MPIR\_CVAR\_CH4\_MVP\_SHM\_POSIX\_NUM\_CELLS
+MPIR_CVAR_GATHER_VSMALL_MSG_SIZE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_MVP\_SHM\_POSIX\_NUM\_CELLS
+   -  MVP_GATHER_VSMALL_MSG_SIZE
+  -  MPICH_GATHER_VSMALL_MSG_SIZE
+- **Description:**
+ use a temporary buffer for intracommunicator MPI_Gather if the send buffer size is < this value (in bytes) (See also: MPIR_CVAR_GATHER_INTER_SHORT_MSG_SIZE) 
+- **Default:**  1024
 
-  - MPICH\_CH4\_MVP\_SHM\_POSIX\_NUM\_CELLS
+MPIR_CVAR_IALLTOALL_BRUCKS_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IALLTOALL_BRUCKS_KVAL
+  -  MPICH_IALLTOALL_BRUCKS_KVAL
 - **Description:**
-  -  The number of cells used per sender
+ radix (k) value for generic transport brucks based ialltoall 
+- **Default:**  2
 
-- **Default:** 128
-
+MPIR_CVAR_IALLTOALL_BRUCKS_BUFFER_PER_NBR
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IALLTOALL_BRUCKS_BUFFER_PER_NBR
+  -  MPICH_IALLTOALL_BRUCKS_BUFFER_PER_NBR
+- **Description:**
+ If set to true, the tsp based brucks algorithm will allocate dedicated send and receive buffers for every neighbor in the brucks algorithm. Otherwise, it would reuse a single buffer for sending and receiving data to/from neighbors 
+- **Default:**  0
 
-MPIR\_CVAR\_CH4\_MVP\_SHM\_POSIX\_CELL\_SIZE
+MPIR_CVAR_IALLTOALL_SCATTERED_OUTSTANDING_TASKS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_MVP\_SHM\_POSIX\_CELL\_SIZE
+   -  MVP_IALLTOALL_SCATTERED_OUTSTANDING_TASKS
+  -  MPICH_IALLTOALL_SCATTERED_OUTSTANDING_TASKS
+- **Description:**
+ Maximum number of outstanding sends and recvs posted at a time 
+- **Default:**  64
 
-  - MPICH\_CH4\_MVP\_SHM\_POSIX\_CELL\_SIZE
+MPIR_CVAR_IALLTOALL_SCATTERED_BATCH_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IALLTOALL_SCATTERED_BATCH_SIZE
+  -  MPICH_IALLTOALL_SCATTERED_BATCH_SIZE
 - **Description:**
-  -  Size of each cell.
-
-- **Default:** 16384
+ Number of send/receive tasks that scattered algorithm waits for completion before posting another batch of send/receives of that size 
+- **Default:**  4
 
+MPIR_CVAR_ENABLE_DYNAMIC_TUNING
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ENABLE_DYNAMIC_TUNING
+  -  MPICH_ENABLE_DYNAMIC_TUNING
+- **Description:**
+ Enable or disable dynamic re-tuning. Note that this will not prevent the use of the dynamic tables, just prevent them changing. 
+- **Default:**  1
 
-MPIR\_CVAR\_COLL\_SHM\_LIMIT\_PER\_NODE
+MPIR_CVAR_FORCE_STATIC_TUNING
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_COLL\_SHM\_LIMIT\_PER\_NODE
+   -  MVP_FORCE_STATIC_TUNING
+  -  MPICH_FORCE_STATIC_TUNING
+- **Description:**
+ Use only static tuning tables for all collectives. 
+- **Default:**  0
 
-  - MPICH\_COLL\_SHM\_LIMIT\_PER\_NODE
+MPIR_CVAR_DYNAMIC_TUNE_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_DYNAMIC_TUNE_THRESHOLD
+  -  MPICH_DYNAMIC_TUNE_THRESHOLD
 - **Description:**
-  -  Maximum shared memory created per node for optimized
+ Number of iterations before dynamic tuning will be re-attempted for a given collective and message range 
+- **Default:**  1000
 
-  - intra-node collectives (in KB)
+MPIR_CVAR_DYNAMIC_TUNE_TEST_COUNT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 65536
+- **Aliases:**
+   -  MVP_DYNAMIC_TUNE_TEST_COUNT
+  -  MPICH_DYNAMIC_TUNE_TEST_COUNT
+- **Description:**
+ Number of times each candidate algorithm will be tested when performing dynamic retuning. 
+- **Default:**  5
 
+MPIR_CVAR_DYNAMIC_TUNE_LOCAL_EVAL_METRIC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_DYNAMIC_TUNE_LOCAL_EVAL_METRIC
+  -  MPICH_DYNAMIC_TUNE_LOCAL_EVAL_METRIC
+- **Description:**
+ Value reported by local processes ot the dynamic tuning framework
+  -   avg - Report the average latency over MPIR_CVAR_DYNAMIC_TUNE_TEST_COUNT tests (default)
+  -   max - Report the maximum latency over MPIR_CVAR_DYNAMIC_TUNE_TEST_COUNT tests
+  -   min - Report the minimum latency over MPIR_CVAR_DYNAMIC_TUNE_TEST_COUNT tests 
+- **Default:**  MPIR_CVAR_DYNAMIC_TUNE_LOCAL_EVAL_METRIC_avg
 
-MPIR\_CVAR\_BCAST\_INTRANODE\_BUFFER\_TOTAL\_SIZE
+MPIR_CVAR_DYNAMIC_TUNE_SELECTION_METRIC
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_BCAST\_INTRANODE\_BUFFER\_TOTAL\_SIZE
+   -  MVP_DYNAMIC_TUNE_SELECTION_METRIC
+  -  MPICH_DYNAMIC_TUNE_SELECTION_METRIC
+- **Description:**
+ Metric used to select the best algorithm for dynamic tuning
+  -   max - Use the algorithm that minimizes the maximum per process latency (default)
+  -   min - Use the algorithm that minimizes the minimum per process latency
+  -   avg - Use the algorithm that minimizes the average per process latency 
+- **Default:**  MPIR_CVAR_DYNAMIC_TUNE_SELECTION_METRIC_max
 
-  - MPICH\_BCAST\_INTRANODE\_BUFFER\_TOTAL\_SIZE
+MPIR_CVAR_DYNAMIC_TUNE_VERBOSITY
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_DYNAMIC_TUNE_VERBOSITY
+  -  MPICH_DYNAMIC_TUNE_VERBOSITY
 - **Description:**
-  -  Total size of the bcast buffer (in bytes)
-
-- **Default:** 32768
+ Debuging verbosity for dynamic tuning
+  -   silent  - No debugging output (default)
+  -   debug   - Logs collective selection in debug output
+  -   basic   - Identifies selected collectives and the relevant message size
+  -   verbose - Full debug output 
+- **Default:**  MPIR_CVAR_DYNAMIC_TUNE_VERBOSITY_silent
 
+MPIR_CVAR_BCAST_INTER_KNOMIAL_FACTOR
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_BCAST_INTER_KNOMIAL_FACTOR
+  -  MPICH_BCAST_INTER_KNOMIAL_FACTOR
+- **Description:**
+ This defines the degree of the knomial operation during the inter-node knomial broadcast phase. 
+- **Default:**  4
 
-MPIR\_CVAR\_BCAST\_INTRANODE\_NUM\_CELLS
+MPIR_CVAR_BCAST_INTRA_KNOMIAL_FACTOR
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_BCAST\_INTRANODE\_NUM\_CELLS
+   -  MVP_BCAST_INTRA_KNOMIAL_FACTOR
+  -  MPICH_BCAST_INTRA_KNOMIAL_FACTOR
+- **Description:**
+ This defines the degree of the knomial operation during the intra-node knomial broadcast phase. 
+- **Default:**  4
 
-  - MPICH\_BCAST\_INTRANODE\_NUM\_CELLS
+MPIR_CVAR_BCAST_SEGMENT_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_BCAST_SEGMENT_SIZE
+  -  MPICH_BCAST_SEGMENT_SIZE
 - **Description:**
-  -  Number of cells the bcast buffer is divided into
+ Size of the segments used for PIPELINED bcast 
+- **Default:**  8192
 
-- **Default:** 4
-
+MPIR_CVAR_REDUCE_INTER_KNOMIAL_FACTOR
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_REDUCE_INTER_KNOMIAL_FACTOR
+  -  MPICH_REDUCE_INTER_KNOMIAL_FACTOR
+- **Description:**
+ This defines the degree of the knomial operation during the inter-node knomial reduce phase. 
+- **Default:**  4
 
-MPIR\_CVAR\_REDUCE\_INTRANODE\_BUFFER\_TOTAL\_SIZE
+MPIR_CVAR_REDUCE_INTRA_KNOMIAL_FACTOR
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_REDUCE\_INTRANODE\_BUFFER\_TOTAL\_SIZE
+   -  MVP_REDUCE_INTRA_KNOMIAL_FACTOR
+  -  MPICH_REDUCE_INTRA_KNOMIAL_FACTOR
+- **Description:**
+ This defines the degree of the knomial operation during the intra-node knomial reduce phase. 
+- **Default:**  4
 
-  - MPICH\_REDUCE\_INTRANODE\_BUFFER\_TOTAL\_SIZE
+MPIR_CVAR_DEVICE_COLLECTIVES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_DEVICE_COLLECTIVES
+  -  MPICH_DEVICE_COLLECTIVES
 - **Description:**
-  -  Total size of the reduce buffer per rank (in bytes)
-
-- **Default:** 32768
+ Variable to select whether the device can override the
+  -   MPIR-level collective algorithms.
+  -   all     - Always prefer the device collectives
+  -   none    - Never pick the device collectives
+  -   percoll - Use the per-collective CVARs to decide 
+- **Default:**  MPIR_CVAR_DEVICE_COLLECTIVES_percoll
 
+MPIR_CVAR_COLLECTIVE_FALLBACK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_COLLECTIVE_FALLBACK
+  -  MPICH_COLLECTIVE_FALLBACK
+- **Description:**
+ Variable to control what the MPI library should do if the
+  -   user-specified collective algorithm does not work for the
+  -   arguments passed in by the user.
+  -   error   - throw an error
+  -   print   - print an error message and fallback to the internally selected algorithm
+  -   silent  - silently fallback to the internally selected algorithm 
+- **Default:**  MPIR_CVAR_COLLECTIVE_FALLBACK_silent
 
-MPIR\_CVAR\_REDUCE\_INTRANODE\_NUM\_CELLS
+MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_REDUCE\_INTRANODE\_NUM\_CELLS
+   -  MVP_COLL_SELECTION_TUNING_JSON_FILE
+  -  MPICH_COLL_SELECTION_TUNING_JSON_FILE
+- **Description:**
+ Defines the location of tuning file. 
+- **Default:**  ""
 
-  - MPICH\_REDUCE\_INTRANODE\_NUM\_CELLS
+MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE_DYNAMIC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_COLL_SELECTION_TUNING_JSON_FILE_DYNAMIC
+  -  MPICH_COLL_SELECTION_TUNING_JSON_FILE_DYNAMIC
 - **Description:**
-  -  Number of cells the reduce buffer is divided into, for
+ Defines the location of dynamic tuning file. 
+- **Default:**  ""
 
-  - each rank
+MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE_GPU
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 4
+- **Aliases:**
+   -  MVP_COLL_SELECTION_TUNING_JSON_FILE_GPU
+  -  MPICH_COLL_SELECTION_TUNING_JSON_FILE_GPU
+- **Description:**
+ Defines the location of gpu tuning file. 
+- **Default:**  ""
 
+MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE_GPU_DYNAMIC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_COLL_SELECTION_TUNING_JSON_FILE_GPU_DYNAMIC
+  -  MPICH_COLL_SELECTION_TUNING_JSON_FILE_GPU_DYNAMIC
+- **Description:**
+ Defines the location of dynamic gpu tuning file. 
+- **Default:**  ""
 
-MPIR\_CVAR\_BCAST\_INTRANODE\_TREE\_KVAL
+MPIR_CVAR_HIERARCHY_DUMP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_BCAST\_INTRANODE\_TREE\_KVAL
+   -  MVP_HIERARCHY_DUMP
+  -  MPICH_HIERARCHY_DUMP
+- **Description:**
+ If set to true, each rank will dump the hierarchy data structure to a file named "hierarchy[rank]" in the current folder. If set to false, the hierarchy data structure will not be dumped. 
+- **Default:**  0
 
-  - MPICH\_BCAST\_INTRANODE\_TREE\_KVAL
+MPIR_CVAR_COORDINATES_FILE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_COORDINATES_FILE
+  -  MPICH_COORDINATES_FILE
 - **Description:**
-  -  K value for the kary/knomial tree for intra-node bcast
-
-- **Default:** 64
+ Defines the location of the input coordinates file. 
+- **Default:**  ""
 
+MPIR_CVAR_COLL_TREE_DUMP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_COLL_TREE_DUMP
+  -  MPICH_COLL_TREE_DUMP
+- **Description:**
+ If set to true, each rank will dump the tree to a file named "colltree[rank].json" in the current folder. If set to false, the tree will not be dumped. 
+- **Default:**  0
 
-MPIR\_CVAR\_BCAST\_INTRANODE\_TREE\_TYPE
+MPIR_CVAR_COORDINATES_DUMP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_BCAST\_INTRANODE\_TREE\_TYPE
+   -  MVP_COORDINATES_DUMP
+  -  MPICH_COORDINATES_DUMP
+- **Description:**
+ If set to true, rank 0 will dump the network coordinates to a file named "coords" in the current folder. If set to false, the network coordinates will not be dumped. 
+- **Default:**  0
 
-  - MPICH\_BCAST\_INTRANODE\_TREE\_TYPE
+MPIR_CVAR_PROGRESS_MAX_COLLS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_PROGRESS_MAX_COLLS
+  -  MPICH_PROGRESS_MAX_COLLS
 - **Description:**
-  -  Tree type for intra-node bcast tree kary      - kary tree
+ Maximum number of collective operations at a time that the progress engine should make progress on 
+- **Default:**  0
 
-  - type knomial\_1 - knomial\_1 tree type (ranks are added in order from
-
-  - the left side) knomial\_2 - knomial\_2 tree type (ranks are added in
+MPIR_CVAR_COMM_SPLIT_USE_QSORT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - order from the right side) knomial\_2 is only supported with non
+- **Aliases:**
+   -  MVP_COMM_SPLIT_USE_QSORT
+  -  MPICH_COMM_SPLIT_USE_QSORT
+- **Description:**
+ Use qsort(3) in the implementation of MPI_Comm_split instead of bubble sort. 
+- **Default:**  1
 
-  - topology aware trees.
+MPIR_CVAR_CTXID_EAGER_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** "kary"
+- **Aliases:**
+   -  MVP_CTXID_EAGER_SIZE
+  -  MPICH_CTXID_EAGER_SIZE
+- **Description:**
+ The MPIR_CVAR_CTXID_EAGER_SIZE environment variable allows you to specify how many words in the context ID mask will be set aside for the eager allocation protocol.  If the application is running out of context IDs, reducing this value may help. 
+- **Default:**  2
 
+MPIR_CVAR_DATALOOP_FAST_SEEK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_DATALOOP_FAST_SEEK
+  -  MPICH_DATALOOP_FAST_SEEK
+- **Description:**
+ use a datatype-specialized algorithm to shortcut seeking to the correct location in a noncontiguous buffer 
+- **Default:**  1
 
-MPIR\_CVAR\_REDUCE\_INTRANODE\_MSG\_SIZE\_THRESHOLD
+MPIR_CVAR_YAKSA_COMPLEX_SUPPORT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_REDUCE\_INTRANODE\_MSG\_SIZE\_THRESHOLD
+   -  MVP_YAKSA_COMPLEX_SUPPORT
+  -  MPICH_YAKSA_COMPLEX_SUPPORT
+- **Description:**
+ This CVAR indicates that complex type reduction is not supported in yaksa. 
+- **Default:**  0
 
-  - MPICH\_REDUCE\_INTRANODE\_MSG\_SIZE\_THRESHOLD
+MPIR_CVAR_GPU_DOUBLE_SUPPORT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_GPU_DOUBLE_SUPPORT
+  -  MPICH_GPU_DOUBLE_SUPPORT
 - **Description:**
-  -  MPIR\_CVAR\_REDUCE\_INTRANODE\_TREE\_KVAL and
+ This CVAR indicates that double type is not supported on the GPU. 
+- **Default:**  0
 
-  - MPIR\_CVAR\_REDUCE\_INTRANODE\_TREE\_TYPE are used when the message size
+MPIR_CVAR_GPU_LONG_DOUBLE_SUPPORT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - is smaller than or equal to this threshold;
+- **Aliases:**
+   -  MVP_GPU_LONG_DOUBLE_SUPPORT
+  -  MPICH_GPU_LONG_DOUBLE_SUPPORT
+- **Description:**
+ This CVAR indicates that double type is not supported on the GPU. 
+- **Default:**  0
 
-  - MPIR\_CVAR\_REDUCE\_INTRANODE\_TREE\_KVAL\_LARGE and
+MPIR_CVAR_ENABLE_YAKSA_REDUCTION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - MPIR\_CVAR\_REDUCE\_INTRANODE\_TREE\_TYPE\_LARGE are used when the
+- **Aliases:**
+   -  MVP_ENABLE_YAKSA_REDUCTION
+  -  MPICH_ENABLE_YAKSA_REDUCTION
+- **Description:**
+ This cvar enables yaksa based reduction for local reduce. 
+- **Default:**  1
 
-  - message size is larger than this threshold.
+MPIR_CVAR_YAKSA_REDUCTION_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 2048
+- **Aliases:**
+   -  MVP_YAKSA_REDUCTION_THRESHOLD
+  -  MPICH_YAKSA_REDUCTION_THRESHOLD
+- **Description:**
+ This cvar disables yaksa based reduction for messages above the threshold. The default is no limit. 
+- **Default:**  -1
 
+MPIR_CVAR_ENABLE_GDRCOPY
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ENABLE_GDRCOPY
+  -  MPICH_ENABLE_GDRCOPY
+- **Description:**
+ This cvar enables gdrcopy based staging for yaksa operations 
+- **Default:**  1
 
-MPIR\_CVAR\_REDUCE\_INTRANODE\_TREE\_KVAL
+MPIR_CVAR_GDRCOPY_MAX_SIZE_H2D
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_REDUCE\_INTRANODE\_TREE\_KVAL
+   -  MVP_GDRCOPY_MAX_SIZE_H2D
+  -  MPICH_GDRCOPY_MAX_SIZE_H2D
+- **Description:**
+ This cvar controls the maximum number of bytes for which gdrcopy will be used for staging from host to device 
+- **Default:**  32768
 
-  - MPICH\_REDUCE\_INTRANODE\_TREE\_KVAL
+MPIR_CVAR_GDRCOPY_MAX_SIZE_D2H
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_GDRCOPY_MAX_SIZE_D2H
+  -  MPICH_GDRCOPY_MAX_SIZE_D2H
 - **Description:**
-  -  K value for the kary/knomial tree for intra-node reduce
+ This cvar controls the maximum number of bytes for which gdrcopy will be used for staging from a device to host 
+- **Default:**  2048
 
-- **Default:** 4
-
+MPIR_CVAR_GPU_UM_PT2PT_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_GPU_UM_PT2PT_SIZE
+  -  MPICH_GPU_UM_PT2PT_SIZE
+- **Description:**
+ This cvar controls the maximum number of bytes for which systems with unified GPU memory will use the direct CPU memcpy support. For all messages at or above this value, the kernel driven Yaksa approach will be used instead. 
+- **Default:**  (4 * 1024 * 1024)
 
-MPIR\_CVAR\_REDUCE\_INTRANODE\_TREE\_KVAL\_LARGE
+MPIR_CVAR_PROCTABLE_SIZE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_REDUCE\_INTRANODE\_TREE\_KVAL\_LARGE
+   -  MVP_PROCTABLE_SIZE
+  -  MPICH_PROCTABLE_SIZE
+- **Description:**
+ Size of the "MPIR" debugger interface proctable (process table). 
+- **Default:**  64
 
-  - MPICH\_REDUCE\_INTRANODE\_TREE\_KVAL\_LARGE
+MPIR_CVAR_PROCTABLE_PRINT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_PROCTABLE_PRINT
+  -  MPICH_PROCTABLE_PRINT
 - **Description:**
-  -  K value for the kary/knomial tree for intra-node reduce.
+ If true, dump the proctable entries at MPII_Wait_for_debugger-time. 
+- **Default:**  0
 
-  - Used for large messages.
+MPIR_CVAR_PRINT_ERROR_STACK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 2
+- **Aliases:**
+   -  MVP_PRINT_ERROR_STACK
+  -  MPICH_PRINT_ERROR_STACK
+- **Description:**
+ If true, print an error stack trace at error handling time. 
+- **Default:**  1
 
+MPIR_CVAR_CHOP_ERROR_STACK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CHOP_ERROR_STACK
+  -  MPICH_CHOP_ERROR_STACK
+- **Description:**
+ If >0, truncate error stack output lines this many characters wide.  If 0, do not truncate, and if <0 use a sensible default. 
+- **Default:**  0
 
-MPIR\_CVAR\_REDUCE\_INTRANODE\_TREE\_TYPE
+MPIR_CVAR_ASYNC_PROGRESS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_REDUCE\_INTRANODE\_TREE\_TYPE
+   -  MVP_ASYNC_PROGRESS
+  -  MPICH_ASYNC_PROGRESS
+- **Description:**
+ If set to true, MPICH will initiate an additional thread to make asynchronous progress on all communication operations including point-to-point, collective, one-sided operations and I/O.  Setting this variable will automatically increase the thread-safety level to MPI_THREAD_MULTIPLE.  While this improves the progress semantics, it might cause a small amount of performance overhead for regular MPI operations.  The user is encouraged to leave one or more hardware threads vacant in order to prevent contention between the application threads and the progress thread(s).  The impact of oversubscription is highly system dependent but may be substantial in some cases, hence this recommendation. 
+- **Default:**  0
 
-  - MPICH\_REDUCE\_INTRANODE\_TREE\_TYPE
+MPIR_CVAR_PROGRESS_THREAD_AFFINITY
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_PROGRESS_THREAD_AFFINITY
+  -  MPICH_PROGRESS_THREAD_AFFINITY
 - **Description:**
-  -  Tree type for intra-node reduce tree kary      - kary tree
+ Specifies affinity for all progress threads of local processes. Can be set to auto or comma-separated list of logical processors. When set to auto - MPICH will automatically select logical CPU cores to decide affinity of the progress threads. When set to comma-separated list of logical processors - In case of N progress threads per process, the first N logical processors from list will be assigned to threads of first local process, the next N logical processors from list - to second local process and so on. For example, thread affinity is "0,1,2,3", 2 progress threads per process and 2 processes per node. Progress threads of first local process will be pinned on logical processors "0,1", progress threads of second local process - on "2,3". Cannot work together with MPIR_CVAR_NUM_CLIQUES or MPIR_CVAR_ODD_EVEN_CLIQUES. 
+- **Default:**  ""
 
-  - type knomial\_1 - knomial\_1 tree type (ranks are added in order from
-
-  - the left side) knomial\_2 - knomial\_2 tree type (ranks are added in
+MPIR_CVAR_SUPPRESS_ABORT_MESSAGE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - order from the right side) knomial\_2 is only supported with non
+- **Aliases:**
+   -  MVP_SUPPRESS_ABORT_MESSAGE
+  -  MPICH_SUPPRESS_ABORT_MESSAGE
+- **Description:**
+ Disable printing of abort error message. 
+- **Default:**  0
 
-  - topology aware trees.
+MPIR_CVAR_COREDUMP_ON_ABORT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** "kary"
+- **Aliases:**
+   -  MVP_COREDUMP_ON_ABORT
+  -  MPICH_COREDUMP_ON_ABORT
+- **Description:**
+ Call libc abort() to generate a corefile 
+- **Default:**  0
 
+MPIR_CVAR_ERROR_CHECKING
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ERROR_CHECKING
+  -  MPICH_ERROR_CHECKING
+- **Description:**
+ If true, perform checks for errors, typically to verify valid inputs to MPI routines.  Only effective when MPICH is configured with --enable-error-checking=runtime . 
+- **Default:**  1
 
-MPIR\_CVAR\_REDUCE\_INTRANODE\_TREE\_TYPE\_LARGE
+MPIR_CVAR_MEMDUMP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_REDUCE\_INTRANODE\_TREE\_TYPE\_LARGE
+   -  MVP_MEMDUMP
+  -  MPICH_MEMDUMP
+- **Description:**
+ If true, list any memory that was allocated by MPICH and that remains allocated when MPI_Finalize completes. 
+- **Default:**  1
 
-  - MPICH\_REDUCE\_INTRANODE\_TREE\_TYPE\_LARGE
+MPIR_CVAR_DEBUG_SUMMARY
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_DEBUG_SUMMARY
+  -  MPICH_DEBUG_SUMMARY
+  -  MPIR_CVAR_MEM_CATEGORY_INFORMATION
+  -  MPIR_CVAR_CH4_OFI_CAPABILITY_SETS_DEBUG
+  -  MPIR_CVAR_CH4_UCX_CAPABILITY_DEBUG
+  -  MVP_MEM_CATEGORY_INFORMATION
+  -  MVP_CH4_OFI_CAPABILITY_SETS_DEBUG
+  -  MVP_CH4_UCX_CAPABILITY_DEBUG
+  -  MPICH_MEM_CATEGORY_INFORMATION
+  -  MPICH_CH4_OFI_CAPABILITY_SETS_DEBUG
+  -  MPICH_CH4_UCX_CAPABILITY_DEBUG
 - **Description:**
-  -  Tree type for intra-node reduce tree. Used for large
-
-  - messages. kary      - kary tree type knomial\_1 - knomial\_1 tree
+ 1: Print internal summary of various debug information, such as memory allocation by category. Each layer may print their own summary information. For example, ch4-ofi may print its provider capability settings. 2: Also print the preferred NIC for each rank 
+- **Default:**  0
 
-  - type (ranks are added in order from the left side) knomial\_2 -
+MPIR_CVAR_DEFAULT_THREAD_LEVEL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - knomial\_2 tree type (ranks are added in order from the right side)
+- **Aliases:**
+   -  MVP_DEFAULT_THREAD_LEVEL
+  -  MPICH_DEFAULT_THREAD_LEVEL
+- **Description:**
+ Sets the default thread level to use when using MPI_INIT. This variable is case-insensitive. 
+- **Default:**  "MPI_THREAD_SINGLE"
 
-  - knomial\_2 is only supported with non topology aware trees.
+MPIR_CVAR_DEBUG_HOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** "kary"
+- **Aliases:**
+   -  MVP_DEBUG_HOLD
+  -  MPICH_DEBUG_HOLD
+- **Description:**
+ If true, causes processes to wait in MPI_Init and MPI_Initthread for a debugger to be attached.  Once the debugger has attached, the variable 'hold' should be set to 0 in order to allow the process to continue (e.g., in gdb, "set hold=0"). 
+- **Default:**  0
 
+MPIR_CVAR_GPU_USE_IMMEDIATE_COMMAND_LIST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_GPU_USE_IMMEDIATE_COMMAND_LIST
+  -  MPICH_GPU_USE_IMMEDIATE_COMMAND_LIST
+- **Description:**
+ If true, mpl/ze will use immediate command list for copying 
+- **Default:**  0
 
-MPIR\_CVAR\_ENABLE\_INTRANODE\_TOPOLOGY\_AWARE\_TREES
+MPIR_CVAR_GPU_ROUND_ROBIN_COMMAND_QUEUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ENABLE\_INTRANODE\_TOPOLOGY\_AWARE\_TREES
+   -  MVP_GPU_ROUND_ROBIN_COMMAND_QUEUES
+  -  MPICH_GPU_ROUND_ROBIN_COMMAND_QUEUES
+- **Description:**
+ If true, mpl/ze will use command queues in a round-robin fashion. If false, only command queues of index 0 will be used. 
+- **Default:**  0
 
-  - MPICH\_ENABLE\_INTRANODE\_TOPOLOGY\_AWARE\_TREES
+MPIR_CVAR_NO_COLLECTIVE_FINALIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_NO_COLLECTIVE_FINALIZE
+  -  MPICH_NO_COLLECTIVE_FINALIZE
 - **Description:**
-  -  Enable collective specific intra-node trees which leverage
+ If true, prevent MPI_Finalize to invoke collective behavior such as barrier or communicating to other processes. Consequently, it may result in leaking memory or losing messages due to pre-mature exiting. The default is false, which may invoke collective behaviors at finalize. 
+- **Default:**  0
 
-  - the memory hierarchy of a machine. Depends on hwloc to extract the
-
-  - binding information of each rank. Pick a leader rank per package
+MPIR_CVAR_FINALIZE_WAIT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - (socket), then create a per\_package tree for ranks on a same
+- **Aliases:**
+   -  MVP_FINALIZE_WAIT
+  -  MPICH_FINALIZE_WAIT
+- **Description:**
+ If true, poll progress at MPI_Finalize until reference count on MPI_COMM_WORLD and MPI_COMM_SELF reaches zero. This may be necessary to prevent remote processes hanging if it has pending communication protocols, e.g. a rendezvous send. 
+- **Default:**  0
 
-  - package, package leaders tree for package leaders. For Bcast -
+MPIR_CVAR_INIT_SKIP_PMI_BARRIER
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - Assemble the per\_package and package\_leaders tree in such a way
+- **Aliases:**
+   -  MVP_INIT_SKIP_PMI_BARRIER
+  -  MPICH_INIT_SKIP_PMI_BARRIER
+- **Description:**
+ Skip MPIR_pmi_barrier() in MPI_Init 
+- **Default:**  1
 
-  - that leaders interact among themselves first before interacting
+MPIR_CVAR_GPU_FAST_COPY_MAX_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - with package local ranks. Both the package\_leaders and per\_package
+- **Aliases:**
+   -  MVP_GPU_FAST_COPY_MAX_SIZE
+  -  MPICH_GPU_FAST_COPY_MAX_SIZE
+- **Description:**
+ If a send message size is less than or equal to MPIR_CVAR_GPU_FAST_COPY_MAX_SIZE (in bytes), then enable GPU-based fast memcpy. The environment variable is valid only when then GPU IPC shmmod is enabled. 
+- **Default:**  4096
 
-  - trees are left skewed (children are added from left to right, first
+MPIR_CVAR_GPU_FAST_COPY_MAX_SIZE_H2D
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - child to be added is the first one to be processed in traversal)
+- **Aliases:**
+   -  MVP_GPU_FAST_COPY_MAX_SIZE_H2D
+  -  MPICH_GPU_FAST_COPY_MAX_SIZE_H2D
+- **Description:**
+ If a receive message size is less than or equal to MPIR_CVAR_GPU_FAST_COPY_MAX_SIZE_H2D (in bytes), then enable GPU-based fast memcpy. 
+- **Default:**  4096
 
-  - For Reduce - Assemble the per\_package and package\_leaders tree in
+MPIR_CVAR_GPU_FAST_COPY_MAX_SIZE_D2H
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - such a way that a leader rank interacts with its package local
+- **Aliases:**
+   -  MVP_GPU_FAST_COPY_MAX_SIZE_D2H
+  -  MPICH_GPU_FAST_COPY_MAX_SIZE_D2H
+- **Description:**
+ If a send message size is less than or equal to MPIR_CVAR_GPU_FAST_COPY_MAX_SIZE_D2H (in bytes), then enable GPU-based fast memcpy. 
+- **Default:**  256
 
-  - ranks first, then with the other package leaders. Both the
+MPIR_CVAR_GPU_FAST_COPY_MAX_SIZE_D2D
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - per\_package and package\_leaders tree is right skewed (children are
+- **Aliases:**
+   -  MVP_GPU_FAST_COPY_MAX_SIZE_D2D
+  -  MPICH_GPU_FAST_COPY_MAX_SIZE_D2D
+- **Description:**
+ If a send message size is less than or equal to MPIR_CVAR_GPU_FAST_COPY_MAX_SIZE_D2D (in bytes), then enable GPU-based fast memcpy. 
+- **Default:**  128
 
-  - added in reverse order, first child to be added is the last one to
+MPIR_CVAR_REQUEST_ERR_FATAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - be processed in traversal) The tree radix and tree type of
+- **Aliases:**
+   -  MVP_REQUEST_ERR_FATAL
+  -  MPICH_REQUEST_ERR_FATAL
+- **Description:**
+ By default, MPI_Waitall, MPI_Testall, MPI_Waitsome, and MPI_Testsome return MPI_ERR_IN_STATUS when one of the request fails. If MPIR_CVAR_REQUEST_ERR_FATAL is set to true, these routines will return the error code of the request immediately. The default MPI_ERRS_ARE_FATAL error handler will dump a error stack in this case, which maybe more convenient for debugging. This cvar will also make nonblocking shched return error right away as it issues operations. 
+- **Default:**  0
 
-  - package\_leaders and per\_package tree is
+MPIR_CVAR_REQUEST_POLL_FREQ
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - MPIR\_CVAR\_BCAST{REDUCE}\_INTRANODE\_TREE\_KVAL and
+- **Aliases:**
+   -  MVP_REQUEST_POLL_FREQ
+  -  MPICH_REQUEST_POLL_FREQ
+- **Description:**
+ How frequent to poll during MPI_{Waitany,Waitsome} in terms of number of processed requests before polling. 
+- **Default:**  8
 
-  - MPIR\_CVAR\_BCAST{REDUCE}\_INTRANODE\_TREE\_TYPE respectively for bast
+MPIR_CVAR_REQUEST_BATCH_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - and reduce. But of as now topology aware trees are only kary and
+- **Aliases:**
+   -  MVP_REQUEST_BATCH_SIZE
+  -  MPICH_REQUEST_BATCH_SIZE
+- **Description:**
+ The number of requests to make completion as a batch in MPI_Waitall and MPI_Testall implementation. A large number is likely to cause more cache misses. 
+- **Default:**  64
 
-  - knomial\_1. knomial\_2 is not implemented.
+MPIR_CVAR_DIMS_VERBOSE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 1
+- **Aliases:**
+   -  MVP_DIMS_VERBOSE
+  -  MPICH_DIMS_VERBOSE
+- **Description:**
+ If true, enable verbose output about the actions of the implementation of MPI_Dims_create. 
+- **Default:**  0
 
+MPIR_CVAR_QMPI_TOOL_LIST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_QMPI_TOOL_LIST
+  -  MPICH_QMPI_TOOL_LIST
+- **Description:**
+ Set the number and order of QMPI tools to be loaded by the MPI library when it is initialized. 
+- **Default:**  NULL
 
-MPIR\_CVAR\_BARRIER\_COMPOSITION
+MPIR_CVAR_NAMESERV_FILE_PUBDIR
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_BARRIER\_COMPOSITION
+   -  MVP_NAMESERV_FILE_PUBDIR
+  -  MPICH_NAMESERV_FILE_PUBDIR
+  -  MPIR_CVAR_NAMEPUB_DIR
+  -  MVP_NAMEPUB_DIR
+  -  MPICH_NAMEPUB_DIR
+- **Description:**
+ Sets the directory to use for MPI service publishing in the file nameserv implementation.  Allows the user to override where the publish and lookup information is placed for connect/accept based applications. 
+- **Default:**  NULL
 
-  - MPICH\_BARRIER\_COMPOSITION
+MPIR_CVAR_ENABLE_COMPRESSION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ENABLE_COMPRESSION
+  -  MPICH_ENABLE_COMPRESSION
 - **Description:**
-  -  Select composition (inter\_node + intra\_node) for Barrier 0
+ Possible values: no, all, percomm
+  -   no      - disable collective compression on all communicators
+  -   all     - enable collective compression on all communicators
+  -   percomm - use per-communicator hints for all communicators 
+- **Default:**  MPIR_CVAR_ENABLE_COMPRESSION_percomm
 
-  - Auto selection 1 NM + SHM 2 NM only
+MPIR_CVAR_COMPRESSION_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 0
+- **Aliases:**
+   -  MVP_COMPRESSION_ALGORITHM
+  -  MPICH_COMPRESSION_ALGORITHM
+- **Description:**
+ Used to force a particular GPU compression algorithm
+  -   mpc - Use MPC lossless compression algorithm
+  -   zfp - Use ZFP lossy compression algorithm 
+- **Default:**  MPIR_CVAR_COMPRESSION_ALGORITHM_mpc
 
+MPIR_CVAR_COMPRESSION_THREAD_BLOCKS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_COMPRESSION_THREAD_BLOCKS
+  -  MPICH_COMPRESSION_THREAD_BLOCKS
+- **Description:**
+ GPU thread blocks 
+- **Default:**  216
 
-MPIR\_CVAR\_BCAST\_COMPOSITION
+MPIR_CVAR_COMPRESSION_DIMENSION
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_BCAST\_COMPOSITION
+   -  MVP_COMPRESSION_DIMENSION
+  -  MPICH_COMPRESSION_DIMENSION
+- **Description:**
+ Dimensionality in compression
+  -   Possible values: integer between 1 and 32 
+- **Default:**  1
 
-  - MPICH\_BCAST\_COMPOSITION
+MPIR_CVAR_COMPRESSION_NUM_STREAM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_COMPRESSION_NUM_STREAM
+  -  MPICH_COMPRESSION_NUM_STREAM
 - **Description:**
-  -  Select composition (inter\_node + intra\_node) for Bcast 0
+ Number of streams in compression 
+- **Default:**  512
 
-  - Auto selection 1 NM + SHM with explicit send-recv between rank 0
-
-  - and root 2 NM + SHM without the explicit send-recv 3 NM only
+MPIR_CVAR_COMPRESSION_DATA_TYPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 0
+- **Aliases:**
+   -  MVP_COMPRESSION_DATA_TYPE
+  -  MPICH_COMPRESSION_DATA_TYPE
+- **Description:**
+ Used to force a particular GPU compression algorithm
+  -   FLOAT  - use compression with floating point type
+  -   DOUBLE - use compression with double precision type 
+- **Default:**  MPIR_CVAR_COMPRESSION_DATA_TYPE_FLOAT
 
+MPIR_CVAR_ENABLE_PT2PT_COMPRESSION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ENABLE_PT2PT_COMPRESSION
+  -  MPICH_ENABLE_PT2PT_COMPRESSION
+- **Description:**
+ Possible values: no, all, percomm
+  -   no      - disable point-to-point compression on all communicators
+  -   all     - enable point-to-point compression on all communicators
+  -   percomm - use per-communicator hints for all communicators 
+- **Default:**  MPIR_CVAR_ENABLE_PT2PT_COMPRESSION_percomm
 
-MPIR\_CVAR\_ALLREDUCE\_COMPOSITION
+MPIR_CVAR_PT2PT_COMPRESSION_THRESHOLD
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLREDUCE\_COMPOSITION
+   -  MVP_PT2PT_COMPRESSION_THRESHOLD
+  -  MPICH_PT2PT_COMPRESSION_THRESHOLD
+- **Description:**
+ Use compression for point-to-point messages only when the message size exceeds this value. Has no effect if point to point compression is disabled. 
+- **Default:**  1048576
 
-  - MPICH\_ALLREDUCE\_COMPOSITION
+MPIR_CVAR_ALLTOALL_COMPRESSION_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLTOALL_COMPRESSION_THRESHOLD
+  -  MPICH_ALLTOALL_COMPRESSION_THRESHOLD
 - **Description:**
-  -  Select composition (inter\_node + intra\_node) for Allreduce
+ Use compression for Alltoall messages only when the message size exceeds this value. Has not effect if collective compression is disabled. 
+- **Default:**  (4*1024*1024)
 
-  - 0 Auto selection 1 NM + SHM with reduce + bcast 2 NM only
+MPIR_CVAR_ALLGATHER_COMPRESSION_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - composition 3 SHM only composition 4 Multi leaders based inter node
+- **Aliases:**
+   -  MVP_ALLGATHER_COMPRESSION_THRESHOLD
+  -  MPICH_ALLGATHER_COMPRESSION_THRESHOLD
+- **Description:**
+ Use compression for Allgather messages only when the message size exceeds this value. Has no effect if collective compression is disabled. 
+- **Default:**  (4*1024*1024)
 
-  - + intra node composition 5 Intra-node only (flat) IPC and kernel
+MPIR_CVAR_ALLREDUCE_COMPRESSION_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - supported allreduce 6 Two level IPC enabled allreduce using NM +
+- **Aliases:**
+   -  MVP_ALLREDUCE_COMPRESSION_THRESHOLD
+  -  MPICH_ALLREDUCE_COMPRESSION_THRESHOLD
+- **Description:**
+ Use compression for Allreduce messages only when the message size exceeds this value. Has no effect if collective compression is disabled. 
+- **Default:**  (4*1024*1024)
 
-  - IPC reduce + IPC Bcast 7 Multi-leader two level IPC enabled
+MPIR_CVAR_REDUCE_SCATTER_COMPRESSION_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - allreduce using reduce\_scatter + allgatherv 8 Pipelined
+- **Aliases:**
+   -  MVP_REDUCE_SCATTER_COMPRESSION_THRESHOLD
+  -  MPICH_REDUCE_SCATTER_COMPRESSION_THRESHOLD
+- **Description:**
+ Use compression for Reduce_scatter messages only when the message size exceeds this value. Has no effect if collective compression is disabled. 
+- **Default:**  (4*1024*1024)
 
-  - multi-leader two level IPC enabled allreduce
+MPIR_CVAR_COMPRESSION_BUFFER_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 0
+- **Aliases:**
+   -  MVP_COMPRESSION_BUFFER_SIZE
+  -  MPICH_COMPRESSION_BUFFER_SIZE
+- **Description:**
+ Specifies the size of buffers for compressing/decompressing active messages in each block of the pool. The size here should be the maximum size needed for compression algorithms, but in the future will be the chunk size used for a pipelined compression. 
+- **Default:**  33554432
 
+MPIR_CVAR_COMPRESSION_NUM_BUFFERS_PER_CHUNK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_COMPRESSION_NUM_BUFFERS_PER_CHUNK
+  -  MPICH_COMPRESSION_NUM_BUFFERS_PER_CHUNK
+- **Description:**
+ Specifies the number of buffers for compressing/decompressing active messages in each block of the pool. Setting to one for now because the buffers are so large. In the future, we will set this higher once the default buffer size is lowered. 
+- **Default:**  1
 
-MPIR\_CVAR\_ALLGATHER\_COMPOSITION
+MPIR_CVAR_COMPRESSION_MAX_NUM_COMPRESSION_BUFFERS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLGATHER\_COMPOSITION
+   -  MVP_COMPRESSION_MAX_NUM_COMPRESSION_BUFFERS
+  -  MPICH_COMPRESSION_MAX_NUM_COMPRESSION_BUFFERS
+- **Description:**
+ Specifies the max number of buffers for compressing/decompressing in the pool. Capped at 64 by default, meaning a maximum of 2GB can be allocated by this pool. 
+- **Default:**  64
 
-  - MPICH\_ALLGATHER\_COMPOSITION
+MPIR_CVAR_COMPRESSION_REDUCE_SCATTER_CHUNK_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_COMPRESSION_REDUCE_SCATTER_CHUNK_SIZE
+  -  MPICH_COMPRESSION_REDUCE_SCATTER_CHUNK_SIZE
 - **Description:**
-  -  Select composition (inter\_node + intra\_node) for Allgather
+ Chunk data size for COLLECTIVE compression in ring-based reduce-scatter 
+- **Default:**  (2*1024*1024)
 
-  - 0 Auto selection 1 Multi leaders based inter node + intra node
-
-  - composition 2 NM only composition
+MPIR_CVAR_COMPRESSION_BCAST_CHUNKS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 0
+- **Aliases:**
+   -  MVP_COMPRESSION_BCAST_CHUNKS
+  -  MPICH_COMPRESSION_BCAST_CHUNKS
+- **Description:**
+ Default number of chunks for chunked-chain bcast with compression 
+- **Default:**  2
 
+MPIR_CVAR_COMPRESSION_BCAST_CHUNK_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_COMPRESSION_BCAST_CHUNK_SIZE
+  -  MPICH_COMPRESSION_BCAST_CHUNK_SIZE
+- **Description:**
+ Default chunk size for chunked-chain bcast with compression 
+- **Default:**  (512*1024)
 
-MPIR\_CVAR\_ALLTOALL\_COMPOSITION
+MPIR_CVAR_ZFP_NUM_STREAM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLTOALL\_COMPOSITION
+   -  MVP_ZFP_NUM_STREAM
+  -  MPICH_ZFP_NUM_STREAM
+- **Description:**
+ number of zfp streams to preallocate pool
+  -   Possible values: integer greater than 1 
+- **Default:**  64
 
-  - MPICH\_ALLTOALL\_COMPOSITION
+MPIR_CVAR_ZFP_RATE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ZFP_RATE
+  -  MPICH_ZFP_RATE
 - **Description:**
-  -  Select composition (inter\_node + intra\_node) for Alltoall
+ Possible values: [1,32] for float, [1-64] for double 
+- **Default:**  16
 
-  - 0 Auto selection 1 Multi leaders based inter node + intra node
-
-  - composition 2 NM only composition
+MPIR_CVAR_ZFP_NX
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 0
+- **Aliases:**
+   -  MVP_ZFP_NX
+  -  MPICH_ZFP_NX
+- **Description:**
+ For 2D dimension
+  -   Possible values: Positive integer, multiple of 4 
+- **Default:**  4
 
+MPIR_CVAR_ZFP_NY
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ZFP_NY
+  -  MPICH_ZFP_NY
+- **Description:**
+ For 3D dimension
+  -   Possible values: Positive integer, multiple of 4 
+- **Default:**  4
 
-MPIR\_CVAR\_REDUCE\_COMPOSITION
+MPIR_CVAR_ZFP_ALLOC_WARNING
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_REDUCE\_COMPOSITION
+   -  MVP_ZFP_ALLOC_WARNING
+  -  MPICH_ZFP_ALLOC_WARNING
+- **Description:**
+ Possible values: 0, 1
+  -   0 - disable warnings for allocation of zfp stream pool
+  -   1 - enable warning for allocation of zfp stream pool 
+- **Default:**  1
 
-  - MPICH\_REDUCE\_COMPOSITION
+MPIR_CVAR_ZFP_PATH
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ZFP_PATH
+  -  MPICH_ZFP_PATH
 - **Description:**
-  -  Select composition (inter\_node + intra\_node) for Reduce 0
+ Path to an alternate ZFP library to be opened with dlsym at runtime. By default ZFP is linked to an included version. 
+- **Default:**  NULL
 
-  - Auto selection 1 NM + SHM with explicit send-recv between rank 0
+MPIR_CVAR_ABORT_ON_LEAKED_HANDLES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - and root 2 NM + SHM without the explicit send-recv 3 NM only 4 IPC
+- **Aliases:**
+   -  MVP_ABORT_ON_LEAKED_HANDLES
+  -  MPICH_ABORT_ON_LEAKED_HANDLES
+- **Description:**
+ If true, MPI will call MPI_Abort at MPI_Finalize if any MPI object handles have been leaked.  For example, if MPI_Comm_dup is called without calling a corresponding MPI_Comm_free.  For uninteresting reasons, enabling this option may prevent all known object leaks from being reported.  MPICH must have been configure with "--enable-g=handlealloc" or better in order for this functionality to work. 
+- **Default:**  0
 
-  - and kernel assisted GPU enabled
+MPIR_CVAR_NETLOC_NODE_FILE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 0
+- **Aliases:**
+   -  MVP_NETLOC_NODE_FILE
+  -  MPICH_NETLOC_NODE_FILE
+- **Description:**
+ Subnet json file 
+- **Default:**  "auto"
 
+MPIR_CVAR_NOLOCAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_NOLOCAL
+  -  MPICH_NOLOCAL
+  -  MPIR_CVAR_NO_LOCAL
+  -  MVP_NO_LOCAL
+  -  MPICH_NO_LOCAL
+- **Description:**
+ If true, force all processes to operate as though all processes are located on another node.  For example, this disables shared memory communication hierarchical collectives. 
+- **Default:**  0
 
-MPIR\_CVAR\_REDUCE\_SCATTER\_COMPOSITION
+MPIR_CVAR_ODD_EVEN_CLIQUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_REDUCE\_SCATTER\_COMPOSITION
+   -  MVP_ODD_EVEN_CLIQUES
+  -  MPICH_ODD_EVEN_CLIQUES
+  -  MPIR_CVAR_EVEN_ODD_CLIQUES
+  -  MVP_EVEN_ODD_CLIQUES
+  -  MPICH_EVEN_ODD_CLIQUES
+- **Description:**
+ If true, odd procs on a node are seen as local to each other, and even procs on a node are seen as local to each other.  Used for debugging on a single machine. Deprecated in favor of MPIR_CVAR_NUM_CLIQUES. 
+- **Default:**  0
 
-  - MPICH\_REDUCE\_SCATTER\_COMPOSITION
+MPIR_CVAR_NUM_CLIQUES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_NUM_CLIQUES
+  -  MPICH_NUM_CLIQUES
 - **Description:**
-  -  Select composition (inter\_node + intra\_node) for
+ Specify the number of cliques that should be used to partition procs on a local node. Procs with the same clique number are seen as local to each other. Used for debugging on a single machine. 
+- **Default:**  1
 
-  - Reduce\_scatter 0 Auto selection 1 NM only composition 2 NM only
-
-  - composition with CPU staging 3 Intra-node only (flat) IPC and
+MPIR_CVAR_CLIQUES_BY_BLOCK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - kernel supported reduce\_scatter 4 Pipelined multi-leader two level
+- **Aliases:**
+   -  MVP_CLIQUES_BY_BLOCK
+  -  MPICH_CLIQUES_BY_BLOCK
+- **Description:**
+ Specify to divide processes into cliques by uniform blocks. The default is to divide in round-robin fashion. Used for debugging on a single machine. 
+- **Default:**  0
 
-  - IPC enabled reduce\_scatter
+MPIR_CVAR_PMI_VERSION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 0
+- **Aliases:**
+   -  MVP_PMI_VERSION
+  -  MPICH_PMI_VERSION
+- **Description:**
+ Variable to select runtime PMI version.
+  -   1        - PMI (default)
+  -   2        - PMI2
+  -   x        - PMIx
+  -   auto     - Auto-detect PMI version 
+- **Default:**  MPIR_CVAR_PMI_VERSION_auto
 
+MPIR_CVAR_PMI_DISABLE_GROUP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_PMI_DISABLE_GROUP
+  -  MPICH_PMI_DISABLE_GROUP
+- **Description:**
+ Set this cvar to true if PMI_Barrier_group or PMIx_Fence over a group is not supported. 
+- **Default:**  0
 
-MPIR\_CVAR\_ALLTOALL\_SHM\_PER\_RANK
+MPIR_CVAR_COLL_ALIAS_CHECK
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLTOALL\_SHM\_PER\_RANK
+   -  MVP_COLL_ALIAS_CHECK
+  -  MPICH_COLL_ALIAS_CHECK
+- **Description:**
+ Enable checking of aliasing in collective operations 
+- **Default:**  1
 
-  - MPICH\_ALLTOALL\_SHM\_PER\_RANK
+MPIR_CVAR_ENABLE_GPU
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ENABLE_GPU
+  -  MPICH_ENABLE_GPU
 - **Description:**
-  -  Shared memory region per rank for multi-leaders based
+ Control MPICH GPU support. If set to 0, all GPU support is disabled and we do not query the buffer type internally because we assume no GPU buffer is use. 
+- **Default:**  MVP_GPU_SUPPORTED
 
-  - composition for MPI\_Alltoall (in bytes)
+MPIR_CVAR_GPU_HAS_WAIT_KERNEL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 4096
+- **Aliases:**
+   -  MVP_GPU_HAS_WAIT_KERNEL
+  -  MPICH_GPU_HAS_WAIT_KERNEL
+- **Description:**
+ If set to 1, avoid allocate allocating GPU registered host buffers for temporary buffers. When stream workq and GPU wait kernels are in use, access APIs for GPU registered memory may cause deadlock. 
+- **Default:**  0
 
+MPIR_CVAR_ENABLE_GPU_REGISTER
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ENABLE_GPU_REGISTER
+  -  MPICH_ENABLE_GPU_REGISTER
+- **Description:**
+ Control whether to actually register buffers with the GPU runtime in MPIR_gpu_register_host. This could lower the latency of certain GPU communication at the cost of some amount of GPU memory consumed by the MPI library. By default, registration is enabled. 
+- **Default:**  1
 
-MPIR\_CVAR\_ALLGATHER\_SHM\_PER\_RANK
+MPIR_CVAR_LMEM_POOL_SIZE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLGATHER\_SHM\_PER\_RANK
+   -  MVP_LMEM_POOL_SIZE
+  -  MPICH_LMEM_POOL_SIZE
+- **Description:**
+ Sets the amount of space allocated at init time to be used by internal functions for local temp buffers. 
+- **Default:**  32 * 1024 * 1024
 
-  - MPICH\_ALLGATHER\_SHM\_PER\_RANK
+MPIR_CVAR_PROGRESS_TIMEOUT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_PROGRESS_TIMEOUT
+  -  MPICH_PROGRESS_TIMEOUT
+  -  MPIR_CVAR_DEBUG_PROGRESS_TIMEOUT
+  -  MVP_DEBUG_PROGRESS_TIMEOUT
+  -  MPICH_DEBUG_PROGRESS_TIMEOUT
 - **Description:**
-  -  Shared memory region per rank for multi-leaders based
+ Sets the timeout in seconds to dump outstanding requests when progress wait is not making progress for some time. 
+- **Default:**  0
 
-  - composition for MPI\_Allgather (in bytes)
+MPIR_CVAR_POLLS_BEFORE_YIELD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 4096
+- **Aliases:**
+   -  MVP_POLLS_BEFORE_YIELD
+  -  MPICH_POLLS_BEFORE_YIELD
+- **Description:**
+ When MPICH is in a busy waiting loop, it will periodically call a function to yield the processor.  This cvar sets the number of loops before the yield function is called.  A value of 0 disables yielding. 
+- **Default:**  1000
 
+MPIR_CVAR_CH3_INTERFACE_HOSTNAME
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH3_INTERFACE_HOSTNAME
+  -  MPICH_CH3_INTERFACE_HOSTNAME
+  -  MPIR_CVAR_INTERFACE_HOSTNAME
+  -  MVP_INTERFACE_HOSTNAME
+  -  MPICH_INTERFACE_HOSTNAME
+- **Description:**
+ If non-NULL, this cvar specifies the IP address that other processes should use when connecting to this process. This cvar is mutually exclusive with the MPIR_CVAR_CH3_NETWORK_IFACE cvar and it is an error to set them both. 
+- **Default:**  NULL
 
-MPIR\_CVAR\_NUM\_MULTI\_LEADS
+MPIR_CVAR_CH3_PORT_RANGE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_NUM\_MULTI\_LEADS
+   -  MVP_CH3_PORT_RANGE
+  -  MPICH_CH3_PORT_RANGE
+  -  MPIR_CVAR_PORTRANGE
+  -  MPIR_CVAR_PORT_RANGE
+  -  MVP_PORTRANGE
+  -  MVP_PORT_RANGE
+  -  MPICH_PORTRANGE
+  -  MPICH_PORT_RANGE
+- **Description:**
+ The MPIR_CVAR_CH3_PORT_RANGE environment variable allows you to specify the range of TCP ports to be used by the process manager and the MPICH library. The format of this variable is <low>:<high>.  To specify any available port, use 0:0. 
+- **Default:**  {0,0}
 
-  - MPICH\_NUM\_MULTI\_LEADS
+MPIR_CVAR_NEMESIS_TCP_NETWORK_IFACE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_NEMESIS_TCP_NETWORK_IFACE
+  -  MPICH_NEMESIS_TCP_NETWORK_IFACE
+  -  MPIR_CVAR_NETWORK_IFACE
+  -  MVP_NETWORK_IFACE
+  -  MPICH_NETWORK_IFACE
 - **Description:**
-  -  Number of leader ranks per node to be used for
+ If non-NULL, this cvar specifies which pseudo-ethernet interface the tcp netmod should use (e.g., "eth1", "ib0"). Note, this is a Linux-specific cvar. This cvar is mutually exclusive with the MPIR_CVAR_CH3_INTERFACE_HOSTNAME cvar and it is an error to set them both. 
+- **Default:**  NULL
 
-  - multi-leaders based collective algorithms
+MPIR_CVAR_NEMESIS_TCP_HOST_LOOKUP_RETRIES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 4
+- **Aliases:**
+   -  MVP_NEMESIS_TCP_HOST_LOOKUP_RETRIES
+  -  MPICH_NEMESIS_TCP_HOST_LOOKUP_RETRIES
+- **Description:**
+ This cvar controls the number of times to retry the gethostbyname() function before giving up. 
+- **Default:**  10
 
+MPIR_CVAR_NEMESIS_ENABLE_CKPOINT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_NEMESIS_ENABLE_CKPOINT
+  -  MPICH_NEMESIS_ENABLE_CKPOINT
+- **Description:**
+ If true, enables checkpointing support and returns an error if checkpointing library cannot be initialized. 
+- **Default:**  0
 
-MPIR\_CVAR\_ALLREDUCE\_SHM\_PER\_LEADER
+MPIR_CVAR_NEMESIS_SHM_EAGER_MAX_SZ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLREDUCE\_SHM\_PER\_LEADER
+   -  MVP_NEMESIS_SHM_EAGER_MAX_SZ
+  -  MPICH_NEMESIS_SHM_EAGER_MAX_SZ
+- **Description:**
+ This cvar controls the message size at which Nemesis switches from eager to rendezvous mode for shared memory. If this cvar is set to -1, then Nemesis will choose an appropriate value. 
+- **Default:**  -1
 
-  - MPICH\_ALLREDUCE\_SHM\_PER\_LEADER
+MPIR_CVAR_NEMESIS_SHM_READY_EAGER_MAX_SZ
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_NEMESIS_SHM_READY_EAGER_MAX_SZ
+  -  MPICH_NEMESIS_SHM_READY_EAGER_MAX_SZ
 - **Description:**
-  -  Shared memory region per node-leader for multi-leaders
+ This cvar controls the message size at which Nemesis switches from eager to rendezvous mode for ready-send messages.  If this cvar is set to -1, then ready messages will always be sent eagerly.  If this cvar is set to -2, then Nemesis will choose an appropriate value. 
+- **Default:**  -2
 
-  - based composition for MPI\_Allreduce (in bytes). By default the size
+MPIR_CVAR_ENABLE_FT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - of the first call to the algorithm will be used. Max shared memory
+- **Aliases:**
+   -  MVP_ENABLE_FT
+  -  MPICH_ENABLE_FT
+- **Description:**
+ Enable fault tolerance functions 
+- **Default:**  0
 
-  - size is limited to 4MB.
+MPIR_CVAR_NEMESIS_NETMOD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** -1
+- **Aliases:**
+   -  MVP_NEMESIS_NETMOD
+  -  MPICH_NEMESIS_NETMOD
+- **Description:**
+ If non-empty, this cvar specifies which network module should be used for communication. This variable is case-insensitive. 
+- **Default:**  ""
 
+MPIR_CVAR_CH3_ENABLE_HCOLL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH3_ENABLE_HCOLL
+  -  MPICH_CH3_ENABLE_HCOLL
+- **Description:**
+ If true, enable HCOLL collectives. 
+- **Default:**  0
 
-MPIR\_CVAR\_ALLREDUCE\_CACHE\_PER\_LEADER
+MPIR_CVAR_CH3_COMM_CONNECT_TIMEOUT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLREDUCE\_CACHE\_PER\_LEADER
+   -  MVP_CH3_COMM_CONNECT_TIMEOUT
+  -  MPICH_CH3_COMM_CONNECT_TIMEOUT
+- **Description:**
+ The default time out period in seconds for a connection attempt to the server communicator where the named port exists but no pending accept. User can change the value for a specified connection through its info argument. 
+- **Default:**  180
 
-  - MPICH\_ALLREDUCE\_CACHE\_PER\_LEADER
+MPIR_CVAR_CH3_RMA_OP_PIGGYBACK_LOCK_DATA_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH3_RMA_OP_PIGGYBACK_LOCK_DATA_SIZE
+  -  MPICH_CH3_RMA_OP_PIGGYBACK_LOCK_DATA_SIZE
 - **Description:**
-  -  Amount of data reduced in allreduce delta composition's
-
-  - reduce local step (in bytes). Smaller per-leader message sizes can
+ Specify the threshold of data size of a RMA operation which can be piggybacked with a LOCK message. It is always a positive value and should not be smaller than MPIDI_RMA_IMMED_BYTES. If user sets it as a small value, for middle and large data size, we will lose performance because of always waiting for round-trip of LOCK synchronization; if user sets it as a large value, we need to consume more memory on target side to buffer this lock request when lock is not satisfied. 
+- **Default:**  65536
 
-  - avoid cache misses and improve performance.
+MPIR_CVAR_CH3_RMA_ACTIVE_REQ_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 512
+- **Aliases:**
+   -  MVP_CH3_RMA_ACTIVE_REQ_THRESHOLD
+  -  MPICH_CH3_RMA_ACTIVE_REQ_THRESHOLD
+- **Description:**
+ Threshold of number of active requests to trigger blocking waiting in operation routines. When the value is negative, we never blockingly wait in operation routines. When the value is zero, we always trigger blocking waiting in operation routines to wait until no. of active requests becomes zero. When the value is positive, we do blocking waiting in operation routines to wait until no. of active requests being reduced to this value. 
+- **Default:**  65536
 
+MPIR_CVAR_CH3_RMA_POKE_PROGRESS_REQ_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH3_RMA_POKE_PROGRESS_REQ_THRESHOLD
+  -  MPICH_CH3_RMA_POKE_PROGRESS_REQ_THRESHOLD
+- **Description:**
+ Threshold at which the RMA implementation attempts to complete requests while completing RMA operations and while using the lazy synchronization approach.  Change this value if programs fail because they run out of requests or other internal resources 
+- **Default:**  128
 
-MPIR\_CVAR\_ALLREDUCE\_LOCAL\_COPY\_OFFSETS
+MPIR_CVAR_CH3_RMA_SCALABLE_FENCE_PROCESS_NUM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLREDUCE\_LOCAL\_COPY\_OFFSETS
+   -  MVP_CH3_RMA_SCALABLE_FENCE_PROCESS_NUM
+  -  MPICH_CH3_RMA_SCALABLE_FENCE_PROCESS_NUM
+- **Description:**
+ Specify the threshold of switching the algorithm used in FENCE from the basic algorithm to the scalable algorithm. The value can be negative, zero or positive. When the number of processes is larger than or equal to this value, FENCE will use a scalable algorithm which do not use O(P) data structure; when the number of processes is smaller than the value, FENCE will use a basic but fast algorithm which requires an O(P) data structure. 
+- **Default:**  1024
 
-  - MPICH\_ALLREDUCE\_LOCAL\_COPY\_OFFSETS
+MPIR_CVAR_CH3_RMA_DELAY_ISSUING_FOR_PIGGYBACKING
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH3_RMA_DELAY_ISSUING_FOR_PIGGYBACKING
+  -  MPICH_CH3_RMA_DELAY_ISSUING_FOR_PIGGYBACKING
 - **Description:**
-  -  number of offsets in the allreduce delta composition's
-
-  - local copy The value of 2 performed the best in our 2 NIC test
+ Specify if delay issuing of RMA operations for piggybacking LOCK/UNLOCK/FLUSH is enabled. It can be either 0 or 1. When it is set to 1, the issuing of LOCK message is delayed until origin process see the first RMA operation and piggyback LOCK with that operation, and the origin process always keeps the current last operation until the ending synchronization call in order to piggyback UNLOCK/FLUSH with that operation. When it is set to 0, in WIN_LOCK/UNLOCK case, the LOCK message is sent out as early as possible, in WIN_LOCK_ALL/UNLOCK_ALL case, the origin process still tries to piggyback LOCK message with the first operation; for UNLOCK/FLUSH message, the origin process no longer keeps the current last operation but only piggyback UNLOCK/FLUSH if there is an operation available in the ending synchronization call. 
+- **Default:**  0
 
-  - cases.
+MPIR_CVAR_CH3_RMA_SLOTS_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 2
+- **Aliases:**
+   -  MVP_CH3_RMA_SLOTS_SIZE
+  -  MPICH_CH3_RMA_SLOTS_SIZE
+- **Description:**
+ Number of RMA slots during window creation. Each slot contains a linked list of target elements. The distribution of ranks among slots follows a round-robin pattern. Requires a positive value. 
+- **Default:**  262144
 
+MPIR_CVAR_CH3_RMA_TARGET_LOCK_DATA_BYTES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH3_RMA_TARGET_LOCK_DATA_BYTES
+  -  MPICH_CH3_RMA_TARGET_LOCK_DATA_BYTES
+- **Description:**
+ Size (in bytes) of available lock data this window can provided. If current buffered lock data is more than this value, the process will drop the upcoming operation data. Requires a positive value. 
+- **Default:**  655360
 
-MPIR\_CVAR\_CH4\_NETMOD
+MPIR_CVAR_CH3_EAGER_MAX_MSG_SIZE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_NETMOD
+   -  MVP_CH3_EAGER_MAX_MSG_SIZE
+  -  MPICH_CH3_EAGER_MAX_MSG_SIZE
+- **Description:**
+ This cvar controls the message size at which CH3 switches from eager to rendezvous mode. 
+- **Default:**  131072
 
-  - MPICH\_CH4\_NETMOD
+MPIR_CVAR_CH3_PG_VERBOSE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH3_PG_VERBOSE
+  -  MPICH_CH3_PG_VERBOSE
 - **Description:**
-  -  If non-empty, this cvar specifies which network module to
+ If set, print the PG state on finalize. 
+- **Default:**  0
 
-  - use
+MPIR_CVAR_CH3_RMA_OP_WIN_POOL_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** ""
+- **Aliases:**
+   -  MVP_CH3_RMA_OP_WIN_POOL_SIZE
+  -  MPICH_CH3_RMA_OP_WIN_POOL_SIZE
+- **Description:**
+ Size of the window-private RMA operations pool (in number of operations) that stores information about RMA operations that could not be issued immediately.  Requires a positive value. 
+- **Default:**  256
 
+MPIR_CVAR_CH3_RMA_OP_GLOBAL_POOL_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH3_RMA_OP_GLOBAL_POOL_SIZE
+  -  MPICH_CH3_RMA_OP_GLOBAL_POOL_SIZE
+- **Description:**
+ Size of the Global RMA operations pool (in number of operations) that stores information about RMA operations that could not be issued immediately.  Requires a positive value. 
+- **Default:**  16384
 
-MPIR\_CVAR\_CH4\_SHM
+MPIR_CVAR_CH3_RMA_TARGET_WIN_POOL_SIZE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_SHM
+   -  MVP_CH3_RMA_TARGET_WIN_POOL_SIZE
+  -  MPICH_CH3_RMA_TARGET_WIN_POOL_SIZE
+- **Description:**
+ Size of the window-private RMA target pool (in number of targets) that stores information about RMA targets that could not be issued immediately.  Requires a positive value. 
+- **Default:**  256
 
-  - MPICH\_CH4\_SHM
+MPIR_CVAR_CH3_RMA_TARGET_GLOBAL_POOL_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH3_RMA_TARGET_GLOBAL_POOL_SIZE
+  -  MPICH_CH3_RMA_TARGET_GLOBAL_POOL_SIZE
 - **Description:**
-  -  If non-empty, this cvar specifies which shm module to use
+ Size of the Global RMA targets pool (in number of targets) that stores information about RMA targets that could not be issued immediately.  Requires a positive value. 
+- **Default:**  16384
 
-- **Default:** ""
-
+MPIR_CVAR_CH3_RMA_TARGET_LOCK_ENTRY_WIN_POOL_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH3_RMA_TARGET_LOCK_ENTRY_WIN_POOL_SIZE
+  -  MPICH_CH3_RMA_TARGET_LOCK_ENTRY_WIN_POOL_SIZE
+- **Description:**
+ Size of the window-private RMA lock entries pool (in number of lock entries) that stores information about RMA lock requests that could not be satisfied immediately.  Requires a positive value. 
+- **Default:**  256
 
-MPIR\_CVAR\_CH4\_ROOTS\_ONLY\_PMI
+MPIR_CVAR_OFI_USE_PROVIDER
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_ROOTS\_ONLY\_PMI
+   -  MVP_OFI_USE_PROVIDER
+  -  MPICH_OFI_USE_PROVIDER
+- **Description:**
+ This variable is no longer supported. Use FI_PROVIDER instead to select libfabric providers. 
+- **Default:**  NULL
 
-  - MPICH\_CH4\_ROOTS\_ONLY\_PMI
+MPIR_CVAR_SINGLE_HOST_ENABLED
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_SINGLE_HOST_ENABLED
+  -  MPICH_SINGLE_HOST_ENABLED
 - **Description:**
-  -  Enables an optimized business card exchange over PMI for
+ Set this variable to true to indicate that processes are launched on a single host. The current implication is to avoid the cxi provider to prevent the use of scarce hardware resources. 
+- **Default:**  1
 
-  - node root processes only.
+MPIR_CVAR_CH4_OFI_AM_LONG_FORCE_PIPELINE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 1
+- **Aliases:**
+   -  MVP_CH4_OFI_AM_LONG_FORCE_PIPELINE
+  -  MPICH_CH4_OFI_AM_LONG_FORCE_PIPELINE
+- **Description:**
+ For long message to be sent using pipeline rather than default RDMA read. 
+- **Default:**  0
 
+MPIR_CVAR_BCAST_OFI_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_BCAST_OFI_INTRA_ALGORITHM
+  -  MPICH_BCAST_OFI_INTRA_ALGORITHM
+- **Description:**
+ Variable to select algorithm for intra-node bcast
+  -   mpir                        - Fallback to MPIR collectives
+  -   trigger_tree_tagged         - Force triggered ops based Tagged Tree
+  -   trigger_tree_rma            - Force triggered ops based RMA Tree
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_CH4_OFI_COLL_SELECTION_TUNING_JSON_FILE) 
+- **Default:**  MPIR_CVAR_BCAST_OFI_INTRA_ALGORITHM_auto
 
-MPIR\_CVAR\_CH4\_RUNTIME\_CONF\_DEBUG
+MPIR_CVAR_OFI_SKIP_IPV6
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_RUNTIME\_CONF\_DEBUG
+   -  MVP_OFI_SKIP_IPV6
+  -  MPICH_OFI_SKIP_IPV6
+- **Description:**
+ Skip IPv6 providers. 
+- **Default:**  0
 
-  - MPICH\_CH4\_RUNTIME\_CONF\_DEBUG
+MPIR_CVAR_CH4_OFI_ENABLE_DATA
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_ENABLE_DATA
+  -  MPICH_CH4_OFI_ENABLE_DATA
 - **Description:**
-  -  If enabled, CH4-level runtime configurations are printed
+ Enable immediate data fields in OFI to transmit source rank outside of the match bits 
+- **Default:**  -1
 
-  - out
+MPIR_CVAR_CH4_OFI_ENABLE_AV_TABLE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 0
+- **Aliases:**
+   -  MVP_CH4_OFI_ENABLE_AV_TABLE
+  -  MPICH_CH4_OFI_ENABLE_AV_TABLE
+- **Description:**
+ If true, the OFI addressing information will be stored with an FI_AV_TABLE. If false, an FI_AV_MAP will be used. 
+- **Default:**  -1
 
+MPIR_CVAR_CH4_OFI_ENABLE_SHARED_AV
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_ENABLE_SHARED_AV
+  -  MPICH_CH4_OFI_ENABLE_SHARED_AV
+- **Description:**
+ If true, it will try open shared av at initialization. 
+- **Default:**  0
 
-MPIR\_CVAR\_CH4\_MT\_MODEL
+MPIR_CVAR_CH4_OFI_ENABLE_SCALABLE_ENDPOINTS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_MT\_MODEL
+   -  MVP_CH4_OFI_ENABLE_SCALABLE_ENDPOINTS
+  -  MPICH_CH4_OFI_ENABLE_SCALABLE_ENDPOINTS
+- **Description:**
+ If true, use OFI scalable endpoints. 
+- **Default:**  -1
 
-  - MPICH\_CH4\_MT\_MODEL
+MPIR_CVAR_CH4_OFI_ENABLE_SHARED_CONTEXTS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_ENABLE_SHARED_CONTEXTS
+  -  MPICH_CH4_OFI_ENABLE_SHARED_CONTEXTS
 - **Description:**
-  -  Specifies the CH4 multi-threading model. Possible values
+ If set to false (zero), MPICH does not use OFI shared contexts. If set to -1, it is determined by the OFI capability sets based on the provider. Otherwise, MPICH tries to use OFI shared contexts. If they are unavailable, it'll fall back to the mode without shared contexts. 
+- **Default:**  0
 
-  - are: direct (default) lockless
+MPIR_CVAR_CH4_OFI_ENABLE_MR_VIRT_ADDRESS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** ""
+- **Aliases:**
+   -  MVP_CH4_OFI_ENABLE_MR_VIRT_ADDRESS
+  -  MPICH_CH4_OFI_ENABLE_MR_VIRT_ADDRESS
+- **Description:**
+ If true, enable virtual addressing for OFI memory regions. This variable is only meaningful for OFI versions 1.5+. It is equivalent to using FI_MR_BASIC in versions of OFI older than 1.5. 
+- **Default:**  -1
 
+MPIR_CVAR_CH4_OFI_ENABLE_MR_ALLOCATED
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_ENABLE_MR_ALLOCATED
+  -  MPICH_CH4_OFI_ENABLE_MR_ALLOCATED
+- **Description:**
+ If true, require all OFI memory regions must be backed by physical memory pages at the time the registration call is made. This variable is only meaningful for OFI versions 1.5+. It is equivalent to using FI_MR_BASIC in versions of OFI older than 1.5. 
+- **Default:**  -1
 
-MPIR\_CVAR\_CH4\_NUM\_VCIS
+MPIR_CVAR_CH4_OFI_ENABLE_MR_REGISTER_NULL
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_NUM\_VCIS
+   -  MVP_CH4_OFI_ENABLE_MR_REGISTER_NULL
+  -  MPICH_CH4_OFI_ENABLE_MR_REGISTER_NULL
+- **Description:**
+ If true, memory registration call supports registering with NULL addresses. 
+- **Default:**  -1
 
-  - MPICH\_CH4\_NUM\_VCIS
+MPIR_CVAR_CH4_OFI_ENABLE_MR_PROV_KEY
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_ENABLE_MR_PROV_KEY
+  -  MPICH_CH4_OFI_ENABLE_MR_PROV_KEY
 - **Description:**
-  -  Sets the number of VCIs to be implicitly used (should be a
+ If true, enable provider supplied key for OFI memory regions. This variable is only meaningful for OFI versions 1.5+. It is equivalent to using FI_MR_BASIC in versions of OFI older than 1.5. 
+- **Default:**  -1
 
-  - subset of MPIDI\_CH4\_MAX\_VCIS).
+MPIR_CVAR_CH4_OFI_ENABLE_TAGGED
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 1
+- **Aliases:**
+   -  MVP_CH4_OFI_ENABLE_TAGGED
+  -  MPICH_CH4_OFI_ENABLE_TAGGED
+- **Description:**
+ If true, use tagged message transmission functions in OFI. 
+- **Default:**  -1
 
+MPIR_CVAR_CH4_OFI_ENABLE_AM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_ENABLE_AM
+  -  MPICH_CH4_OFI_ENABLE_AM
+- **Description:**
+ If true, enable OFI active message support. 
+- **Default:**  -1
 
-MPIR\_CVAR\_CH4\_RESERVE\_VCIS
+MPIR_CVAR_CH4_OFI_ENABLE_RMA
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_RESERVE\_VCIS
+   -  MVP_CH4_OFI_ENABLE_RMA
+  -  MPICH_CH4_OFI_ENABLE_RMA
+- **Description:**
+ If true, enable OFI RMA support for MPI RMA operations. OFI support for basic RMA is always required to implement large messgage transfers in the active message code path. 
+- **Default:**  -1
 
-  - MPICH\_CH4\_RESERVE\_VCIS
+MPIR_CVAR_CH4_OFI_ENABLE_ATOMICS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_ENABLE_ATOMICS
+  -  MPICH_CH4_OFI_ENABLE_ATOMICS
 - **Description:**
-  -  Sets the number of VCIs that user can explicitly allocate
+ If true, enable OFI Atomics support. 
+- **Default:**  -1
 
-  - (should be a subset of MPIDI\_CH4\_MAX\_VCIS).
+MPIR_CVAR_CH4_OFI_FETCH_ATOMIC_IOVECS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 0
+- **Aliases:**
+   -  MVP_CH4_OFI_FETCH_ATOMIC_IOVECS
+  -  MPICH_CH4_OFI_FETCH_ATOMIC_IOVECS
+- **Description:**
+ Specifies the maximum number of iovecs that can be used by the OFI provider for fetch_atomic operations. The default value is -1, indicating that no value is set. 
+- **Default:**  -1
 
+MPIR_CVAR_CH4_OFI_ENABLE_DATA_AUTO_PROGRESS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_ENABLE_DATA_AUTO_PROGRESS
+  -  MPICH_CH4_OFI_ENABLE_DATA_AUTO_PROGRESS
+- **Description:**
+ If true, enable MPI data auto progress. 
+- **Default:**  -1
 
-MPIR\_CVAR\_CH4\_COLL\_SELECTION\_TUNING\_JSON\_FILE
+MPIR_CVAR_CH4_OFI_ENABLE_CONTROL_AUTO_PROGRESS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_COLL\_SELECTION\_TUNING\_JSON\_FILE
+   -  MVP_CH4_OFI_ENABLE_CONTROL_AUTO_PROGRESS
+  -  MPICH_CH4_OFI_ENABLE_CONTROL_AUTO_PROGRESS
+- **Description:**
+ If true, enable MPI control auto progress. 
+- **Default:**  -1
 
-  - MPICH\_CH4\_COLL\_SELECTION\_TUNING\_JSON\_FILE
+MPIR_CVAR_CH4_OFI_ENABLE_PT2PT_NOPACK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_ENABLE_PT2PT_NOPACK
+  -  MPICH_CH4_OFI_ENABLE_PT2PT_NOPACK
 - **Description:**
-  -  Defines the location of tuning file.
+ If true, enable iovec for pt2pt. 
+- **Default:**  -1
 
-- **Default:** ""
-
+MPIR_CVAR_CH4_OFI_ENABLE_HMEM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_ENABLE_HMEM
+  -  MPICH_CH4_OFI_ENABLE_HMEM
+- **Description:**
+ If true, uses GPU direct RDMA support in the provider. 
+- **Default:**  -1
 
-MPIR\_CVAR\_CH4\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_GPU
+MPIR_CVAR_CH4_OFI_ENABLE_MR_HMEM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_GPU
+   -  MVP_CH4_OFI_ENABLE_MR_HMEM
+  -  MPICH_CH4_OFI_ENABLE_MR_HMEM
+- **Description:**
+ If true, need to register the buffer to use GPU direct RDMA. 
+- **Default:**  -1
 
-  - MPICH\_CH4\_COLL\_SELECTION\_TUNING\_JSON\_FILE\_GPU
+MPIR_CVAR_CH4_OFI_GPU_RDMA_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_GPU_RDMA_THRESHOLD
+  -  MPICH_CH4_OFI_GPU_RDMA_THRESHOLD
 - **Description:**
-  -  Defines the location of tuning file for GPU.
-
-- **Default:** ""
+ The threshold to start using GPU direct RDMA. 
+- **Default:**  0
 
+MPIR_CVAR_CH4_OFI_CONTEXT_ID_BITS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_CONTEXT_ID_BITS
+  -  MPICH_CH4_OFI_CONTEXT_ID_BITS
+- **Description:**
+ Specifies the number of bits that will be used for matching the context ID. The default value is -1, indicating that no value is set and that the default will be defined in the ofi_types.h file. 
+- **Default:**  -1
 
-MPIR\_CVAR\_CH4\_IOV\_DENSITY\_MIN
+MPIR_CVAR_CH4_OFI_RANK_BITS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_IOV\_DENSITY\_MIN
+   -  MVP_CH4_OFI_RANK_BITS
+  -  MPICH_CH4_OFI_RANK_BITS
+- **Description:**
+ Specifies the number of bits that will be used for matching the MPI rank. The default value is -1, indicating that no value is set and that the default will be defined in the ofi_types.h file. 
+- **Default:**  -1
 
-  - MPICH\_CH4\_IOV\_DENSITY\_MIN
+MPIR_CVAR_CH4_OFI_TAG_BITS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_TAG_BITS
+  -  MPICH_CH4_OFI_TAG_BITS
 - **Description:**
-  -  Defines the threshold of high-density datatype. The
+ Specifies the number of bits that will be used for matching the user tag. The default value is -1, indicating that no value is set and that the default will be defined in the ofi_types.h file. 
+- **Default:**  -1
 
-  - density is calculated by (datatype\_size /
-
-  - datatype\_num\_contig\_blocks).
+MPIR_CVAR_CH4_OFI_MAJOR_VERSION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 16384
+- **Aliases:**
+   -  MVP_CH4_OFI_MAJOR_VERSION
+  -  MPICH_CH4_OFI_MAJOR_VERSION
+- **Description:**
+ Specifies the major version of the OFI library. The default is the major version of the OFI library used with MPICH. If using this CVAR, it is recommended that the user also specifies a specific OFI provider. 
+- **Default:**  -1
 
+MPIR_CVAR_CH4_OFI_MINOR_VERSION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_MINOR_VERSION
+  -  MPICH_CH4_OFI_MINOR_VERSION
+- **Description:**
+ Specifies the major version of the OFI library. The default is the minor version of the OFI library used with MPICH. If using this CVAR, it is recommended that the user also specifies a specific OFI provider. 
+- **Default:**  -1
 
-MPIR\_CVAR\_CH4\_PACK\_BUFFER\_SIZE
+MPIR_CVAR_CH4_OFI_MAX_RMA_SEP_CTX
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_PACK\_BUFFER\_SIZE
+   -  MVP_CH4_OFI_MAX_RMA_SEP_CTX
+  -  MPICH_CH4_OFI_MAX_RMA_SEP_CTX
+- **Description:**
+ If set to positive, this CVAR specifies the maximum number of transmit contexts RMA can utilize in a scalable endpoint. This value is effective only when scalable endpoint is available, otherwise it will be ignored. 
+- **Default:**  0
 
-  - MPICH\_CH4\_PACK\_BUFFER\_SIZE
+MPIR_CVAR_CH4_OFI_MAX_EAGAIN_RETRY
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_MAX_EAGAIN_RETRY
+  -  MPICH_CH4_OFI_MAX_EAGAIN_RETRY
 - **Description:**
-  -  Specifies the number of buffers for packing/unpacking
+ If set to positive, this CVAR specifies the maximum number of retries of an ofi operations before returning MPIX_ERR_EAGAIN. This value is effective only when the communicator has the MPI_OFI_set_eagain info hint set to true. 
+- **Default:**  -1
 
-  - active messages in each block of the pool. The size here should be
+MPIR_CVAR_CH4_OFI_NUM_AM_BUFFERS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - greater or equal to the max of the eager buffer limit of SHM and
+- **Aliases:**
+   -  MVP_CH4_OFI_NUM_AM_BUFFERS
+  -  MPICH_CH4_OFI_NUM_AM_BUFFERS
+- **Description:**
+ Specifies the number of buffers for receiving active messages. 
+- **Default:**  -1
 
-  - NETMOD.
+MPIR_CVAR_CH4_OFI_NUM_OPTIMIZED_MEMORY_REGIONS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 16384
+- **Aliases:**
+   -  MVP_CH4_OFI_NUM_OPTIMIZED_MEMORY_REGIONS
+  -  MPICH_CH4_OFI_NUM_OPTIMIZED_MEMORY_REGIONS
+- **Description:**
+ Specifies the number of optimized memory regions supported by the provider. An optimized memory region is used for lower-overhead, unordered RMA operations. It uses a low-overhead RX path and additionally, a low-overhead packet format may be used to target an optimized memory region. 
+- **Default:**  0
 
+MPIR_CVAR_CH4_OFI_RMA_PROGRESS_INTERVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_RMA_PROGRESS_INTERVAL
+  -  MPICH_CH4_OFI_RMA_PROGRESS_INTERVAL
+- **Description:**
+ Specifies the interval for manually flushing RMA operations when automatic progress is not enabled. It the underlying OFI provider supports auto data progress, this value is ignored. If the value is -1, this optimization will be turned off. 
+- **Default:**  100
 
-MPIR\_CVAR\_CH4\_NUM\_PACK\_BUFFERS\_PER\_CHUNK
+MPIR_CVAR_CH4_OFI_RMA_IOVEC_MAX
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_NUM\_PACK\_BUFFERS\_PER\_CHUNK
+   -  MVP_CH4_OFI_RMA_IOVEC_MAX
+  -  MPICH_CH4_OFI_RMA_IOVEC_MAX
+- **Description:**
+ Specifies the maximum number of iovecs to allocate for RMA operations to/from noncontiguous buffers. 
+- **Default:**  16384
 
-  - MPICH\_CH4\_NUM\_PACK\_BUFFERS\_PER\_CHUNK
+MPIR_CVAR_CH4_OFI_MAX_NICS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_MAX_NICS
+  -  MPICH_CH4_OFI_MAX_NICS
 - **Description:**
-  -  Specifies the number of buffers for packing/unpacking
+ If set to positive number, this cvar determines the maximum number of physical nics to use (if more than one is available). If the number is -1, underlying netmod or shmmod automatically uses an optimal number depending on what is detected on the system up to the limit determined by MPIDI_MAX_NICS (in ofi_types.h). 
+- **Default:**  1
 
-  - active messages in each block of the pool.
+MPIR_CVAR_CH4_OFI_ENABLE_MULTI_NIC_STRIPING
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 64
+- **Aliases:**
+   -  MVP_CH4_OFI_ENABLE_MULTI_NIC_STRIPING
+  -  MPICH_CH4_OFI_ENABLE_MULTI_NIC_STRIPING
+- **Description:**
+ If true, this cvar enables striping of large messages across multiple NICs. 
+- **Default:**  0
 
+MPIR_CVAR_CH4_OFI_MULTI_NIC_STRIPING_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_MULTI_NIC_STRIPING_THRESHOLD
+  -  MPICH_CH4_OFI_MULTI_NIC_STRIPING_THRESHOLD
+- **Description:**
+ Striping will happen for message sizes beyond this threshold. 
+- **Default:**  1048576
 
-MPIR\_CVAR\_CH4\_MAX\_NUM\_PACK\_BUFFERS
+MPIR_CVAR_CH4_OFI_ENABLE_MULTI_NIC_HASHING
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_MAX\_NUM\_PACK\_BUFFERS
+   -  MVP_CH4_OFI_ENABLE_MULTI_NIC_HASHING
+  -  MPICH_CH4_OFI_ENABLE_MULTI_NIC_HASHING
+- **Description:**
+ Multi-NIC hashing means to use more than one NIC to send and receive messages above a certain size.  If set to positive number, this feature will be turned on. If set to 0, this feature will be turned off. If the number is -1, MPICH automatically determines whether to use multi-nic hashing depending on what is detected on the system (e.g., number of NICs available, number of processes sharing the NICs). 
+- **Default:**  0
 
-  - MPICH\_CH4\_MAX\_NUM\_PACK\_BUFFERS
+MPIR_CVAR_CH4_OFI_MULTIRECV_BUFFER_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_MULTIRECV_BUFFER_SIZE
+  -  MPICH_CH4_OFI_MULTIRECV_BUFFER_SIZE
 - **Description:**
-  -  Specifies the max number of buffers for packing/unpacking
+ Controls the multirecv am buffer size. It is recommended to match this to the hugepage size so that the buffer can be allocated at the page boundary. 
+- **Default:**  2097152
 
-  - buffers in the pool. Use 0 for unlimited.
+MPIR_CVAR_OFI_USE_MIN_NICS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 0
+- **Aliases:**
+   -  MVP_OFI_USE_MIN_NICS
+  -  MPICH_OFI_USE_MIN_NICS
+- **Description:**
+ If true and all nodes do not have the same number of NICs, MPICH will fall back to using the fewest number of NICs instead of returning an error. 
+- **Default:**  1
 
+MPIR_CVAR_CH4_OFI_ENABLE_TRIGGERED
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_ENABLE_TRIGGERED
+  -  MPICH_CH4_OFI_ENABLE_TRIGGERED
+- **Description:**
+ If true, enable OFI triggered ops for MPI collectives. 
+- **Default:**  -1
 
-MPIR\_CVAR\_CH4\_GPU\_COLL\_SWAP\_BUFFER\_SZ
+MPIR_CVAR_CH4_OFI_PIPELINE_CHUNK_SZ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_GPU\_COLL\_SWAP\_BUFFER\_SZ
+   -  MVP_CH4_OFI_PIPELINE_CHUNK_SZ
+  -  MPICH_CH4_OFI_PIPELINE_CHUNK_SZ
+- **Description:**
+ Specifies the chunk size (in bytes) for pipeline data transfer. 
+- **Default:**  1048576
 
-  - MPICH\_CH4\_GPU\_COLL\_SWAP\_BUFFER\_SZ
+MPIR_CVAR_CH4_OFI_PIPELINE_NUM_CHUNKS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_PIPELINE_NUM_CHUNKS
+  -  MPICH_CH4_OFI_PIPELINE_NUM_CHUNKS
 - **Description:**
-  -  Specifies the buffer size (in bytes) for GPU collectives
+ Specifies the number of chunk buffers for pipeline data transfer. 
+- **Default:**  32
 
-  - data transfer.
+MPIR_CVAR_CH4_OFI_PIPELINE_MAX_CHUNKS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 1048576
+- **Aliases:**
+   -  MVP_CH4_OFI_PIPELINE_MAX_CHUNKS
+  -  MPICH_CH4_OFI_PIPELINE_MAX_CHUNKS
+- **Description:**
+ Specifies the max number of chunk buffers to be reserved for pipeline data transfer. 
+- **Default:**  1024
 
+MPIR_CVAR_CH4_OFI_GPU_SEND_ENGINE_TYPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_GPU_SEND_ENGINE_TYPE
+  -  MPICH_CH4_OFI_GPU_SEND_ENGINE_TYPE
+- **Description:**
+ Specifies GPU engine type for GPU pt2pt on the sender side.
+  -   compute - use a compute engine
+  -   copy_high_bandwidth - use a high-bandwidth copy engine
+  -   copy_low_latency - use a low-latency copy engine
+  -   yaksa - use Yaksa 
+- **Default:**  MPIR_CVAR_CH4_OFI_GPU_SEND_ENGINE_TYPE_copy_low_latency
 
-MPIR\_CVAR\_CH4\_GPU\_COLL\_NUM\_BUFFERS\_PER\_CHUNK
+MPIR_CVAR_CH4_OFI_GPU_RECEIVE_ENGINE_TYPE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_GPU\_COLL\_NUM\_BUFFERS\_PER\_CHUNK
+   -  MVP_CH4_OFI_GPU_RECEIVE_ENGINE_TYPE
+  -  MPICH_CH4_OFI_GPU_RECEIVE_ENGINE_TYPE
+- **Description:**
+ Specifies GPU engine type for GPU pt2pt on the receiver side.
+  -   compute - use a compute engine
+  -   copy_high_bandwidth - use a high-bandwidth copy engine
+  -   copy_low_latency - use a low-latency copy engine
+  -   yaksa - use Yaksa 
+- **Default:**  MPIR_CVAR_CH4_OFI_GPU_RECEIVE_ENGINE_TYPE_copy_low_latency
 
-  - MPICH\_CH4\_GPU\_COLL\_NUM\_BUFFERS\_PER\_CHUNK
+MPIR_CVAR_MALLOC_ENABLE_MMAP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_MALLOC_ENABLE_MMAP
+  -  MPICH_MALLOC_ENABLE_MMAP
 - **Description:**
-  -  Specifies the number of buffers for GPU collectives data
+ Set to 0 to disable the use of MMAP by the standard memory allocator. Doing so provides cache performance improvements for most cases. Setting to 1 will return to the system default behaviour. 
+- **Default:**  0
 
-  - transfer in each block/chunk of the pool.
+MPIR_CVAR_MALLOC_HEAP_STEP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 1
+- **Aliases:**
+   -  MVP_MALLOC_HEAP_STEP
+  -  MPICH_MALLOC_HEAP_STEP
+- **Description:**
+ Sets the size by which the malloc program heap is expanded by the memory allocator when new memory is required by the program. A higher value will generally provide better cache performance, but will result in a higher memory footprint. The program heap exists on a per-processes basis. Setting this value to zero will use the system default. 
+- **Default:**  32 * 1024 * 1024
 
+MPIR_CVAR_CH4_OFI_PREF_NIC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_PREF_NIC
+  -  MPICH_CH4_OFI_PREF_NIC
+- **Description:**
+ Accept the NIC value from a user 
+- **Default:**  -1
 
-MPIR\_CVAR\_CH4\_GPU\_COLL\_MAX\_NUM\_BUFFERS
+MPIR_CVAR_CH4_OFI_DISABLE_INJECT_WRITE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_GPU\_COLL\_MAX\_NUM\_BUFFERS
+   -  MVP_CH4_OFI_DISABLE_INJECT_WRITE
+  -  MPICH_CH4_OFI_DISABLE_INJECT_WRITE
+- **Description:**
+ Avoid use fi_inject_write. For some provider, e.g. tcp;ofi_rxm, inject write may break the synchronization. 
+- **Default:**  0
 
-  - MPICH\_CH4\_GPU\_COLL\_MAX\_NUM\_BUFFERS
+MPIR_CVAR_CH4_OFI_RNDV_PROTOCOL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_RNDV_PROTOCOL
+  -  MPICH_CH4_OFI_RNDV_PROTOCOL
 - **Description:**
-  -  Specifies the total number of buffers for GPU collectives
+ When message size is greater than MPIR_CVAR_CH4_OFI_EAGER_THRESHOLD,
+  -   specify large message protocol.
+  -   auto - decide protocols based on buffer attributes and datatypes.
+  -   pipeline - use pipeline protocol (forcing pack and unpack).
+  -   read - RDMA read.
+  -   write - RDMA write.
+  -   direct - direct send data using libfabric after the RNDV handshake. 
+- **Default:**  MPIR_CVAR_CH4_OFI_RNDV_PROTOCOL_auto
 
-  - data transfer.
+MPIR_CVAR_CH4_OFI_ENABLE_INJECT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 256
+- **Aliases:**
+   -  MVP_CH4_OFI_ENABLE_INJECT
+  -  MPICH_CH4_OFI_ENABLE_INJECT
+- **Description:**
+ Set MPIR_CVAR_CH4_OFI_ENABLE_INJECT=0 to disable buffered send for small messages. This may help avoid hang due to lack of global progress. 
+- **Default:**  1
 
+MPIR_CVAR_CH4_OFI_EAGER_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_OFI_EAGER_THRESHOLD
+  -  MPICH_CH4_OFI_EAGER_THRESHOLD
+- **Description:**
+ Messages below MPIR_CVAR_CH4_OFI_EAGER_THRESHOLD will be sent eagerly using fi_tagged interfaces. Messages above the threshold will perform an MPICH-level rendezvous handshake before sending the data. If set to -1, MPICH will only perform rendezvous for messages larger than the provider max_msg_size. Note the MPICH eager/rendezvous threshold is independent of any internal libfabric provider threshold. 
+- **Default:**  -1
 
-MPIR\_CVAR\_ALLREDUCE\_MULTI\_LEADER\_THRESHOLD
+MPIR_CVAR_CH4_UCX_ENABLE_UCC
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLREDUCE\_MULTI\_LEADER\_THRESHOLD
+   -  MVP_CH4_UCX_ENABLE_UCC
+  -  MPICH_CH4_UCX_ENABLE_UCC
+  -  MPIR_CVAR_CH4_UCC_ENABLE
+  -  MVP_CH4_UCC_ENABLE
+  -  MPICH_CH4_UCC_ENABLE
+- **Description:**
+ Enable UCC support. 
+- **Default:**  0
 
-  - MPICH\_ALLREDUCE\_MULTI\_LEADER\_THRESHOLD
+MPIR_CVAR_CH4_UCX_UCC_ENABLE_DEBUG
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_UCX_UCC_ENABLE_DEBUG
+  -  MPICH_CH4_UCX_UCC_ENABLE_DEBUG
+  -  MPIR_CVAR_CH4_UCC_ENABLE_DEBUG
+  -  MVP_CH4_UCC_ENABLE_DEBUG
+  -  MPICH_CH4_UCC_ENABLE_DEBUG
 - **Description:**
-  -  The threshold to switch from single-leader 2-level
+ Enable additional debug output for UCC wrappers. 
+- **Default:**  0
 
-  - allreduce algorithm to multi-leader 2-level allreduce algorithm.
+MPIR_CVAR_CH4_UCX_UCC_VERBOSITY_LEVEL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** (8 * 1024 * 1024)
+- **Aliases:**
+   -  MVP_CH4_UCX_UCC_VERBOSITY_LEVEL
+  -  MPICH_CH4_UCX_UCC_VERBOSITY_LEVEL
+  -  MPIR_CVAR_CH4_UCC_VERBOSITY_LEVEL
+  -  MVP_CH4_UCC_VERBOSITY_LEVEL
+  -  MPICH_CH4_UCC_VERBOSITY_LEVEL
+- **Description:**
+ Set verbosity output level for UCC wrappers. 
+- **Default:**  "0"
 
+MPIR_CVAR_UCX_DT_RECV
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_UCX_DT_RECV
+  -  MPICH_UCX_DT_RECV
+- **Description:**
+ Variable to select method for receiving noncontiguous data
+  -   true                - Use UCX datatype with pack/unpack callbacks
+  -   false               - MPICH will decide to pack/unpack at completion or use IOVs
+  -   based on the datatype 
+- **Default:**  0
 
-MPIR\_CVAR\_ALLREDUCE\_MULTI\_LEADER\_USE\_KERNEL\_ALLGATHERV
+MPIR_CVAR_UCX_MULTI_SEND_THRESHOLD
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLREDUCE\_MULTI\_LEADER\_USE\_KERNEL\_ALLGATHERV
+   -  MVP_UCX_MULTI_SEND_THRESHOLD
+  -  MPICH_UCX_MULTI_SEND_THRESHOLD
+- **Description:**
+ Messages at or above this side will be sent/recieved with the flag UCP_OP_ATTR_FLAG_MULTI_SEND set in their attributes to optimize bw performance 
+- **Default:**  (1024 * 1024)
 
-  - MPICH\_ALLREDUCE\_MULTI\_LEADER\_USE\_KERNEL\_ALLGATHERV
+MPIR_CVAR_CH4_CMA_ENABLE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_CMA_ENABLE
+  -  MPICH_CH4_CMA_ENABLE
 - **Description:**
-  -  The flag to enable multi-leader 2-level allreduce
+ Set to 1 to manually enable CMA. It is disabled by default because the CMA requires the ptrace_scope permission, which is often disabled. 
+- **Default:**  1
 
-  - algorithm using kernel-based Allgatherv.
+MPIR_CVAR_CH4_IPC_CMA_P2P_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 1
+- **Aliases:**
+   -  MVP_CH4_IPC_CMA_P2P_THRESHOLD
+  -  MPICH_CH4_IPC_CMA_P2P_THRESHOLD
+- **Description:**
+ If a send message size is greater than or equal to MPIR_CVAR_CH4_IPC_CMA_P2P_THRESHOLD (in bytes), then enable CMA-based single copy protocol for intranode communication. The environment variable is valid only when the CMA submodule is enabled. 
+- **Default:**  8192
 
+MPIR_CVAR_CH4_IPC_RNDV_PROTOCOL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_IPC_RNDV_PROTOCOL
+  -  MPICH_CH4_IPC_RNDV_PROTOCOL
+- **Description:**
+ Variable to select the RNDV protocol.
+  -   auto    - Default RNDV Protocol that enable COOP automatically
+  -   rget    - RNDV RGET Protocol
+  -   rput    - RNDV RPUT Protocol
+  -   coop    - RNDV COOP Protocol 
+- **Default:**  MPIR_CVAR_CH4_IPC_RNDV_PROTOCOL_rget
 
-MPIR\_CVAR\_ALLREDUCE\_PERSISTENT\_GPU\_BUFFER\_SIZE
+MPIR_CVAR_CH4_IPC_CMA_COOP_THRESHOLD
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLREDUCE\_PERSISTENT\_GPU\_BUFFER\_SIZE
+   -  MVP_CH4_IPC_CMA_COOP_THRESHOLD
+  -  MPICH_CH4_IPC_CMA_COOP_THRESHOLD
+- **Description:**
+ If a send message size is greater than or equal to MPIR_CVAR_CH4_CMA_COOP_THRESHOLD (in bytes), then enable CMA-based COOP rndv protocol for intra-node communication. Messages below this  threshold will use either RPUT or RGET protocol as set by  MPIR_CVAR_CH4_IPC_RNDV_PROTOCOL. 
+- **Default:**  16384
 
-  - MPICH\_ALLREDUCE\_PERSISTENT\_GPU\_BUFFER\_SIZE
+MPIR_CVAR_CH4_IPC_GPU_HANDLE_CACHE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_IPC_GPU_HANDLE_CACHE
+  -  MPICH_CH4_IPC_GPU_HANDLE_CACHE
 - **Description:**
-  -  Size of pre-allocated persistent GPU buffer for advanced
+ By default, we will cache ipc handles using the specialized cache mechanism. If the
+  -   gpu-specific backend does not implement a specialized cache, then we will fallback to
+  -   the generic cache mechanism. Users can optionally force the generic cache mechanism or
+  -   disable ipc caching entirely.
+  -   generic - use the cache mechanism in the generic layer
+  -   specialized - use the cache mechanism in a gpu-specific mpl layer (if applicable)
+  -   disabled - disable caching completely 
+- **Default:**  MPIR_CVAR_CH4_IPC_GPU_HANDLE_CACHE_specialized
 
-  - inter-node allreduce algorithm.
+MPIR_CVAR_CH4_IPC_GPU_MAX_CACHE_ENTRIES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** (1024 * 1024 * 1024)
+- **Aliases:**
+   -  MVP_CH4_IPC_GPU_MAX_CACHE_ENTRIES
+  -  MPICH_CH4_IPC_GPU_MAX_CACHE_ENTRIES
+- **Description:**
+ The maximum number of entries to hold per device in the cache containing IPC mapped buffers. When an entry is evicted, the corresponding IPC handle is closed. This value is relevant only when MPIR_CVAR_CH4_IPC_GPU_CACHE_SIZE=limited. 
+- **Default:**  16
 
+MPIR_CVAR_CH4_IPC_GPU_CACHE_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_IPC_GPU_CACHE_SIZE
+  -  MPICH_CH4_IPC_GPU_CACHE_SIZE
+- **Description:**
+ The behavior of the cache containing IPC mapped buffers.
+  -   unlimited - don't restrict the cache size
+  -   limited - limit the cache size based on MPIR_CVAR_CH4_IPC_GPU_MAX_CACHE_ENTRIES
+  -   disabled - don't cache mapped IPC buffers 
+- **Default:**  MPIR_CVAR_CH4_IPC_GPU_CACHE_SIZE_limited
 
-MPIR\_CVAR\_ALLREDUCE\_INTER\_PIPELINE\_NUM
+MPIR_CVAR_CH4_IPC_GPU_P2P_THRESHOLD
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLREDUCE\_INTER\_PIPELINE\_NUM
+   -  MVP_CH4_IPC_GPU_P2P_THRESHOLD
+  -  MPICH_CH4_IPC_GPU_P2P_THRESHOLD
+- **Description:**
+ If a send message size is greater than or equal to MPIR_CVAR_CH4_IPC_GPU_P2P_THRESHOLD (in bytes), then enable GPU-based single copy protocol for intranode communication. The environment variable is valid only when the GPU IPC shmmod is enabled. 
+- **Default:**  (16 * 1024)
 
-  - MPICH\_ALLREDUCE\_INTER\_PIPELINE\_NUM
+MPIR_CVAR_CH4_SHM_NUM_IPC_STREAMS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_SHM_NUM_IPC_STREAMS
+  -  MPICH_CH4_SHM_NUM_IPC_STREAMS
 - **Description:**
-  -  The flag is the pipeline number for pipelined inter-node
+ Number of streams allocated for GPU IPC.  The environment variable is valid only when  the GPU IPC shmmod is enabled. 
+- **Default:**  4
 
-  - allreduce algorithm. 0 is auto.
+MPIR_CVAR_CH4_IPC_ZE_SHAREABLE_HANDLE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 0
+- **Aliases:**
+   -  MVP_CH4_IPC_ZE_SHAREABLE_HANDLE
+  -  MPICH_CH4_IPC_ZE_SHAREABLE_HANDLE
+- **Description:**
+ Variable to select implementation for ZE shareable IPC handle
+  -   pidfd - use pidfd_getfd syscall to implement shareable IPC handle
+  -   drmfd - force to use device fd-based shareable IPC handle 
+- **Default:**  MPIR_CVAR_CH4_IPC_ZE_SHAREABLE_HANDLE_drmfd
 
+MPIR_CVAR_CH4_IPC_GPU_ENGINE_TYPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_IPC_GPU_ENGINE_TYPE
+  -  MPICH_CH4_IPC_GPU_ENGINE_TYPE
+- **Description:**
+ By default, select engine type automatically
+  -   auto - select automatically
+  -   compute - use compute engine
+  -   copy_high_bandwidth - use high-bandwidth copy engine
+  -   copy_low_latency - use low-latency copy engine 
+- **Default:**  MPIR_CVAR_CH4_IPC_GPU_ENGINE_TYPE_auto
 
-MPIR\_CVAR\_ALLREDUCE\_INTER\_PIPELINE\_THRESHOLD
+MPIR_CVAR_CH4_IPC_GPU_READ_WRITE_PROTOCOL
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLREDUCE\_INTER\_PIPELINE\_THRESHOLD
+   -  MVP_CH4_IPC_GPU_READ_WRITE_PROTOCOL
+  -  MPICH_CH4_IPC_GPU_READ_WRITE_PROTOCOL
+- **Description:**
+ By default, use read protocol.
+  -   auto - select automatically
+  -   read - use read protocol
+  -   write - use write protocol if remote device is visible 
+- **Default:**  MPIR_CVAR_CH4_IPC_GPU_READ_WRITE_PROTOCOL_read
 
-  - MPICH\_ALLREDUCE\_INTER\_PIPELINE\_THRESHOLD
+MPIR_CVAR_CH4_IPC_GPU_RMA_ENGINE_TYPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_IPC_GPU_RMA_ENGINE_TYPE
+  -  MPICH_CH4_IPC_GPU_RMA_ENGINE_TYPE
 - **Description:**
-  -  The flag is the pipeline threshold for pipelined
+ By default, select engine type automatically
+  -   yaksa - don't select, use yaksa
+  -   auto - select automatically
+  -   compute - use compute engine
+  -   copy_high_bandwidth - use high-bandwidth copy engine
+  -   copy_low_latency - use low-latency copy engine 
+- **Default:**  MPIR_CVAR_CH4_IPC_GPU_RMA_ENGINE_TYPE_auto
 
-  - inter-node allreduce algorithm.
+MPIR_CVAR_ALLREDUCE_IPC_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** (32 * 1024 * 1024)
+- **Aliases:**
+   -  MVP_ALLREDUCE_IPC_THRESHOLD
+  -  MPICH_ALLREDUCE_IPC_THRESHOLD
+- **Description:**
+ Messages below this threshold will fall back to staging to avoid expensive IPC overheads 
+- **Default:**  (16 * 1024)
 
+MPIR_CVAR_REDUCE_IPC_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_REDUCE_IPC_THRESHOLD
+  -  MPICH_REDUCE_IPC_THRESHOLD
+- **Description:**
+ Messages below this threshold will fall back to staging to avoid expensive IPC overheads 
+- **Default:**  (16 * 1024)
 
-MPIR\_CVAR\_ALLTOALL\_NAIVE\_MSG\_SIZE\_LIMIT
+MPIR_CVAR_REDUCE_SCATTER_IPC_THRESHOLD
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLTOALL\_NAIVE\_MSG\_SIZE\_LIMIT
+   -  MVP_REDUCE_SCATTER_IPC_THRESHOLD
+  -  MPICH_REDUCE_SCATTER_IPC_THRESHOLD
+- **Description:**
+ Messages below this threshold will fall back to staging to avoid expensive IPC overheads 
+- **Default:**  (16 * 1024)
 
-  - MPICH\_ALLTOALL\_NAIVE\_MSG\_SIZE\_LIMIT
+MPIR_CVAR_ALLTOALL_IPC_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLTOALL_IPC_THRESHOLD
+  -  MPICH_ALLTOALL_IPC_THRESHOLD
 - **Description:**
-  -  The staging limit for GPU Alltoall.
+ Messages below this threshold will fall back to staging to avoid expensive IPC overheads 
+- **Default:**  (8 * 1024)
 
-- **Default:** (8 * 1024)
-
+MPIR_CVAR_BCAST_IPC_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_BCAST_IPC_THRESHOLD
+  -  MPICH_BCAST_IPC_THRESHOLD
+- **Description:**
+ Messages below this threshold will fall back to staging to avoid expensive IPC overheads 
+- **Default:**  (2 * 1024)
 
-MPIR\_CVAR\_ALLREDUCE\_PIPELINE\_2LVL\_GPU\_NUM\_CHUNKS
+MPIR_CVAR_DYNAMIC_GPU_INIT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLREDUCE\_PIPELINE\_2LVL\_GPU\_NUM\_CHUNKS
+   -  MVP_DYNAMIC_GPU_INIT
+  -  MPICH_DYNAMIC_GPU_INIT
+- **Description:**
+ Enable the dynamic GPU initialization. 
+- **Default:**  1
 
-  - MPICH\_ALLREDUCE\_PIPELINE\_2LVL\_GPU\_NUM\_CHUNKS
+MPIR_CVAR_INIT_SET_DEVICE_BY_LOCAL_RANK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_INIT_SET_DEVICE_BY_LOCAL_RANK
+  -  MPICH_INIT_SET_DEVICE_BY_LOCAL_RANK
 - **Description:**
-  -  The flag is the pipeline number for pipelined inter-node
+ Force the GPU device to be set according to the local rank during initialization phase. 
+- **Default:**  0
 
-  - allreduce algorithm. 0 is auto.
+MPIR_CVAR_CH4_IPC_MAP_REPEAT_ADDR
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 0
+- **Aliases:**
+   -  MVP_CH4_IPC_MAP_REPEAT_ADDR
+  -  MPICH_CH4_IPC_MAP_REPEAT_ADDR
+- **Description:**
+ Enable to track how often a buffer is being sent repeatedly. This will be used in determine whether to use IPC algorithm to deliver the message. The choice will depend on the IPC driver. In the case of high-latency buffers such as GPU device buffer, we will enable IPC if EITHER the message size is above a threshold or the message buffer is being repeated. On the other hand, if the address mapping overhead is relatively high, such as the case for XPMEM, we will enable IPC when BOTH conditions -- message size and repeat count -- are met. 
+- **Default:**  1
 
+MPIR_CVAR_CH4_XPMEM_ENABLE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_XPMEM_ENABLE
+  -  MPICH_CH4_XPMEM_ENABLE
+- **Description:**
+ To manually disable XPMEM set to 0. The environment variable is valid only when the XPMEM submodule is enabled. 
+- **Default:**  1
 
-MPIR\_CVAR\_ALLREDUCE\_PIPELINE\_2LVL\_GPU\_THRESHOLD
+MPIR_CVAR_CH4_IPC_XPMEM_P2P_THRESHOLD
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLREDUCE\_PIPELINE\_2LVL\_GPU\_THRESHOLD
+   -  MVP_CH4_IPC_XPMEM_P2P_THRESHOLD
+  -  MPICH_CH4_IPC_XPMEM_P2P_THRESHOLD
+- **Description:**
+ If a send message size is greater than or equal to MPIR_CVAR_CH4_IPC_XPMEM_P2P_THRESHOLD (in bytes), then enable XPMEM-based single copy protocol for intranode communication. The environment variable is valid only when the XPMEM submodule is enabled. 
+- **Default:**  65536
 
-  - MPICH\_ALLREDUCE\_PIPELINE\_2LVL\_GPU\_THRESHOLD
+MPIR_CVAR_CH4_IPC_XPMEM_P2P_UPPER_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_IPC_XPMEM_P2P_UPPER_THRESHOLD
+  -  MPICH_CH4_IPC_XPMEM_P2P_UPPER_THRESHOLD
 - **Description:**
-  -  The flag is the pipeline threshold for pipelined
+ If a send message size is greater than or equal to MPIR_CVAR_CH4_IPC_XPMEM_P2P_UPPER_THRESHOLD (in bytes), then skip XPMEM-based single copy protocol for intranode communication. The environment variable is valid only when the XPMEM submodule is enabled. The default is -1, which does not limit the upper threshold. 
+- **Default:**  -1
 
-  - inter-node allreduce algorithm.
+MPIR_CVAR_BCAST_POSIX_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** (32 * 1024 * 1024)
+- **Aliases:**
+   -  MVP_BCAST_POSIX_INTRA_ALGORITHM
+  -  MPICH_BCAST_POSIX_INTRA_ALGORITHM
+- **Description:**
+ Variable to select algorithm for intra-node bcast
+  -   mpir           - Fallback to MPIR collectives
+  -   release_gather - Force shm optimized algo using release, gather primitives
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_CH4_POSIX_COLL_SELECTION_TUNING_JSON_FILE)
+  -   ipc_read - Uses read-based collective with ipc 
+- **Default:**  MPIR_CVAR_BCAST_POSIX_INTRA_ALGORITHM_auto
 
+MPIR_CVAR_IBCAST_POSIX_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IBCAST_POSIX_INTRA_ALGORITHM
+  -  MPICH_IBCAST_POSIX_INTRA_ALGORITHM
+- **Description:**
+ Variable to select algorithm for intra-node bcast
+  -   mpir           - Fallback to MPIR collectives
+  -   release_gather - Force shm optimized algo using release, gather primitives
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_CH4_POSIX_COLL_SELECTION_TUNING_JSON_FILE) 
+- **Default:**  MPIR_CVAR_IBCAST_POSIX_INTRA_ALGORITHM_auto
 
-MPIR\_CVAR\_ALLREDUCE\_PIPELINE\_NUM\_CHUNKS
+MPIR_CVAR_REDUCE_POSIX_INTRA_ALGORITHM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLREDUCE\_PIPELINE\_NUM\_CHUNKS
+   -  MVP_REDUCE_POSIX_INTRA_ALGORITHM
+  -  MPICH_REDUCE_POSIX_INTRA_ALGORITHM
+- **Description:**
+ Variable to select algorithm for intra-node reduce
+  -   mpir           - Fallback to MPIR collectives
+  -   release_gather - Force shm optimized algo using release, gather primitives
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_CH4_POSIX_COLL_SELECTION_TUNING_JSON_FILE) 
+- **Default:**  MPIR_CVAR_REDUCE_POSIX_INTRA_ALGORITHM_auto
 
-  - MPICH\_ALLREDUCE\_PIPELINE\_NUM\_CHUNKS
+MPIR_CVAR_IREDUCE_POSIX_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_IREDUCE_POSIX_INTRA_ALGORITHM
+  -  MPICH_IREDUCE_POSIX_INTRA_ALGORITHM
 - **Description:**
-  -  The flag is the number of pipeline chunks for the
+ Variable to select algorithm for intra-node reduce
+  -   mpir           - Fallback to MPIR collectives
+  -   release_gather - Force shm optimized algo using release, gather primitives
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_CH4_POSIX_COLL_SELECTION_TUNING_JSON_FILE) 
+- **Default:**  MPIR_CVAR_IREDUCE_POSIX_INTRA_ALGORITHM_auto
 
-  - allreduce algorithm. 0 is auto.
+MPIR_CVAR_ALLREDUCE_POSIX_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 0
+- **Aliases:**
+   -  MVP_ALLREDUCE_POSIX_INTRA_ALGORITHM
+  -  MPICH_ALLREDUCE_POSIX_INTRA_ALGORITHM
+- **Description:**
+ Variable to select algorithm for intra-node allreduce
+  -   mpir           - Fallback to MPIR collectives
+  -   release_gather - Force shm optimized algo using release, gather primitives
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_CH4_POSIX_COLL_SELECTION_TUNING_JSON_FILE) 
+- **Default:**  MPIR_CVAR_ALLREDUCE_POSIX_INTRA_ALGORITHM_auto
 
+MPIR_CVAR_BARRIER_POSIX_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_BARRIER_POSIX_INTRA_ALGORITHM
+  -  MPICH_BARRIER_POSIX_INTRA_ALGORITHM
+- **Description:**
+ Variable to select algorithm for intra-node barrier
+  -   mpir           - Fallback to MPIR collectives
+  -   release_gather - Force shm optimized algo using release, gather primitives
+  -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_CH4_POSIX_COLL_SELECTION_TUNING_JSON_FILE) 
+- **Default:**  MPIR_CVAR_BARRIER_POSIX_INTRA_ALGORITHM_auto
 
-MPIR\_CVAR\_ALLREDUCE\_PIPELINE\_SIZE
+MPIR_CVAR_ALLTOALL_POSIX_INTRA_ALGORITHM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLREDUCE\_PIPELINE\_SIZE
+   -  MVP_ALLTOALL_POSIX_INTRA_ALGORITHM
+  -  MPICH_ALLTOALL_POSIX_INTRA_ALGORITHM
+- **Description:**
+ Variable to select algorithm for intra-node alltoall
+  -   mpir           - Fallback to MPIR collectives (default)
+  -   ipc_read    - Uses read-based collective with ipc 
+- **Default:**  MPIR_CVAR_ALLTOALL_POSIX_INTRA_ALGORITHM_mpir
 
-  - MPICH\_ALLREDUCE\_PIPELINE\_SIZE
+MPIR_CVAR_ALLGATHER_POSIX_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLGATHER_POSIX_INTRA_ALGORITHM
+  -  MPICH_ALLGATHER_POSIX_INTRA_ALGORITHM
 - **Description:**
-  -  The flag is the pipeline message size for the allreduce
+ Variable to select algorithm for intra-node allgather
+  -   mpir        - Fallback to MPIR collectives (default)
+  -   ipc_read    - Uses read-based collective with ipc 
+- **Default:**  MPIR_CVAR_ALLGATHER_POSIX_INTRA_ALGORITHM_mpir
 
-  - algorithm.
+MPIR_CVAR_ALLGATHERV_POSIX_INTRA_ALGORITHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** (8 * 1024 * 1024)
+- **Aliases:**
+   -  MVP_ALLGATHERV_POSIX_INTRA_ALGORITHM
+  -  MPICH_ALLGATHERV_POSIX_INTRA_ALGORITHM
+- **Description:**
+ Variable to select algorithm for intra-node allgatherv
+  -   mpir        - Fallback to MPIR collectives (default)
+  -   ipc_read    - Uses read-based collective with ipc 
+- **Default:**  MPIR_CVAR_ALLGATHERV_POSIX_INTRA_ALGORITHM_mpir
 
+MPIR_CVAR_POSIX_POLL_FREQUENCY
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_POSIX_POLL_FREQUENCY
+  -  MPICH_POSIX_POLL_FREQUENCY
+- **Description:**
+ This cvar sets the number of loops before the yield function is called.  A value of 0 disables yielding. 
+- **Default:**  1000
 
-MPIR\_CVAR\_ALLREDUCE\_PIPELINE\_2LVL\_RD\_LIMIT
+MPIR_CVAR_BCAST_IPC_READ_MSG_SIZE_THRESHOLD
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLREDUCE\_PIPELINE\_2LVL\_RD\_LIMIT
+   -  MVP_BCAST_IPC_READ_MSG_SIZE_THRESHOLD
+  -  MPICH_BCAST_IPC_READ_MSG_SIZE_THRESHOLD
+- **Description:**
+ Use gpu ipc read bcast only when the message size is larger than this threshold. 
+- **Default:**  256
 
-  - MPICH\_ALLREDUCE\_PIPELINE\_2LVL\_RD\_LIMIT
+MPIR_CVAR_ALLTOALL_IPC_READ_MSG_SIZE_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLTOALL_IPC_READ_MSG_SIZE_THRESHOLD
+  -  MPICH_ALLTOALL_IPC_READ_MSG_SIZE_THRESHOLD
 - **Description:**
-  -  The flag is the switching point from using RD algorithm to
+ Use gpu ipc read alltoall only when the message size is larger than this threshold. 
+- **Default:**  256
 
-  - other algorithms in the kernel-based two-level allreduce algorithm.
+MPIR_CVAR_ALLGATHER_IPC_READ_MSG_SIZE_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** (16 * 1024 * 1024)
+- **Aliases:**
+   -  MVP_ALLGATHER_IPC_READ_MSG_SIZE_THRESHOLD
+  -  MPICH_ALLGATHER_IPC_READ_MSG_SIZE_THRESHOLD
+- **Description:**
+ Use gpu ipc read allgather only when the message size is larger than this threshold. 
+- **Default:**  256
 
+MPIR_CVAR_ALLGATHERV_IPC_READ_MSG_SIZE_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLGATHERV_IPC_READ_MSG_SIZE_THRESHOLD
+  -  MPICH_ALLGATHERV_IPC_READ_MSG_SIZE_THRESHOLD
+- **Description:**
+ Use gpu ipc read allgatherv only when the message size is larger than this threshold. 
+- **Default:**  256
 
-MPIR\_CVAR\_ALLREDUCE\_GPU\_RING\_THRESHOLD
+MPIR_CVAR_POSIX_NUM_COLLS_THRESHOLD
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLREDUCE\_GPU\_RING\_THRESHOLD
+   -  MVP_POSIX_NUM_COLLS_THRESHOLD
+  -  MPICH_POSIX_NUM_COLLS_THRESHOLD
+- **Description:**
+ Use posix optimized collectives (release_gather) only when the total number of Bcast, Reduce, Barrier, and Allreduce calls on the node level communicator is more than this threshold. 
+- **Default:**  5
 
-  - MPICH\_ALLREDUCE\_GPU\_RING\_THRESHOLD
+MPIR_CVAR_CH4_SHM_POSIX_EAGER
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_SHM_POSIX_EAGER
+  -  MPICH_CH4_SHM_POSIX_EAGER
 - **Description:**
-  -  The flag is the switching point from using group Allreduce
-
-  - algorithm to ring Allreduce algorithm in the pipelined kernel-based
+ If non-empty, this cvar specifies which shm posix eager module to use 
+- **Default:**  ""
 
-  - two-level allreduce algorithm.
+MPIR_CVAR_CH4_POSIX_COLL_SELECTION_TUNING_JSON_FILE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** INT\_MAX
+- **Aliases:**
+   -  MVP_CH4_POSIX_COLL_SELECTION_TUNING_JSON_FILE
+  -  MPICH_CH4_POSIX_COLL_SELECTION_TUNING_JSON_FILE
+- **Description:**
+ Defines the location of tuning file. 
+- **Default:**  ""
 
+MPIR_CVAR_CH4_POSIX_COLL_SELECTION_TUNING_JSON_FILE_GPU
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_POSIX_COLL_SELECTION_TUNING_JSON_FILE_GPU
+  -  MPICH_CH4_POSIX_COLL_SELECTION_TUNING_JSON_FILE_GPU
+- **Description:**
+ Defines the location of tuning file for GPU. 
+- **Default:**  ""
 
-MPIR\_CVAR\_ALLREDUCE\_GPU\_KERNEL\_VECTORIZE\_LIMIT
+MPIR_CVAR_CH4_SHM_POSIX_TOPO_ENABLE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ALLREDUCE\_GPU\_KERNEL\_VECTORIZE\_LIMIT
+   -  MVP_CH4_SHM_POSIX_TOPO_ENABLE
+  -  MPICH_CH4_SHM_POSIX_TOPO_ENABLE
+- **Description:**
+ Controls topology-aware communication in POSIX. 
+- **Default:**  1
 
-  - MPICH\_ALLREDUCE\_GPU\_KERNEL\_VECTORIZE\_LIMIT
+MPIR_CVAR_CH4_SHM_POSIX_IQUEUE_NUM_CELLS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_SHM_POSIX_IQUEUE_NUM_CELLS
+  -  MPICH_CH4_SHM_POSIX_IQUEUE_NUM_CELLS
 - **Description:**
-  -  The flag determines the switching point between vectorized
+ The number of cells used for the depth of the iqueue. 
+- **Default:**  64
 
-  - and non-vectorized execution in the GPU kernel. Vectorized
+MPIR_CVAR_CH4_SHM_POSIX_IQUEUE_CELL_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - processing typically offers better performance for small message
+- **Aliases:**
+   -  MVP_CH4_SHM_POSIX_IQUEUE_CELL_SIZE
+  -  MPICH_CH4_SHM_POSIX_IQUEUE_CELL_SIZE
+- **Description:**
+ Size of each cell. 
+- **Default:**  8192
 
-  - sizes.
+MPIR_CVAR_CH4_MVP_SHM_POSIX_NUM_CELLS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** (128 * 1024 * 1024)
+- **Aliases:**
+   -  MVP_CH4_MVP_SHM_POSIX_NUM_CELLS
+  -  MPICH_CH4_MVP_SHM_POSIX_NUM_CELLS
+- **Description:**
+ The number of cells used per sender 
+- **Default:**  128
 
+MPIR_CVAR_CH4_MVP_SHM_POSIX_CELL_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_MVP_SHM_POSIX_CELL_SIZE
+  -  MPICH_CH4_MVP_SHM_POSIX_CELL_SIZE
+- **Description:**
+ Size of each cell. 
+- **Default:**  16384
 
-MPIR\_CVAR\_REDUCE\_SCATTER\_NAIVE\_MSG\_SIZE\_LIMIT
+MPIR_CVAR_COLL_SHM_LIMIT_PER_NODE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_REDUCE\_SCATTER\_NAIVE\_MSG\_SIZE\_LIMIT
+   -  MVP_COLL_SHM_LIMIT_PER_NODE
+  -  MPICH_COLL_SHM_LIMIT_PER_NODE
+- **Description:**
+ Maximum shared memory created per node for optimized intra-node collectives (in KB) 
+- **Default:**  65536
 
-  - MPICH\_REDUCE\_SCATTER\_NAIVE\_MSG\_SIZE\_LIMIT
+MPIR_CVAR_BCAST_INTRANODE_BUFFER_TOTAL_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_BCAST_INTRANODE_BUFFER_TOTAL_SIZE
+  -  MPICH_BCAST_INTRANODE_BUFFER_TOTAL_SIZE
 - **Description:**
-  -  The staging limit for GPU Reduce\_scatter.
-
-- **Default:** (8 * 1024)
+ Total size of the bcast buffer (in bytes) 
+- **Default:**  32768
 
+MPIR_CVAR_BCAST_INTRANODE_NUM_CELLS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_BCAST_INTRANODE_NUM_CELLS
+  -  MPICH_BCAST_INTRANODE_NUM_CELLS
+- **Description:**
+ Number of cells the bcast buffer is divided into 
+- **Default:**  4
 
-MPIR\_CVAR\_CH4\_GLOBAL\_PROGRESS
+MPIR_CVAR_REDUCE_INTRANODE_BUFFER_TOTAL_SIZE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_GLOBAL\_PROGRESS
+   -  MVP_REDUCE_INTRANODE_BUFFER_TOTAL_SIZE
+  -  MPICH_REDUCE_INTRANODE_BUFFER_TOTAL_SIZE
+- **Description:**
+ Total size of the reduce buffer per rank (in bytes) 
+- **Default:**  32768
 
-  - MPICH\_CH4\_GLOBAL\_PROGRESS
+MPIR_CVAR_REDUCE_INTRANODE_NUM_CELLS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_REDUCE_INTRANODE_NUM_CELLS
+  -  MPICH_REDUCE_INTRANODE_NUM_CELLS
 - **Description:**
-  -  If on, poll global progress every once a while. With
+ Number of cells the reduce buffer is divided into, for each rank 
+- **Default:**  4
 
-  - per-vci configuration, turning global progress off may improve the
-
-  - threading performance.
+MPIR_CVAR_BCAST_INTRANODE_TREE_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 1
+- **Aliases:**
+   -  MVP_BCAST_INTRANODE_TREE_KVAL
+  -  MPICH_BCAST_INTRANODE_TREE_KVAL
+- **Description:**
+ K value for the kary/knomial tree for intra-node bcast 
+- **Default:**  64
 
+MPIR_CVAR_BCAST_INTRANODE_TREE_TYPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_BCAST_INTRANODE_TREE_TYPE
+  -  MPICH_BCAST_INTRANODE_TREE_TYPE
+- **Description:**
+ Tree type for intra-node bcast tree kary      - kary tree type knomial_1 - knomial_1 tree type (ranks are added in order from the left side) knomial_2 - knomial_2 tree type (ranks are added in order from the right side) knomial_2 is only supported with non topology aware trees. 
+- **Default:**  "kary"
 
-MPIR\_CVAR\_CH4\_COMM\_CONNECT\_TIMEOUT
+MPIR_CVAR_REDUCE_INTRANODE_MSG_SIZE_THRESHOLD
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_COMM\_CONNECT\_TIMEOUT
+   -  MVP_REDUCE_INTRANODE_MSG_SIZE_THRESHOLD
+  -  MPICH_REDUCE_INTRANODE_MSG_SIZE_THRESHOLD
+- **Description:**
+ MPIR_CVAR_REDUCE_INTRANODE_TREE_KVAL and MPIR_CVAR_REDUCE_INTRANODE_TREE_TYPE are used when the message size is smaller than or equal to this threshold; MPIR_CVAR_REDUCE_INTRANODE_TREE_KVAL_LARGE and MPIR_CVAR_REDUCE_INTRANODE_TREE_TYPE_LARGE are used when the message size is larger than this threshold. 
+- **Default:**  2048
 
-  - MPICH\_CH4\_COMM\_CONNECT\_TIMEOUT
+MPIR_CVAR_REDUCE_INTRANODE_TREE_KVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_REDUCE_INTRANODE_TREE_KVAL
+  -  MPICH_REDUCE_INTRANODE_TREE_KVAL
 - **Description:**
-  -  The default time out period in seconds for a connection
+ K value for the kary/knomial tree for intra-node reduce 
+- **Default:**  4
 
-  - attempt to the server communicator where the named port exists but
+MPIR_CVAR_REDUCE_INTRANODE_TREE_KVAL_LARGE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - no pending accept. User can change the value for a specified
+- **Aliases:**
+   -  MVP_REDUCE_INTRANODE_TREE_KVAL_LARGE
+  -  MPICH_REDUCE_INTRANODE_TREE_KVAL_LARGE
+- **Description:**
+ K value for the kary/knomial tree for intra-node reduce. Used for large messages. 
+- **Default:**  2
 
-  - connection through its info argument.
+MPIR_CVAR_REDUCE_INTRANODE_TREE_TYPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 180
+- **Aliases:**
+   -  MVP_REDUCE_INTRANODE_TREE_TYPE
+  -  MPICH_REDUCE_INTRANODE_TREE_TYPE
+- **Description:**
+ Tree type for intra-node reduce tree kary      - kary tree type knomial_1 - knomial_1 tree type (ranks are added in order from the left side) knomial_2 - knomial_2 tree type (ranks are added in order from the right side) knomial_2 is only supported with non topology aware trees. 
+- **Default:**  "kary"
 
+MPIR_CVAR_REDUCE_INTRANODE_TREE_TYPE_LARGE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_REDUCE_INTRANODE_TREE_TYPE_LARGE
+  -  MPICH_REDUCE_INTRANODE_TREE_TYPE_LARGE
+- **Description:**
+ Tree type for intra-node reduce tree. Used for large messages. kary      - kary tree type knomial_1 - knomial_1 tree type (ranks are added in order from the left side) knomial_2 - knomial_2 tree type (ranks are added in order from the right side) knomial_2 is only supported with non topology aware trees. 
+- **Default:**  "kary"
 
-MPIR\_CVAR\_CH4\_ENABLE\_STREAM\_WORKQ
+MPIR_CVAR_ENABLE_INTRANODE_TOPOLOGY_AWARE_TREES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_ENABLE\_STREAM\_WORKQ
+   -  MVP_ENABLE_INTRANODE_TOPOLOGY_AWARE_TREES
+  -  MPICH_ENABLE_INTRANODE_TOPOLOGY_AWARE_TREES
+- **Description:**
+ Enable collective specific intra-node trees which leverage the memory hierarchy of a machine. Depends on hwloc to extract the binding information of each rank. Pick a leader rank per package (socket), then create a per_package tree for ranks on a same package, package leaders tree for package leaders. For Bcast - Assemble the per_package and package_leaders tree in such a way that leaders interact among themselves first before interacting with package local ranks. Both the package_leaders and per_package trees are left skewed (children are added from left to right, first child to be added is the first one to be processed in traversal) For Reduce - Assemble the per_package and package_leaders tree in such a way that a leader rank interacts with its package local ranks first, then with the other package leaders. Both the per_package and package_leaders tree is right skewed (children are added in reverse order, first child to be added is the last one to be processed in traversal) The tree radix and tree type of package_leaders and per_package tree is MPIR_CVAR_BCAST{REDUCE}_INTRANODE_TREE_KVAL and MPIR_CVAR_BCAST{REDUCE}_INTRANODE_TREE_TYPE respectively for bast and reduce. But of as now topology aware trees are only kary and knomial_1. knomial_2 is not implemented. 
+- **Default:**  1
 
-  - MPICH\_CH4\_ENABLE\_STREAM\_WORKQ
+MPIR_CVAR_BARRIER_COMPOSITION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_BARRIER_COMPOSITION
+  -  MPICH_BARRIER_COMPOSITION
 - **Description:**
-  -  Enable stream enqueue operations via stream work queue.
+ Select composition (inter_node + intra_node) for Barrier 0 Auto selection 1 NM + SHM 2 NM only 
+- **Default:**  0
 
-  - Requires progress thread on the corresponding MPIX stream.
-
-  - Reference: MPIX\_Stream\_progress and MPIX\_Start\_progress\_thread.
+MPIR_CVAR_BCAST_COMPOSITION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 0
+- **Aliases:**
+   -  MVP_BCAST_COMPOSITION
+  -  MPICH_BCAST_COMPOSITION
+- **Description:**
+ Select composition (inter_node + intra_node) for Bcast 0 Auto selection 1 NM + SHM with explicit send-recv between rank 0 and root 2 NM + SHM without the explicit send-recv 3 NM only 
+- **Default:**  0
 
+MPIR_CVAR_ALLREDUCE_COMPOSITION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLREDUCE_COMPOSITION
+  -  MPICH_ALLREDUCE_COMPOSITION
+- **Description:**
+ Select composition (inter_node + intra_node) for Allreduce 0 Auto selection 1 NM + SHM with reduce + bcast 2 NM only composition 3 SHM only composition 4 Multi leaders based inter node + intra node composition 5 Intra-node only (flat) IPC and kernel supported allreduce 6 Two level IPC enabled allreduce using NM + IPC reduce + IPC Bcast 7 Multi-leader two level IPC enabled allreduce using reduce_scatter + allgatherv 8 Pipelined multi-leader two level IPC enabled allreduce 
+- **Default:**  0
 
-MPIR\_CVAR\_CH4\_RMA\_MEM\_EFFICIENT
+MPIR_CVAR_ALLGATHER_COMPOSITION
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_RMA\_MEM\_EFFICIENT
+   -  MVP_ALLGATHER_COMPOSITION
+  -  MPICH_ALLGATHER_COMPOSITION
+- **Description:**
+ Select composition (inter_node + intra_node) for Allgather 0 Auto selection 1 Multi leaders based inter node + intra node composition 2 NM only composition 
+- **Default:**  0
 
-  - MPICH\_CH4\_RMA\_MEM\_EFFICIENT
+MPIR_CVAR_ALLTOALL_COMPOSITION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLTOALL_COMPOSITION
+  -  MPICH_ALLTOALL_COMPOSITION
 - **Description:**
-  -  If true, memory-saving mode is on, per-target object is
+ Select composition (inter_node + intra_node) for Alltoall 0 Auto selection 1 Multi leaders based inter node + intra node composition 2 NM only composition 3 Inter node + intra node pipelined composition 4 Intra-node only (flat) IPC supported alltoall 5 Multi-leader two level IPC enabled alltoall using the Push algorithm 6 Multi-leader two level IPC enabled alltoall using the Pull algorithm 
+- **Default:**  0
 
-  - released at the epoch end call. If false, performance-efficient
+MPIR_CVAR_REDUCE_COMPOSITION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - mode is on, all allocated target objects are cached and freed at
+- **Aliases:**
+   -  MVP_REDUCE_COMPOSITION
+  -  MPICH_REDUCE_COMPOSITION
+- **Description:**
+ Select composition (inter_node + intra_node) for Reduce 0 Auto selection 1 NM + SHM with explicit send-recv between rank 0 and root 2 NM + SHM without the explicit send-recv 3 NM only 4 IPC and kernel assisted GPU enabled 
+- **Default:**  0
 
-  - win\_finalize.
+MPIR_CVAR_REDUCE_SCATTER_COMPOSITION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 0
+- **Aliases:**
+   -  MVP_REDUCE_SCATTER_COMPOSITION
+  -  MPICH_REDUCE_SCATTER_COMPOSITION
+- **Description:**
+ Select composition (inter_node + intra_node) for Reduce_scatter 0 Auto selection 1 NM only composition 2 NM only composition with CPU staging 3 Intra-node only (flat) IPC and kernel supported reduce_scatter 4 Pipelined multi-leader two level IPC enabled reduce_scatter 
+- **Default:**  0
 
+MPIR_CVAR_REDUCE_SCATTER_BLOCK_COMPOSITION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_REDUCE_SCATTER_BLOCK_COMPOSITION
+  -  MPICH_REDUCE_SCATTER_BLOCK_COMPOSITION
+- **Description:**
+ Select composition (inter_node + intra_node) for Reduce_scatter_block 0 Auto selection 1 NM only composition 2 Fallback to use Reduce_scatter 
+- **Default:**  0
 
-MPIR\_CVAR\_CH4\_RMA\_ENABLE\_DYNAMIC\_AM\_PROGRESS
+MPIR_CVAR_ALLTOALL_SHM_PER_RANK
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_RMA\_ENABLE\_DYNAMIC\_AM\_PROGRESS
+   -  MVP_ALLTOALL_SHM_PER_RANK
+  -  MPICH_ALLTOALL_SHM_PER_RANK
+- **Description:**
+ Shared memory region per rank for multi-leaders based composition for MPI_Alltoall (in bytes) 
+- **Default:**  4096
 
-  - MPICH\_CH4\_RMA\_ENABLE\_DYNAMIC\_AM\_PROGRESS
+MPIR_CVAR_ALLGATHER_SHM_PER_RANK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLGATHER_SHM_PER_RANK
+  -  MPICH_ALLGATHER_SHM_PER_RANK
 - **Description:**
-  -  If true, allows RMA synchronization calls to dynamically
+ Shared memory region per rank for multi-leaders based composition for MPI_Allgather (in bytes) 
+- **Default:**  4096
 
-  - reduce the frequency of internal progress polling for incoming RMA
+MPIR_CVAR_NUM_MULTI_LEADS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - active messages received on the target process. The RMA
+- **Aliases:**
+   -  MVP_NUM_MULTI_LEADS
+  -  MPICH_NUM_MULTI_LEADS
+- **Description:**
+ Number of leader ranks per node to be used for multi-leaders based collective algorithms 
+- **Default:**  4
 
-  - synchronization call initially polls progress with a low frequency
+MPIR_CVAR_ALLREDUCE_SHM_PER_LEADER
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - (defined by MPIR\_CVAR\_CH4\_RMA\_AM\_PROGRESS\_LOW\_FREQ\_INTERVAL) to
+- **Aliases:**
+   -  MVP_ALLREDUCE_SHM_PER_LEADER
+  -  MPICH_ALLREDUCE_SHM_PER_LEADER
+- **Description:**
+ Shared memory region per node-leader for multi-leaders based composition for MPI_Allreduce (in bytes). By default the size of the first call to the algorithm will be used. Max shared memory size is limited to 4MB. 
+- **Default:**  -1
 
-  - reduce synchronization overhead. Once any RMA active message has
+MPIR_CVAR_ALLREDUCE_CACHE_PER_LEADER
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - been received, it will always poll progress once at every
+- **Aliases:**
+   -  MVP_ALLREDUCE_CACHE_PER_LEADER
+  -  MPICH_ALLREDUCE_CACHE_PER_LEADER
+- **Description:**
+ Amount of data reduced in allreduce delta composition's reduce local step (in bytes). Smaller per-leader message sizes can avoid cache misses and improve performance. 
+- **Default:**  512
 
-  - synchronization call to ensure prompt target-side progress.
+MPIR_CVAR_ALLREDUCE_LOCAL_COPY_OFFSETS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - Effective only for passive target synchronization
+- **Aliases:**
+   -  MVP_ALLREDUCE_LOCAL_COPY_OFFSETS
+  -  MPICH_ALLREDUCE_LOCAL_COPY_OFFSETS
+- **Description:**
+ number of offsets in the allreduce delta composition's local copy The value of 2 performed the best in our 2 NIC test cases. 
+- **Default:**  2
 
-  - MPI\_Win\_flush{\_all} and MPI\_Win\_flush\_local{\_all}.
+MPIR_CVAR_CH4_NETMOD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 0
+- **Aliases:**
+   -  MVP_CH4_NETMOD
+  -  MPICH_CH4_NETMOD
+- **Description:**
+ If non-empty, this cvar specifies which network module to use 
+- **Default:**  ""
 
+MPIR_CVAR_CH4_SHM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_SHM
+  -  MPICH_CH4_SHM
+- **Description:**
+ If non-empty, this cvar specifies which shm module to use 
+- **Default:**  ""
 
-MPIR\_CVAR\_CH4\_RMA\_AM\_PROGRESS\_INTERVAL
+MPIR_CVAR_CH4_ROOTS_ONLY_PMI
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_RMA\_AM\_PROGRESS\_INTERVAL
+   -  MVP_CH4_ROOTS_ONLY_PMI
+  -  MPICH_CH4_ROOTS_ONLY_PMI
+- **Description:**
+ Enables an optimized business card exchange over PMI for node root processes only. 
+- **Default:**  1
 
-  - MPICH\_CH4\_RMA\_AM\_PROGRESS\_INTERVAL
+MPIR_CVAR_CH4_RUNTIME_CONF_DEBUG
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_RUNTIME_CONF_DEBUG
+  -  MPICH_CH4_RUNTIME_CONF_DEBUG
 - **Description:**
-  -  Specifies a static interval of progress polling for
-
-  - incoming RMA active messages received on the target process.
+ If enabled, CH4-level runtime configurations are printed out 
+- **Default:**  0
 
-  - Effective only for passive-target synchronization
+MPIR_CVAR_CH4_MT_MODEL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - MPI\_Win\_flush{\_all} and MPI\_Win\_flush\_local{\_all}. Interval
+- **Aliases:**
+   -  MVP_CH4_MT_MODEL
+  -  MPICH_CH4_MT_MODEL
+- **Description:**
+ Specifies the CH4 multi-threading model. Possible values are: direct (default) lockless 
+- **Default:**  ""
 
-  - indicates the number of performed flush calls before polling. It is
+MPIR_CVAR_CH4_COLL_SELECTION_TUNING_JSON_FILE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - counted globally across all windows. Invalid when
+- **Aliases:**
+   -  MVP_CH4_COLL_SELECTION_TUNING_JSON_FILE
+  -  MPICH_CH4_COLL_SELECTION_TUNING_JSON_FILE
+- **Description:**
+ Defines the location of tuning file. 
+- **Default:**  ""
 
-  - MPIR\_CVAR\_CH4\_RMA\_ENABLE\_DYNAMIC\_AM\_PROGRESS is true.
+MPIR_CVAR_CH4_COLL_SELECTION_TUNING_JSON_FILE_GPU
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 1
+- **Aliases:**
+   -  MVP_CH4_COLL_SELECTION_TUNING_JSON_FILE_GPU
+  -  MPICH_CH4_COLL_SELECTION_TUNING_JSON_FILE_GPU
+- **Description:**
+ Defines the location of tuning file for GPU. 
+- **Default:**  ""
 
+MPIR_CVAR_CH4_IOV_DENSITY_MIN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_IOV_DENSITY_MIN
+  -  MPICH_CH4_IOV_DENSITY_MIN
+- **Description:**
+ Defines the threshold of high-density datatype. The density is calculated by (datatype_size / datatype_num_contig_blocks). 
+- **Default:**  16384
 
-MPIR\_CVAR\_CH4\_RMA\_AM\_PROGRESS\_LOW\_FREQ\_INTERVAL
+MPIR_CVAR_CH4_PACK_BUFFER_SIZE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_CH4\_RMA\_AM\_PROGRESS\_LOW\_FREQ\_INTERVAL
+   -  MVP_CH4_PACK_BUFFER_SIZE
+  -  MPICH_CH4_PACK_BUFFER_SIZE
+- **Description:**
+ Specifies the number of buffers for packing/unpacking active messages in each block of the pool. The size here should be greater or equal to the max of the eager buffer limit of SHM and NETMOD. 
+- **Default:**  16384
 
-  - MPICH\_CH4\_RMA\_AM\_PROGRESS\_LOW\_FREQ\_INTERVAL
+MPIR_CVAR_CH4_NUM_PACK_BUFFERS_PER_CHUNK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_NUM_PACK_BUFFERS_PER_CHUNK
+  -  MPICH_CH4_NUM_PACK_BUFFERS_PER_CHUNK
 - **Description:**
-  -  Specifies the interval of progress polling with low
-
-  - frequency for incoming RMA active message received on the target
+ Specifies the number of buffers for packing/unpacking active messages in each block of the pool. 
+- **Default:**  64
 
-  - process. Effective only for passive-target synchronization
+MPIR_CVAR_CH4_MAX_NUM_PACK_BUFFERS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - MPI\_Win\_flush{\_all} and MPI\_Win\_flush\_local{\_all}. Interval
+- **Aliases:**
+   -  MVP_CH4_MAX_NUM_PACK_BUFFERS
+  -  MPICH_CH4_MAX_NUM_PACK_BUFFERS
+- **Description:**
+ Specifies the max number of buffers for packing/unpacking buffers in the pool. Use 0 for unlimited. 
+- **Default:**  0
 
-  - indicates the number of performed flush calls before polling. It is
+MPIR_CVAR_CH4_GPU_COLL_SWAP_BUFFER_SZ
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - counted globally across all windows. Used when
+- **Aliases:**
+   -  MVP_CH4_GPU_COLL_SWAP_BUFFER_SZ
+  -  MPICH_CH4_GPU_COLL_SWAP_BUFFER_SZ
+- **Description:**
+ Specifies the buffer size (in bytes) for GPU collectives data transfer. 
+- **Default:**  1048576
 
-  - MPIR\_CVAR\_CH4\_RMA\_ENABLE\_DYNAMIC\_AM\_PROGRESS is true.
+MPIR_CVAR_CH4_GPU_COLL_NUM_BUFFERS_PER_CHUNK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 100
+- **Aliases:**
+   -  MVP_CH4_GPU_COLL_NUM_BUFFERS_PER_CHUNK
+  -  MPICH_CH4_GPU_COLL_NUM_BUFFERS_PER_CHUNK
+- **Description:**
+ Specifies the number of buffers for GPU collectives data transfer in each block/chunk of the pool. 
+- **Default:**  1
 
+MPIR_CVAR_CH4_GPU_COLL_MAX_NUM_BUFFERS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_GPU_COLL_MAX_NUM_BUFFERS
+  -  MPICH_CH4_GPU_COLL_MAX_NUM_BUFFERS
+- **Description:**
+ Specifies the total number of buffers for GPU collectives data transfer. 
+- **Default:**  256
 
-MPIR\_CVAR\_PT2PT\_JSON\_TUNING\_FILE
+MPIR_CVAR_ALLREDUCE_MULTI_LEADER_THRESHOLD
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_PT2PT\_JSON\_TUNING\_FILE
+   -  MVP_ALLREDUCE_MULTI_LEADER_THRESHOLD
+  -  MPICH_ALLREDUCE_MULTI_LEADER_THRESHOLD
+- **Description:**
+ The threshold to switch from single-leader 2-level allreduce algorithm to multi-leader 2-level allreduce algorithm. 
+- **Default:**  (8 * 1024 * 1024)
 
-  - MPICH\_PT2PT\_JSON\_TUNING\_FILE
+MPIR_CVAR_ALLREDUCE_MULTI_LEADER_USE_KERNEL_ALLGATHERV
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLREDUCE_MULTI_LEADER_USE_KERNEL_ALLGATHERV
+  -  MPICH_ALLREDUCE_MULTI_LEADER_USE_KERNEL_ALLGATHERV
 - **Description:**
-  -  If non-empty, this cvar specifies a file for
+ The flag to enable multi-leader 2-level allreduce algorithm using kernel-based Allgatherv. 
+- **Default:**  1
 
-  - architecture-specific tuning
+MPIR_CVAR_ALLREDUCE_PERSISTENT_GPU_BUFFER_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** ""
+- **Aliases:**
+   -  MVP_ALLREDUCE_PERSISTENT_GPU_BUFFER_SIZE
+  -  MPICH_ALLREDUCE_PERSISTENT_GPU_BUFFER_SIZE
+- **Description:**
+ Size of pre-allocated persistent GPU buffer for advanced inter-node allreduce algorithm. 
+- **Default:**  (1024 * 1024 * 1024)
 
+MPIR_CVAR_ALLREDUCE_INTER_PIPELINE_NUM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLREDUCE_INTER_PIPELINE_NUM
+  -  MPICH_ALLREDUCE_INTER_PIPELINE_NUM
+- **Description:**
+ The flag is the pipeline number for pipelined inter-node allreduce algorithm. 0 is auto. 
+- **Default:**  0
 
-MPIR\_CVAR\_GENQ\_SHMEM\_POOL\_FREE\_QUEUE\_SENDER\_SIDE
+MPIR_CVAR_ALLREDUCE_INTER_PIPELINE_THRESHOLD
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_GENQ\_SHMEM\_POOL\_FREE\_QUEUE\_SENDER\_SIDE
+   -  MVP_ALLREDUCE_INTER_PIPELINE_THRESHOLD
+  -  MPICH_ALLREDUCE_INTER_PIPELINE_THRESHOLD
+- **Description:**
+ The flag is the pipeline threshold for pipelined inter-node allreduce algorithm. 
+- **Default:**  (32 * 1024 * 1024)
 
-  - MPICH\_GENQ\_SHMEM\_POOL\_FREE\_QUEUE\_SENDER\_SIDE
+MPIR_CVAR_ALLREDUCE_PIPELINE_2LVL_GPU_NUM_CHUNKS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ALLREDUCE_PIPELINE_2LVL_GPU_NUM_CHUNKS
+  -  MPICH_ALLREDUCE_PIPELINE_2LVL_GPU_NUM_CHUNKS
 - **Description:**
-  -  The genq shmem code allocates pools of cells on each
+ The flag is the pipeline number for pipelined inter-node allreduce algorithm. 0 is auto. 
+- **Default:**  0
 
-  - process and, when needed, a cell is removed from the pool and
-
-  - passed to another process. This can happen by either removing a
+MPIR_CVAR_ALLREDUCE_PIPELINE_2LVL_GPU_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - cell from the pool of the sending process or from the pool of the
+- **Aliases:**
+   -  MVP_ALLREDUCE_PIPELINE_2LVL_GPU_THRESHOLD
+  -  MPICH_ALLREDUCE_PIPELINE_2LVL_GPU_THRESHOLD
+- **Description:**
+ The flag is the pipeline threshold for pipelined inter-node allreduce algorithm. 
+- **Default:**  (32 * 1024 * 1024)
 
-  - receiving process. This CVAR determines which pool to use. If true,
+MPIR_CVAR_ALLREDUCE_PIPELINE_NUM_CHUNKS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - the cell will come from the sender-side. If false, the cell will
+- **Aliases:**
+   -  MVP_ALLREDUCE_PIPELINE_NUM_CHUNKS
+  -  MPICH_ALLREDUCE_PIPELINE_NUM_CHUNKS
+- **Description:**
+ The flag is the number of pipeline chunks for the allreduce algorithm. 0 is auto. 
+- **Default:**  0
 
-  - com from the receiver-side. There are specific advantages of using
+MPIR_CVAR_ALLREDUCE_PIPELINE_SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - receiver-side cells when combined with the "avx" fast configure
+- **Aliases:**
+   -  MVP_ALLREDUCE_PIPELINE_SIZE
+  -  MPICH_ALLREDUCE_PIPELINE_SIZE
+- **Description:**
+ The flag is the pipeline message size for the allreduce algorithm. 
+- **Default:**  (8 * 1024 * 1024)
 
-  - option, which allows MPICH to use AVX streaming copy
+MPIR_CVAR_ALLREDUCE_GPU_RING_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - intrintrinsics, when available, to avoid polluting the cache of the
+- **Aliases:**
+   -  MVP_ALLREDUCE_GPU_RING_THRESHOLD
+  -  MPICH_ALLREDUCE_GPU_RING_THRESHOLD
+- **Description:**
+ The flag is the switching point from using group Allreduce algorithm to ring Allreduce algorithm in the pipelined kernel-based two-level allreduce algorithm. 
+- **Default:**  INT_MAX
 
-  - sender with the data being copied to the receiver. Using
+MPIR_CVAR_ALLREDUCE_GPU_KERNEL_VECTORIZE_LIMIT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - receiver-side cells does have the trade-off of requiring an MPMC
+- **Aliases:**
+   -  MVP_ALLREDUCE_GPU_KERNEL_VECTORIZE_LIMIT
+  -  MPICH_ALLREDUCE_GPU_KERNEL_VECTORIZE_LIMIT
+- **Description:**
+ The flag determines the switching point between vectorized and non-vectorized execution in the GPU kernel. Vectorized processing typically offers better performance for small message sizes. 
+- **Default:**  (128 * 1024 * 1024)
 
-  - lock for the free queue rather than an MPSC lock, which is used for
+MPIR_CVAR_REDUCE_SCATTER_PIPELINE_2LVL_GPU_NUM_CHUNKS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - sender-side cells. Initial performance analysis shows that using
+- **Aliases:**
+   -  MVP_REDUCE_SCATTER_PIPELINE_2LVL_GPU_NUM_CHUNKS
+  -  MPICH_REDUCE_SCATTER_PIPELINE_2LVL_GPU_NUM_CHUNKS
+- **Description:**
+ The flag is the pipeline number for pipelined inter-node reduce-scatter algorithm. 0 is auto. 
+- **Default:**  0
 
-  - the MPMC lock in this case had no significant performance loss. By
+MPIR_CVAR_REDUCE_SCATTER_PIPELINE_2LVL_GPU_THRESHOLD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - default, the queue will continue to use sender-side queues until
+- **Aliases:**
+   -  MVP_REDUCE_SCATTER_PIPELINE_2LVL_GPU_THRESHOLD
+  -  MPICH_REDUCE_SCATTER_PIPELINE_2LVL_GPU_THRESHOLD
+- **Description:**
+ The flag is the pipeline threshold for pipelined inter-node reduce-scatter algorithm. 
+- **Default:**  (32 * 1024 * 1024)
 
-  - the performance impact is verified.
+MPIR_CVAR_REDUCE_SCATTER_PIPELINE_2LVL_DIRECT_LIMIT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 1
+- **Aliases:**
+   -  MVP_REDUCE_SCATTER_PIPELINE_2LVL_DIRECT_LIMIT
+  -  MPICH_REDUCE_SCATTER_PIPELINE_2LVL_DIRECT_LIMIT
+- **Description:**
+ The flag is the switching point from using Direct algorithm to Ring-based algorithms in the two-level reduce-scatter algorithm. 
+- **Default:**  (16 * 1024 * 1024)
 
+MPIR_CVAR_GPU_USE_KERNEL_VECTORIZATION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_GPU_USE_KERNEL_VECTORIZATION
+  -  MPICH_GPU_USE_KERNEL_VECTORIZATION
+- **Description:**
+ This flag specifies whether to enable vectorized execution in the GPU kernel or to use the standard non-vectorized mode. 
+- **Default:**  1
 
-MPIR\_CVAR\_ENABLE\_HCOLL
+MPIR_CVAR_GPU_UM_COLL_SIZE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ENABLE\_HCOLL
+   -  MVP_GPU_UM_COLL_SIZE
+  -  MPICH_GPU_UM_COLL_SIZE
+- **Description:**
+ The limit for using CPU algorithms through XNACK instead of GPU designs. 
+- **Default:**  (8 * 1024)
 
-  - MPICH\_ENABLE\_HCOLL
+MPIR_CVAR_CH4_GLOBAL_PROGRESS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_GLOBAL_PROGRESS
+  -  MPICH_CH4_GLOBAL_PROGRESS
 - **Description:**
-  -  Enable hcoll collective support.
-
-- **Default:** 0
+ If on, poll global progress every once a while. With per-vci configuration, turning global progress off may improve the threading performance. 
+- **Default:**  1
 
+MPIR_CVAR_CH4_PROGRESS_THROTTLE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_PROGRESS_THROTTLE
+  -  MPICH_CH4_PROGRESS_THROTTLE
+- **Description:**
+ When running high PPN (high number of processes on a single node), keep polling progress may monopolize the underlying atomic queue and preventing packets being enqueued. A work around is to hold back progress polling. Setting MPIR_CVAR_CH4_PROGRESS_THROTTLE=true will throttle the progress polling by injecting usleep(1) every once a while. 
+- **Default:**  0
 
-MPIR\_CVAR\_COLL\_SCHED\_DUMP
+MPIR_CVAR_CH4_PROGRESS_THROTTLE_NO_PROGRESS_COUNT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_COLL\_SCHED\_DUMP
+   -  MVP_CH4_PROGRESS_THROTTLE_NO_PROGRESS_COUNT
+  -  MPICH_CH4_PROGRESS_THROTTLE_NO_PROGRESS_COUNT
+- **Description:**
+ When MPIR_CVAR_CH4_PROGRESS_THROTTLE=true, MPIR_CVAR_CH4_PROGRESS_THROTTLE_NO_PROGRESS_COUNT is the number of consecutive polls that must fail to make progress before calling usleep(1) in the progress. A higher value makes the usleep less frequent, and a lower value makes the usleep more frequent. 
+- **Default:**  4096
 
-  - MPICH\_COLL\_SCHED\_DUMP
+MPIR_CVAR_CH4_COMM_CONNECT_TIMEOUT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_COMM_CONNECT_TIMEOUT
+  -  MPICH_CH4_COMM_CONNECT_TIMEOUT
 - **Description:**
-  -  Print schedule data for nonblocking collective operations.
+ The default time out period in seconds for a connection attempt to the server communicator where the named port exists but no pending accept. User can change the value for a specified connection through its info argument. 
+- **Default:**  180
 
-- **Default:** 0
-
+MPIR_CVAR_CH4_ENABLE_STREAM_WORKQ
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_ENABLE_STREAM_WORKQ
+  -  MPICH_CH4_ENABLE_STREAM_WORKQ
+- **Description:**
+ Enable stream enqueue operations via stream work queue. Requires progress thread on the corresponding MPIX stream. Reference: MPIX_Stream_progress and MPIX_Start_progress_thread. 
+- **Default:**  0
 
-MPIR\_CVAR\_SHM\_RANDOM\_ADDR\_RETRY
+MPIR_CVAR_CH4_NUM_VCIS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_SHM\_RANDOM\_ADDR\_RETRY
+   -  MVP_CH4_NUM_VCIS
+  -  MPICH_CH4_NUM_VCIS
+- **Description:**
+ Sets the number of VCIs to be implicitly used (should be a subset of MPIDI_CH4_MAX_VCIS). 
+- **Default:**  1
 
-  - MPICH\_SHM\_RANDOM\_ADDR\_RETRY
+MPIR_CVAR_CH4_RESERVE_VCIS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_RESERVE_VCIS
+  -  MPICH_CH4_RESERVE_VCIS
 - **Description:**
-  -  The default number of retries for generating a random
+ Sets the number of VCIs that user can explicitly allocate (should be a subset of MPIDI_CH4_MAX_VCIS). 
+- **Default:**  0
 
-  - address. A retrying involves only local operations.
+MPIR_CVAR_CH4_RMA_MEM_EFFICIENT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 100
+- **Aliases:**
+   -  MVP_CH4_RMA_MEM_EFFICIENT
+  -  MPICH_CH4_RMA_MEM_EFFICIENT
+- **Description:**
+ If true, memory-saving mode is on, per-target object is released at the epoch end call. If false, performance-efficient mode is on, all allocated target objects are cached and freed at win_finalize. 
+- **Default:**  0
 
+MPIR_CVAR_CH4_RMA_ENABLE_DYNAMIC_AM_PROGRESS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_RMA_ENABLE_DYNAMIC_AM_PROGRESS
+  -  MPICH_CH4_RMA_ENABLE_DYNAMIC_AM_PROGRESS
+- **Description:**
+ If true, allows RMA synchronization calls to dynamically reduce the frequency of internal progress polling for incoming RMA active messages received on the target process. The RMA synchronization call initially polls progress with a low frequency (defined by MPIR_CVAR_CH4_RMA_AM_PROGRESS_LOW_FREQ_INTERVAL) to reduce synchronization overhead. Once any RMA active message has been received, it will always poll progress once at every synchronization call to ensure prompt target-side progress. Effective only for passive target synchronization MPI_Win_flush{_all} and MPI_Win_flush_local{_all}. 
+- **Default:**  0
 
-MPIR\_CVAR\_SHM\_SYMHEAP\_RETRY
+MPIR_CVAR_CH4_RMA_AM_PROGRESS_INTERVAL
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_SHM\_SYMHEAP\_RETRY
+   -  MVP_CH4_RMA_AM_PROGRESS_INTERVAL
+  -  MPICH_CH4_RMA_AM_PROGRESS_INTERVAL
+- **Description:**
+ Specifies a static interval of progress polling for incoming RMA active messages received on the target process. Effective only for passive-target synchronization MPI_Win_flush{_all} and MPI_Win_flush_local{_all}. Interval indicates the number of performed flush calls before polling. It is counted globally across all windows. Invalid when MPIR_CVAR_CH4_RMA_ENABLE_DYNAMIC_AM_PROGRESS is true. 
+- **Default:**  1
 
-  - MPICH\_SHM\_SYMHEAP\_RETRY
+MPIR_CVAR_CH4_RMA_AM_PROGRESS_LOW_FREQ_INTERVAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_CH4_RMA_AM_PROGRESS_LOW_FREQ_INTERVAL
+  -  MPICH_CH4_RMA_AM_PROGRESS_LOW_FREQ_INTERVAL
 - **Description:**
-  -  The default number of retries for allocating a symmetric
+ Specifies the interval of progress polling with low frequency for incoming RMA active message received on the target process. Effective only for passive-target synchronization MPI_Win_flush{_all} and MPI_Win_flush_local{_all}. Interval indicates the number of performed flush calls before polling. It is counted globally across all windows. Used when MPIR_CVAR_CH4_RMA_ENABLE_DYNAMIC_AM_PROGRESS is true. 
+- **Default:**  100
 
-  - heap in shared memory. A retrying involves collective communication
-
-  - over the group in the shared memory.
+MPIR_CVAR_PT2PT_JSON_TUNING_FILE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Default:** 100
+- **Aliases:**
+   -  MVP_PT2PT_JSON_TUNING_FILE
+  -  MPICH_PT2PT_JSON_TUNING_FILE
+- **Description:**
+ If non-empty, this cvar specifies a file for architecture-specific tuning 
+- **Default:**  ""
 
+MPIR_CVAR_GENQ_SHMEM_POOL_FREE_QUEUE_SENDER_SIDE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_GENQ_SHMEM_POOL_FREE_QUEUE_SENDER_SIDE
+  -  MPICH_GENQ_SHMEM_POOL_FREE_QUEUE_SENDER_SIDE
+- **Description:**
+ The genq shmem code allocates pools of cells on each process and, when needed, a cell is removed from the pool and passed to another process. This can happen by either removing a cell from the pool of the sending process or from the pool of the receiving process. This CVAR determines which pool to use. If true, the cell will come from the sender-side. If false, the cell will com from the receiver-side. There are specific advantages of using receiver-side cells when combined with the "avx" fast configure option, which allows MPICH to use AVX streaming copy intrintrinsics, when available, to avoid polluting the cache of the sender with the data being copied to the receiver. Using receiver-side cells does have the trade-off of requiring an MPMC lock for the free queue rather than an MPSC lock, which is used for sender-side cells. Initial performance analysis shows that using the MPMC lock in this case had no significant performance loss. By default, the queue will continue to use sender-side queues until the performance impact is verified. 
+- **Default:**  1
 
-MPIR\_CVAR\_ENABLE\_HEAVY\_YIELD
+MPIR_CVAR_ENABLE_HCOLL
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - **Aliases:**
-  -  MVP\_ENABLE\_HEAVY\_YIELD
+   -  MVP_ENABLE_HCOLL
+  -  MPICH_ENABLE_HCOLL
+- **Description:**
+ Enable hcoll collective support. 
+- **Default:**  0
 
-  - MPICH\_ENABLE\_HEAVY\_YIELD
+MPIR_CVAR_COLL_SCHED_DUMP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_COLL_SCHED_DUMP
+  -  MPICH_COLL_SCHED_DUMP
 - **Description:**
-  -  If enabled, use nanosleep to ensure other threads have a
+ Print schedule data for nonblocking collective operations. 
+- **Default:**  0
 
-  - chance to grab the lock. Note: this may not work with some thread
+MPIR_CVAR_SHM_RANDOM_ADDR_RETRY
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - runtimes, e.g. non-preemptive user-level threads.
+- **Aliases:**
+   -  MVP_SHM_RANDOM_ADDR_RETRY
+  -  MPICH_SHM_RANDOM_ADDR_RETRY
+- **Description:**
+ The default number of retries for generating a random address. A retrying involves only local operations. 
+- **Default:**  100
 
-- **Default:** 0
+MPIR_CVAR_SHM_SYMHEAP_RETRY
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_SHM_SYMHEAP_RETRY
+  -  MPICH_SHM_SYMHEAP_RETRY
+- **Description:**
+ The default number of retries for allocating a symmetric heap in shared memory. A retrying involves collective communication over the group in the shared memory. 
+- **Default:**  100
 
+MPIR_CVAR_ENABLE_HEAVY_YIELD
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- **Aliases:**
+   -  MVP_ENABLE_HEAVY_YIELD
+  -  MPICH_ENABLE_HEAVY_YIELD
+- **Description:**
+ If enabled, use nanosleep to ensure other threads have a chance to grab the lock. Note: this may not work with some thread runtimes, e.g. non-preemptive user-level threads. 
+- **Default:**  0
 
