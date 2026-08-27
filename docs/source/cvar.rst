@@ -27,6 +27,7 @@ MPIR_CVAR_BARRIER_INTRA_ALGORITHM
   -  MPICH_BARRIER_INTRA_ALGORITHM
 
 - **Description:**   Variable to select barrier algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   dynamic - Internal algorithm selection using dynamic tuning
   -   nb            - Force nonblocking algorithm
@@ -47,6 +48,7 @@ MPIR_CVAR_BARRIER_INTER_ALGORITHM
   -  MPICH_BARRIER_INTER_ALGORITHM
 
 - **Description:**   Variable to select barrier algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   bcast - Force bcast algorithm
   -   nb    - Force nonblocking algorithm
@@ -128,6 +130,7 @@ MPIR_CVAR_IBARRIER_INTRA_ALGORITHM
   -  MPICH_IBARRIER_INTRA_ALGORITHM
 
 - **Description:**   Variable to select ibarrier algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_recursive_doubling - Force recursive doubling algorithm
@@ -146,6 +149,7 @@ MPIR_CVAR_IBARRIER_INTER_ALGORITHM
   -  MPICH_IBARRIER_INTER_ALGORITHM
 
 - **Description:**   Variable to select ibarrier algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_bcast - Force bcast algorithm
@@ -201,6 +205,7 @@ MPIR_CVAR_BCAST_INTRA_ALGORITHM
   -  MPICH_BCAST_INTRA_ALGORITHM
 
 - **Description:**   Variable to select bcast algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   dynamic - Internal algorithm selection using dynamic tuning
   -   binomial                                - Force Binomial Tree
@@ -356,6 +361,7 @@ MPIR_CVAR_BCAST_INTER_ALGORITHM
   -  MPICH_BCAST_INTER_ALGORITHM
 
 - **Description:**   Variable to select bcast algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   nb                      - Force nonblocking algorithm
   -   remote_send_local_bcast - Force remote-send-local-bcast algorithm
@@ -424,6 +430,7 @@ MPIR_CVAR_IBCAST_INTRA_ALGORITHM
   -  MPICH_IBCAST_INTRA_ALGORITHM
 
 - **Description:**   Variable to select ibcast algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_binomial                             - Force Binomial algorithm
@@ -473,6 +480,7 @@ MPIR_CVAR_IBCAST_INTER_ALGORITHM
   -  MPICH_IBCAST_INTER_ALGORITHM
 
 - **Description:**   Variable to select ibcast algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_flat - Force flat algorithm
@@ -502,6 +510,7 @@ MPIR_CVAR_GATHER_INTRA_ALGORITHM
   -  MPICH_GATHER_INTRA_ALGORITHM
 
 - **Description:**   Variable to select gather algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   dynamic - Internal algorithm selection using dynamic tuning
   -   binomial - Force binomial algorithm
@@ -521,6 +530,7 @@ MPIR_CVAR_GATHER_INTER_ALGORITHM
   -  MPICH_GATHER_INTER_ALGORITHM
 
 - **Description:**   Variable to select gather algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   linear                   - Force linear algorithm
   -   local_gather_remote_send - Force local-gather-remote-send algorithm
@@ -538,6 +548,7 @@ MPIR_CVAR_IGATHER_INTRA_ALGORITHM
   -  MPICH_IGATHER_INTRA_ALGORITHM
 
 - **Description:**   Variable to select igather algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_binomial     - Force binomial algorithm
@@ -568,6 +579,7 @@ MPIR_CVAR_IGATHER_INTER_ALGORITHM
   -  MPICH_IGATHER_INTER_ALGORITHM
 
 - **Description:**   Variable to select igather algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_long  - Force long inter algorithm
@@ -585,6 +597,7 @@ MPIR_CVAR_GATHERV_INTRA_ALGORITHM
   -  MPICH_GATHERV_INTRA_ALGORITHM
 
 - **Description:**   Variable to select gatherv algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   dynamic - Internal algorithm selection using dynamic tuning
   -   linear - Force linear algorithm
@@ -602,6 +615,7 @@ MPIR_CVAR_GATHERV_INTER_ALGORITHM
   -  MPICH_GATHERV_INTER_ALGORITHM
 
 - **Description:**   Variable to select gatherv algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   linear - Force linear algorithm
   -   nb     - Force nonblocking algorithm
@@ -618,6 +632,7 @@ MPIR_CVAR_IGATHERV_INTRA_ALGORITHM
   -  MPICH_IGATHERV_INTRA_ALGORITHM
 
 - **Description:**   Variable to select igatherv algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_linear         - Force linear algorithm
@@ -635,6 +650,7 @@ MPIR_CVAR_IGATHERV_INTER_ALGORITHM
   -  MPICH_IGATHERV_INTER_ALGORITHM
 
 - **Description:**   Variable to select igatherv algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_linear - Force linear algorithm
@@ -665,6 +681,7 @@ MPIR_CVAR_SCATTER_INTRA_ALGORITHM
   -  MPICH_SCATTER_INTRA_ALGORITHM
 
 - **Description:**   Variable to select scatter algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   dynamic - Internal algorithm selection using dynamic tuning
   -   binomial - Force binomial algorithm
@@ -683,6 +700,7 @@ MPIR_CVAR_SCATTER_INTER_ALGORITHM
   -  MPICH_SCATTER_INTER_ALGORITHM
 
 - **Description:**   Variable to select scatter algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   linear                    - Force linear algorithm
   -   nb                        - Force nonblocking algorithm
@@ -700,6 +718,7 @@ MPIR_CVAR_ISCATTER_INTRA_ALGORITHM
   -  MPICH_ISCATTER_INTRA_ALGORITHM
 
 - **Description:**   Variable to select iscatter algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_binomial     - Force binomial algorithm
@@ -730,6 +749,7 @@ MPIR_CVAR_ISCATTER_INTER_ALGORITHM
   -  MPICH_ISCATTER_INTER_ALGORITHM
 
 - **Description:**   Variable to select iscatter algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_linear                    - Force linear algorithm
@@ -747,6 +767,7 @@ MPIR_CVAR_SCATTERV_INTRA_ALGORITHM
   -  MPICH_SCATTERV_INTRA_ALGORITHM
 
 - **Description:**   Variable to select scatterv algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   dynamic - Internal algorithm selection using dynamic tuning
   -   linear - Force linear algorithm
@@ -764,6 +785,7 @@ MPIR_CVAR_SCATTERV_INTER_ALGORITHM
   -  MPICH_SCATTERV_INTER_ALGORITHM
 
 - **Description:**   Variable to select scatterv algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   linear - Force linear algorithm
   -   nb     - Force nonblocking algorithm
@@ -780,6 +802,7 @@ MPIR_CVAR_ISCATTERV_INTRA_ALGORITHM
   -  MPICH_ISCATTERV_INTRA_ALGORITHM
 
 - **Description:**   Variable to select iscatterv algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_linear    - Force linear algorithm
@@ -797,6 +820,7 @@ MPIR_CVAR_ISCATTERV_INTER_ALGORITHM
   -  MPICH_ISCATTERV_INTER_ALGORITHM
 
 - **Description:**   Variable to select iscatterv algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_linear - Force linear algorithm
@@ -840,6 +864,7 @@ MPIR_CVAR_ALLGATHER_INTRA_ALGORITHM
   -  MPICH_ALLGATHER_INTRA_ALGORITHM
 
 - **Description:**   Variable to select allgather algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   dynamic - Internal algorithm selection using dynamic tuning
   -   brucks              - Force brucks algorithm
@@ -906,6 +931,7 @@ MPIR_CVAR_ALLGATHER_INTER_ALGORITHM
   -  MPICH_ALLGATHER_INTER_ALGORITHM
 
 - **Description:**   Variable to select allgather algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   local_gather_remote_bcast - Force local-gather-remote-bcast algorithm
   -   nb                        - Force nonblocking algorithm
@@ -948,6 +974,7 @@ MPIR_CVAR_IALLGATHER_INTRA_ALGORITHM
   -  MPICH_IALLGATHER_INTRA_ALGORITHM
 
 - **Description:**   Variable to select iallgather algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_ring               - Force ring algorithm
@@ -970,6 +997,7 @@ MPIR_CVAR_IALLGATHER_INTER_ALGORITHM
   -  MPICH_IALLGATHER_INTER_ALGORITHM
 
 - **Description:**   Variable to select iallgather algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_local_gather_remote_bcast - Force local-gather-remote-bcast algorithm
@@ -999,6 +1027,7 @@ MPIR_CVAR_ALLGATHERV_INTRA_ALGORITHM
   -  MPICH_ALLGATHERV_INTRA_ALGORITHM
 
 - **Description:**   Variable to select allgatherv algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   dynamic - Internal algorithm selection using dynamic tuning
   -   brucks             - Force brucks algorithm
@@ -1019,6 +1048,7 @@ MPIR_CVAR_ALLGATHERV_INTER_ALGORITHM
   -  MPICH_ALLGATHERV_INTER_ALGORITHM
 
 - **Description:**   Variable to select allgatherv algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   nb                        - Force nonblocking algorithm
   -   remote_gather_local_bcast - Force remote-gather-local-bcast algorithm
@@ -1061,6 +1091,7 @@ MPIR_CVAR_IALLGATHERV_INTRA_ALGORITHM
   -  MPICH_IALLGATHERV_INTRA_ALGORITHM
 
 - **Description:**   Variable to select iallgatherv algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_brucks             - Force brucks algorithm
@@ -1083,6 +1114,7 @@ MPIR_CVAR_IALLGATHERV_INTER_ALGORITHM
   -  MPICH_IALLGATHERV_INTER_ALGORITHM
 
 - **Description:**   Variable to select iallgatherv algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_remote_gather_local_bcast - Force remote-gather-local-bcast algorithm
@@ -1177,6 +1209,7 @@ MPIR_CVAR_ALLTOALL_INTRA_ALGORITHM
   -  MPICH_ALLTOALL_INTRA_ALGORITHM
 
 - **Description:**   Variable to select alltoall algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   dynamic - Internal algorithm selection using dynamic tuning
   -   brucks                    - Force brucks algorithm
@@ -1212,6 +1245,7 @@ MPIR_CVAR_ALLTOALL_INTER_ALGORITHM
   -  MPICH_ALLTOALL_INTER_ALGORITHM
 
 - **Description:**   Variable to select alltoall algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   nb                - Force nonblocking algorithm
   -   pairwise_exchange - Force pairwise exchange algorithm
@@ -1228,6 +1262,7 @@ MPIR_CVAR_IALLTOALL_INTRA_ALGORITHM
   -  MPICH_IALLTOALL_INTRA_ALGORITHM
 
 - **Description:**   Variable to select ialltoall algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_brucks            - Force brucks algorithm
@@ -1250,6 +1285,7 @@ MPIR_CVAR_IALLTOALL_INTER_ALGORITHM
   -  MPICH_IALLTOALL_INTER_ALGORITHM
 
 - **Description:**   Variable to select ialltoall algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_pairwise_exchange - Force pairwise exchange algorithm
@@ -1266,6 +1302,7 @@ MPIR_CVAR_ALLTOALLV_INTRA_ALGORITHM
   -  MPICH_ALLTOALLV_INTRA_ALGORITHM
 
 - **Description:**   Variable to select alltoallv algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   dynamic - Internal algorithm selection using dynamic tuning
   -   nb                        - Force nonblocking algorithm
@@ -1284,6 +1321,7 @@ MPIR_CVAR_ALLTOALLV_INTER_ALGORITHM
   -  MPICH_ALLTOALLV_INTER_ALGORITHM
 
 - **Description:**   Variable to select alltoallv algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   pairwise_exchange - Force pairwise exchange algorithm
   -   nb                - Force nonblocking algorithm
@@ -1300,6 +1338,7 @@ MPIR_CVAR_IALLTOALLV_INTRA_ALGORITHM
   -  MPICH_IALLTOALLV_INTRA_ALGORITHM
 
 - **Description:**   Variable to select ialltoallv algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_blocked           - Force blocked algorithm
@@ -1320,6 +1359,7 @@ MPIR_CVAR_IALLTOALLV_INTER_ALGORITHM
   -  MPICH_IALLTOALLV_INTER_ALGORITHM
 
 - **Description:**   Variable to select ialltoallv algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_pairwise_exchange - Force pairwise exchange algorithm
@@ -1362,6 +1402,7 @@ MPIR_CVAR_ALLTOALLW_INTRA_ALGORITHM
   -  MPICH_ALLTOALLW_INTRA_ALGORITHM
 
 - **Description:**   Variable to select alltoallw algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   dynamic - Internal algorithm selection using dynamic tuning
   -   nb                        - Force nonblocking algorithm
@@ -1380,6 +1421,7 @@ MPIR_CVAR_ALLTOALLW_INTER_ALGORITHM
   -  MPICH_ALLTOALLW_INTER_ALGORITHM
 
 - **Description:**   Variable to select alltoallw algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   nb                - Force nonblocking algorithm
   -   pairwise_exchange - Force pairwise exchange algorithm
@@ -1396,6 +1438,7 @@ MPIR_CVAR_IALLTOALLW_INTRA_ALGORITHM
   -  MPICH_IALLTOALLW_INTRA_ALGORITHM
 
 - **Description:**   Variable to select ialltoallw algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_blocked           - Force blocked algorithm
@@ -1415,6 +1458,7 @@ MPIR_CVAR_IALLTOALLW_INTER_ALGORITHM
   -  MPICH_IALLTOALLW_INTER_ALGORITHM
 
 - **Description:**   Variable to select ialltoallw algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_pairwise_exchange - Force pairwise exchange algorithm
@@ -1444,6 +1488,7 @@ MPIR_CVAR_REDUCE_INTRA_ALGORITHM
   -  MPICH_REDUCE_INTRA_ALGORITHM
 
 - **Description:**   Variable to select reduce algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   dynamic - Internal algorithm selection using dynamic tuning
   -   binomial              - Force binomial algorithm
@@ -1465,6 +1510,7 @@ MPIR_CVAR_REDUCE_INTER_ALGORITHM
   -  MPICH_REDUCE_INTER_ALGORITHM
 
 - **Description:**   Variable to select reduce algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   local_reduce_remote_send - Force local-reduce-remote-send algorithm
   -   nb                       - Force nonblocking algorithm
@@ -1611,6 +1657,7 @@ MPIR_CVAR_IREDUCE_INTRA_ALGORITHM
   -  MPICH_IREDUCE_INTRA_ALGORITHM
 
 - **Description:**   Variable to select ireduce algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_smp                   - Force smp algorithm
@@ -1631,6 +1678,7 @@ MPIR_CVAR_IREDUCE_INTER_ALGORITHM
   -  MPICH_IREDUCE_INTER_ALGORITHM
 
 - **Description:**   Variable to select ireduce algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_local_reduce_remote_send - Force local-reduce-remote-send algorithm
@@ -1660,6 +1708,7 @@ MPIR_CVAR_ALLREDUCE_INTRA_ALGORITHM
   -  MPICH_ALLREDUCE_INTRA_ALGORITHM
 
 - **Description:**   Variable to select allreduce algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   dynamic - Internal algorithm selection using dynamic tuning
   -   nb                       - Force nonblocking algorithm
@@ -1851,6 +1900,7 @@ MPIR_CVAR_ALLREDUCE_CCL
   -  MPICH_ALLREDUCE_CCL
 
 - **Description:**   CCL to use for CCL allreduce
+
   -   auto - Internal algorithm selection (use the value from the .json tuning file)
   -   nccl - Force NCCL
   -   rccl - Force RCCL
@@ -1867,6 +1917,7 @@ MPIR_CVAR_ALLREDUCE_INTER_ALGORITHM
   -  MPICH_ALLREDUCE_INTER_ALGORITHM
 
 - **Description:**   Variable to select allreduce algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   nb                    - Force nonblocking algorithm
   -   reduce_exchange_bcast - Force reduce-exchange-bcast algorithm
@@ -1948,6 +1999,7 @@ MPIR_CVAR_IALLREDUCE_INTRA_ALGORITHM
   -  MPICH_IALLREDUCE_INTRA_ALGORITHM
 
 - **Description:**   Variable to select iallreduce algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_naive                      - Force naive algorithm
@@ -1972,6 +2024,7 @@ MPIR_CVAR_IALLREDUCE_INTER_ALGORITHM
   -  MPICH_IALLREDUCE_INTER_ALGORITHM
 
 - **Description:**   Variable to select iallreduce algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_remote_reduce_local_bcast - Force remote-reduce-local-bcast algorithm
@@ -2001,6 +2054,7 @@ MPIR_CVAR_REDUCE_SCATTER_INTRA_ALGORITHM
   -  MPICH_REDUCE_SCATTER_INTRA_ALGORITHM
 
 - **Description:**   Variable to select reduce_scatter algorithm
+
   -   auto                 - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   dynamic - Internal algorithm selection using dynamic tuning
   -   nb                   - Force nonblocking algorithm
@@ -2026,6 +2080,7 @@ MPIR_CVAR_REDUCE_SCATTER_INTER_ALGORITHM
   -  MPICH_REDUCE_SCATTER_INTER_ALGORITHM
 
 - **Description:**   Variable to select reduce_scatter algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   nb                          - Force nonblocking algorithm
   -   remote_reduce_local_scatter - Force remote-reduce-local-scatter algorithm
@@ -2055,6 +2110,7 @@ MPIR_CVAR_IREDUCE_SCATTER_INTRA_ALGORITHM
   -  MPICH_IREDUCE_SCATTER_INTRA_ALGORITHM
 
 - **Description:**   Variable to select ireduce_scatter algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_noncommutative     - Force noncommutative algorithm
@@ -2075,6 +2131,7 @@ MPIR_CVAR_IREDUCE_SCATTER_INTER_ALGORITHM
   -  MPICH_IREDUCE_SCATTER_INTER_ALGORITHM
 
 - **Description:**   Variable to select ireduce_scatter algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_remote_reduce_local_scatterv - Force remote-reduce-local-scatterv algorithm
@@ -2091,6 +2148,7 @@ MPIR_CVAR_REDUCE_SCATTER_BLOCK_INTRA_ALGORITHM
   -  MPICH_REDUCE_SCATTER_BLOCK_INTRA_ALGORITHM
 
 - **Description:**   Variable to select reduce_scatter_block algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   dynamic - Internal algorithm selection using dynamic tuning
   -   noncommutative     - Force noncommutative algorithm
@@ -2111,6 +2169,7 @@ MPIR_CVAR_REDUCE_SCATTER_BLOCK_INTER_ALGORITHM
   -  MPICH_REDUCE_SCATTER_BLOCK_INTER_ALGORITHM
 
 - **Description:**   Variable to select reduce_scatter_block algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   nb                          - Force nonblocking algorithm
   -   remote_reduce_local_scatter - Force remote-reduce-local-scatter algorithm
@@ -2140,6 +2199,7 @@ MPIR_CVAR_IREDUCE_SCATTER_BLOCK_INTRA_ALGORITHM
   -  MPICH_IREDUCE_SCATTER_BLOCK_INTRA_ALGORITHM
 
 - **Description:**   Variable to select ireduce_scatter_block algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_noncommutative     - Force noncommutative algorithm
@@ -2160,6 +2220,7 @@ MPIR_CVAR_IREDUCE_SCATTER_BLOCK_INTER_ALGORITHM
   -  MPICH_IREDUCE_SCATTER_BLOCK_INTER_ALGORITHM
 
 - **Description:**   Variable to select ireduce_scatter_block algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_remote_reduce_local_scatterv - Force remote-reduce-local-scatterv algorithm
@@ -2176,6 +2237,7 @@ MPIR_CVAR_SCAN_INTRA_ALGORITHM
   -  MPICH_SCAN_INTRA_ALGORITHM
 
 - **Description:**   Variable to select allgather algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   dynamic - Internal algorithm selection using dynamic tuning
   -   nb                 - Force nonblocking algorithm
@@ -2194,6 +2256,7 @@ MPIR_CVAR_ISCAN_INTRA_ALGORITHM
   -  MPICH_ISCAN_INTRA_ALGORITHM
 
 - **Description:**   Variable to select allgather algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_smp                  - Force smp algorithm
@@ -2212,6 +2275,7 @@ MPIR_CVAR_EXSCAN_INTRA_ALGORITHM
   -  MPICH_EXSCAN_INTRA_ALGORITHM
 
 - **Description:**   Variable to select allgather algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   dynamic - Internal algorithm selection using dynamic tuning
   -   nb                 - Force nonblocking algorithm
@@ -2229,6 +2293,7 @@ MPIR_CVAR_IEXSCAN_INTRA_ALGORITHM
   -  MPICH_IEXSCAN_INTRA_ALGORITHM
 
 - **Description:**   Variable to select iexscan algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_recursive_doubling - Force recursive doubling algorithm
@@ -2245,6 +2310,7 @@ MPIR_CVAR_NEIGHBOR_ALLGATHER_INTRA_ALGORITHM
   -  MPICH_NEIGHBOR_ALLGATHER_INTRA_ALGORITHM
 
 - **Description:**   Variable to select ineighbor_allgather algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   nb   - Force nonblocking algorithm
 
@@ -2260,6 +2326,7 @@ MPIR_CVAR_NEIGHBOR_ALLGATHER_INTER_ALGORITHM
   -  MPICH_NEIGHBOR_ALLGATHER_INTER_ALGORITHM
 
 - **Description:**   Variable to select ineighbor_allgather algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   nb   - Force nonblocking algorithm
 
@@ -2275,6 +2342,7 @@ MPIR_CVAR_INEIGHBOR_ALLGATHER_INTRA_ALGORITHM
   -  MPICH_INEIGHBOR_ALLGATHER_INTRA_ALGORITHM
 
 - **Description:**   Variable to select ineighbor_allgather algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_linear    - Force linear algorithm
@@ -2292,6 +2360,7 @@ MPIR_CVAR_INEIGHBOR_ALLGATHER_INTER_ALGORITHM
   -  MPICH_INEIGHBOR_ALLGATHER_INTER_ALGORITHM
 
 - **Description:**   Variable to select ineighbor_allgather algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_linear    - Force linear algorithm
@@ -2309,6 +2378,7 @@ MPIR_CVAR_NEIGHBOR_ALLGATHERV_INTRA_ALGORITHM
   -  MPICH_NEIGHBOR_ALLGATHERV_INTRA_ALGORITHM
 
 - **Description:**   Variable to select neighbor_allgatherv algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   nb   - Force nb algorithm
 
@@ -2324,6 +2394,7 @@ MPIR_CVAR_NEIGHBOR_ALLGATHERV_INTER_ALGORITHM
   -  MPICH_NEIGHBOR_ALLGATHERV_INTER_ALGORITHM
 
 - **Description:**   Variable to select neighbor_allgatherv algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   nb   - Force nb algorithm
 
@@ -2339,6 +2410,7 @@ MPIR_CVAR_INEIGHBOR_ALLGATHERV_INTRA_ALGORITHM
   -  MPICH_INEIGHBOR_ALLGATHERV_INTRA_ALGORITHM
 
 - **Description:**   Variable to select ineighbor_allgatherv algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_linear          - Force linear algorithm
@@ -2356,6 +2428,7 @@ MPIR_CVAR_INEIGHBOR_ALLGATHERV_INTER_ALGORITHM
   -  MPICH_INEIGHBOR_ALLGATHERV_INTER_ALGORITHM
 
 - **Description:**   Variable to select ineighbor_allgatherv algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_linear          - Force linear algorithm
@@ -2373,6 +2446,7 @@ MPIR_CVAR_NEIGHBOR_ALLTOALL_INTRA_ALGORITHM
   -  MPICH_NEIGHBOR_ALLTOALL_INTRA_ALGORITHM
 
 - **Description:**   Variable to select neighbor_alltoall algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   nb   - Force nb algorithm
 
@@ -2388,6 +2462,7 @@ MPIR_CVAR_NEIGHBOR_ALLTOALL_INTER_ALGORITHM
   -  MPICH_NEIGHBOR_ALLTOALL_INTER_ALGORITHM
 
 - **Description:**   Variable to select neighbor_alltoall algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   nb   - Force nb algorithm
 
@@ -2403,6 +2478,7 @@ MPIR_CVAR_INEIGHBOR_ALLTOALL_INTRA_ALGORITHM
   -  MPICH_INEIGHBOR_ALLTOALL_INTRA_ALGORITHM
 
 - **Description:**   Variable to select ineighbor_alltoall algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_linear          - Force linear algorithm
@@ -2420,6 +2496,7 @@ MPIR_CVAR_INEIGHBOR_ALLTOALL_INTER_ALGORITHM
   -  MPICH_INEIGHBOR_ALLTOALL_INTER_ALGORITHM
 
 - **Description:**   Variable to select ineighbor_alltoall algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_linear          - Force linear algorithm
@@ -2437,6 +2514,7 @@ MPIR_CVAR_NEIGHBOR_ALLTOALLV_INTRA_ALGORITHM
   -  MPICH_NEIGHBOR_ALLTOALLV_INTRA_ALGORITHM
 
 - **Description:**   Variable to select neighbor_alltoallv algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   nb   - Force nb algorithm
 
@@ -2452,6 +2530,7 @@ MPIR_CVAR_NEIGHBOR_ALLTOALLV_INTER_ALGORITHM
   -  MPICH_NEIGHBOR_ALLTOALLV_INTER_ALGORITHM
 
 - **Description:**   Variable to select neighbor_alltoallv algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   nb   - Force nb algorithm
 
@@ -2467,6 +2546,7 @@ MPIR_CVAR_INEIGHBOR_ALLTOALLV_INTRA_ALGORITHM
   -  MPICH_INEIGHBOR_ALLTOALLV_INTRA_ALGORITHM
 
 - **Description:**   Variable to select ineighbor_alltoallv algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_linear          - Force linear algorithm
@@ -2484,6 +2564,7 @@ MPIR_CVAR_INEIGHBOR_ALLTOALLV_INTER_ALGORITHM
   -  MPICH_INEIGHBOR_ALLTOALLV_INTER_ALGORITHM
 
 - **Description:**   Variable to select ineighbor_alltoallv algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_linear          - Force linear algorithm
@@ -2501,6 +2582,7 @@ MPIR_CVAR_NEIGHBOR_ALLTOALLW_INTRA_ALGORITHM
   -  MPICH_NEIGHBOR_ALLTOALLW_INTRA_ALGORITHM
 
 - **Description:**   Variable to select neighbor_alltoallw algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   nb   - Force nb algorithm
 
@@ -2516,6 +2598,7 @@ MPIR_CVAR_NEIGHBOR_ALLTOALLW_INTER_ALGORITHM
   -  MPICH_NEIGHBOR_ALLTOALLW_INTER_ALGORITHM
 
 - **Description:**   Variable to select neighbor_alltoallw algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   nb   - Force nb algorithm
 
@@ -2531,6 +2614,7 @@ MPIR_CVAR_INEIGHBOR_ALLTOALLW_INTRA_ALGORITHM
   -  MPICH_INEIGHBOR_ALLTOALLW_INTRA_ALGORITHM
 
 - **Description:**   Variable to select ineighbor_alltoallw algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_linear          - Force linear algorithm
@@ -2548,6 +2632,7 @@ MPIR_CVAR_INEIGHBOR_ALLTOALLW_INTER_ALGORITHM
   -  MPICH_INEIGHBOR_ALLTOALLW_INTER_ALGORITHM
 
 - **Description:**   Variable to select ineighbor_alltoallw algorithm
+
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_COLL_SELECTION_TUNING_JSON_FILE)
   -   sched_auto - Internal algorithm selection for sched-based algorithms
   -   sched_linear          - Force linear algorithm
@@ -3572,6 +3657,7 @@ MPIR_CVAR_DYNAMIC_TUNE_LOCAL_EVAL_METRIC
   -  MPICH_DYNAMIC_TUNE_LOCAL_EVAL_METRIC
 
 - **Description:**   Value reported by local processes ot the dynamic tuning framework
+
   -   avg - Report the average latency over MPIR_CVAR_DYNAMIC_TUNE_TEST_COUNT tests (default)
   -   max - Report the maximum latency over MPIR_CVAR_DYNAMIC_TUNE_TEST_COUNT tests
   -   min - Report the minimum latency over MPIR_CVAR_DYNAMIC_TUNE_TEST_COUNT tests
@@ -3588,6 +3674,7 @@ MPIR_CVAR_DYNAMIC_TUNE_SELECTION_METRIC
   -  MPICH_DYNAMIC_TUNE_SELECTION_METRIC
 
 - **Description:**   Metric used to select the best algorithm for dynamic tuning
+
   -   max - Use the algorithm that minimizes the maximum per process latency (default)
   -   min - Use the algorithm that minimizes the minimum per process latency
   -   avg - Use the algorithm that minimizes the average per process latency
@@ -3604,6 +3691,7 @@ MPIR_CVAR_DYNAMIC_TUNE_VERBOSITY
   -  MPICH_DYNAMIC_TUNE_VERBOSITY
 
 - **Description:**   Debuging verbosity for dynamic tuning
+
   -   silent  - No debugging output (default)
   -   debug   - Logs collective selection in debug output
   -   basic   - Identifies selected collectives and the relevant message size
@@ -3686,6 +3774,7 @@ MPIR_CVAR_DEVICE_COLLECTIVES
   -  MPICH_DEVICE_COLLECTIVES
 
 - **Description:**   Variable to select whether the device can override the
+
   -   MPIR-level collective algorithms.
   -   all     - Always prefer the device collectives
   -   none    - Never pick the device collectives
@@ -3703,6 +3792,7 @@ MPIR_CVAR_COLLECTIVE_FALLBACK
   -  MPICH_COLLECTIVE_FALLBACK
 
 - **Description:**   Variable to control what the MPI library should do if the
+
   -   user-specified collective algorithm does not work for the
   -   arguments passed in by the user.
   -   error   - throw an error
@@ -4370,6 +4460,7 @@ MPIR_CVAR_ENABLE_COMPRESSION
   -  MPICH_ENABLE_COMPRESSION
 
 - **Description:**   Possible values: no, all, percomm
+
   -   no      - disable collective compression on all communicators
   -   all     - enable collective compression on all communicators
   -   percomm - use per-communicator hints for all communicators
@@ -4386,6 +4477,7 @@ MPIR_CVAR_COMPRESSION_ALGORITHM
   -  MPICH_COMPRESSION_ALGORITHM
 
 - **Description:**   Used to force a particular GPU compression algorithm
+
   -   mpc - Use MPC lossless compression algorithm
   -   zfp - Use ZFP lossy compression algorithm
 
@@ -4414,6 +4506,7 @@ MPIR_CVAR_COMPRESSION_DIMENSION
   -  MPICH_COMPRESSION_DIMENSION
 
 - **Description:**   Dimensionality in compression
+
   -   Possible values: integer between 1 and 32
 
 - **Default:**  1
@@ -4441,6 +4534,7 @@ MPIR_CVAR_COMPRESSION_DATA_TYPE
   -  MPICH_COMPRESSION_DATA_TYPE
 
 - **Description:**   Used to force a particular GPU compression algorithm
+
   -   FLOAT  - use compression with floating point type
   -   DOUBLE - use compression with double precision type
 
@@ -4456,6 +4550,7 @@ MPIR_CVAR_ENABLE_PT2PT_COMPRESSION
   -  MPICH_ENABLE_PT2PT_COMPRESSION
 
 - **Description:**   Possible values: no, all, percomm
+
   -   no      - disable point-to-point compression on all communicators
   -   all     - enable point-to-point compression on all communicators
   -   percomm - use per-communicator hints for all communicators
@@ -4615,6 +4710,7 @@ MPIR_CVAR_ZFP_NUM_STREAM
   -  MPICH_ZFP_NUM_STREAM
 
 - **Description:**   number of zfp streams to preallocate pool
+
   -   Possible values: integer greater than 1
 
 - **Default:**  64
@@ -4642,6 +4738,7 @@ MPIR_CVAR_ZFP_NX
   -  MPICH_ZFP_NX
 
 - **Description:**   For 2D dimension
+
   -   Possible values: Positive integer, multiple of 4
 
 - **Default:**  4
@@ -4656,6 +4753,7 @@ MPIR_CVAR_ZFP_NY
   -  MPICH_ZFP_NY
 
 - **Description:**   For 3D dimension
+
   -   Possible values: Positive integer, multiple of 4
 
 - **Default:**  4
@@ -4670,6 +4768,7 @@ MPIR_CVAR_ZFP_ALLOC_WARNING
   -  MPICH_ZFP_ALLOC_WARNING
 
 - **Description:**   Possible values: 0, 1
+
   -   0 - disable warnings for allocation of zfp stream pool
   -   1 - enable warning for allocation of zfp stream pool
 
@@ -4782,6 +4881,7 @@ MPIR_CVAR_PMI_VERSION
   -  MPICH_PMI_VERSION
 
 - **Description:**   Variable to select runtime PMI version.
+
   -   1        - PMI (default)
   -   2        - PMI2
   -   x        - PMIx
@@ -5282,6 +5382,7 @@ MPIR_CVAR_BCAST_OFI_INTRA_ALGORITHM
   -  MPICH_BCAST_OFI_INTRA_ALGORITHM
 
 - **Description:**   Variable to select algorithm for intra-node bcast
+
   -   mpir                        - Fallback to MPIR collectives
   -   trigger_tree_tagged         - Force triggered ops based Tagged Tree
   -   trigger_tree_rma            - Force triggered ops based RMA Tree
@@ -5845,6 +5946,7 @@ MPIR_CVAR_CH4_OFI_GPU_SEND_ENGINE_TYPE
   -  MPICH_CH4_OFI_GPU_SEND_ENGINE_TYPE
 
 - **Description:**   Specifies GPU engine type for GPU pt2pt on the sender side.
+
   -   compute - use a compute engine
   -   copy_high_bandwidth - use a high-bandwidth copy engine
   -   copy_low_latency - use a low-latency copy engine
@@ -5862,6 +5964,7 @@ MPIR_CVAR_CH4_OFI_GPU_RECEIVE_ENGINE_TYPE
   -  MPICH_CH4_OFI_GPU_RECEIVE_ENGINE_TYPE
 
 - **Description:**   Specifies GPU engine type for GPU pt2pt on the receiver side.
+
   -   compute - use a compute engine
   -   copy_high_bandwidth - use a high-bandwidth copy engine
   -   copy_low_latency - use a low-latency copy engine
@@ -5931,6 +6034,7 @@ MPIR_CVAR_CH4_OFI_RNDV_PROTOCOL
   -  MPICH_CH4_OFI_RNDV_PROTOCOL
 
 - **Description:**   When message size is greater than MPIR_CVAR_CH4_OFI_EAGER_THRESHOLD,
+
   -   specify large message protocol.
   -   auto - decide protocols based on buffer attributes and datatypes.
   -   pipeline - use pipeline protocol (forcing pack and unpack).
@@ -6024,6 +6128,7 @@ MPIR_CVAR_UCX_DT_RECV
   -  MPICH_UCX_DT_RECV
 
 - **Description:**   Variable to select method for receiving noncontiguous data
+
   -   true                - Use UCX datatype with pack/unpack callbacks
   -   false               - MPICH will decide to pack/unpack at completion or use IOVs
   -   based on the datatype
@@ -6079,6 +6184,7 @@ MPIR_CVAR_CH4_IPC_RNDV_PROTOCOL
   -  MPICH_CH4_IPC_RNDV_PROTOCOL
 
 - **Description:**   Variable to select the RNDV protocol.
+
   -   auto    - Default RNDV Protocol that enable COOP automatically
   -   rget    - RNDV RGET Protocol
   -   rput    - RNDV RPUT Protocol
@@ -6109,6 +6215,7 @@ MPIR_CVAR_CH4_IPC_GPU_HANDLE_CACHE
   -  MPICH_CH4_IPC_GPU_HANDLE_CACHE
 
 - **Description:**   By default, we will cache ipc handles using the specialized cache mechanism. If the
+
   -   gpu-specific backend does not implement a specialized cache, then we will fallback to
   -   the generic cache mechanism. Users can optionally force the generic cache mechanism or
   -   disable ipc caching entirely.
@@ -6141,6 +6248,7 @@ MPIR_CVAR_CH4_IPC_GPU_CACHE_SIZE
   -  MPICH_CH4_IPC_GPU_CACHE_SIZE
 
 - **Description:**   The behavior of the cache containing IPC mapped buffers.
+
   -   unlimited - don't restrict the cache size
   -   limited - limit the cache size based on MPIR_CVAR_CH4_IPC_GPU_MAX_CACHE_ENTRIES
   -   disabled - don't cache mapped IPC buffers
@@ -6183,6 +6291,7 @@ MPIR_CVAR_CH4_IPC_ZE_SHAREABLE_HANDLE
   -  MPICH_CH4_IPC_ZE_SHAREABLE_HANDLE
 
 - **Description:**   Variable to select implementation for ZE shareable IPC handle
+
   -   pidfd - use pidfd_getfd syscall to implement shareable IPC handle
   -   drmfd - force to use device fd-based shareable IPC handle
 
@@ -6198,6 +6307,7 @@ MPIR_CVAR_CH4_IPC_GPU_ENGINE_TYPE
   -  MPICH_CH4_IPC_GPU_ENGINE_TYPE
 
 - **Description:**   By default, select engine type automatically
+
   -   auto - select automatically
   -   compute - use compute engine
   -   copy_high_bandwidth - use high-bandwidth copy engine
@@ -6215,6 +6325,7 @@ MPIR_CVAR_CH4_IPC_GPU_READ_WRITE_PROTOCOL
   -  MPICH_CH4_IPC_GPU_READ_WRITE_PROTOCOL
 
 - **Description:**   By default, use read protocol.
+
   -   auto - select automatically
   -   read - use read protocol
   -   write - use write protocol if remote device is visible
@@ -6231,6 +6342,7 @@ MPIR_CVAR_CH4_IPC_GPU_RMA_ENGINE_TYPE
   -  MPICH_CH4_IPC_GPU_RMA_ENGINE_TYPE
 
 - **Description:**   By default, select engine type automatically
+
   -   yaksa - don't select, use yaksa
   -   auto - select automatically
   -   compute - use compute engine
@@ -6392,6 +6504,7 @@ MPIR_CVAR_BCAST_POSIX_INTRA_ALGORITHM
   -  MPICH_BCAST_POSIX_INTRA_ALGORITHM
 
 - **Description:**   Variable to select algorithm for intra-node bcast
+
   -   mpir           - Fallback to MPIR collectives
   -   release_gather - Force shm optimized algo using release, gather primitives
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_CH4_POSIX_COLL_SELECTION_TUNING_JSON_FILE)
@@ -6409,6 +6522,7 @@ MPIR_CVAR_IBCAST_POSIX_INTRA_ALGORITHM
   -  MPICH_IBCAST_POSIX_INTRA_ALGORITHM
 
 - **Description:**   Variable to select algorithm for intra-node bcast
+
   -   mpir           - Fallback to MPIR collectives
   -   release_gather - Force shm optimized algo using release, gather primitives
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_CH4_POSIX_COLL_SELECTION_TUNING_JSON_FILE)
@@ -6425,6 +6539,7 @@ MPIR_CVAR_REDUCE_POSIX_INTRA_ALGORITHM
   -  MPICH_REDUCE_POSIX_INTRA_ALGORITHM
 
 - **Description:**   Variable to select algorithm for intra-node reduce
+
   -   mpir           - Fallback to MPIR collectives
   -   release_gather - Force shm optimized algo using release, gather primitives
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_CH4_POSIX_COLL_SELECTION_TUNING_JSON_FILE)
@@ -6441,6 +6556,7 @@ MPIR_CVAR_IREDUCE_POSIX_INTRA_ALGORITHM
   -  MPICH_IREDUCE_POSIX_INTRA_ALGORITHM
 
 - **Description:**   Variable to select algorithm for intra-node reduce
+
   -   mpir           - Fallback to MPIR collectives
   -   release_gather - Force shm optimized algo using release, gather primitives
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_CH4_POSIX_COLL_SELECTION_TUNING_JSON_FILE)
@@ -6457,6 +6573,7 @@ MPIR_CVAR_ALLREDUCE_POSIX_INTRA_ALGORITHM
   -  MPICH_ALLREDUCE_POSIX_INTRA_ALGORITHM
 
 - **Description:**   Variable to select algorithm for intra-node allreduce
+
   -   mpir           - Fallback to MPIR collectives
   -   release_gather - Force shm optimized algo using release, gather primitives
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_CH4_POSIX_COLL_SELECTION_TUNING_JSON_FILE)
@@ -6473,6 +6590,7 @@ MPIR_CVAR_BARRIER_POSIX_INTRA_ALGORITHM
   -  MPICH_BARRIER_POSIX_INTRA_ALGORITHM
 
 - **Description:**   Variable to select algorithm for intra-node barrier
+
   -   mpir           - Fallback to MPIR collectives
   -   release_gather - Force shm optimized algo using release, gather primitives
   -   auto - Internal algorithm selection (can be overridden with MPIR_CVAR_CH4_POSIX_COLL_SELECTION_TUNING_JSON_FILE)
@@ -6489,6 +6607,7 @@ MPIR_CVAR_ALLTOALL_POSIX_INTRA_ALGORITHM
   -  MPICH_ALLTOALL_POSIX_INTRA_ALGORITHM
 
 - **Description:**   Variable to select algorithm for intra-node alltoall
+
   -   mpir           - Fallback to MPIR collectives (default)
   -   ipc_read    - Uses read-based collective with ipc
 
@@ -6504,6 +6623,7 @@ MPIR_CVAR_ALLGATHER_POSIX_INTRA_ALGORITHM
   -  MPICH_ALLGATHER_POSIX_INTRA_ALGORITHM
 
 - **Description:**   Variable to select algorithm for intra-node allgather
+
   -   mpir        - Fallback to MPIR collectives (default)
   -   ipc_read    - Uses read-based collective with ipc
 
@@ -6519,6 +6639,7 @@ MPIR_CVAR_ALLGATHERV_POSIX_INTRA_ALGORITHM
   -  MPICH_ALLGATHERV_POSIX_INTRA_ALGORITHM
 
 - **Description:**   Variable to select algorithm for intra-node allgatherv
+
   -   mpir        - Fallback to MPIR collectives (default)
   -   ipc_read    - Uses read-based collective with ipc
 
