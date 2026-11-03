@@ -3,11 +3,11 @@
 # -- Project information
 
 project = 'MVAPICH'
-copyright = '2025, NOWLAB'
+copyright = '2026, NOWLAB'
 author = 'NOWLAB'
 
-release = '4.1'
-version = '4.1'
+release = '5.0.0b'
+version = '5.0.0b'
 
 # -- General configuration
 
